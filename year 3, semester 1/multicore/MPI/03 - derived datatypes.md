@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-11-03T15:58
+updated: 2025-11-22T19:19
 completed: false
 ---
 # derived datatypes
@@ -81,6 +81,7 @@ furthermore, referencing may not have a unique definition on machines with a seg
 
 ## `MPI_Type_commit()`
 `MPI_Type_commit` allows the MPI implementation to optimize its internal representation of the derived datatype for use in communication functions !
+- it is *necessary* for the derived datatype to work !!!
 >[!syntax] syntax
 >```c
 >int MPI_Type_commit(MPI_Datatype* new_mpi_t_p); //in&out
