@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T12:21
+updated: 2025-11-23T12:25
 completed: false
 ---
 # openMP
@@ -172,11 +172,24 @@ in openMP, the *scope* of a variable refers to the set of threads that can acces
 - *shared*: a variable that can be accessed by all the threads in the team (default scope for variables declared before a parallel block)
 - *private*: a variable that can only be accessed by a single thread
 #### `default` clause
-it lets the programmer specify the scope of each variable in a block
-.
-```c
-default(none)
-```
+it lets the programmer specify the scope of each variable in a block. the compiler will enforce this requirement for each variable we use inside the block that has been declared outside the block
+>[!syntax] syntax
+>```c
+># pragma omp parallel default(none)
+>```
+
+>[!example] example
+>```c
+>int total = 0; // Shared variable 
+>int N = 1000; // Shared variable 
+>// Using default(none) forces the programmer to explicitly state 
+>// the scope of 'total', 'N', and 'i'. 
+>#pragma omp parallel for default(none) private(i) shared(total, N)
+>	reduction(+:total) 
+>for (i = 0; i < N; i++){ 
+>total += i; // Error-free because 'total' is in reduction, 'i' and 'N' are handled }
+>}
+>```
 ## `reduction` clause
 openMP provides a native way to accumulate a result by a thread team, just like MPI provides `MPI_Reduce()`
 a reduction is a computation that repeatedly applies the same reduction operartor (a binary operation) to a sequence of operands (threads) in order to get a single result. it does so by storing all of the intermediate results of the reduction in the same variable, the reduction variable
