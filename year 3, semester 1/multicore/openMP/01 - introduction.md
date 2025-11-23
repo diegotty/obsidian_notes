@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T15:21
+updated: 2025-11-23T15:27
 completed: false
 ---
 # openMP
@@ -372,6 +372,21 @@ this code forks/joins new threads every time the `parallel for` is called (actua
 ![[Pasted image 20251123145805.png]]
 
 ## nested for loops
->[!info] img
+>[!example] example
 if we have nested for loops, it is often enough to simply parallelize the outermost loop
 ![[Pasted image 20251123152117.png]]
+>
+>but sometimes, the outermost loop is so short that not all threads are utilized, so we could try to parallelize the inner loop, but there is no guarantee that the thread utilization will be better
+![[Pasted image 20251123152420.png]]
+
+>[!info] the solution
+the correct solution is to *collapse the nested loop into one loop*.
+we can do this manually:
+![[Pasted image 20251123152554.png]]
+>
+or we can ask openMP to do it for us, with the clause `collapse(n_of_nested_loops)`
+![[Pasted image 20251123152608.png]]
+
+>[!warning] nested parallelism
+nested parallelism is disabled by openMP by default ! (nested for clauses get ignored)
+![[Pasted image 20251123152650.png]]
