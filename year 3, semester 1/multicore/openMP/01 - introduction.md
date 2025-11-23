@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T11:21
+updated: 2025-11-23T11:36
 completed: false
 ---
 # openMP
@@ -19,6 +19,10 @@ the most basic parallel directive is
 ```c
 # pragma omp parallel
 ```
+it tells the compiler to create a team of theads
+
+we can attach *clauses* to primary parallel directives that specify the details, restrictions and behaviours of the parallel exeuction.
+
 
 >[!warning] while the variables outside the parallel block are shared across all threads, threads will each have a private copy of variables declared inside a `#pragma`
 
@@ -88,5 +92,66 @@ to prevent errors when compiling openMP code on compilers that don’t support i
 int my_rank = omp_get_thread_num();
 int thread_count = omp_get_num_threads();
 #else
-int m
+int my_rank = 0;
+int thread_count = 1;
+#endif
+```
+
+## trapezoid example
+>[!example] example
+we use trapezoids to calculate the defined integral of a function like we did in [[02 - parallel design patterns#trapezoid example|MPI]] !
+![[Pasted image 20251123112403.png]]
+### `critical` and `atomic` clauses
+
+to access a shared variable like `global_variable` in the next snippet, we need to ensure mutual exclusion to it. we do so by adding the `critical` clause, which guarantees that only one thread at a time can execute the critical region, preventing race conditions
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+void Trap(double a, double b, int n, double* global_result_p);
+
+int main(int argc, char* argvp[]) {
+	double global_result = 0.0; // store result in global_result
+	double a, b;                // left and right endpoints
+	int    n;                   // total number of trapezoids
+	int    thread_count;
+	
+	thread_count = strtol(argv[1], NULL, 10);
+	printf("Enter a, b, and n\n")
+	scanf("%lf %lf %d", &a, &b, &n);
+	
+	#pragma omp parallel num_threads(thread_count)
+	Trap(a, b, n, &global_result)
+	
+	printf("With n = %d trapezoids, our estimate\n", n);
+	printf("of the integral from %f to %f =%.14e\n", a, b, global_result);
+	
+	return 0;
+}
+
+void Trap(double a, double b, int n, double* global_result_p) {
+	double h, x, my_result;
+	double local_a, local_b;
+	int    i, local_n;
+	int    my_rank = omp_get_thread_num();
+	int    thread_count = omp_get_num_threads();
+	
+	h = (b - a) / n;
+	local_n = n / thread_count;
+	local_a = a + my_rank * local_n * h;
+	local_b = local_a + local_n * h;
+	
+	my_result = (f(local_a) + f(local_b)) / 2.0;
+	for (i = 1; i <= local_n - 1; i++) {
+		x = local_a + i * h;
+		my_result += f(x);
+	}
+	
+	my_result = my_result * h;
+	
+	# pragma omp critical
+	*global_result_p += my_result;
+}
 ```
