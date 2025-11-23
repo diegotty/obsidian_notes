@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T11:51
+updated: 2025-11-23T12:06
 completed: false
 ---
 # openMP
@@ -15,11 +15,13 @@ it also relies on *compiler directives*: special, non-standard language construc
 
 openMP programs are [[02 - parallel design patterns#GSLP|globally sequential, locally parallel]] (and it makes complete sense)
 ## pragmas
+openMP is based on pragmas (that start with `#pragma omp`) that instruct the compiler to generate the necessary multithreaded code
+
+>[!syntax] syntax
 the most basic parallel directive is 
-```c
-# pragma omp parallel
-```
-it tells the compiler to create a team of theads
+>```c
+># pragma omp parallel
+>```
 
 we can attach *clauses* to primary parallel directives that specify the details, restrictions and behaviours of the parallel exeuction.
 they generally fall into 4 main categories:
@@ -170,3 +172,22 @@ in openMP, the *scope* of a variable refers to the set of threads that can acces
 - *shared*: a variable that can be accessed by all the threads in the team (default scope for variables declared before a parallel block)
 - *private*: a variable that can only be accessed by a single thread
 ## `reduction` clause
+openMP provides a native way to accumulate a result by a thread team, just like MPI provides `MPI_Reduce()`
+a reduction is a computation that repeatedly applies the same reduction operartor (a binary operation) to a sequence of operands (threads) in order to get a single result. it does so by storing all of the intermediate results of the reduction in the same variable, the reduction variable
+
+>[!syntax] syntax
+the syntax to add a reduction clause is
+>```c
+>reduction(<operator>: <variable_list>)
+>```
+
+the private variables created for a reduction clause are initialized to the *identity value* for the given operator (multiplication: `1`, sum: `0`, …): the original shared value given in the `<variable_list>` is temporarily put aside
+
+
+>[!example] adding a reduction to the trapezoid example
+>```c
+># pragma omp parallel num_threads(thread_count)
+>	reduction(+: global_result)
+>global_result += Local_trap(double a, double b, int n);
+>```
+if we do not specify the reduction clause, the line of code would be a race condition !
