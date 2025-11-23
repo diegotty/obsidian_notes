@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T12:59
+updated: 2025-11-23T14:51
 completed: false
 ---
 # openMP
@@ -237,4 +237,32 @@ the syntax to add a reduction clause is
 >```
 if we do not specify the reduction clause, the line of code would be a race condition !
 
-## parallel for
+## `for` clause
+the `for` clause forks a team of threads to execute following structure block, which must be a for loop.
+with this clause, the for loop is parallelized by dividing the iterations of the loop among the threads
+```c
+h = (b - a)/n;
+approx = (f(a) + f(b)) / 2.0;
+# pragma omp parallel for num_threads(thread_count) reduction(+: approx)
+for (i = 1; i <= n - 1; i++)
+	approx += f(a + i*h);
+approx = h*approx;
+```
+
+>[!info] legal forms for parallelizable `for` statements
+the for loop that follows the `for` clause must be in one of the following legal forms, so that the runtime system can determine the number of iterations prior to the execution of the loop
+![[Pasted image 20251123144719.png]]
+also:
+>- the variable `index` must have interger or pointer type
+>- the espressions `start`, `end`, and `incr` must have a compatible type
+>	- e.g. if `index` is a pointer, then `incr` must have integer type (?)
+>- the expressions `start`, `end` and `incr` must not change during the execution of the loop !!!!
+>- during execution of the loop, the variable `index` can only be modified by the *increment expression* in the for statement
+
+>[!example]- examples of parallelizeable for loops
+
+```c
+for (i = 0; i < n; i++){
+
+}
+```
