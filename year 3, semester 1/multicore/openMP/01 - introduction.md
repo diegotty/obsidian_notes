@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T12:51
+updated: 2025-11-23T12:59
 completed: false
 ---
 # openMP
@@ -195,7 +195,7 @@ these scope-modifying clauses substitute and modify the behaviour of the private
 we could also need to declare private variables that persit outside of a parallel section, which won’t happen when using the clauses shown above
 -  creates a thread-specific, *persistent* storage (for the duration of the program), for global data.
 	- the variable needs to be `global/static` in C, or a static class member in C++
-the `copyin` is used in conjunction with the `threadpriv`
+the `copyin` is used in conjunction with the `threadprivate` (mandatory) clause to initialize the private copies of a variable from the master (thread `0`, which runs the sequential code) thread’s variable
 
 >[!example] example
 >```c
@@ -236,3 +236,5 @@ the syntax to add a reduction clause is
 >global_result += Local_trap(double a, double b, int n);
 >```
 if we do not specify the reduction clause, the line of code would be a race condition !
+
+## parallel for
