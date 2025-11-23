@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T12:25
+updated: 2025-11-23T12:51
 completed: false
 ---
 # openMP
@@ -169,14 +169,33 @@ grz flavio
 
 ## scope
 in openMP, the *scope* of a variable refers to the set of threads that can access the variable in a parallel block (so not where, but by who). they are:
-- *shared*: a variable that can be accessed by all the threads in the team (default scope for variables declared before a parallel block)
-- *private*: a variable that can only be accessed by a single thread
+- `shared`: a variable that can be accessed by all the threads in the team (default scope for variables declared before a parallel block)
+- `private`: a variable that can only be accessed by a single thread, enforced by creating a separate copy of the variable for each thread in the team. these variables are *not initialized*, so one should not exepct to get the value of the variable declared outside the parallel construct
+>[!example]- private initilization example
+>```c
+>int x = 5;
+>#pragma omp parallel private(x)
+>{
+>x = x+1; // dangerous ! x is not initialized
+>}
+>```
 #### `default` clause
 it lets the programmer specify the scope of each variable in a block. the compiler will enforce this requirement for each variable we use inside the block that has been declared outside the block
 >[!syntax] syntax
 >```c
 ># pragma omp parallel default(none)
 >```
+
+### `firstprivate` and `lastprivate`
+these scope-modifying clauses substitute and modify the behaviour of the private clause:
+- `firstprivate`: behaves the same was as the private clause, but the private variable copies *are initialized to the value of the “outside” object*
+- `lastprivate`: behaves the same way as the private clause, but the thread finishing *the last iteration of the sequential block* copies the value of its object to the “outside” object
+
+### `threadprivate` clause
+we could also need to declare private variables that persit outside of a parallel section, which won’t happen when using the clauses shown above
+-  creates a thread-specific, *persistent* storage (for the duration of the program), for global data.
+	- the variable needs to be `global/static` in C, or a static class member in C++
+the `copyin` is used in conjunction with the `threadpriv`
 
 >[!example] example
 >```c
