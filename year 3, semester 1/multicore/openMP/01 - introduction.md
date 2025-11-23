@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T15:06
+updated: 2025-11-23T15:21
 completed: false
 ---
 # openMP
@@ -113,9 +113,6 @@ we use trapezoids to calculate the defined integral of a function like we did in
 to access a shared variable like `global_variable` in the next snippet, we need to ensure mutual exclusion to it. we do so by adding the `critical` clause, which guarantees that only one thread at a time can execute the critical region, preventing race conditions
 if supported, the `atomic` clause ensures that a specific memory operation is performed as a single, indivisible action at the hardware level (a light-weight `critical`).
 - it is optimized for single-statement memory operations, thus results in better performance. doesn’t work well for complex logics or multiple lines of code !
-### named critical sections
-openMP provi
-
 >[!example]- solution
 grz flavio
 >```c
@@ -168,7 +165,37 @@ grz flavio
 >	*global_result_p += my_result;
 >}
 >```
+### named critical sections
+openMP provides the option of adding a name to a critical directive. this way, two blocks protected with `critical` directives can be executed simoultaneously (as it is like acting on two different locks)
+- these must be set up at compile time
+>[!syntax] syntax
+>```c
+># pragma omp critical(name)
+>```
+## locks
+however, what if we want to have multiple locks/critical sections but we do not know how many at compile time (e.g., a linked list with a lock for each node)
+>[!example] locks !
+>```c
+>omp_lock_t writelock;
+>omp_init_lock(&writelock);
+>
+>#pragma omp parallel for
+>for(i = 0; i < x; i++){
+>	// some stuff
+>	omp_set_lock(&writelock);
+>	// one thread at a time stuff
+>	omp_unset_lock(&writelock);
+>	// some other stuff
+>}
+>omp_destroy_lock(&writelock);
+>```
 
+>[!info] caveats
+>- while the `atomic` directive has the potential to be the fastest method of obtaining mutual exclusion, some `atomic` clause implementations might enforce mutual exclusion across *all `atomic` directives in the program*, even between ones who do not share the same critical section
+>- the use of locks should be probablly reserved for situations in which mutual exclusion is needed for a data structure rather than a block of code
+>- you shouldn’t mix the different types of mutual exclusions for a single critical section
+>- there is no guarantee of fairness in mutual exclusion constructs (the waiting queue is unordered)
+>- it can be dangerous to nest mutual exclusion constructs
 ## scope
 in openMP, the *scope* of a variable refers to the set of threads that can access the variable in a parallel block (so not where, but by who). they are:
 - `shared`: a variable that can be accessed by all the threads in the team (default scope for variables declared before a parallel block)
@@ -343,3 +370,8 @@ this code forks/joins new threads every time the `parallel for` is called (actua
 
 >[!info] reusing the same threads provide faster execution times !
 ![[Pasted image 20251123145805.png]]
+
+## nested for loops
+>[!info] img
+if we have nested for loops, it is often enough to simply parallelize the outermost loop
+![[Pasted image 20251123152117.png]]
