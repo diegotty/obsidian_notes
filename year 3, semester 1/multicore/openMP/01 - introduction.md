@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T12:06
+updated: 2025-11-23T12:21
 completed: false
 ---
 # openMP
@@ -171,6 +171,12 @@ grz flavio
 in openMP, the *scope* of a variable refers to the set of threads that can access the variable in a parallel block (so not where, but by who). they are:
 - *shared*: a variable that can be accessed by all the threads in the team (default scope for variables declared before a parallel block)
 - *private*: a variable that can only be accessed by a single thread
+#### `default` clause
+it lets the programmer specify the scope of each variable in a block
+.
+```c
+default(none)
+```
 ## `reduction` clause
 openMP provides a native way to accumulate a result by a thread team, just like MPI provides `MPI_Reduce()`
 a reduction is a computation that repeatedly applies the same reduction operartor (a binary operation) to a sequence of operands (threads) in order to get a single result. it does so by storing all of the intermediate results of the reduction in the same variable, the reduction variable
@@ -181,8 +187,15 @@ the syntax to add a reduction clause is
 >reduction(<operator>: <variable_list>)
 >```
 
-the private variables created for a reduction clause are initialized to the *identity value* for the given operator (multiplication: `1`, sum: `0`, …): the original shared value given in the `<variable_list>` is temporarily put aside
-
+>[!info] `reduction` flow
+>1. the original shared value given in the `<variable_list>` is temporarily put aside
+>2. the openMP runtime creates a private copy of that variable for each thread in the team (initialized to the *identity value* for the given operator (multiplication: `1`, sum: `0`, …))
+>3. each thread calculates its partial result using its private copy of the variable
+>4. all the values of the private copies are collected
+>5. the reduction operator is applied to all of the private variables
+>6. the redution operator is applied to the result point 5 and the original shared value of point 1 
+>
+(this way, the original value is preserved and included in the final result)
 
 >[!example] adding a reduction to the trapezoid example
 >```c
