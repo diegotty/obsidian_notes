@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T14:51
+updated: 2025-11-23T15:06
 completed: false
 ---
 # openMP
@@ -108,11 +108,13 @@ int thread_count = 1;
 >[!example] example
 we use trapezoids to calculate the defined integral of a function like we did in [[02 - parallel design patterns#trapezoid example|MPI]] !
 ![[Pasted image 20251123112403.png]]
-### `critical` and `atomic` clauses
+## `critical` and `atomic` clauses
 
 to access a shared variable like `global_variable` in the next snippet, we need to ensure mutual exclusion to it. we do so by adding the `critical` clause, which guarantees that only one thread at a time can execute the critical region, preventing race conditions
 if supported, the `atomic` clause ensures that a specific memory operation is performed as a single, indivisible action at the hardware level (a light-weight `critical`).
 - it is optimized for single-statement memory operations, thus results in better performance. doesn’t work well for complex logics or multiple lines of code !
+### named critical sections
+openMP provi
 
 >[!example]- solution
 grz flavio
@@ -259,10 +261,85 @@ also:
 >- the expressions `start`, `end` and `incr` must not change during the execution of the loop !!!!
 >- during execution of the loop, the variable `index` can only be modified by the *increment expression* in the for statement
 
+>[!info] rule of thumb
+as a rule of thumb, the iterations must be independent and the number of iterations must be determined before the loop starts, and control statements that prevent these rules typically make for looops unparallellizable
+>
+the goal of the loop is to *complete* the iterations, not to immediately crash the program based on a condition in an arbitrary iteration !
+
 >[!example]- examples of parallelizeable for loops
+.```c
+.for (i = 0; i < n; i++){
+.	if(...) break; //cannot be parallelized
+.}
+.
+.for (i = 0; i < n; i++){
+.	if(...) return 1; //cannot be parallelized
+.}
+.
+.for (i = 0; i < n; i++){
+.	if(...) exti(); //can be parallelized (shouldn't, however)
+.}
+.
+.for (i = 0; i < n; i++){
+.	if(...) i++; //cannot be parallelized
+.}
+.```
 
-```c
-for (i = 0; i < n; i++){
+## odd-even sort example
+>[!example]- example
+this code forks/joins new threads every time the `parallel for` is called (actually, it depends on the implementation but you get the point)
+>- if it does so, we would have some overhead !
+>```c
+>
+>for (phase = 0; phase < n; phase++){
+>	if(phase  % 2 == 0){
+>		# pragma omp parallel for num_threads(thread_count) default(none) shared(a, n) private(i, tmp)
+>		for(i = 1; i < n; i += 2){
+>			if(a[i-1] > a[i]){
+>				tmp = a[i-1];
+>				a[i-1] = a[i];
+>				a[i] = tmp;
+>			}
+>		}
+>	}else{
+>		# pragma omp parallel for num_threads(thread_count) default(none) shared(a, n) private(i, tmp)
+>		for(i = 1; i < n; i += 2){
+>			if(a[i-1] > a[i]){
+>				tmp = a[i+1];
+>				a[i+1] = a[i];
+>				a[i] = tmp;
+>			}
+>		}
+>	}
+>}
+>```
+>
+>we can create the threads at the beginning ! (only in this program though !)
+>```c
+># pragma omp parallel num_threads(thread_count) default(none) shared(a, n) private(i, tmp, phase)
+>
+>for (phase = 0; phase < n; phase++){
+>	if(phase  % 2 == 0){
+>		# pragma omp for
+>		for(i = 1; i < n; i += 2){
+>			if(a[i-1] > a[i]){
+>				tmp = a[i-1];
+>				a[i-1] = a[i];
+>				a[i] = tmp;
+>			}
+>		}
+>	}else{
+>		# pragma omp for
+>		for(i = 1; i < n; i += 2){
+>			if(a[i-1] > a[i]){
+>				tmp = a[i+1];
+>				a[i+1] = a[i];
+>				a[i] = tmp;
+>			}
+>		}
+>	}
+>}
+>```
 
-}
-```
+>[!info] reusing the same threads provide faster execution times !
+![[Pasted image 20251123145805.png]]
