@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-25T18:20
+updated: 2025-11-25T18:41
 completed: false
 ---
 # CUDA
@@ -65,3 +65,16 @@ kernel calls are async: they give the control back to the cpu (so i must use `cu
 - `__device`
 - `__host__`
 we can mix and match them and get 2 different assembly codes for both host and GPU (host + device)
+
+
+domanda esame come trovare posizione thread …...
+
+
+ogni cudacore può eseguire più di un tread alla volta, ma di solito un thread runna su un cudacore
+
+blocks cant be split between different SMs
+
+
+posso avere + blocks in una SM
+scheduling su cudacore è praticamente gratis rispetto a CPU ! 
+blocks are divided in warps (thread continigui divenano thread)
