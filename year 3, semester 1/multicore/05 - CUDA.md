@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-25T17:56
+updated: 2025-11-25T18:12
 completed: false
 ---
 # CUDA
@@ -39,7 +39,17 @@ running kernels is expensive, so its better to run it less times for more substa
 ### execution model
 threads can be organized in blocks o 1, 2, or 3 dimentions
 those blocks are organized in grids of 1, 2, or 3 dimension
+- scelta molto importante
 
 the adjust the execution model to the data we are working on
 
 threads on the GPU can do minimal work, like just an instruction
+
+## writing programs
+paradigma usato di solito SIMD (SIMT x CUDA)
+
+.cu == .c ma come convenzione viene eseguito su gpu
+
+(decorator )`__global__` func: should be executed by the GPU (the compiler generates assembly code for the GPU instead of for the GPU, as they have different architectures (assembly architectures ?))
+
+kernel calls are async: they give the control back to the cpu (so i must use `cudaDevicesSynchronize();` to ensure synchronization)
