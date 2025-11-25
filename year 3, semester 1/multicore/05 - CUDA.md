@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-25T18:12
+updated: 2025-11-25T18:20
 completed: false
 ---
 # CUDA
@@ -50,6 +50,18 @@ paradigma usato di solito SIMD (SIMT x CUDA)
 
 .cu == .c ma come convenzione viene eseguito su gpu
 
-(decorator )`__global__` func: should be executed by the GPU (the compiler generates assembly code for the GPU instead of for the GPU, as they have different architectures (assembly architectures ?))
+(decorator )`__global__` func: can be called by host or GPU, but will be executed by the GPU (the compiler generates assembly code for the GPU instead of for the GPU, as they have different instruction sets, and a different compiler, `nvcc`)
+
+all kernels have `void` as the return type (if we want to send a result, we must copy it from the GPU’s memory to the host memory)
+
+shouldnt call printf on kernels (very slow)
 
 kernel calls are async: they give the control back to the cpu (so i must use `cudaDevicesSynchronize();` to ensure synchronization)
+
+–arch=`capability`
+
+## function dectorators
+- `__global__` (kernel can call kernel)
+- `__device`
+- `__host__`
+we can mix and match them and get 2 different assembly codes for both host and GPU (host + device)
