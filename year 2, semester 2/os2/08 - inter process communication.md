@@ -1,7 +1,7 @@
 ---
 related to: "[[07 - syscall; segnali]]"
 created: 2025-03-02T17:41
-updated: 2025-11-21T11:32
+updated: 2025-11-25T17:13
 completed: true
 ---
 >[!index]

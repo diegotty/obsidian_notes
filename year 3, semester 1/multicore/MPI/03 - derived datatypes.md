@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-11-22T19:19
+updated: 2025-11-25T17:13
 completed: false
 ---
 # derived datatypes
