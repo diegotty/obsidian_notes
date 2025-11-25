@@ -59,7 +59,7 @@ sistemi a condivisione del tempo! uso della multiprogrammazine per gestire conte
 | scopo principale                  | massimizzare l’uso del processore (?)                          | minimizzare il tempo di risposta |
 | provenienza delle direttive al SO | comandi del job control language, sottomessi con il job stesso | comandi dati dal terminale       |
 # job vs processo
-il processo riunisce in un unico conetto il job non-interattivo e quello interattivo
+il processo riunisce in un unico concetto il job non-interattivo e quello interattivo
 - incorpora anche un altro tipo di job che comincio’ a manifestarsi dagli anni Settanta: quello transazionale real-time (ad es. prenotazione biglietti aerei)
 il processo e’ un’unita di attivita’ caratterizata da:
 - un singolo flusso (thread) di esecuzione
