@@ -1,9 +1,11 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T11:30
+updated: 2025-11-26T11:47
 completed: false
 ---
+# CUDA
+## CUDA intrudction
 ## CPU vs GPU
 *CPU*s are *latency oriented* (how much time it takes to complete a single task) they aim for high clock frequency, and feature:
 - large caches, to convert long latency memory to short latency cache accesses
@@ -22,8 +24,9 @@ completed: false
 - 
 - i core della GPU sono + semplici perchè hanno meno CU
 - bandwith + alta (x la sua ram)
->[!figure]
+>[!figure] img
 ![[Pasted image 20251126110026.png]]
+the are many more ALUs, however they are simpler, and grouped into 
 
 ## architecture of CUDA-capable GPUs
 >[!info] img
@@ -39,14 +42,20 @@ CPUs are optimal for sequential parts, where latency matters
 >GPUs are optimal for parallel parts, where throughput matters
 >- they can be 10+X times faster than GPUs for parallel code
 
+## CPU-GPU architectures
 >[!info] CPU-GPU architecture
 ![[Pasted image 20251126112715.png]]
->- in architectures (a) and (b) GPU and CPU have their own memory, so when the GPU needs to make a calculation with CPU data, it needs to be moved from the CPU to the GPU, and back when the calculation is completed and the result needs to be transmitted to the CPU
->- architecture (c) corresponds to an integrated CPU-GPU solution: they share the same memory
-
-northbridge: pci express
-in architectures a and b we need to take account of the fact that to do calculations on the GPU we need to move the data from the Ram to the GPU and back
-
+ 
+ architecture (*a*): older architecture where GPU, CPU and RAM are all connected to the *northbridge*
+- the GPU is connected to the northbridge via a high-speed link like PCIe (express)
+- the data transfer between CPU and GPU (or RAM and VRAM) must pass through the northbridge, ading latency and extra steps
+ architecture (*b*): a common architectured used today, the *memory controller* (that handles RAM communication) is removed from the northbridge and placed on the CPU itself 
+ architecture (*c*): architecture of the modern integrated systems, CPU an GPU cores are combined onto a single chip package, often called an *APU*/Soc (system on a chip)
+- the CPU and GPU are physically integrated, and share the same system RAM. this eliminates the need to copy data between separate VRAM and RAM
+- the communication between CPU and GPU is extremely fast
+>[!warning] GPU programming caveats
+>- as shown above, usually GPU and host (CPU) memories are disjoint, requiring explicit data transfer between the two
+>- GPU devices might not adhere to the same *floating-point representation* and accuracy system standards as typical CPUs
 ### software development platforms
 the main GPU software delopment platforms are:
 - *CUDA*
