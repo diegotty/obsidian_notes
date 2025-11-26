@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T12:17
+updated: 2025-11-26T12:25
 completed: false
 ---
 # CUDA
@@ -88,11 +88,14 @@ running kernels is expensive, so its better to run it less times for more substa
 >[!info] thread structure
 ![[Pasted image 20251126121341.png]]
 CUDA organizes the threads in a 6-D structure (max, as lower dimentions are also possible). in particular:
-- threads can be organized in *blocks* o 1, 2, or 3 dimentions
-- those blocks are organized in *grids* of 1, 2, or 3 dimensions
->
+>- threads can be organized in *blocks* o 1, 2, or 3 dimentions
+>- those blocks are organized in *grids* of 1, 2, or 3 dimensions
+## compute capability
+the maximum sizes of blocks and grids are determined by the *compute capability*, which determines what each generation of GPUs is capable of
+- it is repre
 ### thread position
-each thread is *aware of its position* in the overall structure, via a set of *intrinsic variables/st*
+each thread is *aware of its position* in the overall structure, via a set of *intrinsic variables/structures*. with this position, a thread can map its position to the subset of data that it is assigned to.
+>[!warning]
 - scelta molto importante
 
 the adjust the execution model to the data we are working on
