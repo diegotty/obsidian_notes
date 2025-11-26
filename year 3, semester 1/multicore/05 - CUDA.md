@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T17:52
+updated: 2025-11-26T18:07
 completed: false
 ---
 # CUDA
@@ -104,11 +104,36 @@ we got to 9 n something
 ### thread position
 (this stuff gets asket during the oral exam …..)
 each thread is *aware of its position* in the overall structure, via a set of *intrinsic variables/structures*. with this position, a thread can map its position to the subset of data that it is assigned to.
->[!warning]
+- `blockDim` contains the size of each block, as $(B_{x}, B_{y}, B_{z})$
+- `gridDim` contains the size of the grid, in blocks, as $(G_{x}, G_{y}, G_{z})$
+- `threadIdx` contains the $(x,y,z)$ position of the thread within a block, with:
+	- $x \in [0,B_{x}-1]$
+	- $y \in [0, B_{y}-1]$
+	- $z \in [0, B_{z}-1]$
+- `blockIdx`contains the $(b_{x}, b_{y}, b_{z})$ position of a thread’s block within the grid, with:
+	- $b_{x} \in [0,G_{x}-1]$
+	- $b_{y} \in [0, G_{y}-1]$
+	- $b_{z} \in [0, B_{z}-1]$
+
 - scelta molto importante
 
->[!example] 
+>[!example] absolute position of a thread
+>![[Pasted image 20251126175328.png]]
 
+`threadId`
+
+>[!example]- absolute position of a thread, linear structure
+![[Pasted image 20251126180318.png]]
+
+>[!syntax] unique thread identifier
+>```c
+>int myID = ( blockIdx.z * gridDim.x * gridDim.y +
+>            blockIdx.y * gridDim.x +
+>            blockIdx.x ) * blockDim.x * blockDim.y * blockDim.z +
+>            threadIdx.z * blockDim.x * blockDim.y +
+>            threadIdx.y * blockDim.x +
+>            threadIdx.x;
+>```
 the adjust the execution model to the data we are working on
 
 threads on the GPU can do minimal work, like just an instruction
@@ -168,6 +193,8 @@ CUDA files are of `.cu` extension, which is the same as `.c`, however at serves 
 - `__host__`: a function that can only run on the host.
 	- this decorator is typically omitted, unless in combination with `__device__` to indicate that the function can run on both the host and the device. such a scenario implies the generation of two compiled codes for the function !
 
+## thread scheduling
+e
 ogni cudacore può eseguire più di un tread alla volta, ma di solito un thread runna su un cudacore
 
 blocks cant be split between different SMs
