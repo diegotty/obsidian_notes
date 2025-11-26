@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T17:06
+updated: 2025-11-26T17:23
 completed: false
 ---
 # CUDA
@@ -111,12 +111,51 @@ the adjust the execution model to the data we are working on
 threads on the GPU can do minimal work, like just an instruction
 
 ## writing programs
-the parallel programming paradigm used by CUDA is usually [[02 - parallel design patterns#SPMD|SPMD]]
-paradigma usato di solito SIMD (SIMT x CUDA)
+the parallel programming paradigm used by CUDA is usually [[02 - parallel design patterns#SPMD|SPMD]] (or rather *SIMT* (*single instruction, multiple threads*))
+we achieve parallel programming by writing *kernels* (functions) that are going to be executed by all the threads
+- all kernels
 
-.cu == .c ma come convenzione viene eseguito su gpu
+>[!syntax] specifying the thread structure
+>```c
+// kinda self explanatory
+dim3 block(3, 2);
+dim3 grid(4, 3, 2);
+>foo<<grid, block>>();
+>
+>foo<<grid, 256>>;
+>```
+>- the dimentions allowed must be supported by the computing capabilities
+>- dim3 is a vector of int
+>- every non-specified component is set to 1
 
-(decorator )`__global__` func: can be called by host or GPU, but will be executed by the GPU (the compiler generates assembly code for the GPU instead of for the GPU, as they have different instruction sets, and a different compiler, `nvcc`)
+>[!example]
+>```c
+>// hello.cu
+>#include <stdio.h>
+>#include <cuda.h>
+>
+//kernel
+>__global__ void hello() {
+>	// printf is supported by CC 2.0 
+>	printf("Hello world!\n");
+>}
+>
+>int main() {
+>	hello<<<1,10>>>();
+>	// blocks until the CUDA kernel terminates
+>	cudaDeviceSyncronize();
+>	return 1;
+>}
+>```
+
+>[!syntax] compiling and running
+>```bash
+>nvcc --arch=sm_20 hello.cu -o hello
+>./hello //execute
+>```
+
+CUDA files are of `.cu` extension, which is the same as `.c`, however at serves as a convention as `.cu` files are expected to be run on GPUs
+
 
 all kernels have `void` as the return type (if we want to send a result, we must copy it from the GPU’s memory to the host memory)
 
@@ -128,6 +167,7 @@ kernel calls are async: they give the control back to the cpu (so i must use `cu
 
 ## function dectorators
 - `__global__` (kernel can call kernel)
+- `__global__` func: can be called by host or GPU, but will be executed by the GPU (the compiler generates assembly code for the GPU instead of for the GPU, as they have different instruction sets, and a different compiler, `nvcc`)
 - `__device`
 - `__host__`
 we can mix and match them and get 2 different assembly codes for both host and GPU (host + device)
