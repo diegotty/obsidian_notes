@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T14:57
+updated: 2025-11-26T16:53
 completed: false
 ---
 # CUDA
@@ -23,7 +23,7 @@ completed: false
 - high bandwith (the rate at which data can be transferred between CUDA cores and the GPUs dedicated local memory (VRAM) is very high)
 >[!figure] img
 ![[Pasted image 20251126110026.png]]
-the are many more ALUs, however they are simpler and grouped (not every ALU is independent), because each group is controlled by a single CU
+the are many more ALUs, however they are simpler and grouped: each group is controlled by a single CU (so each ALU is not independent)
 
 ## architecture of CUDA-capable GPUs
 >[!info] img
@@ -92,7 +92,9 @@ CUDA organizes the threads in a 6-D structure (max, as lower dimentions are also
 >- those blocks are organized in *grids* of 1, 2, or 3 dimensions
 ## compute capability
 the maximum sizes of blocks and grids are determined by the *compute capability*, which determines what each generation of GPUs is capable of
-- it is repre
+- it identifies the features supported by the GPU hardware and is used by appli
+- it is represented by a version number, and sometimes it is called *SM version*
+
 ### thread position
 each thread is *aware of its position* in the overall structure, via a set of *intrinsic variables/structures*. with this position, a thread can map its position to the subset of data that it is assigned to.
 >[!warning]
@@ -156,3 +158,6 @@ slide 14 : system == server
 ## memory hierarchy
 
 slide 18, 19 are calls that are made from the host
+
+
+devicetodevice funziona solo se sono sullo stesso server i 2 device
