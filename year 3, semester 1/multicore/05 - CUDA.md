@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T17:28
+updated: 2025-11-26T17:52
 completed: false
 ---
 # CUDA
@@ -106,6 +106,8 @@ we got to 9 n something
 each thread is *aware of its position* in the overall structure, via a set of *intrinsic variables/structures*. with this position, a thread can map its position to the subset of data that it is assigned to.
 >[!warning]
 - scelta molto importante
+
+>[!example] 
 
 the adjust the execution model to the data we are working on
 
