@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T12:25
+updated: 2025-11-26T14:27
 completed: false
 ---
 # CUDA
@@ -137,3 +137,13 @@ scheduling su cudacore è praticamente gratis rispetto a CPU !
 blocks are divided in warps (thread continigui divenano thread)
 
 WARP (32 core) hanno la stessa CU 
+
+## context switching
+usually, a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps
+
+cores (and their registers) can maintain each thread’s private execution context
+
+
+costo + grande dei programmi ora è il trasferimento dei dati dalla memoria 
+
+*latency tolerance* bc we dont wait for the load inst
