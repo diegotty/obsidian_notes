@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T12:02
+updated: 2025-11-26T12:17
 completed: false
 ---
 # CUDA
@@ -57,22 +57,42 @@ CPUs are optimal for sequential parts, where latency matters
 the main GPU software delopment platforms are:
 - *CUDA*: provides 2 sets of APIs (high-level and low-level). *only for NVidia hardare* (however there are tools to run CUDA code on AMD GPUs)
 - *HIP*: AMD’s equivalend of CUDA. basically the same APIs, and the are tools provided to convert CUDA code to HIP
-- *OpenCL*  (*open computing language*): open standard for writing programs that can execute across a variety of heterogeneous platforms that include GPUs, CPUs, DSPs or other processors. its supported by both NVidia and AMD, 
-- *OpenACC*:
+- *OpenCL*  (*open computing language*): open standard for writing programs that can execute across a variety of heterogeneous platforms that include GPUs, CPUs, DSPs or other processors. its supported by both NVidia and AMD, and is the primary development platform of the latter
+- *OpenACC*: open standard for an API that allows the use of compiler directives (like openMP !) to automatically map computations to GPUs or multicore chips, according to the programmer
+there are many more …
 ## CUDA
+it turns a GPU from a graphics renderer into  a *general purpose computing* device (*GPGPU*)
+before CUDA, GPUs were programmed by transforming an algorithm in a sequence of image manipulation primitives
+
+it enables explicit GPU *memory management*
+
+the GPU is viewed as a *compute device*, that:
+- is a co-processor to the CPU
+- has its own DRAM (called *global memory* in CUDA lingo)
+- runs *many threads* in parallel, as thread creation/switching cost is only a few clock cycles !
 can explicit 
 
 >[!info] CUDA program structure
 > - allocate GPU memory (for anything like vectors, variables, ..)
->- explicitly transfer data from host (CPU) to GPU memory
+>- explicitly transfer data from host to GPU memory
 >- run CUDA kernel (computations executed by the GPU)
 >- copy results from GPU memory to host memory
 
 
 running kernels is expensive, so its better to run it less times for more substantial computations (*kernel fusion*)
 ### execution model
-threads can be organized in blocks o 1, 2, or 3 dimentions
-those blocks are organized in grids of 1, 2, or 3 dimension
+>[!info] execution flow
+![[Pasted image 20251126121419.png]]
+>in the vast majority of scenarios, the host is responsible for I/O operations, passing the input and subsequently collecting the output data from the memory space of the GPU
+
+>[!info] thread structure
+![[Pasted image 20251126121341.png]]
+CUDA organizes the threads in a 6-D structure (max, as lower dimentions are also possible). in particular:
+- threads can be organized in *blocks* o 1, 2, or 3 dimentions
+- those blocks are organized in *grids* of 1, 2, or 3 dimensions
+>
+### thread position
+each thread is *aware of its position* in the overall structure, via a set of *intrinsic variables/st*
 - scelta molto importante
 
 the adjust the execution model to the data we are working on
