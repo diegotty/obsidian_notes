@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T17:23
+updated: 2025-11-26T17:28
 completed: false
 ---
 # CUDA
@@ -102,6 +102,7 @@ we got to 9 n something
 >![[Pasted image 20251126170236.png]]
 
 ### thread position
+(this stuff gets asket during the oral exam …..)
 each thread is *aware of its position* in the overall structure, via a set of *intrinsic variables/structures*. with this position, a thread can map its position to the subset of data that it is assigned to.
 >[!warning]
 - scelta molto importante
@@ -113,8 +114,10 @@ threads on the GPU can do minimal work, like just an instruction
 ## writing programs
 the parallel programming paradigm used by CUDA is usually [[02 - parallel design patterns#SPMD|SPMD]] (or rather *SIMT* (*single instruction, multiple threads*))
 we achieve parallel programming by writing *kernels* (functions) that are going to be executed by all the threads
-- all kernels
+- all kernels have `void` as the return type, as if we want to send a result, we must do so but moving the data from the GPU’s memory to the CPU
+- kernel calls are asynchronous: they give the control back to the host (so `cudaDevicesSynchronize();` is necessary to ensure synchronization)
 
+ it is necessary to specify how threads are arranged in the blocks and how the blocks are arranged in the grid
 >[!syntax] specifying the thread structure
 >```c
 // kinda self explanatory
@@ -155,26 +158,13 @@ dim3 grid(4, 3, 2);
 >```
 
 CUDA files are of `.cu` extension, which is the same as `.c`, however at serves as a convention as `.cu` files are expected to be run on GPUs
-
-
-all kernels have `void` as the return type (if we want to send a result, we must copy it from the GPU’s memory to the host memory)
-
-shouldnt call printf on kernels (very slow)
-
-kernel calls are async: they give the control back to the cpu (so i must use `cudaDevicesSynchronize();` to ensure synchronization)
-
-–arch=`capability`
-
 ## function dectorators
-- `__global__` (kernel can call kernel)
-- `__global__` func: can be called by host or GPU, but will be executed by the GPU (the compiler generates assembly code for the GPU instead of for the GPU, as they have different instruction sets, and a different compiler, `nvcc`)
-- `__device`
-- `__host__`
-we can mix and match them and get 2 different assembly codes for both host and GPU (host + device)
-
-
-domanda esame come trovare posizione thread …...
-
+- `__global__` : (kernel can call kernel)
+- `__global__` : a function that can be called by host or GPU, but will be executed by the GPU 
+	- the compiler generates assembly code for the GPU instead of for the GPU, as they have different instruction sets, and a different compiler (`nvcc`))
+- `__device`: a function that runs on the GPU and can be only called from within a kernel (so basically, by a GPU)
+- `__host__`: a function that can only run on the host.
+	- this decorator is typically omitted, unless in combination with `__device__` to indicate that the function can run on both the host and the device. such a scenario implies the generation of two compiled codes for the function !
 
 ogni cudacore può eseguire più di un tread alla volta, ma di solito un thread runna su un cudacore
 
