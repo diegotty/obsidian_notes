@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T18:23
+updated: 2025-11-26T18:29
 completed: false
 ---
 # CUDA
@@ -118,9 +118,7 @@ each thread is *aware of its position* in the overall structure, via a set of *i
 - scelta molto importante
 
 >[!example] absolute position of a thread
->![[Pasted image 20251126175328.png]]
-
-`threadId`
+![[Pasted image 20251126182910.png]]
 
 >[!example]- absolute position of a thread, linear structure
 ![[Pasted image 20251126180318.png]]
@@ -207,7 +205,11 @@ all threads in a warp are executed according to the SIMD model, so consequently 
 - if for example, a warp takes only a fraction of the SPs of a SM
 >[!info] img
 ![[Pasted image 20251126182254.png]]
-## warp diver
+## warp divergence
+because all threads in a warp are executed according to the SIMD model, at any instant in time, for all the threads in the warp, one istruction is fetched and executed
+if a conditional operation leads those threads to different paths, all the divergent paths are evaluated *sequentially* until the paths mege again. this way, threads that do not follow the path currently being executed *are stalled*
+>[!info] warp divergence
+![[Pasted image 20251126182339.png]]
 
 ogni cudacore può eseguire più di un tread alla volta, ma di solito un thread runna su un cudacore
 
