@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T11:02
+updated: 2025-11-26T11:05
 completed: false
 ---
 ## CPU vs GPU
@@ -26,8 +26,10 @@ completed: false
 ![[Pasted image 20251126110026.png]]
 
 ## architecture of CUDA-capable GPUs
->[]
+>[!info] img
 ![[Pasted image 20251126110207.png]]
+
+- *streaming processors/cuda cores* (*SP*): 
 SMs on the same building block share chache and texture memory
 
 
