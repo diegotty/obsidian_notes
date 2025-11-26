@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T11:47
+updated: 2025-11-26T12:02
 completed: false
 ---
 # CUDA
@@ -20,13 +20,10 @@ completed: false
 - small caches
 - energy efficient ALUs, that are long-latency but heavily pipelined for high throughput
 - simple control (no branch prediction, just in-order execution)
-- high bandwith 
-- 
-- i core della GPU sono + semplici perchè hanno meno CU
-- bandwith + alta (x la sua ram)
+- high bandwith (the rate at which data can be transferred between CUDA cores and the GPUs dedicated local memory (VRAM) is very high)
 >[!figure] img
 ![[Pasted image 20251126110026.png]]
-the are many more ALUs, however they are simpler, and grouped into 
+the are many more ALUs, however they are simpler and grouped (not every ALU is independent), because each group is controlled by a single CU
 
 ## architecture of CUDA-capable GPUs
 >[!info] img
@@ -58,9 +55,9 @@ CPUs are optimal for sequential parts, where latency matters
 >- GPU devices might not adhere to the same *floating-point representation* and accuracy system standards as typical CPUs
 ### software development platforms
 the main GPU software delopment platforms are:
-- *CUDA*
-- *HIP*
-- *OpenCL*
+- *CUDA*: provides 2 sets of APIs (high-level and low-level). *only for NVidia hardare* (however there are tools to run CUDA code on AMD GPUs)
+- *HIP*: AMD’s equivalend of CUDA. basically the same APIs, and the are tools provided to convert CUDA code to HIP
+- *OpenCL*  (*open computing language*): open standard for writing programs that can execute across a variety of heterogeneous platforms that include GPUs, CPUs, DSPs or other processors. its supported by both NVidia and AMD, 
 - *OpenACC*:
 ## CUDA
 can explicit 
