@@ -1,18 +1,33 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-25T18:41
+updated: 2025-11-26T11:02
 completed: false
 ---
-# CUDA
 ## CPU vs GPU
+*CPU*s are *latency oriented* (high clock frequency), and feature:
+- large caches, to convert long latency memory to short latency cache accesses
+- sophisticated control mechanisms to reduce latency (like branch prediction, out-of-order execution, …)
+- powerful ALUs (each ALU is considered a core)
+>[!figure] CPU
+![[Pasted image 20251126105239.png|400]]
+>the percent of the CPU designated to make calculations is small
 
-*CPU*s are *latency oriented* (high clock frequency)
-*GPU*s are *throughput oriented* (). to optimize so, it features:
-WARP (32 core) hanno la stessa CU 
+*GPU*s are *throughput oriented* (), so they feature:
+- moderate clock frequency
+- small caches
+- energy efficient ALUs, that are long-latency but heavily pipelined for high throughput
+- simple control (no branch prediction, just in-order execution)
+- high bandwith 
+- 
 - i core della GPU sono + semplici perchè hanno meno CU
 - bandwith + alta (x la sua ram)
+>[!figure]
+![[Pasted image 20251126110026.png]]
 
+## architecture of CUDA-capable GPUs
+>[]
+![[Pasted image 20251126110207.png]]
 SMs on the same building block share chache and texture memory
 
 
@@ -78,3 +93,5 @@ blocks cant be split between different SMs
 posso avere + blocks in una SM
 scheduling su cudacore è praticamente gratis rispetto a CPU ! 
 blocks are divided in warps (thread continigui divenano thread)
+
+WARP (32 core) hanno la stessa CU 
