@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T14:27
+updated: 2025-11-26T14:35
 completed: false
 ---
 # CUDA
@@ -147,3 +147,7 @@ cores (and their registers) can maintain each thread’s private execution conte
 costo + grande dei programmi ora è il trasferimento dei dati dalla memoria 
 
 *latency tolerance* bc we dont wait for the load inst
+>[!example] block size esample
+> lets suppose a CUDA device allows up to 8 blocks and 1024 threads per SM, and 512 threads per block.
+should we use 8x8, 16x16, 32x32 blocks ?
+- 32x32: we would have 1024 threads per block, which is higher than the 512 threads per block we can have
