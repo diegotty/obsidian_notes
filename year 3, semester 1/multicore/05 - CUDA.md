@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T14:35
+updated: 2025-11-26T14:57
 completed: false
 ---
 # CUDA
@@ -30,7 +30,7 @@ the are many more ALUs, however they are simpler and grouped (not every ALU is i
 ![[Pasted image 20251126110207.png]]
 
 - *streaming processors/cuda cores* (*SP*): basically a single ALU (but optimized for parallel code execution)
-- *streaming multiprocessors* (*SM*): set of SMs
+- *streaming multiprocessors* (*SM*): set of SPs ( == CPU). su SM ho una CU per warp e i warp runnano in parallelo
 - *building blocks*: two or more SMs (those SMs share the same chache and texture memory)
 
 >[!info] CPU vs GPU
@@ -151,3 +151,8 @@ costo + grande dei programmi ora è il trasferimento dei dati dalla memoria
 > lets suppose a CUDA device allows up to 8 blocks and 1024 threads per SM, and 512 threads per block.
 should we use 8x8, 16x16, 32x32 blocks ?
 - 32x32: we would have 1024 threads per block, which is higher than the 512 threads per block we can have
+
+slide 14 : system == server
+## memory hierarchy
+
+slide 18, 19 are calls that are made from the host
