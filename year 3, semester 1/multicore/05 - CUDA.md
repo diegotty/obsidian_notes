@@ -1,11 +1,11 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T11:05
+updated: 2025-11-26T11:30
 completed: false
 ---
 ## CPU vs GPU
-*CPU*s are *latency oriented* (high clock frequency), and feature:
+*CPU*s are *latency oriented* (how much time it takes to complete a single task) they aim for high clock frequency, and feature:
 - large caches, to convert long latency memory to short latency cache accesses
 - sophisticated control mechanisms to reduce latency (like branch prediction, out-of-order execution, …)
 - powerful ALUs (each ALU is considered a core)
@@ -13,7 +13,7 @@ completed: false
 ![[Pasted image 20251126105239.png|400]]
 >the percent of the CPU designated to make calculations is small
 
-*GPU*s are *throughput oriented* (), so they feature:
+*GPU*s are *throughput oriented* (amount of work done for unit of time), so they feature:
 - moderate clock frequency
 - small caches
 - energy efficient ALUs, that are long-latency but heavily pipelined for high throughput
@@ -29,9 +29,20 @@ completed: false
 >[!info] img
 ![[Pasted image 20251126110207.png]]
 
-- *streaming processors/cuda cores* (*SP*): 
-SMs on the same building block share chache and texture memory
+- *streaming processors/cuda cores* (*SP*): basically a single ALU (but optimized for parallel code execution)
+- *streaming multiprocessors* (*SM*): set of SMs
+- *building blocks*: two or more SMs (those SMs share the same chache and texture memory)
 
+>[!info] CPU vs GPU
+CPUs are optimal for sequential parts, where latency matters
+>- they can be 10+X times faster than GPUs for sequential code
+>GPUs are optimal for parallel parts, where throughput matters
+>- they can be 10+X times faster than GPUs for parallel code
+
+>[!info] CPU-GPU architecture
+![[Pasted image 20251126112715.png]]
+>- in architectures (a) and (b) GPU and CPU have their own memory, so when the GPU needs to make a calculation with CPU data, it needs to be moved from the CPU to the GPU, and back when the calculation is completed and the result needs to be transmitted to the CPU
+>- architecture (c) corresponds to an integrated CPU-GPU solution: they share the same memory
 
 northbridge: pci express
 in architectures a and b we need to take account of the fact that to do calculations on the GPU we need to move the data from the Ram to the GPU and back
