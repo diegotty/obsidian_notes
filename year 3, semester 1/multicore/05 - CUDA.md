@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-25, 17:14
-updated: 2025-11-26T18:07
+updated: 2025-11-26T18:23
 completed: false
 ---
 # CUDA
@@ -194,13 +194,24 @@ CUDA files are of `.cu` extension, which is the same as `.c`, however at serves 
 	- this decorator is typically omitted, unless in combination with `__device__` to indicate that the function can run on both the host and the device. such a scenario implies the generation of two compiled codes for the function !
 
 ## thread scheduling
-e
+each thread runs on CUDA core, and *sets of cores on the same SM share the same CU*, so they must *synchronously* execute the same instruction
+- different sets of SMs can run different kernels
+each block runs on a single SM (i can’t have a block spanning over multiple SMs, but i can have more blocks running on the same SM), but *not all the threads in a block run concurrently*
+once a block is fully executed (all threads are done ?), the SM will run the next one 
+## warps
+threads are executed in groups called *warps* that are the size of 32 threads (in current GPUs)
+- the size of a warp is stored in the `warpSize` variable
+- threads in a block are split into warps according to their intra-block ID: the first 32 threads of a block belong to the same warp, the next 32 threads to a different warp, etc …)
+all threads in a warp are executed according to the SIMD model, so consequently all the threads in a warp will always have the same execution timing.
+*several warp schedulers* can be present on each SM, as multiple warps can run at the same time, each following a different execution path
+- if for example, a warp takes only a fraction of the SPs of a SM
+>[!info] img
+![[Pasted image 20251126182254.png]]
+## warp diver
+
 ogni cudacore può eseguire più di un tread alla volta, ma di solito un thread runna su un cudacore
 
-blocks cant be split between different SMs
 
-
-posso avere + blocks in una SM
 scheduling su cudacore è praticamente gratis rispetto a CPU ! 
 blocks are divided in warps (thread continigui divenano thread)
 
