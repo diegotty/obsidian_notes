@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-29T17:27
+updated: 2025-11-29T17:42
 completed: false
 ---
 # database security
@@ -34,4 +34,10 @@ the attacker is able to reconstruct the information by sending particular reques
 - *blind SQL injections*:  data is inferred bit-by-bit by observing subtle changes in the page content or response time 
 - *out-of-band attacks*: data are retrieved using a different channel because the outbound connectivity from the database is lax: the malicious command forces the database engine to execute a function that attemps to contact a remote server
 ### SQLi sinks
-*SQLi sinks* are wh
+*SQLi sinks* is the final location in an application’s code where untrusted, user-supplied data is executed as part of a SQL query
+- the security goal is to ensure the *source* (the user input) never flows unchecked to the *sink* (the database execution function)
+
+- *user input* (GET/POST)
+- *HTTP headers*
+- *cookies*
+- *the database itself* (*second order injection*): the input of the application is stored in the database
