@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-29T16:54
+updated: 2025-11-29T17:12
 completed: false
 ---
 # database security
@@ -14,5 +14,22 @@ database security has not kept pace with the increased reliance on databases for
 ## SQL injection attacks
 *SQLi* (*SQL intejction*) attacks are one of the most prevalent and dangerous network-based security threats, and they are designed to exploit the nature of web application pages by sending malicious SQL commands to the database server.
 - the most common attack goal is the bulk extraction of data, but it can also be to modify or delete data, execute arbitrary OS commands, or to laungh DoS attacks
-they work by prematurely terminating a text string and appending a new command, and terminating the injected string with a comment mark `- -`
-### injection techniques
+they work by prematurely terminating a text string and appending a new command, and terminating the injected string with a comment mark `- -` (as the inserted command may have additional strings appended to it before it is executed)
+### attack avenues
+- *user input*: attackers inject SQL commands by providing suitable crafted user input
+- *server variables*: attackers can forge v
+- *second-order injection*
+- *cookies*: 
+- *physical user input*: 
+## attack types
+### inband attacks
+inband attacks use the same communication channel for injecting SQL code and retrieving results
+some examples are:
+- *tautology*: injects ode in more or more conditional statements so that they always evaluate to true
+- *end-of-line comment*: after injecting code into a particular field, legitimate code that follows are nullified through usage of end of line comments (`- -`)
+- *piggyback queries*: the attacker adds additional queries beyond the intended query
+## inferential attack
+the attacker is able to reconstruct the information by sending particular requests and observing the resulting behavior of the website/db server. they include:
+- illegal/logically incorrect queries: 
+- blind SQL injections:
+- out-of-band attacks:
