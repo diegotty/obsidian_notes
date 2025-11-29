@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-29T17:12
+updated: 2025-11-29T17:27
 completed: false
 ---
 # database security
@@ -28,8 +28,10 @@ some examples are:
 - *tautology*: injects ode in more or more conditional statements so that they always evaluate to true
 - *end-of-line comment*: after injecting code into a particular field, legitimate code that follows are nullified through usage of end of line comments (`- -`)
 - *piggyback queries*: the attacker adds additional queries beyond the intended query
-## inferential attack
+### inferential attack
 the attacker is able to reconstruct the information by sending particular requests and observing the resulting behavior of the website/db server. they include:
-- illegal/logically incorrect queries: 
-- blind SQL injections:
-- out-of-band attacks:
+- *illegal/logically incorrect queries*: considered a preliminary, information-gathering step for other attacks, the attacker lets an attacker gather important information about the type and structure of the backend db
+- *blind SQL injections*:  data is inferred bit-by-bit by observing subtle changes in the page content or response time 
+- *out-of-band attacks*: data are retrieved using a different channel because the outbound connectivity from the database is lax: the malicious command forces the database engine to execute a function that attemps to contact a remote server
+### SQLi sinks
+*SQLi sinks* are wh
