@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-29T16:40
+updated: 2025-11-29T16:54
 completed: false
 ---
 # database security
@@ -12,4 +12,7 @@ database security has not kept pace with the increased reliance on databases for
 >[!info] DBMS architecture
 ![[Pasted image 20251129163905.png]]
 ## SQL injection attacks
-*SQLi* (*SQL intejction*) attacks are one of the most prevalent and dangerous network-based security threats
+*SQLi* (*SQL intejction*) attacks are one of the most prevalent and dangerous network-based security threats, and they are designed to exploit the nature of web application pages by sending malicious SQL commands to the database server.
+- the most common attack goal is the bulk extraction of data, but it can also be to modify or delete data, execute arbitrary OS commands, or to laungh DoS attacks
+they work by prematurely terminating a text string and appending a new command, and terminating the injected string with a comment mark `- -`
+### injection techniques
