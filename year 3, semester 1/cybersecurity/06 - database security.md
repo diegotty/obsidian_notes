@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T09:53
+updated: 2025-11-30T10:08
 completed: false
 ---
 # database security
@@ -21,14 +21,14 @@ they work by prematurely terminating a text string and appending a new command, 
 - *second-order injection*
 - *cookies*: 
 - *physical user input*: 
-## attack types
-### inband attacks
+### attack types
+#### inband attacks
 inband attacks use the same communication channel for injecting SQL code and retrieving results
 some examples are:
 - *tautology*: injects ode in more or more conditional statements so that they always evaluate to true
 - *end-of-line comment*: after injecting code into a particular field, legitimate code that follows are nullified through usage of end of line comments (`- -`)
 - *piggyback queries*: the attacker adds additional queries beyond the intended query
-### inferential attack
+#### inferential attack
 the attacker is able to reconstruct the information by sending particular requests and observing the resulting behavior of the website/db server. they include:
 - *illegal/logically incorrect queries*: considered a preliminary, information-gathering step for other attacks, the attacker lets an attacker gather important information about the type and structure of the backend db
 - *blind SQL injections*:  data is inferred bit-by-bit by observing subtle changes in the page content or response time 
@@ -44,7 +44,6 @@ the attacker is able to reconstruct the information by sending particular reques
 - *the database itself* (*second order injection*): the attacker’s input is not executed immediately (which would be a *first order attack*), but is instead stored safely in the database, and executed later in a vulnerable query 
 	- so the vulnerability is not the input handling, but the data retrieval
 as a rule of thumb, *never trust input from a source* !
-
 ### attacker’s objectives
 
 | target                                       | description                                                                                                                                                                                 |
@@ -57,7 +56,32 @@ as a rule of thumb, *never trust input from a source* !
 | denial of service                            | prevent legitimate user from using the web application by flooding the database with useless queries or deleting stuff or lock tables                                                       |
 | authentication bypass                        | the attacker tricks the application into authenticating them without a valid password                                                                                                       |
 | remote command execution                     | (highest impact target) some DMBS allow the execution of OS commands via SQL. if the attacker reaches this target, they can run commands directly on the server’s OS                        |
->[!example]
-```PHP
-$q = "SELECT id FROM users WHERE user = '" .$user. "' AND pass
+>[!example] SQLi example
+>```SQL
+>$q = "SELECT id FROM users WHERE user = '" .$user. "' AND pass = '" .$pass. "' ";
+>
+>// sent parameters:
+>$user = "admin"
+>$pass = "' OR '1'='1'"
+>
+>// executed query:
+>$sq = "SELECT id FROM users WHERE user='admin' AND pass='' OR '1'='1'";
+>```
+
+### crafting the query
+to make sure that the final, concatenated statement runs without generating a syntax error, attacker use *comment symbols* to ensure syntactically correct query termination.
+- the goal is to lcose the string literal and eliminate all the remaining, unwanted code from the developer’s original query
+the comment symbols used are:
+- `--` (single-line comment)
+- `#` (single-line comment, mySQL only)
+- `/* ... */` (multi-line comment)
+>[!info] SQLi tautologies
+
+```SQL
+// choosing "blindly" the first available user
+$pass ="' OR 1=1#";
+$user = "' OR user LIKE '%' #";
+$user = "' OR 1 #";
+
+//choosing a known user
 ```
