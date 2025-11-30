@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 18:35
-updated: 2025-11-30T20:28
+updated: 2025-11-30T20:44
 completed: false
 ---
 >[!def] DoS attack (NIST)
@@ -26,11 +26,11 @@ it attacks the ability of a server to respond to future connection requests, by 
 1. the attacker sends a massive flood of `SYN` packets to the server, often using *spoofed* source IP addresses
 2. for every `SYN` packet, the server responds with a `SYN-ACK` and places the connection in a queue of half-open connections, waiting for the final `ACK` packet
 3. since the source IPs are spoofed, the final `ACK` packet never arrives. the server’s connection queue quickly fills up with half-open connections, consuming all available memory and processing resources
-## ping flood attack
+### ping flood attack
 also called *ICMP flood attack*, it is a volumetric attack that attemps to saturate the victim’s network bandwith using [[12 - livello di rete; DHCP, NAT, forwarding, ICMP#ICMP|ICMP]] (`ping` command sends an ICMP echo request, and the target replies with an echo reply)
 1. the attacker sends a massive stream of `ping` commands to the victim’s machine.
 2. the victim is forced to dedicate all its bandwith to receiving the incoming flood and generating echo replies, unable to reply to legitimate user traffic
-## DDoS
+### DDoS
 *distributed denial of service* attacks use *multiple systems* to generate attacks. this is done by exploiting a flaw in the OS or in a common application, gaining access and installing a *zombie* program on it (the attacker’s).
 large collections of these corrupted systems, that are under the control of one attacker create a *botnet*
 >[!info] DDoS attack architecture
@@ -51,3 +51,10 @@ also called *low-and-slow attack*, it is a low-bandwith attack that aims to cons
 2. these half-finished connections rapidly exhaust the server’s connection pool (the finite number of concurrent connections a server can maintain)
 existing intrusion detection/prevention solutions that rely on signatures to detect attacks will generally not recognize slowirs, as the attack does not contain malicious code or high volume traffic.
 *R.U.D.Y* (*r-u-dead-yet*) is a similar tool that executes a *low-and-slow* attack specifically targeting POST requests
+## reflection attacks
+reflection attacks use a legitimate third-party server (*the reflector*) to redirect traffic toward the victim. this hides the true source of the attack.
+1. the attacker sends a request to a public service (e.g. DNS server), spoofing the source IP address of the request, *replacing it with the victim’s IP adress*.
+2. the reflector receives the request and sends the standard response directly back to the victim. by doing so, the attack traffic appears to be coming from the reflector, not the actual attacker.
+## amplification attacks
+amplification attacks aim to exploit network protocols that turn *small requests* into *large responses*, thus maximizing the volume of traffic sent to the victim. with a small number of machin
+- for instance, 60-byte DNS requests might generate 4000-byte responses
