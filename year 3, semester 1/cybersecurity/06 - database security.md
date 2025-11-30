@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-29T17:43
+updated: 2025-11-30T09:38
 completed: false
 ---
 # database security
@@ -36,7 +36,24 @@ the attacker is able to reconstruct the information by sending particular reques
 ### SQLi sinks
 *SQLi sinks* is the final location in an application’s code where untrusted, user-supplied data is executed as part of a SQL query
 - the security goal is to ensure the *source* (the user input) never flows unchecked to the *sink* (the database execution function)
+### SQLi sources
+*SQLi sources* are the starting point where the unvalidated data enters the application. some sources are:
 - *user input* (GET/POST)
-- *HTTP headers*(User-Agent, Refer)
-- *cookies*(they are just headers, and they come from the client)
-- *the database itself* (*second order injection*): the input of the application is stored in the database
+- *HTTP headers* (User-Agent, Refer)
+- *cookies* (they are just headers, and they come from the client: inserting the cookie’s value directly into a database, without validation, is DUMB)
+- *the database itself* (*second order injection*): the attacker’s input is not executed immediately (which would be a *first order attack*), but is instead stored safely in the database, and executed later in a vulnerable query 
+	- so the vulnerability is not the input handling, but the data retrieval
+as a rule of thumb, *never trust input from a source* !
+
+### attacker’s targets
+
+| target                                       | description                                                                                                                                                  |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| identify injectable params (sources / sinks) | the first step of reconnaissance. the attac,er finds the vulnerable sources that feed into an unsafe sink, by testing inputs with simple characters like `'` |
+| database footprinting                        | find out which DBMS is in use. this is crucial because SQL synta differs betweeen syste                                                                      |
+|                                              |                                                                                                                                                              |
+|                                              |                                                                                                                                                              |
+|                                              |                                                                                                                                                              |
+|                                              |                                                                                                                                                              |
+|                                              |                                                                                                                                                              |
+|                                              |                                                                                                                                                              |
