@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03T07:36
-updated: 2025-11-30T18:38
+updated: 2025-11-30T22:17
 completed: false
 ---
 ## to do
@@ -10,6 +10,7 @@ completed: false
 - [ ] esercizi multicore ! (lez 11, slide 34, openMP)
 
 ## could do 
+- [ ] burp exercise (web security)
 - [ ] mirai confessions (DoS attacks)
 - [ ] stack overflow homework
 - [ ] activities suggested in database security slides 
