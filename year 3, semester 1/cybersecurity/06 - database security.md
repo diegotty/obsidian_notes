@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T11:47
+updated: 2025-11-30T12:08
 completed: false
 ---
 # database security
@@ -167,3 +167,22 @@ $id = "-1 UNION SELECT 'hi' INTO OUTFILE  '/tmp/hi'";
 
 ### countermeasures
 there are three type of countermeasures
+### parameterized queries
+*parameterized queries* are the gold standard for defense against SQLis, as they address the fundamental flaw of SQLis: the ambiguity between code and data.
+ they work by forcing the application to send the SQL command structure to the database *separately* from any user-supplied data:
+```SQL
+$q = "SELECT * FROM users WHERE user_id = ? and password = ?";
+```
+the application then sends the user’s input variables to those placeholders, and the db *treats the input strictly as data*, regardless of what it contains:
+```SQL
+-- if the input is "' OR 1=1 --", the db sees it as a single, long string literal
+$q = "SELECT * FROM users WHERE user_id = '' OR 1-=1 -- ' AND password='user-password' ";
+```
+#### manual defensive coding practices
+*supplementary* to parameterized queries or used in scenarios where the parameterization is impossible, they articulate in:
+- *escaping user input*: the code manually iterates through the user input and prepends a `\` to any special characters(like `'` or `"`)
+- *type enforcement*: ensuring that if the code expects a number, any non-numeric characters are immediately rejected or cast to an integer, which strips injection payloads
+- *whitelisting*: only allowing input that matches a strict set of approved characters or values
+- *principle of least principle*: acts on the configuration of a db to limit the impact of a successful SQLi attack: the application’s db should only have *the minimum privileges necessary for its operation*
+### SQL DOM
+*SQL DOM* (*data-oriented modeling*) is a more formal, academic approach to preventing SQLi. instead of letting developers build queries using string concatenation, the langu
