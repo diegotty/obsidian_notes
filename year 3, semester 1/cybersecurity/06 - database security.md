@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T11:23
+updated: 2025-11-30T11:34
 completed: false
 ---
 # database security
@@ -135,10 +135,15 @@ information schemas are attacked to gather infomation about the DB structure
 $q = "SELECT username FROM users WHERE user id=$id";
 
 -- step 1: get the table's name
-$id = "- 1 UNION SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema != "'mysql' AND table_schema != 'information_schema' -- ";
+$id = "- 1 UNION SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema != 'mysql' AND table_schema != 'information_schema' -- ";
 
 -- step 2: get the name of the columns inside the tables
 $id = "-1 UNION SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'users' LIMIT 0,1 --";
 
 -- using '-1' as the ID makes the query result for the original query to be empty, forcing the db to rely on the results of the UNION SELECT
 ```
+#### blind SQLi
+its the third major category of SQLi (the other two are *error-based SQi* and *Union-Based SQLi*), and its the most common type found in modern, well-defended web applications: the attacker cannot directly see the output of the database query on the web page.
+there are two types of blind SQLi:
+- *boolean-based*
+- *time-based*: it is used when there are absolutely no visible differences in the page content or status to indicate a TRUE or FALSE result. the attacker uses *conditional time-daly* functions (`IF` clauses + `SLEEP`), and measures the response time to determine the outcome of the query. this way, the attacker slowly extracts data one character at a time 
