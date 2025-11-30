@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T17:16
+updated: 2025-11-30T17:43
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -119,7 +119,34 @@ shellcode is code supplied by the attacker, often saved in the buffer being over
  - *self-contained*: it cannot rely on external shared libraries or system files.
  - *position independent code* (*PIC*): it must be able to run corettly no matter where it is located in the process’s memory space. since the stack address can shift, the shellocode needs to calculate its own location at runtime ! also, only relative address references.
  - *no null bytes* (*\x00*): the `gets()` function stops reading input when it encounters a null byte, therefore shellcode cannot contain any
- beacuse the attacker generally cannot determine in advance exactly where the targeted buffer will be located in the stack frame of the function in which it is defined, *the shellocde must be able to run no matter where it is located in memory*
- - this means that only relative address references and offets to the current instruction address can be used
- - the attacker is not able to precisely specify the starting address of the instructions in the shellcode
-it must be:
+shellcode functions can do many things:
+- launch a remote shell when an attacker connects to it
+- create a reverse shell that connects back to the hacker
+- use local exploits that establish a shell
+- fulsh firewall rules the currently block other attacks
+- break out of a chroot environment, giving full access to the system
+>[!example] actual stack overflow attack
+the shellcode executes the `/bin/sh` shell
+>
+>```c
+>int main(int argc, char *argv[]) {
+>
+>// sets the path
+>char *sh = "/bin/sh";
+>
+>// creates an array of arguments that terminates with a NULL pointer
+>char *args[2];
+>args[0] = sh;
+>args[1] = NULL;
+>
+>// replaces the current running process with the new process (sh)
+>execve(sh, args, NULL);
+>}
+>```
+>
+>this code is then translated into *PIC* assembly code.
+>- in particular, it uses the syscall `execve`
+>the hexidecimal values for the compiled machine code is the *shellcode*, which is fed as an input
+
+### defenses
+there are two approaches to buffer overflow deven
