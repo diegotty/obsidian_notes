@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T09:38
+updated: 2025-11-30T09:53
 completed: false
 ---
 # database security
@@ -45,15 +45,19 @@ the attacker is able to reconstruct the information by sending particular reques
 	- so the vulnerability is not the input handling, but the data retrieval
 as a rule of thumb, *never trust input from a source* !
 
-### attacker’s targets
+### attacker’s objectives
 
-| target                                       | description                                                                                                                                                  |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| identify injectable params (sources / sinks) | the first step of reconnaissance. the attac,er finds the vulnerable sources that feed into an unsafe sink, by testing inputs with simple characters like `'` |
-| database footprinting                        | find out which DBMS is in use. this is crucial because SQL synta differs betweeen syste                                                                      |
-|                                              |                                                                                                                                                              |
-|                                              |                                                                                                                                                              |
-|                                              |                                                                                                                                                              |
-|                                              |                                                                                                                                                              |
-|                                              |                                                                                                                                                              |
-|                                              |                                                                                                                                                              |
+| target                                       | description                                                                                                                                                                                 |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| identify injectable params (sources / sinks) | the first step of reconnaissance. the attac,er finds the vulnerable sources that feed into an unsafe sink, by testing inputs with simple characters like `'`                                |
+| database footprinting                        | find out which DBMS is in use. this is crucial because SQL synta differs betweeen systems. this step can be made easy by poorly configured applications that display verbose error messages |
+| discover DB schema                           | find names of important tables and the columns within them                                                                                                                                  |
+| data extraction                              | stealing the information. the attacker uses techniques like `UNION` to combine malicious queries with the original one                                                                      |
+| data manipulation                            | the attacker modifies the database’s integrity by changing existing records, deleting data, inserting new malicious data                                                                    |
+| denial of service                            | prevent legitimate user from using the web application by flooding the database with useless queries or deleting stuff or lock tables                                                       |
+| authentication bypass                        | the attacker tricks the application into authenticating them without a valid password                                                                                                       |
+| remote command execution                     | (highest impact target) some DMBS allow the execution of OS commands via SQL. if the attacker reaches this target, they can run commands directly on the server’s OS                        |
+>[!example]
+```PHP
+$q = "SELECT id FROM users WHERE user = '" .$user. "' AND pass
+```
