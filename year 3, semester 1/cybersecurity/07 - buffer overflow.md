@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T17:58
+updated: 2025-11-30T18:13
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -158,6 +158,9 @@ compile-time defenses include:
 	 - an example is the *OpenBSD* project. programmers audited the existing code base, including the OS, std libraries, and common utilities, making it one of the safest OS in widespread use
 - *language extensions / safe libraries*: withouth knowing the size at compile time, the C compiler cannot insert automatic checks to prevent a buffer overflow in dynamically allocated memory, which makes heap overflows harder to mitigate. “fixing” this requires an extension and the use of some libraries’s functions
 	- also, because C has many unsafe stdlib functions, safe libraries that implement such functions in a safe way have been created (e.g. `libsafe`)
- - *stack protection*: 
-
-### run-time defense
+ - *stack protection*: compilers can use *stack canaries* which are small, unique (unpredictable) and secret values placed on the stack, to detect if an overflow has occurred. the *canary* (the value) is placed immediately beofre the crucial control data (such as the return address), an just before the function returns control, the code checks the canary’s value. if the value has been altered, the system knows the stack has been corrupted.
+	 - another technique is storing a backup copy of the return address (the most critical target of an overflow) in a safer location, to prevent an overflow attack. *stackshield* and *RAD* (*return address defender*) are compiler extensions that use this method. the return address in the active stack frame is then checked against the saved copy, and if the two values do not match the program is aborted
+#### run-time defenses
+- *executable address space protection*: a hardware and software defense that marks certain regions of memory as *non-executable*: memory is split into regions that can be *either* writeable *or* executable, *but not both s*
+ - *address space randomization*:
+ - *guard pages*:
