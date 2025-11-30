@@ -1,7 +1,7 @@
 ---
-related to:
+related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-11-26T18:29
+updated: 2025-11-30T22:58
 completed: false
 ---
 # CUDA

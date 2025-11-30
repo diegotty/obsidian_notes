@@ -1,7 +1,7 @@
 ---
-related to:
+related to: "[[00 - introduction]]"
 created: 2025-03-02T17:41
-updated: 2025-11-03T14:46
+updated: 2025-11-30T22:57
 completed: false
 ---
 # parallel program structure patterns
