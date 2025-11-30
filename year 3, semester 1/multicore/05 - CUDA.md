@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-11-30T23:24
+updated: 2025-11-30T23:44
 completed: false
 ---
 # CUDA
@@ -215,23 +215,16 @@ if a conditional operation leads those threads to different paths, all the diver
 >[!info] warp divergence
 ![[Pasted image 20251126182339.png]]
 
-ogni cudacore può eseguire più di un tread alla volta, ma di solito un thread runna su un cudacore
-
-
-scheduling su cudacore è praticamente gratis rispetto a CPU ! 
-blocks are divided in warps (thread continigui divenano thread)
-
-WARP (32 core) hanno la stessa CU 
-
 ## context switching
-usually, a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps
-
-cores (and their registers) can maintain each thread’s private execution context
+usually, a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps.
+CUDA cores (and their registers) can maintain each thread’s private execution context: this way, CUDA cores’s context switch is basically free.
+when an instruction to be executed by a warp needs to wait for the result of a previously initiated, long-latency operation, the warp is *not selected* for execution: instead, another resident warp that is not waiting for results will be selected for execution.
+- this makes having more *resident warps* ideal, as the hardware is more likely to find a warp to 
+this mechanism of filling the latency time of operations with work from other threads is called *latency tolerance* or *latency hiding*
 
 
 costo + grande dei programmi ora è il trasferimento dei dati dalla memoria 
 
-*latency tolerance* bc we dont wait for the load inst
 >[!example] block size esample
 > lets suppose a CUDA device allows up to 8 blocks and 1024 threads per SM, and 512 threads per block.
 should we use 8x8, 16x16, 32x32 blocks ?
