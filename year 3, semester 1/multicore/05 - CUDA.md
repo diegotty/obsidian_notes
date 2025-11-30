@@ -1,11 +1,10 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-11-30T22:58
+updated: 2025-11-30T23:10
 completed: false
 ---
 # CUDA
-## CUDA intrudction
 ## CPU vs GPU
 *CPU*s are *latency oriented* (how much time it takes to complete a single task) they aim for high clock frequency, and feature:
 - large caches, to convert long latency memory to short latency cache accesses
@@ -43,24 +42,31 @@ CPUs are optimal for sequential parts, where latency matters
 >[!info] CPU-GPU architecture
 ![[Pasted image 20251126112715.png]]
  
- architecture (*a*): older architecture where GPU, CPU and RAM are all connected to the *northbridge*
-- the GPU is connected to the northbridge via a high-speed link like PCIe (express)
-- the data transfer between CPU and GPU (or RAM and VRAM) must pass through the northbridge, ading latency and extra steps
- architecture (*b*): a common architectured used today, the *memory controller* (that handles RAM communication) is removed from the northbridge and placed on the CPU itself 
- architecture (*c*): architecture of the modern integrated systems, CPU an GPU cores are combined onto a single chip package, often called an *APU*/Soc (system on a chip)
-- the CPU and GPU are physically integrated, and share the same system RAM. this eliminates the need to copy data between separate VRAM and RAM
-- the communication between CPU and GPU is extremely fast
+ - architecture (*a*): older architecture where GPU, CPU and RAM are all connected to the *northbridge*
+	- the GPU is connected to the northbridge via a high-speed link like PCIe (express)
+	- the data transfer between CPU and GPU (or RAM and VRAM) must pass through the northbridge, ading latency and extra steps
+ - architecture (*b*): a common architectured used today, the *memory controller* (that handles RAM communication) is removed from the northbridge and placed on the CPU itself 
+ - architecture (*c*): architecture of the modern integrated systems, CPU an GPU cores are combined onto a single chip package, often called an *APU*/Soc (system on a chip)
+	- the CPU and GPU are physically integrated, and share the same system RAM. this eliminates the need to copy data between separate VRAM and RAM
+	- the communication between CPU and GPU is extremely fast
+
 >[!warning] GPU programming caveats
 >- as shown above, usually GPU and host (CPU) memories are disjoint, requiring explicit data transfer between the two
 >- GPU devices might not adhere to the same *floating-point representation* and accuracy system standards as typical CPUs
 ### software development platforms
 the main GPU software delopment platforms are:
-- *CUDA*: provides 2 sets of APIs (high-level and low-level). *only for NVidia hardare* (however there are tools to run CUDA code on AMD GPUs)
+- *CUDA*: provides 2 sets of APIs (high-level and low-level). *only for NVIDIA hardare* (however there are tools to run CUDA code on AMD GPUs)
 - *HIP*: AMD’s equivalend of CUDA. basically the same APIs, and the are tools provided to convert CUDA code to HIP
-- *OpenCL*  (*open computing language*): open standard for writing programs that can execute across a variety of heterogeneous platforms that include GPUs, CPUs, DSPs or other processors. its supported by both NVidia and AMD, and is the primary development platform of the latter
+- *OpenCL*  (*open computing language*): open standard for writing programs that can execute across a variety of heterogeneous platforms that include GPUs, CPUs, DSPs or other processors. its supported by both NVIDIA and AMD, and is the primary development platform of the latter
 - *OpenACC*: open standard for an API that allows the use of compiler directives (like openMP !) to automatically map computations to GPUs or multicore chips, according to the programmer
 there are many more …
 ## CUDA
+*CUDA* (*compute unified device architecture*) is a parallel computing *platform and programming model* developed by NVIDIA.
+it is a *programming model* because it provides a conceptual framework 
+it comprehends
+- a compiler (*nvcc*)
+ - a runtime API: a library that manages the GPU device, handles memory allocation, and launches the kernels from the host code
+ - highly optimized libraries
 it turns a GPU from a graphics renderer into  a *general purpose computing* device (*GPGPU*)
 before CUDA, GPUs were programmed by transforming an algorithm in a sequence of image manipulation primitives
 
@@ -78,8 +84,7 @@ can explicit
 >- run CUDA kernel (computations executed by the GPU)
 >- copy results from GPU memory to host memory
 
-
-running kernels is expensive, so its better to run it less times for more substantial computations (*kernel fusion*)
+running kernels is expensive, so its better to run them  less times for more substantial computations (*kernel fusion*)
 ### execution model
 >[!info] execution flow
 ![[Pasted image 20251126121419.png]]
