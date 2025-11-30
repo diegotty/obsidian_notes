@@ -35,5 +35,5 @@ some of burp’s tools are:
 the security of [[04 - livello applicazione; HTTP#cookie|cookies]] is critical, as they are used for authentication of a session
 >[!info] cookie attacks
 ![[Pasted image 20251130222732.png]]
-> - *session prediction*: early PHP implementations of session were susceptible to this attack, as cookie 
+> - *session prediction*: early PHP implementations of session were susceptible to this attack, as cookie ids could be a total of 1 million (which is not that much)
 ![[Pasted image 20251130222753.png]]
