@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T10:38
+updated: 2025-11-30T11:08
 completed: false
 ---
 # database security
@@ -121,3 +121,5 @@ the comment symbols used are:
 - `--` (single-line comment)
 - `#` (single-line comment, mySQL only)
 - `/* ... */` (multi-line comment)
+#### information schema attacks
+*INFORMATION*
