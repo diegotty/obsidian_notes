@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T12:08
+updated: 2025-11-30T12:23
 completed: false
 ---
 # database security
@@ -128,20 +128,19 @@ the comment symbols used are:
 - what columns exist in each table
 - the privileges granted to users
 information schemas are attacked to gather infomation about the DB structure
->[!example]
-
-```SQL
--- vulnerable query
-$q = "SELECT username FROM users WHERE user id=$id";
-
--- step 1: get the table's name
-$id = "- 1 UNION SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema != 'mysql' AND table_schema != 'information_schema' -- ";
-
--- step 2: get the name of the columns inside the tables
-$id = "-1 UNION SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'users' LIMIT 0,1 --";
-
--- using '-1' as the ID makes the query result for the original query to be empty, forcing the db to rely on the results of the UNION SELECT
-```
+>[!example] example
+>```SQL
+>-- vulnerable query
+>$q = "SELECT username FROM users WHERE user id=$id";
+>
+>-- step 1: get the table's name
+>$id = "- 1 UNION SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema != 'mysql' AND table_schema != 'information_schema' -- ";
+>
+>-- step 2: get the name of the columns inside the tables
+>$id = "-1 UNION SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'users' LIMIT 0,1 --";
+>
+>-- using '-1' as the ID makes the query result for the original query to be empty, forcing the db to rely on the results of the UNION SELECT
+>```
 #### blind SQLi
 its the third major category of SQLi (the other two are *error-based SQi* and *Union-Based SQLi*), and its the most common type found in modern, well-defended web applications: the attacker cannot directly see the output of the database query on the web page.
 there are two types of blind SQLi:
@@ -152,21 +151,21 @@ achieving remote command execution, the attacker can read/write files using OS c
 - the database user account being used by the application has filesystem privileges
 - the database server i sconfigured with certain built-in functions enabled
 >[!example] file operation examples
-```SQL
--- vulnerable query
-$q = "SELECT username FROM users WHERE user id = $id";
-
--- LOAD_FILE() returns NULL upon failure
--- read file
-$id = " -1' UNION SELECT LOAD_FILE('/etc/passwd')";
-
--- INTO OUTFILE can trigger a MySQL error
--- write file
-$id = "-1 UNION SELECT 'hi' INTO OUTFILE  '/tmp/hi'";
-```
+>```SQL
+>-- vulnerable query
+>$q = "SELECT username FROM users WHERE user id = $id";
+>
+>-- LOAD_FILE() returns NULL upon failure
+>-- read file
+>$id = " -1' UNION SELECT LOAD_FILE('/etc/passwd')";
+>
+>-- INTO OUTFILE can trigger a MySQL error
+>-- write file
+>$id = "-1 UNION SELECT 'hi' INTO OUTFILE  '/tmp/hi'";
+>```
 
 ### countermeasures
-there are three type of countermeasures
+there are three type of countermeasures to SQLis.
 ### parameterized queries
 *parameterized queries* are the gold standard for defense against SQLis, as they address the fundamental flaw of SQLis: the ambiguity between code and data.
  they work by forcing the application to send the SQL command structure to the database *separately* from any user-supplied data:
@@ -185,4 +184,17 @@ $q = "SELECT * FROM users WHERE user_id = '' OR 1-=1 -- ' AND password='user-pas
 - *whitelisting*: only allowing input that matches a strict set of approved characters or values
 - *principle of least principle*: acts on the configuration of a db to limit the impact of a successful SQLi attack: the application’s db should only have *the minimum privileges necessary for its operation*
 ### SQL DOM
-*SQL DOM* (*data-oriented modeling*) is a more formal, academic approach to preventing SQLi. instead of letting developers build queries using string concatenation, the langu
+*SQL DOM* (*data-oriented modeling*) is a more formal, academic approach to preventing SQL. it enforces a fundamental rule: *query structure must be defined separately from query data*.  this design pattern is typically implemented as a framework. instead of letting developers build queries using string concatenation, the language environment requires the use of *constructor methods* to build the query piece by piece.
+- this way, the environment always knows which input is meant t
+the SQL DOM system can automatically enfore parameterization on all data variables.
+this approach makes it virtually impossible for developers to accidentally create an unsafe sink !
+#### database access control
+database access control can support a range of administrative policies, such as:
+- *centralized administration*: a small number of privileged users may grant/revoke access rights
+- *ownership-based administration*: the creator of a table may grant/revoke access rights to the table
+- *decentralized administration*: the owner of a table may grank/revoke permissions to other users, allowing them to grant/reoke access rights to the table
+	- in this case, *cascading authorization* happens. if access rights cascade through a number of users, the revocation of privileges also cascades: when user A revokes an access right, any cascaded access right is also revoked, unless that access right would exist even if the original grant from A had never occurred
+#### inference detection
+
+#### database encryption
+while protected by multiple at
