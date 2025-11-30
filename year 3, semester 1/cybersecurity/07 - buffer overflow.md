@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T17:43
+updated: 2025-11-30T17:58
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -149,4 +149,15 @@ the shellcode executes the `/bin/sh` shell
 >the hexidecimal values for the compiled machine code is the *shellcode*, which is fed as an input
 
 ### defenses
-there are two approaches to buffer overflow deven
+there are two approaches to buffer overflow defense:
+### compile-time defense
+compile-time defenses include:
+- *using a modern high-level language*, that is not vulnerable to overflow attacks, whose compiler enforces range checks and permissible operations on variables
+	- this implies additional code to impose checks, which cost resources. also the distance from the underlying machine language and architecture means no access to some instructions and hardware resources
+- *safe coding techniques*: prorammers need to inspect the code and rewrite any unsafe coding
+	 - an example is the *OpenBSD* project. programmers audited the existing code base, including the OS, std libraries, and common utilities, making it one of the safest OS in widespread use
+- *language extensions / safe libraries*: withouth knowing the size at compile time, the C compiler cannot insert automatic checks to prevent a buffer overflow in dynamically allocated memory, which makes heap overflows harder to mitigate. “fixing” this requires an extension and the use of some libraries’s functions
+	- also, because C has many unsafe stdlib functions, safe libraries that implement such functions in a safe way have been created (e.g. `libsafe`)
+ - *stack protection*: 
+
+### run-time defense
