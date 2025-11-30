@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T12:38
+updated: 2025-11-30T12:49
 completed: false
 ---
 # database security
@@ -15,12 +15,6 @@ database security has not kept pace with the increased reliance on databases for
 *SQLi* (*SQL intejction*) attacks are one of the most prevalent and dangerous network-based security threats, and they are designed to exploit the nature of web application pages by sending malicious SQL commands to the database server.
 - the most common attack goal is the bulk extraction of data, but it can also be to modify or delete data, execute arbitrary OS commands, or to laungh DoS attacks
 they work by prematurely terminating a text string and appending a new command, and terminating the injected string with a comment mark `- -` (as the inserted command may have additional strings appended to it before it is executed)
-### attack avenues
-- *user input*: attackers inject SQL commands by providing suitable crafted user input
-- *server variables*: attackers can forge v
-- *second-order injection*
-- *cookies*: 
-- *physical user input*: 
 ### attack types
 #### inband attacks
 inband attacks use the same communication channel for injecting SQL code and retrieving results
@@ -195,7 +189,12 @@ database access control can support a range of administrative policies, such as:
 - *decentralized administration*: the owner of a table may grank/revoke permissions to other users, allowing them to grant/reoke access rights to the table
 	- in this case, *cascading authorization* happens. if access rights cascade through a number of users, the revocation of privileges also cascades: when user A revokes an access right, any cascaded access right is also revoked, unless that access right would exist even if the original grant from A had never occurred
 #### inference detection
+>[!def] inference in db security
+> the process of performing authorized queries and deducing unauthorized information from the legitimate responses received
 
+*inference detection* is a set of techniques used to identify and prevent inference. they work by monitoring query patterns and applying limitations or noise. this is possible:
+- during *database design*: methods that address the underlying relationships in the database schema that make inference possible
+- at *query time*: methods that attempt to mask the true data when a query (or set of queries) is too specific
 #### database encryption
 while protected by multiple layers of security (firewalls, authentication, various access control systems), it is possible to encrypt the database as a last line of defense. it can be applied to the entire database, at the record level, the attribute level, or the level of the individual field.
 encryption causes two main disadvantages: 
@@ -206,4 +205,7 @@ to provide more flexibility, it must be possible to work with the database in it
 this technique allows range queries without ever decrypting the entire database.
 1. each row is encrypted, using a key $K$, to produce the encrypted block $E(K, B_{i})$. this way the db cannot search or index individual attributes, as only random-looking ciphertext is available
 2. the system defines a set of partitions (ranges) for every attribute, and gives each partition an index value: $I_{1}, I_{2}, \dots,I_{n}$
-3. 
+3. for each row and for each of its attributes, the systems stores the index value corresponding to the field value.
+this way, when a user asks to search for a range, the system translates that range into the corresponding index values and the db executes a simple, fast query on the unencrypted index column.
+>[!example] encrypted database example
+![[Pasted image 20251130124049.png]]
