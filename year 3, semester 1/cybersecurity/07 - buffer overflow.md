@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T14:22
+updated: 2025-11-30T14:38
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -18,8 +18,8 @@ when a process attemps to store data beyond the limits of a fixed-sized buffer, 
 >    char str1[8];
 >    char str2[8];
 >
->    next_tag(str1);
->    gets(str2);
+>    next_tag(str1); // function call to populate str1 with a known value to match
+>    gets(str2); //unsafe function to read user input into a fixed-size buffer
 >
 >    if (strncmp(str1, str2, 8) == 0) 
 >        valid = TRUE;
@@ -27,16 +27,27 @@ when a process attemps to store data beyond the limits of a fixed-sized buffer, 
 >    printf("buffer1: str1(%s), str2(%s), valid(%d)\n", str1, str2, valid);
 >}
 >```
+>(we assume that `str1` and `str2` are adjacent !)
+>the buffers are of fixed size, and the function `gets()` reads input until it encounters a newline character or end-of-file, therefore performing *no bounds checking*
+>- if the user provides an input string longer than 8 bytes, the excess data overflows `str2` and overwrites adjacent variables on the stack(e.g. `str1`, the return address of the function)
 >
 > execution:
 ```bash
+## ok example
 $cc -g -o buffer1 buffer1.c$ ./buffer1
 START
 buffer1: str1(START), str2(START), valid(1)
+
+## 14bytes-long string, it corrupts str1
 $ ./buffer1
 EVILINPUTVALUE
 buffer1: str1(TVALUE), str2(EVILINPUTVALUE), valid(0)
 $ ./buffer1
+
+## targeted overflow: input is 16bytes long, and the first half matches the second half. the latter half will overwrite the initial value of str1, changing the match parameter and forcibly making the condition true
 BADINPUTBADINPUT
 buffer1: str1(BADINPUT), str2(BADINPUTBADINPUT), valid(1)
 ```
+`printf()` reads `str1` and `str2` until it encounters a NULL termination character 
+
+if `gets()` was instead the function `read_password()` that read the saved a user’s logged password, then with this buffer
