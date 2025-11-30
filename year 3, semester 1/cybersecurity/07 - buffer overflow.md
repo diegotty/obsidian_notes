@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T18:13
+updated: 2025-11-30T18:27
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -161,6 +161,14 @@ compile-time defenses include:
  - *stack protection*: compilers can use *stack canaries* which are small, unique (unpredictable) and secret values placed on the stack, to detect if an overflow has occurred. the *canary* (the value) is placed immediately beofre the crucial control data (such as the return address), an just before the function returns control, the code checks the canary’s value. if the value has been altered, the system knows the stack has been corrupted.
 	 - another technique is storing a backup copy of the return address (the most critical target of an overflow) in a safer location, to prevent an overflow attack. *stackshield* and *RAD* (*return address defender*) are compiler extensions that use this method. the return address in the active stack frame is then checked against the saved copy, and if the two values do not match the program is aborted
 #### run-time defenses
-- *executable address space protection*: a hardware and software defense that marks certain regions of memory as *non-executable*: memory is split into regions that can be *either* writeable *or* executable, *but not both s*
- - *address space randomization*:
- - *guard pages*:
+- *executable address space protection*: a hardware and software defense that marks certain regions of memory as *non-executable*: memory is split into regions that can be *either* writeable *or* executable, *but not both simultaneously*. since user input is injected in areas like the stack or the heap, the OS marks these regions as writeable, but non-exectuable. trying to run code in a non-executable region triggers a segmentation fault and halts the attack !
+ - *address space randomization*: randomess is introduced to the memory addresses of key program components (they are loaded into random memory locations). this prevents the attacker from reliably guessing the target address to place the shellcode
+ - *guard pages*: guard pages can be placed between critical memory segments, such as between the end of the stack and the start of the heap. these pages are marked as *non-accessible*, triggering a hardware exeption if a buffer overflow tries to spill into one.
+## buffer overflow variants
+- *stack frame smashing*: instead of just overwriting the return address, the attacker overwrites the entire top portion of the current function’s stack fram and constructs a new, *fake stack frame* on the stack
+- *return-to-libc*: instead of injecting custom shellcode, the attacker overwrites the return address with the address of an *existing, legitimate function* that already exists in the program’s memory. the attacker sets up the stuck such that when the system function is called, the required arguments for that function are waiting immediately behind the overwritten address 
+	- the most common target is a system function like `system()`
+	- this attack bypasses the *executable address space protection* technique
+- *heap overflow*:
+- *global data*
+BASTA
