@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T10:23
+updated: 2025-11-30T10:38
 completed: false
 ---
 # database security
@@ -60,25 +60,28 @@ as a rule of thumb, *never trust input from a source* !
 >```SQL
 >$q = "SELECT id FROM users WHERE user = '" .$user. "' AND pass = '" .$pass. "' ";
 >
->// sent parameters:
+>-- sent parameters:
 >$user = "admin"
 >$pass = "' OR '1'='1'"
 >
->// executed query:
+>-- executed query:
 >$sq = "SELECT id FROM users WHERE user='admin' AND pass='' OR '1'='1'";
 >```
 
 ### crafting the query
 #### UNION query
 the `UNION` construct can be used to achieve data extraction:
-```SQL
-$q = "SELECT id, name, price, description FROM products WHERE category='".$_GET['cat']"';
-
-$cat = "1 UNION SELECT 1, user, 1, pass FROM users";
-
-//query
-$q = "SELECT id, name, price, description FROM products WHERE category=1 UNION SELECT 1, user, 1, pass FROM users"
-```
+>[!example] example
+>```SQL
+>$q = "SELECT id, name, price, description FROM products WHERE category='" .$cat. "' ";
+>
+>$cat = "' 1 UNION SELECT 1, user, 1, pass FROM users --";
+>
+>-- query (the MySQL performs a cast)
+>$q = "SELECT id, name, price, description FROM products WHERE category=1 UNION SELECT 1, 1, user, pass FROM users"
+>
+>-- 1's are placeholders for fields we don't know or care about, so we ensure compatibility with the original query's columns
+>```
 
 >[!warning] the number and *type* of the columns returned by the two `SELECT` queries must match
 >- in MySQL, if the types do not match, a cast is performed automatically
@@ -98,7 +101,19 @@ $user = "admin'#";
 $pass = "'OR 5>4 OR password='mypass";
 $pass = "' OR 'vulnerability' > 'server' ";
 ```
+#### second order inject
+to perform the attack, a user with a malicious name is registered. later on, the attacker ascks to change the password of its malicious user, so the web app fetches info about the user from the DB and uses them to perform another query
+>[!example] example
+```SQL
+-- malicious user 
+$user = "admin' #";
 
+-- update password query
+$q = "UPDATE users SET pass='"$._POST['newPass']."' WHERE user='".$row['user']."'";
+
+-- query if the data coming from the database is not properly sanitized
+$q = UPDATE users SET pass='password' WHERE user='admin'#";
+```
 ##### ending the query
 to make sure that the final, concatenated statement runs without generating a syntax error, attacker use *comment symbols* to ensure syntactically correct query termination.
 - the goal is to lcose the string literal and eliminate all the remaining, unwanted code from the developer’s original query
