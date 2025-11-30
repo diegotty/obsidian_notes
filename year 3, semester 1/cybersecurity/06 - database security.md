@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-29T17:42
+updated: 2025-11-29T17:43
 completed: false
 ---
 # database security
@@ -36,8 +36,7 @@ the attacker is able to reconstruct the information by sending particular reques
 ### SQLi sinks
 *SQLi sinks* is the final location in an application’s code where untrusted, user-supplied data is executed as part of a SQL query
 - the security goal is to ensure the *source* (the user input) never flows unchecked to the *sink* (the database execution function)
-
 - *user input* (GET/POST)
-- *HTTP headers*
-- *cookies*
+- *HTTP headers*(User-Agent, Refer)
+- *cookies*(they are just headers, and they come from the client)
 - *the database itself* (*second order injection*): the input of the application is stored in the database
