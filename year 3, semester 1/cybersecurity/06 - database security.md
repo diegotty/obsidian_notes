@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T11:34
+updated: 2025-11-30T11:47
 completed: false
 ---
 # database security
@@ -147,3 +147,23 @@ its the third major category of SQLi (the other two are *error-based SQi* and *U
 there are two types of blind SQLi:
 - *boolean-based*
 - *time-based*: it is used when there are absolutely no visible differences in the page content or status to indicate a TRUE or FALSE result. the attacker uses *conditional time-daly* functions (`IF` clauses + `SLEEP`), and measures the response time to determine the outcome of the query. this way, the attacker slowly extracts data one character at a time 
+#### SQLi file operations
+achieving remote command execution, the attacker can read/write files using OS commands.
+- the database user account being used by the application has filesystem privileges
+- the database server i sconfigured with certain built-in functions enabled
+>[!example] file operation examples
+```SQL
+-- vulnerable query
+$q = "SELECT username FROM users WHERE user id = $id";
+
+-- LOAD_FILE() returns NULL upon failure
+-- read file
+$id = " -1' UNION SELECT LOAD_FILE('/etc/passwd')";
+
+-- INTO OUTFILE can trigger a MySQL error
+-- write file
+$id = "-1 UNION SELECT 'hi' INTO OUTFILE  '/tmp/hi'";
+```
+
+### countermeasures
+there are three type of countermeasures
