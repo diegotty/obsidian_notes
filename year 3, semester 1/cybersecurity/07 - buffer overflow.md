@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T17:13
+updated: 2025-11-30T17:16
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -118,7 +118,7 @@ shellcode is code supplied by the attacker, often saved in the buffer being over
  it must be:
  - *self-contained*: it cannot rely on external shared libraries or system files.
  - *position independent code* (*PIC*): it must be able to run corettly no matter where it is located in the process’s memory space. since the stack address can shift, the shellocode needs to calculate its own location at runtime ! also, only relative address references.
- - *no null bytes* (*\x00*): the `gets()` function stops reading input when it encounters a null byte
+ - *no null bytes* (*\x00*): the `gets()` function stops reading input when it encounters a null byte, therefore shellcode cannot contain any
  beacuse the attacker generally cannot determine in advance exactly where the targeted buffer will be located in the stack frame of the function in which it is defined, *the shellocde must be able to run no matter where it is located in memory*
  - this means that only relative address references and offets to the current instruction address can be used
  - the attacker is not able to precisely specify the starting address of the instructions in the shellcode
