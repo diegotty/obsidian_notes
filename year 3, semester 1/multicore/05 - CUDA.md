@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-11-30T23:44
+updated: 2025-11-30T23:56
 completed: false
 ---
 # CUDA
@@ -219,16 +219,30 @@ if a conditional operation leads those threads to different paths, all the diver
 usually, a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps.
 CUDA cores (and their registers) can maintain each thread’s private execution context: this way, CUDA cores’s context switch is basically free.
 when an instruction to be executed by a warp needs to wait for the result of a previously initiated, long-latency operation, the warp is *not selected* for execution: instead, another resident warp that is not waiting for results will be selected for execution.
-- this makes having more *resident warps* ideal, as the hardware is more likely to find a warp to 
+- this makes having more *resident warps* ideal, as the hardware is more likely to find a warp to execute at any point in time, thus making full use of the execution hardware in spite of long-latency operations
 this mechanism of filling the latency time of operations with work from other threads is called *latency tolerance* or *latency hiding*
 
+>[!info] biggest costs in GPGPUs
+instead of the context switch, the biggest cost in GPU parallel computing is the transferring of data between the GPU and the CPU !
 
-costo + grande dei programmi ora è il trasferimento dei dati dalla memoria 
-
->[!example] block size esample
+>[!example] block size esample 1
 > lets suppose a CUDA device allows up to 8 blocks and 1024 threads per SM, and 512 threads per block.
 should we use 8x8, 16x16, 32x32 blocks ?
-- 32x32: we would have 1024 threads per block, which is higher than the 512 threads per block we can have
+>- 8x8 blocks: 64 threads per block would make it necessary to have 16 blocks to fill a SM. however, we can have at most 8 blocks per SM, ending up with 512 threads per SM. not fully utilizing the resources !!!!
+>- 16x16 blocks: 256 threads per block would make it necessary to have 4 blocks to fill a SM. this would be good !!!
+>- 32x32 blocks: we would have 1024 threads per block, which is higher than the 512 threads per block we can have
+
+>[!example] block size example 2
+lets suppose a CUDA device allows up to 8 blocks and 1536 threads per SM, and 1024 threads per block.
+>- 8x8 blocks: 64 threads per block would make it necessary to have 24 blocks, which is more than we can have in a SM. thus we are not fully utilizing the resources
+>- 16x16 blocks: 256 threads per block would make it necessary to have 6 blocks per SM, achieving full capacity
+>- 32x32 blocks: 1024 threads per block would make it possible for only one block to fit in a SM, leaving almost 1/3 of the threads of each SM at rest
+
+>[!example] block size example 3
+suppose our structure looks like this:
+a grid of 4x5x3 blocks, each made of 100 threads.
+- each block is divided into warps, and while the first three warps would have 32 threads, the last one would have 4. if we assume that we can only schedule a warp at a time (because we have 32 SPs per SM), then the last warp would only use 4 of the 32 available cores
+- we would have 60 blocks, to be distributed over 16 SMs. 
 
 slide 14 : system == server
 ## memory hierarchy
