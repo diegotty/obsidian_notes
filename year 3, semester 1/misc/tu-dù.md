@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03T07:36
-updated: 2025-11-25T17:13
+updated: 2025-11-30T11:18
 completed: false
 ---
 ## to do
@@ -10,6 +10,7 @@ completed: false
 - [ ] esercizi multicore ! (lez 11, slide 34, openMP)
 
 ## could do 
+- [ ] activities suggested in database security slides 
 - [ ] capire come la b-riduzione e il combinatore di punto fisso creano la ricorsione nel lambda-calcolo
 - [ ] recuperare dimostrazione da fare per casa automi  (17/10)
 - [ ] c lsp doesnt work on mac ?
