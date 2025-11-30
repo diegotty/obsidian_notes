@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 18:35
-updated: 2025-11-30T20:12
+updated: 2025-11-30T20:28
 completed: false
 ---
 >[!def] DoS attack (NIST)
@@ -33,3 +33,21 @@ also called *ICMP flood attack*, it is a volumetric attack that attemps to satur
 ## DDoS
 *distributed denial of service* attacks use *multiple systems* to generate attacks. this is done by exploiting a flaw in the OS or in a common application, gaining access and installing a *zombie* program on it (the attacker’s).
 large collections of these corrupted systems, that are under the control of one attacker create a *botnet*
+>[!info] DDoS attack architecture
+![[Pasted image 20251130201511.png]]
+
+>[!info] rent-a-ddos-botnet
+you can rent a botnet such as *moobot* on the dark web.
+10$ gets you a one-hour attack at a rate of 10-50k requests per second !
+
+## HTTP-based attacks
+### HTTP flood
+it is a classic DoS attack, where the attacker temps to overwhelm a web server by maximizing the volume of requests it receives.
+- some of the tools used to generate these flood attacks are LOIC and HOIC.
+- to make the flood traffic look more realistic, the *spidering* technique is used: bots start from a single page and follow all links provided on the website, in a recursive way. this mimics the behavior of a legitimate search engine crawler, making it harder for simple firewalls to distinguish malicious from normal traffic.
+### slowris 
+also called *low-and-slow attack*, it is a low-bandwith attack that aims to consume server resources through persistence rather than volume.
+1. it attemps to monopolize by *sending HTTP* requests that never complete, keeping the connection alive by periodically sending tiny, non-closing pieces of data
+2. these half-finished connections rapidly exhaust the server’s connection pool (the finite number of concurrent connections a server can maintain)
+existing intrusion detection/prevention solutions that rely on signatures to detect attacks will generally not recognize slowirs, as the attack does not contain malicious code or high volume traffic.
+*R.U.D.Y* (*r-u-dead-yet*) is a similar tool that executes a *low-and-slow* attack specifically targeting POST requests
