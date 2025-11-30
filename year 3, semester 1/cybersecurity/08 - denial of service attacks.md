@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 18:35
-updated: 2025-11-30T20:59
+updated: 2025-11-30T21:04
 completed: false
 ---
 >[!def] DoS attack (NIST)
@@ -67,9 +67,12 @@ DoS attacks cannot be prevented entirely, as high traffic volumes may be legitim
 - *attack reaction*: implement a contingency plan (commissioning new servers at a new site with new addresses, switching to alternate backup servers)
 ### attack prevention
 it is possible to
-- use ISP’s *ingress filtering* to block spoofed IP addresses
-- use filteres to ensure the path back to the claimed source is the one that is being used to send the current packet. (filter must be applied to traffic before it leaves the IPS’s network, or at the point of entry to their network)
+- use ISP’s *ingress filtering* to block spoofed IP addresses (ideally, implementing it as close as the attacker’s origin as possible, to prevent it from wasting bandwidth)
+- use *SYN cookies* (modified TCP connection handling codes), that permit servers to reply to `SYN` requests without allocating resources to them, and leaving this step to after the client’s response (which won’t come if the source IP address is spoofed)
+	- as a last measure, it is opssible to configure the connection to drop the oldest incomplete entries rather than rejecting new, legitimate `SYN` requests
+- use filters to ensure the path back to the claimed source is the one that is being used to send the current packet. (filter must be applied to traffic before it leaves the IPS’s network, or at the point of entry to their network)
 - use services that act as proxy layers between the attacker and your server (such as cloudlfare, AWS shield, …). they have enough network capability to filter the malicious traffic before it ever reaches the target server.
 - block IP directed broadcasts
-- *captcha* puzzles to distinguish legitimate human requests
+- use *captcha* puzzles to distinguish legitimate human requests
 - network monitors and IDS to detect and notify abnormal traffic patterns
+- use *mirrored and replicated servers* (redundancy) to ensure reliability
