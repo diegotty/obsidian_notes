@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-11-30T23:10
+updated: 2025-11-30T23:24
 completed: false
 ---
 # CUDA
@@ -62,15 +62,14 @@ the main GPU software delopment platforms are:
 there are many more …
 ## CUDA
 *CUDA* (*compute unified device architecture*) is a parallel computing *platform and programming model* developed by NVIDIA.
-it is a *programming model* because it provides a conceptual framework 
+it is a *programming model* because it provides a conceptual framework on how problem are broken down and how the components interact, without specifying the exact syntax or implementation. (na robba fumosa)
 it comprehends
 - a compiler (*nvcc*)
  - a runtime API: a library that manages the GPU device, handles memory allocation, and launches the kernels from the host code
  - highly optimized libraries
 it turns a GPU from a graphics renderer into  a *general purpose computing* device (*GPGPU*)
 before CUDA, GPUs were programmed by transforming an algorithm in a sequence of image manipulation primitives
-
-it enables explicit GPU *memory management*
+- it enables explicit GPU *memory management* (GPU’s memory and the exchange between CPU and GPU)
 
 the GPU is viewed as a *compute device*, that:
 - is a co-processor to the CPU
@@ -79,10 +78,10 @@ the GPU is viewed as a *compute device*, that:
 can explicit 
 
 >[!info] CUDA program structure
-> - allocate GPU memory (for anything like vectors, variables, ..)
->- explicitly transfer data from host to GPU memory
->- run CUDA kernel (computations executed by the GPU)
->- copy results from GPU memory to host memory
+> 1. allocate GPU memory (for anything like vectors, variables, ..)
+>2. explicitly transfer data from host to GPU memory
+>3. run CUDA kernel (computations executed by the GPU)
+>4. copy results from GPU memory to host memory
 
 running kernels is expensive, so its better to run them  less times for more substantial computations (*kernel fusion*)
 ### execution model
