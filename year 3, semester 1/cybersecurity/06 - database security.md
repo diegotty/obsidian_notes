@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T12:23
+updated: 2025-11-30T12:38
 completed: false
 ---
 # database security
@@ -197,4 +197,13 @@ database access control can support a range of administrative policies, such as:
 #### inference detection
 
 #### database encryption
-while protected by multiple at
+while protected by multiple layers of security (firewalls, authentication, various access control systems), it is possible to encrypt the database as a last line of defense. it can be applied to the entire database, at the record level, the attribute level, or the level of the individual field.
+encryption causes two main disadvantages: 
+ - *key management*: authorized users must have access to the decryption key for the data to which they have access
+ - *inflexibility*: it is more difficult to perform record searching
+to provide more flexibility, it must be possible to work with the database in its encrypted form!
+#### attribute-based range indexing
+this technique allows range queries without ever decrypting the entire database.
+1. each row is encrypted, using a key $K$, to produce the encrypted block $E(K, B_{i})$. this way the db cannot search or index individual attributes, as only random-looking ciphertext is available
+2. the system defines a set of partitions (ranges) for every attribute, and gives each partition an index value: $I_{1}, I_{2}, \dots,I_{n}$
+3. 
