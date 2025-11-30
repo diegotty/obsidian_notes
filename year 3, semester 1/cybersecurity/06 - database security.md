@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T10:08
+updated: 2025-11-30T10:23
 completed: false
 ---
 # database security
@@ -69,14 +69,21 @@ as a rule of thumb, *never trust input from a source* !
 >```
 
 ### crafting the query
-to make sure that the final, concatenated statement runs without generating a syntax error, attacker use *comment symbols* to ensure syntactically correct query termination.
-- the goal is to lcose the string literal and eliminate all the remaining, unwanted code from the developer’s original query
-the comment symbols used are:
-- `--` (single-line comment)
-- `#` (single-line comment, mySQL only)
-- `/* ... */` (multi-line comment)
->[!info] SQLi tautologies
+#### UNION query
+the `UNION` construct can be used to achieve data extraction:
+```SQL
+$q = "SELECT id, name, price, description FROM products WHERE category='".$_GET['cat']"';
 
+$cat = "1 UNION SELECT 1, user, 1, pass FROM users";
+
+//query
+$q = "SELECT id, name, price, description FROM products WHERE category=1 UNION SELECT 1, user, 1, pass FROM users"
+```
+
+>[!warning] the number and *type* of the columns returned by the two `SELECT` queries must match
+>- in MySQL, if the types do not match, a cast is performed automatically
+#### SQLi tautologies
+here are the most common malicious input lines an attacker can use to cause a SQLi:
 ```SQL
 // choosing "blindly" the first available user
 $pass ="' OR 1=1#";
@@ -84,4 +91,18 @@ $user = "' OR user LIKE '%' #";
 $user = "' OR 1 #";
 
 //choosing a known user
+$user = "admin' OR 1#";
+$user = "admin'#";
+
+//IDS (intrusion detection system) evasion
+$pass = "'OR 5>4 OR password='mypass";
+$pass = "' OR 'vulnerability' > 'server' ";
 ```
+
+##### ending the query
+to make sure that the final, concatenated statement runs without generating a syntax error, attacker use *comment symbols* to ensure syntactically correct query termination.
+- the goal is to lcose the string literal and eliminate all the remaining, unwanted code from the developer’s original query
+the comment symbols used are:
+- `--` (single-line comment)
+- `#` (single-line comment, mySQL only)
+- `/* ... */` (multi-line comment)
