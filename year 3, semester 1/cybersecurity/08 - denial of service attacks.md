@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 18:35
-updated: 2025-11-30T20:44
+updated: 2025-11-30T20:59
 completed: false
 ---
 >[!def] DoS attack (NIST)
@@ -18,7 +18,7 @@ the act of deliberately forging the source IP address field in the header of a n
 >- *obfuscation*: by changing the source IP address, the attacker makes it virtually impossible for the victim to block the traffic based on a single source IP address, and far more difficult to ttrace the attack back to the original machine.
 >- *amplification*: spoofing allows the attacker to redirect the victim’s responses to a third party.
 >
->IPs can prevent many spoofing attacks using *ingress filtering* (routers check packets as they enter the network: packets must originate from an IP that belongs to the network’s segment, otherwise they are dropped)
+>ISPs can prevent many spoofing attacks using *ingress filtering* (routers check packets as they enter the network: packets must originate from an IP that belongs to the network’s segment, otherwise they are dropped)
 
 ### SYN flood attack
 also called *protocol exhaustion attack*, it targets TCP handshake mechanisms, aiming to exhaust the server’s connection resources.
@@ -56,5 +56,20 @@ reflection attacks use a legitimate third-party server (*the reflector*) to redi
 1. the attacker sends a request to a public service (e.g. DNS server), spoofing the source IP address of the request, *replacing it with the victim’s IP adress*.
 2. the reflector receives the request and sends the standard response directly back to the victim. by doing so, the attack traffic appears to be coming from the reflector, not the actual attacker.
 ## amplification attacks
-amplification attacks aim to exploit network protocols that turn *small requests* into *large responses*, thus maximizing the volume of traffic sent to the victim. with a small number of machin
+amplification attacks aim to exploit network protocols that turn *small requests* into *large responses*, thus maximizing the volume of traffic sent to the victim. with a small number of machines and low bandwith, the attacker is able to launch a high-volume DDoS attack
 - for instance, 60-byte DNS requests might generate 4000-byte responses
+- *memcached DDoS attacks* can bring and amplification factor of 5000 !
+# DoS attack defenses 
+DoS attacks cannot be prevented entirely, as high traffic volumes may be legitimate. however, there are four lines of defense against DDoS attacks:
+- *attack prevention and preemption*
+- *attack detection and filtering*
+- *attack source traceback and identification*: ISPs could be able to tracke packet flow back to source (although difficult and time consuming)
+- *attack reaction*: implement a contingency plan (commissioning new servers at a new site with new addresses, switching to alternate backup servers)
+### attack prevention
+it is possible to
+- use ISP’s *ingress filtering* to block spoofed IP addresses
+- use filteres to ensure the path back to the claimed source is the one that is being used to send the current packet. (filter must be applied to traffic before it leaves the IPS’s network, or at the point of entry to their network)
+- use services that act as proxy layers between the attacker and your server (such as cloudlfare, AWS shield, …). they have enough network capability to filter the malicious traffic before it ever reaches the target server.
+- block IP directed broadcasts
+- *captcha* puzzles to distinguish legitimate human requests
+- network monitors and IDS to detect and notify abnormal traffic patterns
