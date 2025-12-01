@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-01T21:50
+updated: 2025-12-01T22:02
 completed: false
 ---
 # CUDA
@@ -317,7 +317,11 @@ the following calls are made from the host:
 >- `count`: size in bytes
 > - `kind`: direction of the copy
 
-- `cudaError_t` is an enumerated type: if it returns anything other than `0`
-
-
-devicetodevice funziona solo se sono sullo stesso server i 2 device
+- `cudaError_t` is an enumerated type: if it returns anything other than `0` (`cudaSuccess`), an error has occurred
+- `cudaMemcpyKind` is also an enumerated type, allowing the following values:
+	- `cudaMemcpyHostToHost`(`0`)
+	- `cudaMemcpyHostToDevice`(`1`)
+	- `cudaMemcpyDeviceToHost`(`1`)
+	- `cudaMemcpyDeviceToDevice`(`2`): this value, used in multi-GPU configurations, works only if the two devices are on the same server system
+	- `cudaMemoryDefault` (`4`): used when unified virtual address space is available
+## vector addition example
