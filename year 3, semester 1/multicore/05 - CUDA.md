@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-01T22:02
+updated: 2025-12-01T22:20
 completed: false
 ---
 # CUDA
@@ -325,3 +325,35 @@ the following calls are made from the host:
 	- `cudaMemcpyDeviceToDevice`(`2`): this value, used in multi-GPU configurations, works only if the two devices are on the same server system
 	- `cudaMemoryDefault` (`4`): used when unified virtual address space is available
 ## vector addition example
+>[!example] 
+![[Pasted image 20251201221457.png]]
+
+```c
+//h_ specifies it is memory on the host 
+void vecAdd(float* h_A, float* h_B, float* h_C, int n)
+{
+    int size = n * sizeof(float);
+	// d_ specifies it is memory on the device
+    float *d_A, *d_B, *d_C;
+
+    cudaMalloc((void**) &d_A, size);
+    cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
+
+    cudaMalloc((void**) &d_B, size);
+    cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
+
+    cudaMalloc((void**) &d_C, size);
+
+    // // kernel invocation code - to be shown later
+    // ...
+
+    cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost); 
+
+    cudaFree(d_A);
+    cudaFree(d_B);
+    cudaFree(d_C);
+}
+```
+
+>[!info] good practice (error checking)
+we should check
