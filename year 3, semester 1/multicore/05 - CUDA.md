@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-11-30T23:56
+updated: 2025-12-01T00:01
 completed: false
 ---
 # CUDA
@@ -241,8 +241,28 @@ lets suppose a CUDA device allows up to 8 blocks and 1536 threads per SM, and 10
 >[!example] block size example 3
 suppose our structure looks like this:
 a grid of 4x5x3 blocks, each made of 100 threads.
-- each block is divided into warps, and while the first three warps would have 32 threads, the last one would have 4. if we assume that we can only schedule a warp at a time (because we have 32 SPs per SM), then the last warp would only use 4 of the 32 available cores
-- we would have 60 blocks, to be distributed over 16 SMs. 
+>- each block is divided into warps, and while the first three warps would have 32 threads, the last one would have 4. if we assume that we can only schedule a warp at a time (because we have 32 SPs per SM), then the last warp would only use 4 of the 32 available cores
+>- we would have 60 blocks, to be distributed over 16 SMs. 
+>// umm didnt get it
+
+## device properties
+
+```c
+int deviceCount = 0;
+cudaGetDeviceCount(&deviceCount);
+
+if(deviceCount == 0)
+    printf("No CUDA compatible GPU exists.\n");
+else
+{
+    cudaDeviceProp pr;
+    for(int i=0; i<deviceCount; i++)
+    {
+        cudaGetDeviceProperties(&pr, i);
+        printf("Dev #%i is %s\n", i, pr.name);
+    }
+}
+```
 
 slide 14 : system == server
 ## memory hierarchy
