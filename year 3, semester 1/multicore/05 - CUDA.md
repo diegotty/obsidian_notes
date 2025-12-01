@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-01T00:01
+updated: 2025-12-01T21:50
 completed: false
 ---
 # CUDA
@@ -246,28 +246,78 @@ a grid of 4x5x3 blocks, each made of 100 threads.
 >// umm didnt get it
 
 ## device properties
+>[!example] listing all the GPUs in a system
+>```c
+>int deviceCount = 0;
+>cudaGetDeviceCount(&deviceCount);
+>
+>if(deviceCount == 0)
+>    printf("No CUDA compatible GPU exists.\n");
+>else
+>{
+>    cudaDeviceProp pr;
+>    for(int i=0; i<deviceCount; i++)
+>    {
+>        cudaGetDeviceProperties(&pr, i);
+>        printf("Dev #%i is %s\n", i, pr.name);
+>    }
+>}
+>```
 
-```c
-int deviceCount = 0;
-cudaGetDeviceCount(&deviceCount);
+>[!info] device properties struct definition
+>```c
+>struct cudaDeviceProp {
+>    char name[256];             // A string identifying the device
+>    int major;                  // Compute capability major number
+>    int minor;                  // Compute capability minor number
+>    int maxGridSize [3];
+>    int maxThreadsDim [3];
+>    int maxThreadsPerBlock;
+>    int maxThreadsPerMultiProcessor;
+>    int multiProcessorCount;
+>    int regsPerBlock;           // Number of registers per block
+>    size_t sharedMemPerBlock;
+>    size_t totalGlobalMem;
+>    int warpSize;
+>    // . . .
+>};
+>```
+## memory 
+>[!syntax] syntax
+the following calls are made from the host:
+>```c
+>// allocate memory on the device
+>cudaError_t cudaMalloc ( 
+>    void** devPtr,          
+>    size_t size
+>);
+>```
+>- `devPtr`: pointer address of the hosts’s memory, where the address of the *allocated device memory* will be stored
+>- `size`: size in bytes of the requested memory block
+>
+>```c
+>// frees memory on the device
+>cudaError_t cudaFree ( 
+>    void* devPtr
+>);
+>```
+>- `devPtr`: host pointer address modified by `cudaMalloc()`
+>
+>```c
+>// copies data between host and device
+>cudaError_t cudaMemcpy ( 
+>    void* dst,
+>    const void* src,
+>    size_t count,
+>    cudaMemcpyKind kind
+>);
+>```
+>- `dst`: destination block address
+>- `src`: source block address
+>- `count`: size in bytes
+> - `kind`: direction of the copy
 
-if(deviceCount == 0)
-    printf("No CUDA compatible GPU exists.\n");
-else
-{
-    cudaDeviceProp pr;
-    for(int i=0; i<deviceCount; i++)
-    {
-        cudaGetDeviceProperties(&pr, i);
-        printf("Dev #%i is %s\n", i, pr.name);
-    }
-}
-```
-
-slide 14 : system == server
-## memory hierarchy
-
-slide 18, 19 are calls that are made from the host
+- `cudaError_t` is an enumerated type: if it returns anything other than `0`
 
 
 devicetodevice funziona solo se sono sullo stesso server i 2 device
