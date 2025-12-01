@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-01T22:20
+updated: 2025-12-01T22:33
 completed: false
 ---
 # CUDA
@@ -327,33 +327,63 @@ the following calls are made from the host:
 ## vector addition example
 >[!example] 
 ![[Pasted image 20251201221457.png]]
-
-```c
-//h_ specifies it is memory on the host 
-void vecAdd(float* h_A, float* h_B, float* h_C, int n)
-{
-    int size = n * sizeof(float);
-	// d_ specifies it is memory on the device
-    float *d_A, *d_B, *d_C;
-
-    cudaMalloc((void**) &d_A, size);
-    cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
-
-    cudaMalloc((void**) &d_B, size);
-    cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
-
-    cudaMalloc((void**) &d_C, size);
-
-    // // kernel invocation code - to be shown later
-    // ...
-
-    cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost); 
-
-    cudaFree(d_A);
-    cudaFree(d_B);
-    cudaFree(d_C);
-}
-```
+>
+>```c
+>//h_ specifies it is memory on the host 
+>void vecAdd(float* h_A, float* h_B, float* h_C, int n)
+>{
+>    int size = n * sizeof(float);
+>	// d_ specifies it is memory on the device
+>    float *d_A, *d_B, *d_C;
+>
+>    cudaMalloc((void**) &d_A, size);
+>    cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
+>
+>    cudaMalloc((void**) &d_B, size);
+>    cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
+>
+>    cudaMalloc((void**) &d_C, size);
+>	
+>	vecAddKernel<<ceil(n/256.0), 256>>(d_A, d_B, d_C, n);
+>
+>    cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost); 
+>
+>    cudaFree(d_A);
+>    cudaFree(d_B);
+>    cudaFree(d_C);
+>}
+>```
+>- in this case, we might be running ceil(n/256) blocks. if n is not a multiple of 256, could run more threads than number of elements in the vector.
+>	- each thread must then check if it needs to process some element or not
+>
+>```c
+>__global__
+>void vecAddKernel(float* A, float* B, float* C, int n){
+>	int i = blockDim.x * blockIdx.x + threadIdx.x;
+>	// check if thread is supposed to do something
+>	if (i < n) C[i] = A[i] + B[i];
+>}
+>```
+>![[Pasted image 20251201223014.png]]
 
 >[!info] good practice (error checking)
-we should check
+we should check the `cudaError_t` return variable to handle any errors
+>```c
+>int deviceCount = 0;
+>cudaGetDeviceCount(&deviceCount);
+>
+>if(deviceCount == 0)
+>    printf("No CUDA compatible GPU exists.\n");
+>else
+>{
+>    cudaDeviceProp pr;
+>    for(int i=0; i<deviceCount; i++)
+>    {
+>        cudaGetDeviceProperties(&pr, i);
+>        printf("Dev #%i is %s\n", i, pr.name);
+>    }
+>}
+>int deviceCount = 0;
+>
+>cudaGetDeviceCount(&deviceCount);
+>```
