@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-03T15:27
+updated: 2025-12-03T15:50
 completed: false
 ---
 ## reduction
@@ -34,6 +34,9 @@ ip submitter :  `sh desensi@192.168.0.102`
 slurm
 
 `salloc -N 4 -ntasks-per-node=32`
-`N`: numero di core
-`ntasks-per-node=32`
+`N`: numero di nodi
+`ntasks-per-node=32` (core per nodo)
 `--time=00:00:00` ore minuti secondi
+
+
+`scontrol show job jobid`
