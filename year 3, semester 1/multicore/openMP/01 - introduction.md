@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-12-03T12:19
+updated: 2025-12-03T12:33
 completed: false
 ---
 # openMP
@@ -456,12 +456,12 @@ twelve iterations, three threads
 >- thread 1: 4,5,6,7
 >- thread 2: 8,9,10,11
 
-#### `dynamic`
+### `dynamic`
 the iterations are assigned to the threads while the loop is executing.
 with this type, the iterations are also broken up into chunks of `chunksize` consecutive iterations. each thread executes a chunk, and when a thread finishes a chunk, it requests another one from the run-time system. this continues until all the iterations are completed.
 this guarantess a *better load balancing*, but higher overhead to schedule che chunks (this however can be tuned through the chunksize)
 - if omitted, the `chunksize` of 1 is used
-#### `guided`
+### `guided`
 the iterations are assigned to the threads while the loop is executing.
 the difference between the `guided` type and the `static` is that *as chunks are completed, the size of the new chunks decreases*
 - this avoids stragglers (threads that fall behind bc they are moving more slowly)
@@ -470,9 +470,10 @@ in particular, the chunks have size `num_iterations`/`num_threads`, where `num_i
 >[!example] assignment of trapeoidal rule iterations 1-9999 using a guided schedule with two threads
 ![[Pasted image 20251203114733.png]]
 
-#### `runtime`
+### `runtime`
 the system uses a environment variable `OMP_SCHEDULE` to determine at run-time how schedule the loop:
 it can take on any of the values that can be used for a static, dynamic or guided schedule
+- useful for *benchmarking and tuning* because you can test different scheduling options without recompiling the code everytime
 >[!syntax] syntax
 >```c
 >$ export OMP_SCHEDULE = "static, 1"
@@ -484,5 +485,10 @@ it can take on any of the values that can be used for a static, dynamic or guide
 >```
 
 >[!info] how to select a schedule option
->- `static`: if iterations are homogeneous
-`dynamic/guided`: if e
+>- `static`: if iterations are homogeneous (the execution time required for each iteration is roughly the same)
+`dynamic/guided`: if execution cost varies due to input data, conditional logic or cache effects
+>
+>the best practice is to use performance tools to measure the runtime for different schedule options *on your target hardware*
+
+## synchronization constructs
+## `master, single`
