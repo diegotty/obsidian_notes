@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-12-03T11:48
+updated: 2025-12-03T12:04
 completed: false
 ---
 # openMP
@@ -470,4 +470,14 @@ in particular, the chunks have size `num_iterations`/`num_threads`, where `num_i
 >[!example] assignment of trapeoidal rule iterations 1-9999 using a guided schedule with two threads
 ![[Pasted image 20251203114733.png]]
 
-#### `auto`
+#### `runtime`
+the system uses a environment variable `OMP_SCHEDULE` to determine at run-time how schedule the loop:
+it can take on any of the values that can be used for a static, dynamic or guided schedule
+```c
+$ export OMP_SCHEDULE = "static, 1"
+```
+
+you can also set it through the function 
+```c
+omp_set_schedule(omp_she);
+```
