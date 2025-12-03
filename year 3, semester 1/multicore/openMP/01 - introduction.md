@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-11-23T15:27
+updated: 2025-12-03T11:04
 completed: false
 ---
 # openMP
@@ -390,3 +390,11 @@ or we can ask openMP to do it for us, with the clause `collapse(n_of_nested_loop
 >[!warning] nested parallelism
 nested parallelism is disabled by openMP by default ! (nested for clauses get ignored)
 ![[Pasted image 20251123152650.png]]
+
+## scheduling loops
+>[!example] scheudling loops
+
+```c
+sum = 0.0;
+for (i = 0; i <= n; i++)
+```
