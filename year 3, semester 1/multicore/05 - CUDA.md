@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-03T19:29
+updated: 2025-12-03T20:01
 completed: false
 ---
 # CUDA
@@ -397,6 +397,6 @@ there are multiple types of memories:
 - *registers*: they hold local variables, and are unique to each SP.
 - *shared memory*: fast on-chip memory that holds frequenty used data. it can also be used *to exchange data between SPs of the same SM*.
 - *L1/L2 cache*: these caches are transparent to the programmer. (and act just as you would expect [[year 1, semester 2/ae/cache/intro| (already done ….)]])
-- *global memory*: 
-- *texture and surface memory*
-- *constant memory*
+- *global memory*:  main part of the off-chip memory. high capacity but relatively slow, it is the *only part accessible* through CUDA functions
+- *texture and surface memory*: content managed by special hardware that permits fast implementation of some filtering/interpolation operator
+- *constant memory*: part of the mem
