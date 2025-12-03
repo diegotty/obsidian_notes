@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-12-03T12:04
+updated: 2025-12-03T12:19
 completed: false
 ---
 # openMP
@@ -392,6 +392,7 @@ nested parallelism is disabled by openMP by default ! (nested for clauses get ig
 ![[Pasted image 20251123152650.png]]
 
 ## scheduling loops
+the `schedule` clause is used to handle how the threads divide the iterations of a loop
 >[!syntax] syntax
 >```c
 schedule(type, chunksize)
@@ -402,41 +403,41 @@ schedule(type, chunksize)
 	- `dynamic` or `guided`: the iterations are assigned to the threads while the loop is executing
 	- `auto`: the compiler and/or the run-time system determine the schedule
 	- `runtime`: the schedule is determined at run-time
+>[!info] default vs cyclic partitioning
+![[Pasted image 20251203121551.png]]
 
 >[!example] scheudling loops
-
-```c
-sum = 0.0;
-for (i = 0; i <= n; i++){
-	su += f(i);
-}
-```
-
+>- sequential program:
+>```c
+>sum = 0.0;
+>for (i = 0; i <= n; i++){
+>	su += f(i);
+>}
+>```
+>- default schedule:
+>```c
+>sum = 0.0;
+># pragma omp parallel for num_threads(thread_count) reduction(+ : sum)
+>for (i = 0; i <= n; i++){
+>	sum += f(i);
+>}
+>```
+>
+>- cyclic schedule:
+>```c
+>sum = 0.0;
+># pragma omp parallel for num_threads(thread_count) reduction(+ : sum) schedule(static, 1)
+>for (i = 0; i <= n; i++){
+>	sum += f(i);
+>}
+>```
 
 | #threads | 1    | 2 (default scheduling) | 2 (cyclic scheduling) |
 | -------- | ---- | ---------------------- | --------------------- |
 | runtime  | 3.67 | 2.76                   | 1.84                  |
 | speedup  | 1    | 1.33                   | 1.99                  |
-### default schedule
-```c
-sum = 0.0;
-# pragma omp parallel for num_threads(thread_count) reduction(+ : sum)
-for (i = 0; i <= n; i++){
-	sum += f(i);
-}
-```
-
-
-### cyclic schedule
-```c
-sum = 0.0;
-# pragma omp parallel for num_threads(thread_count) reduction(+ : sum) schedule(static, 1)
-for (i = 0; i <= n; i++){
-	sum += f(i);
-}
-```
-
 ### `static`
+the iterations can be assigned to the threads before the loop is executed (by the programmer)
 >[!example] `static` schedule type
 twelve iterations, three threads
 >
@@ -456,28 +457,32 @@ twelve iterations, three threads
 >- thread 2: 8,9,10,11
 
 #### `dynamic`
+the iterations are assigned to the threads while the loop is executing.
 with this type, the iterations are also broken up into chunks of `chunksize` consecutive iterations. each thread executes a chunk, and when a thread finishes a chunk, it requests another one from the run-time system. this continues until all the iterations are completed.
 this guarantess a *better load balancing*, but higher overhead to schedule che chunks (this however can be tuned through the chunksize)
 - if omitted, the `chunksize` of 1 is used
-
 #### `guided`
+the iterations are assigned to the threads while the loop is executing.
 the difference between the `guided` type and the `static` is that *as chunks are completed, the size of the new chunks decreases*
 - this avoids stragglers (threads that fall behind bc they are moving more slowly)
 in particular, the chunks have size `num_iterations`/`num_threads`, where `num_iterations` is the *number of iteraions left*
 - if omitted, the `chunksize` of 1 is used
-
-
 >[!example] assignment of trapeoidal rule iterations 1-9999 using a guided schedule with two threads
 ![[Pasted image 20251203114733.png]]
 
 #### `runtime`
 the system uses a environment variable `OMP_SCHEDULE` to determine at run-time how schedule the loop:
 it can take on any of the values that can be used for a static, dynamic or guided schedule
-```c
-$ export OMP_SCHEDULE = "static, 1"
-```
+>[!syntax] syntax
+>```c
+>$ export OMP_SCHEDULE = "static, 1"
+>```
+>
+>you can also set it through the function 
+>```c
+>omp_set_schedule(omp_sched_t kind, int chunk_size);
+>```
 
-you can also set it through the function 
-```c
-omp_set_schedule(omp_she);
-```
+>[!info] how to select a schedule option
+>- `static`: if iterations are homogeneous
+`dynamic/guided`: if e
