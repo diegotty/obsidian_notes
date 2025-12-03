@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-12-03T11:18
+updated: 2025-12-03T11:33
 completed: false
 ---
 # openMP
@@ -398,9 +398,9 @@ schedule(type, chunksize)
 >```
 
 - `type` can be:
-	- `static`
-	- `dynamic` or `guided`
-	- `auto`: 
+	- `static`: the iterations can be assigned to the threads before the loop is executed (by the programmer)
+	- `dynamic` or `guided`: the iterations are assigned to the threads while the loop is executing
+	- `auto`: the compiler and/or the run-time system determine the schedule
 	- `runtime`: the schedule is determined at run-time
 
 >[!example] scheudling loops
@@ -435,3 +435,25 @@ for (i = 0; i <= n; i++){
 	sum += f(i);
 }
 ```
+
+### `static`
+>[!example] `static` schedule type
+twelve iterations, three threads
+>
+>`schedule(static, 1)`
+>- thread 0: 0,3,6,9
+>- thread 1: 1,4,7,10
+>- thread 2: 2,5,8,11
+>
+`schedule(static, 2)`
+>- thread 0: 0,1,6,7
+>- thread 1: 2,3,8,9
+>- thread 2: 4,5,10,11
+>
+`schedule(static, 4)`
+>- thread 0: 0,1,2,3
+>- thread 1: 4,5,6,7
+>- thread 2: 8,9,10,11
+
+#### `dynamic`
+with this type, the iterations are also broken up into chunks of `chunksize` consecutive iterations
