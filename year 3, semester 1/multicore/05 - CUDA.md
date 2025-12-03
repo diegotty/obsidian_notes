@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-03T20:39
+updated: 2025-12-03T20:56
 completed: false
 ---
 # CUDA
@@ -415,3 +415,23 @@ they are used to store local variables to a thread
 - compute capability determines the maximum number of registers that can be used per thread. if this number is exceeded, local variables are allocated in the global (off-chip) memory (which is very slow)
 	- spilled variables could also be cached in the L1 on-chip cache
 	- the compiler will decide which variables will be allocated in the registers and which will spill over to global memory
+>[!info] how the number of maximum registers influences the resident threads
+>nvidia defines as *occupancy* the ratio of resident warps over the maximum possible resident warps
+>$$\text{occupancy} = \frac{\text{resident\_warps}}{\text{maximum\_warps}}$$
+>>[!example] example
+>we assume that the target GPU has $32.000$ registers per SM, and can have up to $1.536$ resident threads per SM
+>>- a kernel uses 48 registers
+>>- a block is 256 threads
+>>	- each block requires $256 \cdot48=12.288$ registers
+>>- thus, each SM could have 2 resident blocks (as $12.288\cdot 2< 32.000 < 12.288\cdot 3$), and $512$ resident threads
+>>512 is much below the maximum limit of the $1.536$ threads !
+>>- this undermines the possiblity to hide latency
+>
+an occupancy close to 1 is desirable, as the closer it is the higher the opportunities to swap between threads and hide latencies
+>- the occupancy of a given kernel can be analyzed through a profiler
+>to increase occupancy, we can:
+>- reduce the number of registers required by the kernel
+>- use a GPU with higher registers per thread limit
+>(duh)
+
+## constant memory
