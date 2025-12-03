@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-12-03T11:04
+updated: 2025-12-03T11:18
 completed: false
 ---
 # openMP
@@ -392,9 +392,46 @@ nested parallelism is disabled by openMP by default ! (nested for clauses get ig
 ![[Pasted image 20251123152650.png]]
 
 ## scheduling loops
+>[!syntax] syntax
+>```c
+schedule(type, chunksize)
+>```
+
+- `type` can be:
+	- `static`
+	- `dynamic` or `guided`
+	- `auto`: 
+	- `runtime`: the schedule is determined at run-time
+
 >[!example] scheudling loops
 
 ```c
 sum = 0.0;
-for (i = 0; i <= n; i++)
+for (i = 0; i <= n; i++){
+	su += f(i);
+}
+```
+
+
+| #threads | 1    | 2 (default scheduling) | 2 (cyclic scheduling) |
+| -------- | ---- | ---------------------- | --------------------- |
+| runtime  | 3.67 | 2.76                   | 1.84                  |
+| speedup  | 1    | 1.33                   | 1.99                  |
+### default schedule
+```c
+sum = 0.0;
+# pragma omp parallel for num_threads(thread_count) reduction(+ : sum)
+for (i = 0; i <= n; i++){
+	sum += f(i);
+}
+```
+
+
+### cyclic schedule
+```c
+sum = 0.0;
+# pragma omp parallel for num_threads(thread_count) reduction(+ : sum) schedule(static, 1)
+for (i = 0; i <= n; i++){
+	sum += f(i);
+}
 ```
