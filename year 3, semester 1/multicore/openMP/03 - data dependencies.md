@@ -1,0 +1,29 @@
+---
+related to:
+created: 2025-12-03, 14:53
+updated: 2025-12-03T15:00
+completed: false
+---
+## reduction
+## loop skewing
+## partial parallelization
+## refactoring
+## fissioning
+## algorithm change
+*if everything else fails, switching the algorithm may be the answer*
+literally change the algoritm
+>[!example] fibonacci sequence
+the following algorithm cannot be parallelized
+```c
+for(int i = 2; i < N; i++){
+	int x = F[i-2];
+	int y = F[i-1];
+	F[i] = x + y
+}
+```
+
+however, fibonacci’s sequence is also ca through binet’s formula:
+$$
+$$
+## antidependence removal
+## output dependence removal
