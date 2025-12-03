@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-12-03T12:33
+updated: 2025-12-03T12:36
 completed: false
 ---
 # openMP
@@ -492,3 +492,8 @@ it can take on any of the values that can be used for a static, dynamic or guide
 
 ## synchronization constructs
 ## `master, single`
+both force the execution of the following structured block by  a *single thread*
+- `single`, however, *implies* a `barrier` on exit from the block
+- `master` guarantees that the block is executed by the *master thread*
+### `barrier`
+the `barrier` directive blocks the threads that arrive to it until all team threads reach that point
