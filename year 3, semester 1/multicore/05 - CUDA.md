@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-03T20:01
+updated: 2025-12-03T20:26
 completed: false
 ---
 # CUDA
@@ -399,4 +399,4 @@ there are multiple types of memories:
 - *L1/L2 cache*: these caches are transparent to the programmer. (and act just as you would expect [[year 1, semester 2/ae/cache/intro| (already done ….)]])
 - *global memory*:  main part of the off-chip memory. high capacity but relatively slow, it is the *only part accessible* through CUDA functions
 - *texture and surface memory*: content managed by special hardware that permits fast implementation of some filtering/interpolation operator
-- *constant memory*: part of the mem
+- *constant memory*: part of the memory that can only store constants. it is cached, *allows for broadcasting of a single value to all threads in a warp*
