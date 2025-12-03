@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-03T20:26
+updated: 2025-12-03T20:39
 completed: false
 ---
 # CUDA
@@ -191,7 +191,7 @@ CUDA files are of `.cu` extension, which is the same as `.c`, however at serves 
 - `__global__` : (kernel can call kernel)
 - `__global__` : a function that can be called by host or GPU, but will be executed by the GPU 
 	- the compiler generates assembly code for the GPU instead of for the GPU, as they have different instruction sets, and a different compiler (`nvcc`))
-- `__device`: a function that runs on the GPU and can be only called from within a kernel (so basically, by a GPU)
+- `__device__`: a function that runs on the GPU and can be only called from within a kernel (so basically, by a GPU)
 - `__host__`: a function that can only run on the host.
 	- this decorator is typically omitted, unless in combination with `__device__` to indicate that the function can run on both the host and the device. such a scenario implies the generation of two compiled codes for the function !
 
@@ -400,3 +400,18 @@ there are multiple types of memories:
 - *global memory*:  main part of the off-chip memory. high capacity but relatively slow, it is the *only part accessible* through CUDA functions
 - *texture and surface memory*: content managed by special hardware that permits fast implementation of some filtering/interpolation operator
 - *constant memory*: part of the memory that can only store constants. it is cached, *allows for broadcasting of a single value to all threads in a warp*
+the following table show CUDA variables’s scope and lifetime
+
+| variable declaration                    | memory   | scope  | lifetime    |
+| --------------------------------------- | -------- | ------ | ----------- |
+| automatic variables other than arrays   | register | thread | kernel      |
+| automatic array variables               | global   | thread | kernel      |
+| `__device__ __shared__` int SharedVar;  | shared   | block  | kernel      |
+| `__device__` int GlobalVar;             | global   | grid   | application |
+| `__device__ __constant__` int ConstVar; | constant | grid   | application |
+## registers
+they are used to store local variables to a thread
+- *registers on a core are split among the resident threads !*
+- compute capability determines the maximum number of registers that can be used per thread. if this number is exceeded, local variables are allocated in the global (off-chip) memory (which is very slow)
+	- spilled variables could also be cached in the L1 on-chip cache
+	- the compiler will decide which variables will be allocated in the registers and which will spill over to global memory
