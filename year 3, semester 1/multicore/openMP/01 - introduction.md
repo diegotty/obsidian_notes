@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2025-12-03T11:33
+updated: 2025-12-03T11:48
 completed: false
 ---
 # openMP
@@ -456,4 +456,18 @@ twelve iterations, three threads
 >- thread 2: 8,9,10,11
 
 #### `dynamic`
-with this type, the iterations are also broken up into chunks of `chunksize` consecutive iterations
+with this type, the iterations are also broken up into chunks of `chunksize` consecutive iterations. each thread executes a chunk, and when a thread finishes a chunk, it requests another one from the run-time system. this continues until all the iterations are completed.
+this guarantess a *better load balancing*, but higher overhead to schedule che chunks (this however can be tuned through the chunksize)
+- if omitted, the `chunksize` of 1 is used
+
+#### `guided`
+the difference between the `guided` type and the `static` is that *as chunks are completed, the size of the new chunks decreases*
+- this avoids stragglers (threads that fall behind bc they are moving more slowly)
+in particular, the chunks have size `num_iterations`/`num_threads`, where `num_iterations` is the *number of iteraions left*
+- if omitted, the `chunksize` of 1 is used
+
+
+>[!example] assignment of trapeoidal rule iterations 1-9999 using a guided schedule with two threads
+![[Pasted image 20251203114733.png]]
+
+#### `auto`
