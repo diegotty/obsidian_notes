@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-03T15:00
+updated: 2025-12-03T15:13
 completed: false
 ---
 ## reduction
@@ -27,3 +27,8 @@ $$
 $$
 ## antidependence removal
 ## output dependence removal
+
+
+ip submitter :  `sh desensi@192.168.0.102`
+
+slurm
