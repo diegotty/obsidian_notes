@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-03T20:56
+updated: 2025-12-03T20:58
 completed: false
 ---
 # CUDA
@@ -409,7 +409,7 @@ the following table show CUDA variables’s scope and lifetime
 | `__device__ __shared__` int SharedVar;  | shared   | block  | kernel      |
 | `__device__` int GlobalVar;             | global   | grid   | application |
 | `__device__ __constant__` int ConstVar; | constant | grid   | application |
-## registers
+### registers
 they are used to store local variables to a thread
 - *registers on a core are split among the resident threads !*
 - compute capability determines the maximum number of registers that can be used per thread. if this number is exceeded, local variables are allocated in the global (off-chip) memory (which is very slow)
@@ -434,4 +434,4 @@ an occupancy close to 1 is desirable, as the closer it is the higher the opportu
 >- use a GPU with higher registers per thread limit
 >(duh)
 
-## constant memory
+### constant memory
