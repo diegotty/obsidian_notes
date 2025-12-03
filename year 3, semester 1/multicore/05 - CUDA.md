@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-03T19:26
+updated: 2025-12-03T19:29
 completed: false
 ---
 # CUDA
@@ -388,9 +388,10 @@ we should check the `cudaError_t` return variable to handle any errors
 >cudaGetDeviceCount(&deviceCount);
 >```
 ## memory types
-memory is divided into *on-chip memory* () and *off-chip memory* (located outside the main GPU die, still mounted on the circuit board : the VRAM)
+memory is divided into *on-chip memory* (integrated on the GPU die) and *off-chip memory* (located outside the main GPU die, still mounted on the circuit board : the VRAM)
 >[!info] img
 ![[Pasted image 20251201223801.png]]
+the GPU die contains the SMs, the shared memory and the L2 cache
 
 there are multiple types of memories:
 - *registers*: they hold local variables, and are unique to each SP.
