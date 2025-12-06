@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-06T16:53
+updated: 2025-12-06T17:08
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
@@ -11,15 +11,15 @@ there many types of data dependencies, and they are safe if they are *intra-iter
 however, data dependencies become hazardous when they become *inter-iteration*: the dependency happens across different iterations of a loop. this type of dependency is called *loop-carried*, and they in general cannot be correctly parallelized by openMP
 ## dependence types
 data dependencies are classified based on the interaction between a *write* operation and a *read* operation across different iterations !
->[!info]
-
-```c
-for(i = ....){
-	S1: operate on a memory location x
-	...
-	S2: operate on a memory location x
-}
-```
+>[!info] dependence types
+>```c
+>for(i = ....){
+>	S1: operate on a memory location x
+>	...
+>	S2: operate on a memory location x
+>}
+>```
+>S1 and S2 can either be *write* or *read* operations. their combinations (4 possible ones) generates different data dependencies, and can be *loop-carried dependencies*
 ### read after write
 *read after write* (*RAW*), also called *flow dependence* happens when an iteration $j$ must read a value that was written by iteration $i$, and $i$ must execute before $j$
 - if $j$ executes before $i$, $j$ reads the old (and incorrect) value of the variable
@@ -37,16 +37,28 @@ for(i = ....){
 ### write after read
 *write after read* (*WAR*), also called *anti-dependence* happens when an interation $j$ must write a value to a location that was read by iteration $i$, and $i$ must read the old value before $j$ overwrites it
 - if $j$ executes before $i$, $i$ reads the new (and incorrect value of the variable)
+### write after write
+
+### read after read
 ## data dependency resolution
-### reduction
-```c
-double v = start;
-double sum = 0;
-for(i = 0; i < N; i++){
-	sum = sum + f(v); //read
-	v = v + step; //write
-}
-```
+there are many possible techniques to resolve the different data dependencies. we focus on the *RAW*  dependence, and illustrate 6 techniques to remove it and therefore correctly parallelize the for loop
+### reduction variable and induction variable fix
+*reduction variable*: a variable used to accumulate a value across all iterations, using an associative operation
+*induction variable*: a variable whose value is defined as a product of the loop variable (in this case, `v = v + step` == `v = start + i*step`)
+
+>[!example] example
+>```c
+>double v = start;
+>double sum = 0;
+>for(i = 0; i < N; i++){
+>	sum = sum + f(v); //S1 (read)
+>	v = v + step; //S2 (write)
+>}
+>```
+
+this example raises 3 data dependencies:
+- `RAW(S1)` caused by the *reduction variable* `sum`, as the iteration $i+1$ reads the value of `sum` that got written in iteration $i$
+- `RAW(S2)` caused by the *induction variable* `v`, for the same reason of ``
 
 ### loop skewing
 ### partial parallelization
