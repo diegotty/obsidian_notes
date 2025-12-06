@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-06, 13:50
-updated: 2025-12-06T14:05
+updated: 2025-12-06T14:22
 completed: false
 ---
 # loops
@@ -232,9 +232,24 @@ it can take on any of the values that can be used for a static, dynamic or guide
 >the best practice is to use performance tools to measure the runtime for different schedule options *on your target hardware*
 
 ## synchronization constructs
-## `master, single`
+### `master, single`
 both force the execution of the following structured block by  a *single thread*
 - `single`, however, *implies* a `barrier` on exit from the block
 - `master` guarantees that the block is executed by the *master thread*
 ### `barrier`
 the `barrier` directive blocks the threads that arrive to it until all team threads reach that point
+### `sections`& `section`
+the `sections` directive is a *work-sharing directive*, that must be enclosed within a parallel region
+- this can be done using the `omp parallel sections`directive, that combines both
+- when encountered, the runtime system divides the entire block into indepented `section` units, and distributes those units among the available threads in the team. each `section` is guaranteed to be executed by *one and only one thread* !
+	- if there are more threads than sections, the extra threads remain idle, and if there are more sections than threads, threads execute multiple section sequentially
+- there is an implicit barrier at the end of a `sections` construt (unless a `nowait`) clause is specified
+the `section`directive is used only within a `sections` block, and it deliates the start of an *independent* unit of work
+
+| feature    | `parallel for`                                                      | `sections`                                                                    |
+| ---------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| work type  | *data parallelism* (executing the same operation on different data) | *functional parallelism* (executing different operations on independent data) |
+| assignment | iterations are divided automatically based on schedule              | specific blocks of code are assigned one-to-one threads                       |
+### `ordered`
+the `ordered` clause is used inside a parallel for, and ensures that a block will be executed as if in sequential order
+- as in, the iterations will be executed in sequential order
