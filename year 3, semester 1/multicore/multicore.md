@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 18:30
-updated: 2025-11-30T22:56
+updated: 2025-12-06T13:48
 completed: false
 ---
 [[00 - introduction]]
@@ -15,3 +15,7 @@ completed: false
 [[01 - introduction and message sending]]
 [[02 - collective communication]]
 [[03 - derived datatypes]]
+
+## openMP
+[[01 - introduction]]
+[[02]]
