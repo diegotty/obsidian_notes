@@ -1,12 +1,16 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-06T15:33
+updated: 2025-12-06T15:48
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
-a loop in which the results of one or more iterations depend on other iterations cannot is a *loop-carried dependence*
+a *data dependency* exists when the execution order of two different iterations accessing the *same memory location* must be preserved to get the correct result
 - in general, these cannot be correctly parallelized by openMP.
+## dependence types
+data dependencies are classified based on the interatction between a *write* operation and a *read* operation across different iterations
+### write after read
+*write after read* (*WAR*), also called *anti-dependence* happens when an interation $j$ must write a value to a location that was read by iteration
 ## reduction
 ## loop skewing
 ## partial parallelization
