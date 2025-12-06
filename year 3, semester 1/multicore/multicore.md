@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 18:30
-updated: 2025-12-06T13:48
+updated: 2025-12-06T13:57
 completed: false
 ---
 [[00 - introduction]]
@@ -18,4 +18,5 @@ completed: false
 
 ## openMP
 [[01 - introduction]]
-[[02]]
+[[02 - loops]]
+[[03 - data dependencies]]

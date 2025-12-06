@@ -1,10 +1,11 @@
 ---
 related to:
 created: 2025-12-06, 13:50
-updated: 2025-12-06T13:53
+updated: 2025-12-06T14:05
 completed: false
 ---
-# in
+# loops
+we now study how various parallelization techniques for `for` loops
 ## `for` clause
 the `for` clause forks a team of threads to execute following structure block, which must be a for loop.
 with this clause, the for loop is parallelized by dividing the iterations of the loop among the threads
@@ -51,7 +52,7 @@ the goal of the loop is to *complete* the iterations, not to immediately crash t
 .}
 .```
 
-## odd-even sort example
+### odd-even sort example
 >[!example]- example
 this code forks/joins new threads every time the `parallel for` is called (actually, it depends on the implementation but you get the point)
 >- if it does so, we would have some overhead !
@@ -136,12 +137,13 @@ the `schedule` clause is used to handle how the threads divide the iterations of
 >```c
 schedule(type, chunksize)
 >```
+>
+`type` can be:
+>- `static`: the iterations can be assigned to the threads before the loop is executed (by the programmer)
+>- `dynamic` or `guided`: the iterations are assigned to the threads while the loop is executing
+>- `auto`: the compiler and/or the run-time system determine the schedule
+>- `runtime`: the schedule is determined at run-time
 
-- `type` can be:
-	- `static`: the iterations can be assigned to the threads before the loop is executed (by the programmer)
-	- `dynamic` or `guided`: the iterations are assigned to the threads while the loop is executing
-	- `auto`: the compiler and/or the run-time system determine the schedule
-	- `runtime`: the schedule is determined at run-time
 >[!info] default vs cyclic partitioning
 ![[Pasted image 20251203121551.png]]
 
@@ -204,7 +206,7 @@ this guarantess a *better load balancing*, but higher overhead to schedule che c
 the iterations are assigned to the threads while the loop is executing.
 the difference between the `guided` type and the `static` is that *as chunks are completed, the size of the new chunks decreases*
 - this avoids stragglers (threads that fall behind bc they are moving more slowly)
-in particular, the chunks have size `num_iterations`/`num_threads`, where `num_iterations` is the *number of iteraions left*
+in particular, the chunks have size `num_iterations`/`num_threads`, where `num_iterations` is the *number of iterations left*
 - if omitted, the `chunksize` of 1 is used
 >[!example] assignment of trapeoidal rule iterations 1-9999 using a guided schedule with two threads
 ![[Pasted image 20251203114733.png]]
