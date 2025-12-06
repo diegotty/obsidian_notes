@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-06T15:48
+updated: 2025-12-06T16:18
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
@@ -9,6 +9,15 @@ a *data dependency* exists when the execution order of two different iterations 
 - in general, these cannot be correctly parallelized by openMP.
 ## dependence types
 data dependencies are classified based on the interatction between a *write* operation and a *read* operation across different iterations
+### read after write
+*read after write* (*RAW*), also called *flow dependence* happens when an iteration $j$ must read a value that was written by iteration $i$, and $i$ must execute before $j$
+- if $j$ executes before $i$, $j$ reads the old (and incorrect) value of the variable
+```c
+for(i = ....){
+	x = 10;            //S1
+	y = 2 * x + 5;     //S2
+}
+```
 ### write after read
 *write after read* (*WAR*), also called *anti-dependence* happens when an interation $j$ must write a value to a location that was read by iteration
 ## reduction
