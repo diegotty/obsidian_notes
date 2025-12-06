@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-06T17:08
+updated: 2025-12-06T17:23
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
@@ -58,9 +58,43 @@ there are many possible techniques to resolve the different data dependencies. w
 
 this example raises 3 data dependencies:
 - `RAW(S1)` caused by the *reduction variable* `sum`, as the iteration $i+1$ reads the value of `sum` that got written in iteration $i$
-- `RAW(S2)` caused by the *induction variable* `v`, for the same reason of ``
+	- this is a loop-carried dependence !
+- `RAW(S2)` caused by the *induction variable* `v`, for the same reason of `RAW(S1)`
+	- this is a loop-carried dependence !
+- `RAW(S2 -> S1)` caused by the induction variable `v`: the iteration $i+1$ reads in `S1` the value of `v` that was written by `S2` in the iteration $i$.
+	- this is a loop-carried dependence !
 
+>[!info] the fix
+the following change to the loop structure removes `RAW(S2)` (as `v` is calculated “from scratch” every iteration), and removes `RAW(S2->S1)`, as it changes to a `RAW(S1->S2)` that is intra-iteration thus completely safe
+>```c
+>double v;
+>double sum = 0;
+>for(int i = 0; i < N; i++){
+>	v = start + i*step;
+>	sum = sum + f(v);
+>}
+>```
+>
+to remove `RAW(S1)`, we use the `reduction` directive, executing the reduction in a parallel-friendly way using an openMP construct
+>- we can now parallelize the loop as the inter-iteration dependencies have been fixed !
+>```c
+>double v;
+>double sum = 0;
+>#pragma omp parallel for reduction(+ : sum) private(v)
+>for(int i = 0; i < N; i++){
+>	v = start + i*step;
+>	sum = sum + f(v);
+>}
+>```
 ### loop skewing
+the following code has a `RAW(`
+```c
+for(int i = 1; i < N; i++){
+	y[i] = f(x[i-1]);       //S1
+	x[i] = f(x[i] + c[i]);  //S2
+}
+```
+
 ### partial parallelization
 ### refactoring
 ### fissioning
