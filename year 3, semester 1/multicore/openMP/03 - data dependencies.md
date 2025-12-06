@@ -1,14 +1,25 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-06T16:38
+updated: 2025-12-06T16:53
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
-a *data dependency* exists when the execution order of two different iterations accessing the *same memory location* must be preserved to get the correct result
-- in general, these cannot be correctly parallelized by openMP.
+a *data dependency* exists when the execution order of two different instructions accessing the *same memory location* must be preserved to get the correct result.
+
+there many types of data dependencies, and they are safe if they are *intra-iteration*: the instructions that cause the dependence are within the same block of code and the single iteration.
+however, data dependencies become hazardous when they become *inter-iteration*: the dependency happens across different iterations of a loop. this type of dependency is called *loop-carried*, and they in general cannot be correctly parallelized by openMP
 ## dependence types
 data dependencies are classified based on the interaction between a *write* operation and a *read* operation across different iterations !
+>[!info]
+
+```c
+for(i = ....){
+	S1: operate on a memory location x
+	...
+	S2: operate on a memory location x
+}
+```
 ### read after write
 *read after write* (*RAW*), also called *flow dependence* happens when an iteration $j$ must read a value that was written by iteration $i$, and $i$ must execute before $j$
 - if $j$ executes before $i$, $j$ reads the old (and incorrect) value of the variable
@@ -17,7 +28,8 @@ data dependencies are classified based on the interaction between a *write* oper
 >double v = start;
 >double sum = 0;
 >for(i = 0; i < N; i++){
-
+>	A[i] = B[i] + 1;
+>	B[i+1] = A[i];
 >}
 >```
 >the write is in iteration $i$, and the read is in iteration $i+1$. this is a loop-carried flow dependence. 
