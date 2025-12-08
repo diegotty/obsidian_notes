@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T21:08
+updated: 2025-12-08T21:23
 completed: false
 ---
 # introduction
@@ -155,11 +155,26 @@ each round is built from *four basic steps*:
 - *SubBytes*: S-box substitution
 - *ShiftRows*: permutation
 - *MixColumns*: matrix multiplication
-- *AddRoundKey*: XOR with a round key, derived from the 128-bit encryption ke
+- *AddRoundKey*: XOR with a round key, derived from the 128-bit encryption key
 
 >[!info] brute forcing modern block ciphers
 ![[Pasted image 20251208201524.png]]
 
 ## stream ciphers
 a *stream cipher* treats the message to be encrypted as one continous stream of characters
- - they can be thought of block ciphers with block size of one (one-time pad cipher can be considered a stream cipher where the key length equals the message length !
+it achieves this by generating a long stream of *pseudorandom bits*, the *keystream*, which is then combined with the plaintext 
+- the security of a stream cipher relies entierly on the quality and unpredictability of the keystream generator !
+
+ stream ciphers they can be thought of block ciphers with block size of one (one-time pad cipher can be considered a stream cipher where the key length equals the message length !)
+ - useful when plaintext needs to be processed one symbol at a time or the message is short (as short messages with block cipher need padding)
+ stream ciphers have different characteristics from block ciphers. they:
+ - should have long periods without repetition (sequence of bits) in the keystream
+ - need to depend on a large enough key (128 or 256 bits)
+ - the logic used to generate the next bit of the keystream must be complex: a single change in the *cryptovariables* (a set of internal state variables used to generate the keystream) or the initial key should *radically change* the resulting keystream ($\implies$ high complexity and good diffusion)
+ - should be statistically unpredictable (can’t be inferred from a segment of the keystream)
+ - the *keystream* should be statistically unbiased: it should contain a equal number of 0s and 1s
+ >[!info] block vs stream ciphers
+>stream ciphers are generally mucfaster 
+![[Pasted image 20251208211157.png]] 
+
+#### RC4
