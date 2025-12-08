@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T21:23
+updated: 2025-12-08T21:31
 completed: false
 ---
 # introduction
@@ -174,7 +174,14 @@ it achieves this by generating a long stream of *pseudorandom bits*, the *keystr
  - should be statistically unpredictable (can’t be inferred from a segment of the keystream)
  - the *keystream* should be statistically unbiased: it should contain a equal number of 0s and 1s
  >[!info] block vs stream ciphers
->stream ciphers are generally mucfaster 
-![[Pasted image 20251208211157.png]] 
+>stream ciphers favoured because they:
+>- are generally much faster as the operation is a simple XOR instead of multiple rounds of complex substitutions
+>-dont allow for *error propagation*, as if a single bit corrupts, it doesnt affect the rest of the plaintext. block ciphers can corrupt the entire current block and possibly subsequent blocks
+>
+>however, they are :
+>- *low diffusion*, making them less robust against certain types of attacks
+>subject to *malicious insertion and modification*: since the encryption process is linear, an attacker can easily manipulate the ciphertext to change the plaintext in a predictable way, without ever knowing the key
+>	- lack of integrity !!
 
 #### RC4
+*RC4* is a proprietary stream cipher, owned by RSA
