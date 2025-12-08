@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-08T10:58
+updated: 2025-12-08T11:12
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
@@ -21,13 +21,13 @@ data dependencies are classified based on the interaction between a *write* oper
 >```
 >S1 and S2 can either be *write* or *read* operations. their combinations (4 possible ones) generates different data dependencies, and can be *loop-carried dependencies*
 ### read after write
-*read after write* (*RAW*), also called *flow dependence* happens when a *read* operation needs to happen after a
+*read after write* (*RAW*), also called *flow dependence* happens when a *read* operation necessarily needs to happen after a *write* operation as otherwise it would read a wrong value
 >[!example] RAW example
 >```c
 >x = 10; //S1
 >y = 2 * x + 5; //S2
 >```
-S1 must be executed before 
+S1 must be executed before S2
 
 a RAW loop-carried dependence happens when an iteration $j$ must read a value that was written by iteration $i$, and $i$ must execute before $j$
 - if $j$ executes before $i$, $j$ reads the old (and incorrect) value of the variable
@@ -43,11 +43,31 @@ a RAW loop-carried dependence happens when an iteration $j$ must read a value th
 >the write is in iteration $i$, and the read is in iteration $i+1$. this is a loop-carried flow dependence. 
 >the data flows from the write to the read from the end of one iteration to the start of the next !
 ### write after read
-*write after read* (*WAR*), also called *anti-dependence* happens when an interation $j$ must write a value to a location that was read by iteration $i$, and $i$ must read the old value before $j$ overwrites it
+*write after read* (*WAR*), also called *anti-dependence* happens when a *read* operation needs to happen before a *write* operation, as otherwise it would read the wrong value
+
+>[!example] WAR example
+>```c
+>y = x + 3; //S1
+>x++;       //S2
+>```
+
+a loop-carried RAW happens when an interation $j$ must write a value to a location that was read by iteration $i$, and $i$ must read the old value before $j$ overwrites it
 - if $j$ executes before $i$, $i$ reads the new (and incorrect value of the variable)
 ### write after write
+ *write after write* (*WAW*) happens when a *write* operations needs to happen after a *write* operation, as otherwise things would go to shit
+>[!example] WAW example
+>```c
+>x = 10;
+>x = x + c;
+>```
 
 ### read after read
+not an actual dependence we will gloss over this we dont care
+>[!example] RAR example
+>```c
+>y = x + c;
+> z = 2 * x + 1;
+>```
 ## data dependency resolution
 there are many possible techniques to resolve the different data dependencies. we focus on the *RAW*  dependence, and illustrate 6 techniques to remove it and therefore correctly parallelize the for loop
 ### reduction variable and induction variable fix
@@ -215,7 +235,16 @@ the following algorithm cannot be parallelized
 >>F_{n} = \varphi^n - \frac{(1-\varphi)^n}{\sqrt{ 5 }}
 >>$$
 ## antidependence removal
+>[!example] WAR example
+there is a `WAR(S1)` dependence, as 
+>- this is a loop-carried dependence !
+>```c
+>for(int i = 0; i < N; i++){
+>	a[i] = a[i+1] + c; //S1
+>}
+>```
 ## output dependence removal
+
 
 
 ip submitter :  `sh desensi@192.168.0.102`
