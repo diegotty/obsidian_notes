@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T18:23
+updated: 2025-12-08T18:41
 completed: false
 ---
 cryptography is the field that offers techniques and methods of managing secrets. its primary purpose is to alter a message so that *only the intended recipients* can alter it back and read the original message. its purposes are:
@@ -54,5 +54,25 @@ to make a stronger substitution cipher, we need something like a *poly-alphabeti
 ![[Pasted image 20251208182345.png]]
 
 this way, cryptanalysis is difficult, but not impossible
+>[!info] vigenere code
+Vigenere code is a example of poly-alphabetic in which all possible cyclic permutations of the alphabet come to play
+>- columns: current plaintext character
+>- rows: current key character
+>- table[i][j]: current ciphertext character
+![[Pasted image 20251208183005.png]]
+>>[!example] example
+>>![[Pasted image 20251208183210.png]]
+
+>[!info] one-time pad
+a vigenere cipher that uses a key as long as the ciphertext
+>- this cipher is resistant against frequency analysis, as a character will not have a consistent representation across the ciphertext, thus it is impossible to associate any ciphertext characters with language characters
+>- it is also unbreakable
+>
+>however, they also have weaknesses:
+>- the key has to be as long as the plaintext
+>- keys can never be reused
+>>[!example] example
+>![[Pasted image 20251208183329.png]]
+
 
 slide 5, 6
