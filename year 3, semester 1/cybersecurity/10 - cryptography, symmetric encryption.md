@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T20:08
+updated: 2025-12-08T20:20
 completed: false
 ---
 # introduction
@@ -121,7 +121,7 @@ in a *block cipher*, the plaintext of length $n$ is partitioned into a sequence 
 ### DES
 *data encryption standard* (*DES*) is a scheme developed by IBM. it uses *64-bit blocks* and *56-bit keys*
 it uses the *DEA* (algorithm), a set of three steps. its heart is the feistel cipher !
-
+### 2DES
 the small key space makes a search attack feasible 
 in 1992 it was shown that DES is not a group: two DES encryptions are not equivalent to a single encryption, thus making multiple enchipherment effective
 #### meet in the mdidle attack
@@ -130,6 +130,21 @@ with a key size of 112, the expected security is bruteforcing $2^{112}$ keys. ho
 by starting with a *known-plaintext attack* (*PDA*), the attacker can:
 - meet from the left: encrypt the the plain text once, to a intermediate value $I$
 - meet from the right: decrypt the cipher once, to an intermediate value $I'$
-- both operations must equal the same intermediate value, as , so $I=I'$
+- both operations must equal the same intermediate value (for reason i kinda understand but cba to write it), so $I=I'$
+to encrypt and decrypt, the attacker uses every possible key in the $2^{56}$ key space for both $K_{1}$ and $K_{2}$ to find the match (the two keys that calculate the same $I$ value)
+- the total computational effort is $2\cdot 2^{56}$, which is exponentially smaller than $2^{112}$
 ### 3DES
+this block cipher was developed as a direct and immediate fix for the security weaknesses found in the DES, to provide a transition period until a completely new cipher (AES) could be standardized
+it uses a triple *encryption-decryption-encryption* sequence to encrypt, and the reverse order (*decryption-encryption-decryption*) to decrypt.
+it can be used with either two or three independent keys
+
+| *option*             | *keys used*                                                          | *effective key length*   | *security status*                                                                             |
+| -------------------- | -------------------------------------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------- |
+| *3TDES (triple-key)* | $K1, K2, K3$ are all independent.                                    | $56 \times 3 = 168$ bits | Strongest. Resists MITM attacks.                                                              |
+| *2TDES (two-Key)*    | $K1$ and $K3$ are the same, $K2$ is independent ($K1 = K3 \neq K2$). | $56 \times 2 = 112$ bits | Still strong enough to resist brute force and MITM attacks. (The most common implementation). |
+| *1TDES (Single-Key)* | $K1 = K2 = K3$                                                       | 56 bits                  | Equivalent to single DES (used for backward compatibility).                                   |
+
 ### AES
+
+>[!info] brute forcing modern block ciphers
+![[Pasted image 20251208201524.png]]
