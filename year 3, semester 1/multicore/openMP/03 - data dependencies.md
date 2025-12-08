@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-08T10:43
+updated: 2025-12-08T10:58
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
@@ -21,9 +21,17 @@ data dependencies are classified based on the interaction between a *write* oper
 >```
 >S1 and S2 can either be *write* or *read* operations. their combinations (4 possible ones) generates different data dependencies, and can be *loop-carried dependencies*
 ### read after write
-*read after write* (*RAW*), also called *flow dependence* happens when an iteration $j$ must read a value that was written by iteration $i$, and $i$ must execute before $j$
+*read after write* (*RAW*), also called *flow dependence* happens when a *read* operation needs to happen after a
+>[!example] RAW example
+>```c
+>x = 10; //S1
+>y = 2 * x + 5; //S2
+>```
+S1 must be executed before 
+
+a RAW loop-carried dependence happens when an iteration $j$ must read a value that was written by iteration $i$, and $i$ must execute before $j$
 - if $j$ executes before $i$, $j$ reads the old (and incorrect) value of the variable
->[!example] RAW dependence example
+>[!example] loop-carried RAW example
 >```c
 >double v = start;
 >double sum = 0;
@@ -97,19 +105,18 @@ the following code has a `RAW(S2->S1)` on `x`, as iteration $i+1$ reads `x[i]`, 
 >	x[i] = f(x[i] + c[i]);  //S2
 >}
 >```
-
->[!info] fix
-the solution is to make sure that the statements that read the calculated values that cause the `RAW` use values generated *during the same iteration*
->```c
->y[1] = f(x[0]);
->for(int i = 1; i < N; i++){
->	x[i] = x[i] + c[i];
->	y[i+1] = f(x[i]);
->}
->x[N-1] = x[N-1] + c[N-1];
->```
->to do loop skewing, *unroll the loop* and see the repetition pattern !!
-![[Pasted image 20251206173054.png]]
+>>[!info] fix
+>the solution is to make sure that the statements that read the calculated values that cause the `RAW` use values generated *during the same iteration*
+>>```c
+>>y[1] = f(x[0]);
+>>for(int i = 1; i < N; i++){
+>>	x[i] = x[i] + c[i];
+>>	y[i+1] = f(x[i]);
+>>}
+>>x[N-1] = x[N-1] + c[N-1];
+>>```
+>>to do loop skewing, *unroll the loop* and see the repetition pattern !!
+>>![[Pasted image 20251206173054.png]]
 ### partial parallelization
 partial parallelization is achieved by analyzing the *interation space dependency graph* (*ISDG*), which is made up of:
 - nodes that represent a single execution of the loop body
@@ -126,21 +133,22 @@ there is a `RAW(S1)` dependence
 >```
 ![[Pasted image 20251206173706.png]]
 the graph shows that there are no dependencies (edges) between nodes on the same row, thus making it possible to parallelize the j-loop, but not both
-
->[!info] fix
->```c
->for (int i = 1; i < N; i++){
->#pragma omp parallel for
->	for(int j = 1; j < M; j++){
->		data[i][j] = data[i-1][j] + data[i-1][j-1];
->	}
->}
->```
-we ensure that a iteration will never look up a value that has not been already calculated !
+>>[!info] fix
+>>```c
+>>for (int i = 1; i < N; i++){
+>>#pragma omp parallel for
+>>	for(int j = 1; j < M; j++){
+>>		data[i][j] = data[i-1][j] + data[i-1][j-1];
+>>	}
+>>}
+>>```
+>we ensure that a iteration will never look up a value that has not been already calculated !
 ### refactoring
 refactoring consists in rewriting the loop(s) so that parallelism can be exposed
 
 >[!example] example
+here we have a `RAW(S1)` dependence
+>- this is a loop-carried dependence ! 
 >```c
 >for (int i = 1; i < N; i++){
 >	for (int j = 1; j < M; j++){
@@ -150,45 +158,62 @@ refactoring consists in rewriting the loop(s) so that parallelism can be exposed
 >```
 the ISDG clearly shows that the loop is not parallelizable in rows unlike the last example, however diagonal sests can be executed in parallel, as there are no dependencies between nodes in the same diagonal set
 ![[Pasted image 20251208103749.png]]
-
->[!info] fix
-this adjustment requires a change of the loop variables but allows parallelism !
->```c
->// intuition
->for (wave = 0. wave < num_waves; wave++){
->	diag = F(wave);
->	for (k = 0; k < diag; k++){
->		int i = get_i(diag, k);
->		int j = get_j(diag, k);
->		data[i][j] = data[i-1][j] + data[i][j-1] + data[i-1][j-1];
->	}
->}
->// ummm sure
->```
+>>[!info] fix
+>this adjustment requires a change of the loop variables but allows parallelism !
+>>```c
+>>// intuition
+>>for (wave = 0. wave < num_waves; wave++){
+>>	diag = F(wave);
+>>	for (k = 0; k < diag; k++){
+>>		int i = get_i(diag, k);
+>>		int j = get_j(diag, k);
+>>		data[i][j] = data[i-1][j] + data[i][j-1] + data[i-1][j-1];
+>>	}
+>>}
+>>// ummm sure
+>>```
 ### fissioning
 fissioning involves breaking the loop apart into two parts: a *sequential* part and a *parallelizable* part
-```c
-a = b[0];
-for(int i = 1; i < N; i++){
-	a[i]= a[i]
-}
-```
+
+>[!example] example
+there is a `RAW(S1)` dependence
+>- this is a loop-carried dependence !
+>```c
+>s = b[0];
+>for(int i = 1; i < N; i++){
+>	a[i]= a[i] + a[i-1]; // S1
+>	s = s + b[i];
+>}
+>```
+
+>[!info] fix
+the dependence doesnt exist anymore as the code is executed sequentially by one single thread
+>```c
+>for (int i = 1; i < N; i++){
+>	a[i] = a[i] + a[i-1];
+>}
+>#pragma omp parallel for reduction(+ : s)
+>for (int i = 1; i < N; i++){
+>	s = s + b[i];
+>}
+>```
 ### algorithm change
 *if everything else fails, switching the algorithm may be the answer*
 literally change the algoritm
->[!example] fibonacci sequence
+>[!example] example (fibonacci sequence)
 the following algorithm cannot be parallelized
-```c
-for(int i = 2; i < N; i++){
-	int x = F[i-2];
-	int y = F[i-1];
-	F[i] = x + y
-}
-```
-
-however, fibonacci’s sequence is also ca through binet’s formula:
-$$
-$$
+>```c
+>for(int i = 2; i < N; i++){
+>	int x = F[i-2];
+>	int y = F[i-1];
+>	F[i] = x + y
+>}
+>```
+>>[!info] fix
+>however, fibonacci’s sequence is also calculated through binet’s formula:
+>>$$
+>>F_{n} = \varphi^n - \frac{(1-\varphi)^n}{\sqrt{ 5 }}
+>>$$
 ## antidependence removal
 ## output dependence removal
 
