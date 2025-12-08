@@ -1,9 +1,10 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T18:41
+updated: 2025-12-08T18:56
 completed: false
 ---
+# introduction
 cryptography is the field that offers techniques and methods of managing secrets. its primary purpose is to alter a message so that *only the intended recipients* can alter it back and read the original message. its purposes are:
 - preserving *confidentiality*
 - *authenticate* senders and receivers 
@@ -15,19 +16,20 @@ cryptography is the field that offers techniques and methods of managing secrets
 >- decryption function: $D_{k}(P)$
 >- *efficiency*: $E_{k}(P)$ and $D_{k}(P)$ should have efficient algorithms
 >- *consistency*: decrypting the ciphertext should yield the plaintext ($D_{k}(E_{k}(P))= P$)
-## symmetric key cryptography
+# symmetric key cryptography
 this type of cryptography makes use of a number of classical encryption techniques, such as:
 - *substitution*: replacing each character in the text with another character of the same o different alphabet
+- *transposition*: changing the order of the characters in the text, but not the value
+ - *XOR*: the XOR operator between a text (cipher or plain)and the key
+ - *modular arithmetic operations*
+ these steps are repeated multiple times !
+## substitution ciphers
 >[!example] caesar cipher
 an example of a substitution cipher, the characters are replaced with a the character $k$ (the key) positions forward
 >this cyclic permutation makes it easy to find the key, as there are only $N$ possibilities to try, where $N$ is the number of characters in the alphabet
 >
 >it is possible to improve the cipher by using a permutation of the original alphabet
-![[Pasted image 20251208180142.png]]
-- *transposition*: changing the order of the characters in the text, but not the value
- - *XOR*: the XOR operator between a text (cipher or plain)and the key
- - *modular arithmetic operations*
- these steps are repeated multiple times !
+![[Pasted image 20251208185200.png]]
 ## encrypting natural languages
 english is typically represented with 8-bit ASCII encoding, making, thus a message with $t$ characters corresponds to a $n$-bit array, with $n=8t$
 however, due to redundancy (repeated words, patterns like “th”, “ing”, etc) english plaintexts are a *very small subset* of all n-bit arrays, thus making it easier to break the ciphers
@@ -47,7 +49,7 @@ it can also be used on gropus of characters to get better results
 ![[Pasted image 20251208181557.png]]
 ###  poly-alphabetic ciphers
 single-alphabet  ciphers, even with random permutations of them, are relatively easy to break.
-to make a stronger substitution cipher, we need something like a *poly-alphabetic* substitution cipher
+to make a stronger substitution cipher, (to defeat frequency analysis) we need something like a *poly-alphabetic* (as in, multiple different alphabet shifts for a character) substitution cipher
 - we use a word as a key, and the characters in the key determine displacement: 
 - this way, the same character in the plaintext *may be represented by a different designated character* ! fire
 >[!example] poly-alphabetic cipher example
@@ -55,7 +57,7 @@ to make a stronger substitution cipher, we need something like a *poly-alphabeti
 
 this way, cryptanalysis is difficult, but not impossible
 >[!info] vigenere code
-Vigenere code is a example of poly-alphabetic in which all possible cyclic permutations of the alphabet come to play
+vigenere cipher (*le chiffre indèechiffrable*) is a type of poly-alphabetic cipher in which all possible cyclic permutations of the alphabet come to play
 >- columns: current plaintext character
 >- rows: current key character
 >- table[i][j]: current ciphertext character
@@ -63,16 +65,22 @@ Vigenere code is a example of poly-alphabetic in which all possible cyclic permu
 >>[!example] example
 >>![[Pasted image 20251208183210.png]]
 
->[!info] one-time pad
-a vigenere cipher that uses a key as long as the ciphertext
->- this cipher is resistant against frequency analysis, as a character will not have a consistent representation across the ciphertext, thus it is impossible to associate any ciphertext characters with language characters
->- it is also unbreakable
->
->however, they also have weaknesses:
->- the key has to be as long as the plaintext
->- keys can never be reused
->>[!example] example
->![[Pasted image 20251208183329.png]]
-
-
-slide 5, 6
+#### one-time pad
+a vigenere cipher that uses a key as long as the ciphertext, resulting in a *mathematically unbrekable* cipher. the conditions for its perfect secrecy are:
+- the pad (key) used is generated using a genuine source of randomness
+- the pad has the same length as the plaintext
+- the pad is destroyed immediately after use, and never reused for any other mesage
+for any given ciphertext, *every possible plaintext message of the same length is equally likely*, breaking frequency analysis
+the main drawbacks of the one-time pad are:
+- the key distribution problem
+- the key size
+- the reusage problem
+however, they also have weaknesses:
+- the key has to be as long as the plaintext
+- keys can never be reused
+## transposition ciphers
+>[!example] rail fence cipher
+also called the zigzag cipher, it consist in arranging in a zig-zag pattern and reading the message by row
+![[Pasted image 20251208185409.png]]
+### permutation
+the message is split in blocks of length $m$, and each block is rearranged with the same permutation (algebra !!), which is the key
