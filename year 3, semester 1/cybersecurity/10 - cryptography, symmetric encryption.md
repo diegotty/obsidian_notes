@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T18:56
+updated: 2025-12-08T19:21
 completed: false
 ---
 # introduction
@@ -84,3 +84,28 @@ also called the zigzag cipher, it consist in arranging in a zig-zag pattern and 
 ![[Pasted image 20251208185409.png]]
 ### permutation
 the message is split in blocks of length $m$, and each block is rearranged with the same permutation (algebra !!), which is the key
+- to decrypt, just apply the reverse permutation on the blocks of the ciphertext
+>[!example] permutation cipher
+![[Pasted image 20251208185633.png]]
+
+### columnar transposition
+the message is split in rows of length $n$ (which is the key), and then read by columns
+- to decrypt, just divide the message length for the key to find the number of columns, then write the ciphertext by columns and read by row
+>[!example] 
+![[Pasted image 20251208185822.png]]
+### keyed columnar transposition
+the plain text is written by row, then the columns are rearranged according to a permutation
+>[!example]
+![[Pasted image 20251208190340.png]]
+
+## modern cryptography
+because of the high redundancy of natural language, historic codes are often breakable by analysing, using statistics the cipher
+thus, *more complex codes are needed !*
+the basic ideas to modern codes are:
+- *diffusion*: spread redundancy around the ciphertext
+- *confusion*: make encryption function as complex as possible, making it difficult to derive teh key analyzing the ciphertext
+>[!info] computational security
+encryption is computationally secure if:
+>- the cost of breaking cipher exceeds the value of information
+>- the time required to break a cipher exceeds the useful lifetime of the information
+>
