@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T19:38
+updated: 2025-12-08T19:49
 completed: false
 ---
 # introduction
@@ -117,3 +117,15 @@ in 1973, Feistel proposed the concept of a *product cipher*: the execution of tw
 ## block cipher
 in a *block cipher*, the plaintext of length $n$ is partitioned into a sequence of $m$ blocks, and is encrypted/decrypted in terms of these blocks
 - if the last block is shorter, extra bits are used as padding
+>[!info] S-boxes
+### DES
+*data encryption standard* (*DES*) is a scheme developed by IBM. it uses *64-bit blocks* and *56-bit keys*
+it uses the *DEA* (algorithm), a set of three steps. its heart is the feistel cipher !
+
+the small key space makes a search attack feasible 
+in 1992 it was shown that DES is not a group: two DES encryptions are not equivalent to a single encryption, thus making multiple enchipherment effective
+
+however, the *meet in the middle attack* proved that the secuirty of double DES was not as expected:
+- with a key size of 112, the expected security is bruteforcing $2^{112}$ keys. however
+### 3DES
+### AES
