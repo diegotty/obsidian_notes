@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T16:28
+updated: 2025-12-08T16:44
 completed: false
 ---
 ## basic information
@@ -96,3 +96,19 @@ the vulnerability is that the website has a response script that directly echoes
 pretty self explanatory
 
 - *DOM-based XSS*: the injection happens in a parameter used by a script running within the page itself
+## request forgery
+request forgery, also known as *one-click attack*, session riding or hostile linking, is aimed at having a victim executed a number of actions by using the victim’s credentials (e.g. session cookie)
+- however, this has to be done without direct access to the cookies (as we can’t access cookies of another domain because of SOP), thus no stealing of data happens
+it can be *cross site* (*CSRF*) or *on site* (*OSRF*, like [[https://sa.my/myspace/tech.html|samy worm]]), and it can be both reflexted and stored
+
+forgery requests exploit the fact that brower requests automatically include any credential associated with the site (session cookie, IP address, credentials …).
+the attacker makes an authenticated user submit a malicious, unintentional request
+>[!example] CSRF example
+![[Pasted image 20251208164021.png]]
+the victim, after authenticating on the bank’s website, could visiti a malicious website, that contains something like
+
+```html
+<img src="http://www.bank/transfer.php?to=1337&amount=10000"
+```
+that makes the browser execute a GET request with to the URL above
+because the request contains the right cookie (as the request is made by the vict), the bank will satisfy the request
