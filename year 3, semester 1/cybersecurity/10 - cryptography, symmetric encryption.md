@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T19:49
+updated: 2025-12-08T20:08
 completed: false
 ---
 # introduction
@@ -124,8 +124,12 @@ it uses the *DEA* (algorithm), a set of three steps. its heart is the feistel ci
 
 the small key space makes a search attack feasible 
 in 1992 it was shown that DES is not a group: two DES encryptions are not equivalent to a single encryption, thus making multiple enchipherment effective
-
+#### meet in the mdidle attack
 however, the *meet in the middle attack* proved that the secuirty of double DES was not as expected:
-- with a key size of 112, the expected security is bruteforcing $2^{112}$ keys. however
+with a key size of 112, the expected security is bruteforcing $2^{112}$ keys. however, the encryption process can be spit into two independent parts, making the complexity of the attack only *additive*, not multiplicative
+by starting with a *known-plaintext attack* (*PDA*), the attacker can:
+- meet from the left: encrypt the the plain text once, to a intermediate value $I$
+- meet from the right: decrypt the cipher once, to an intermediate value $I'$
+- both operations must equal the same intermediate value, as , so $I=I'$
 ### 3DES
 ### AES
