@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T20:20
+updated: 2025-12-08T20:53
 completed: false
 ---
 # introduction
@@ -138,12 +138,12 @@ this block cipher was developed as a direct and immediate fix for the security w
 it uses a triple *encryption-decryption-encryption* sequence to encrypt, and the reverse order (*decryption-encryption-decryption*) to decrypt.
 it can be used with either two or three independent keys
 
-| *option*             | *keys used*                                                          | *effective key length*   | *security status*                                                                             |
-| -------------------- | -------------------------------------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------- |
-| *3TDES (triple-key)* | $K1, K2, K3$ are all independent.                                    | $56 \times 3 = 168$ bits | Strongest. Resists MITM attacks.                                                              |
-| *2TDES (two-Key)*    | $K1$ and $K3$ are the same, $K2$ is independent ($K1 = K3 \neq K2$). | $56 \times 2 = 112$ bits | Still strong enough to resist brute force and MITM attacks. (The most common implementation). |
-| *1TDES (Single-Key)* | $K1 = K2 = K3$                                                       | 56 bits                  | Equivalent to single DES (used for backward compatibility).                                   |
-
+| option               | keys used                                                            | effective key length     | security status                                                                             |
+| -------------------- | -------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------- |
+| *3TDES (triple-key)* | $K1, K2, K3$ are all independent.                                    | $56 \times 3 = 168$ bits | strongest: resists MITM attacks.                                                            |
+| *2TDES (two-key)*    | $K1$ and $K3$ are the same, $K2$ is independent ($K1 = K3 \neq K2$). | $56 \times 2 = 112$ bits | still strong enough to resist brute force and MITM attacks. the most common implementation. |
+| *1TDES (single-key)* | $K1 = K2 = K3$                                                       | 56 bits                  | equivalent to single DES (used for backward compatibility).                                 |
+despite its strength to basic brute-force attacs
 ### AES
 
 >[!info] brute forcing modern block ciphers
