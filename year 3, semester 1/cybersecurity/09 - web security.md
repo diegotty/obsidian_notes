@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T15:09
+updated: 2025-12-08T15:25
 completed: false
 ---
 ## basic information
@@ -57,3 +57,20 @@ SOP’s simplicity is also its limit, as:
 	- betersolution: `postMessage()` allows scripts to send messages between windows located on completely different origins in a controlled and safe manner (it allows both the sender and the receiver to agree on the communication boundaries)
 ## client-side attacks
 client-side attacks *exploit the trust of the browser* (as opposite to exploiting the trust of servers). 
+in particular, they exploit the trust:
+- a user towards a website (*XSS*)
+- of a website towards a user (*CSRF*)
+by injecting HTML or 
+some of the goals can be:
+- stealing a cookie associated to the vulnerable domain
+- login from manipulations
+- execution of additional GET/POST requests
+- anything doable with HTML + js
+### XSS
+*cross-site scripting* aims to access unauthorized information stored on the client’s browser, or to perform unauthorized actions, by 
+1. injecting HTML/js code in a web page, exploiting a *lack of input sanitization* to make it run
+2. client’s brower executes any code and renders any HTML present on the vulnerable page
+#### types of XSS
+- *reflected XSS*
+- *stored XSS*
+- *DOM-based XSS*
