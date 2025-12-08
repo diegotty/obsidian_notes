@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-11-30T22:29
+updated: 2025-12-08T14:38
 completed: false
 ---
 ## basic information
@@ -34,6 +34,12 @@ some of burp’s tools are:
 ### cookie security
 the security of [[04 - livello applicazione; HTTP#cookie|cookies]] is critical, as they are used for authentication of a session
 >[!info] cookie attacks
+>- *session hijacking*
 ![[Pasted image 20251130222732.png]]
 > - *session prediction*: early PHP implementations of session were susceptible to this attack, as cookie ids could be a total of 1 million (which is not that much)
+>- *session fixation*
 ![[Pasted image 20251130222753.png]]
+>- *insecure direct object reference*
+session cookies can be used in *IDOR* attacks, that happen when an application provides *direct access* to objects based on user-supplied input, without proper identification
+this way, the user can directly access to information not intended to be accessible, bypassing the authorization check that would be needed
+## same
