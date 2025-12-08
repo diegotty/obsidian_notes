@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-06T17:43
+updated: 2025-12-08T10:43
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
@@ -112,7 +112,7 @@ the solution is to make sure that the statements that read the calculated values
 ![[Pasted image 20251206173054.png]]
 ### partial parallelization
 partial parallelization is achieved by analyzing the *interation space dependency graph* (*ISDG*), which is made up of:
-- nodes that represent a signel execution of the loop body
+- nodes that represent a single execution of the loop body
 - edges that represent dependencies
 >[!example] example
 there is a `RAW(S1)` dependence
@@ -136,8 +136,43 @@ the graph shows that there are no dependencies (edges) between nodes on the same
 >	}
 >}
 >```
+we ensure that a iteration will never look up a value that has not been already calculated !
 ### refactoring
+refactoring consists in rewriting the loop(s) so that parallelism can be exposed
+
+>[!example] example
+>```c
+>for (int i = 1; i < N; i++){
+>	for (int j = 1; j < M; j++){
+>		data[i][j] = data[i-1][j] + data[i][j-1] + daa[i-1][j-1]; //S1
+>	}
+>}
+>```
+the ISDG clearly shows that the loop is not parallelizable in rows unlike the last example, however diagonal sests can be executed in parallel, as there are no dependencies between nodes in the same diagonal set
+![[Pasted image 20251208103749.png]]
+
+>[!info] fix
+this adjustment requires a change of the loop variables but allows parallelism !
+>```c
+>// intuition
+>for (wave = 0. wave < num_waves; wave++){
+>	diag = F(wave);
+>	for (k = 0; k < diag; k++){
+>		int i = get_i(diag, k);
+>		int j = get_j(diag, k);
+>		data[i][j] = data[i-1][j] + data[i][j-1] + data[i-1][j-1];
+>	}
+>}
+>// ummm sure
+>```
 ### fissioning
+fissioning involves breaking the loop apart into two parts: a *sequential* part and a *parallelizable* part
+```c
+a = b[0];
+for(int i = 1; i < N; i++){
+	a[i]= a[i]
+}
+```
 ### algorithm change
 *if everything else fails, switching the algorithm may be the answer*
 literally change the algoritm
