@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T14:53
+updated: 2025-12-08T15:09
 completed: false
 ---
 ## basic information
@@ -47,10 +47,13 @@ most of the browser’s security mechanisms rely on the possibility of isolating
 - this means that a malicious website cannot run scripts that access data and functionalities of other websites visited by the user (impeding *cross-site scripting* (*XSS*))
 this mechanism is part of the *same origin policy* (*SOP*), the single most important security concept in web browsers, that is designed to isolate docments from different websites to provent unauthorized data access.
 - it was introduced by netscape in 1995
+
+the browser defines an *origin* based on the combination of three parts of the URL: *protocol*, *domain name* and *port*
+
 SOP’s simplicity is also its limit, as:
 - we cannot isolate homepages of different users hosted on the same origin
 - different domains cannot easily interact among each others if legitimately needed
 	- solution: `document.domain` can be used to relax the SOP by reducing domain definitions to its parent domains, thereby matching other sibling subdomains that do the same
-$$
-
-the browser defines an *origin* based on the combination of three parts of the URL: *protocol*, *domain name* and *port*
+	- betersolution: `postMessage()` allows scripts to send messages between windows located on completely different origins in a controlled and safe manner (it allows both the sender and the receiver to agree on the communication boundaries)
+## client-side attacks
+client-side attacks *exploit the trust of the browser* (as opposite to exploiting the trust of servers). 
