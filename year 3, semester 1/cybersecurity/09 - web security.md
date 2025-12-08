@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T15:25
+updated: 2025-12-08T16:14
 completed: false
 ---
 ## basic information
@@ -70,7 +70,17 @@ some of the goals can be:
 *cross-site scripting* aims to access unauthorized information stored on the client’s browser, or to perform unauthorized actions, by 
 1. injecting HTML/js code in a web page, exploiting a *lack of input sanitization* to make it run
 2. client’s brower executes any code and renders any HTML present on the vulnerable page
+the goals of XSS can be:
+- capturing infomation of the victim (their session)
+- display additional/misleading information
+- inejct additional form fields
+- make victim do something instead of the attacker (like an SQLi)
+- many more
 #### types of XSS
-- *reflected XSS*
-- *stored XSS*
-- *DOM-based XSS*
+- *reflected XSS*: the injection happens in a parameter used by the page to dinamically display infomation to the user
+>[!example] example of reflected xss
+![[Pasted image 20251208160948.png]]
+the vulnerability is that the website has a response script that directly echoes the user’s `keyword` parameter into the HTML response, without any sanitization or enc
+
+- *stored XSS*: the injection is stored in a page of the web application, and then displayed to users accessing such a page
+- *DOM-based XSS*: the injection happens in a parameter used by a script running within the page itself
