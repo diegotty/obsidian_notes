@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T19:21
+updated: 2025-12-08T19:38
 completed: false
 ---
 # introduction
@@ -20,7 +20,10 @@ cryptography is the field that offers techniques and methods of managing secrets
 this type of cryptography makes use of a number of classical encryption techniques, such as:
 - *substitution*: replacing each character in the text with another character of the same o different alphabet
 - *transposition*: changing the order of the characters in the text, but not the value
- - *XOR*: the XOR operator between a text (cipher or plain)and the key
+ - *XOR*: the XOR operator between a text and the key (both encoded ad binary sequences)
+ >[!example] binary encoding + XOR
+ ![[Pasted image 20251208193759.png]]
+ 
  - *modular arithmetic operations*
  these steps are repeated multiple times !
 ## substitution ciphers
@@ -108,4 +111,9 @@ the basic ideas to modern codes are:
 encryption is computationally secure if:
 >- the cost of breaking cipher exceeds the value of information
 >- the time required to break a cipher exceeds the useful lifetime of the information
->
+
+>[!info] feistel network
+in 1973, Feistel proposed the concept of a *product cipher*: the execution of two or more simple ciphers in a sequence, in such a way that the final result is cryptographically stronger than any of the component ciphers
+## block cipher
+in a *block cipher*, the plaintext of length $n$ is partitioned into a sequence of $m$ blocks, and is encrypted/decrypted in terms of these blocks
+- if the last block is shorter, extra bits are used as padding
