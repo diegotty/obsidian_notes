@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-06T17:38
+updated: 2025-12-06T17:43
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
@@ -90,6 +90,7 @@ to remove `RAW(S1)`, we use the `reduction` directive, executing the reduction i
 this technique involves the rearrangement of the loop body statements
 >[!example] example
 the following code has a `RAW(S2->S1)` on `x`, as iteration $i+1$ reads `x[i]`, which is written in iteration $i$
+>- this is a loop-carried dependence !
 >```c
 >for(int i = 1; i < N; i++){
 >	y[i] = f(x[i-1]);       //S1
@@ -114,16 +115,27 @@ partial parallelization is achieved by analyzing the *interation space dependenc
 - nodes that represent a signel execution of the loop body
 - edges that represent dependencies
 >[!example] example
+there is a `RAW(S1)` dependence
+>- this is a loop-carried dependence !
 >```c
 >for (int i = 1; i < N; i++){
+>	for(int j = 1; j < M; j++){
+>		data[i][j] = data[i-1][j] + data[i-1][j-1]; //S1
+>	}
+>}
+>```
+![[Pasted image 20251206173706.png]]
+the graph shows that there are no dependencies (edges) between nodes on the same row, thus making it possible to parallelize the j-loop, but not both
+
+>[!info] fix
+>```c
+>for (int i = 1; i < N; i++){
+>#pragma omp parallel for
 >	for(int j = 1; j < M; j++){
 >		data[i][j] = data[i-1][j] + data[i-1][j-1];
 >	}
 >}
 >```
-![[Pasted image 20251206173706.png]]
->
-the graph shows that there are no dependencies (edges) between nodes on the same row, thus making
 ### refactoring
 ### fissioning
 ### algorithm change
