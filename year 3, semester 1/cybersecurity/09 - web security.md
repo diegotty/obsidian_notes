@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T14:38
+updated: 2025-12-08T14:53
 completed: false
 ---
 ## basic information
@@ -42,4 +42,15 @@ the security of [[04 - livello applicazione; HTTP#cookie|cookies]] is critical, 
 >- *insecure direct object reference*
 session cookies can be used in *IDOR* attacks, that happen when an application provides *direct access* to objects based on user-supplied input, without proper identification
 this way, the user can directly access to information not intended to be accessible, bypassing the authorization check that would be needed
-## same
+## same origin policy
+most of the browser’s security mechanisms rely on the possibility of isolating documents *depending on the resource’s origin*. generally, the pages from different sources should not be allowed to interfere with each other.
+- this means that a malicious website cannot run scripts that access data and functionalities of other websites visited by the user (impeding *cross-site scripting* (*XSS*))
+this mechanism is part of the *same origin policy* (*SOP*), the single most important security concept in web browsers, that is designed to isolate docments from different websites to provent unauthorized data access.
+- it was introduced by netscape in 1995
+SOP’s simplicity is also its limit, as:
+- we cannot isolate homepages of different users hosted on the same origin
+- different domains cannot easily interact among each others if legitimately needed
+	- solution: `document.domain` can be used to relax the SOP by reducing domain definitions to its parent domains, thereby matching other sibling subdomains that do the same
+$$
+
+the browser defines an *origin* based on the combination of three parts of the URL: *protocol*, *domain name* and *port*
