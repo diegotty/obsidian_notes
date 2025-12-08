@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-03, 14:53
-updated: 2025-12-08T11:12
+updated: 2025-12-08T11:27
 completed: false
 ---
 openMP compilers don’t check for dependencies among iterations in a loop that is being parallelized with a `parallel for`
@@ -235,17 +235,46 @@ the following algorithm cannot be parallelized
 >>F_{n} = \varphi^n - \frac{(1-\varphi)^n}{\sqrt{ 5 }}
 >>$$
 ## antidependence removal
->[!example] WAR example
-there is a `WAR(S1)` dependence, as 
+>[!example] example
+there is a `WAR(S1)` dependence, as `a[i]` is written in the iteration $i$ after being read in the iteration $i-1$, thus maintaining this order is integral
 >- this is a loop-carried dependence !
 >```c
 >for(int i = 0; i < N; i++){
 >	a[i] = a[i+1] + c; //S1
 >}
 >```
+>>[!info] fix
+>the simple solution is to make a copy of the array before starting to modify it
+>>- this introduces a space tradeoff that needs to be carefully evaluated !
+>>```c
+>>for (int i = 0; i < N-1; i++){
+>>	a2[i] = a[i+1];
+>>	
+>>	#pragma omp parallel
+>>	for(int i = 0; i < N-1; i++){
+>>		a[i] = a2[i] + c;
+>>	}
+>>}
+>>```
 ## output dependence removal
-
-
+>[!example] example
+there is `WAW(S2)`because we need to (only, in this case, )ensure that the value written in `d` is `fabs(y[N-1])`.
+there is also `RAR(S1)` but that is not an actual dependence
+>```c
+>for (int i = 0; i < N; i++){
+>	y[i] = a * x[i] + c; //S1
+>	d = fabs(y[i]); //S2
+>}
+>```
+>>[!info] fix
+>deep this:
+>>```c
+>>#pragma omp parallel for shared(a, c) lastprivate(d)
+>>for (int i = 0; i < N; i++){
+>>	y[i] = a * x[i] + c; //S1
+>>	d = fabs(y[i]); //S2
+>>}
+>>```
 
 ip submitter :  `sh desensi@192.168.0.102`
 
