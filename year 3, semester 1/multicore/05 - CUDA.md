@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-03T20:58
+updated: 2025-12-08T17:03
 completed: false
 ---
 # CUDA
@@ -321,8 +321,8 @@ the following calls are made from the host:
 - `cudaMemcpyKind` is also an enumerated type, allowing the following values:
 	- `cudaMemcpyHostToHost`(`0`)
 	- `cudaMemcpyHostToDevice`(`1`)
-	- `cudaMemcpyDeviceToHost`(`1`)
-	- `cudaMemcpyDeviceToDevice`(`2`): this value, used in multi-GPU configurations, works only if the two devices are on the same server system
+	- `cudaMemcpyDeviceToHost`(`2`)
+	- `cudaMemcpyDeviceToDevice`(`3`): this value, used in multi-GPU configurations, works only if the two devices are on the same server system
 	- `cudaMemoryDefault` (`4`): used when unified virtual address space is available
 ## vector addition example
 >[!example] 
