@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T20:53
+updated: 2025-12-08T21:08
 completed: false
 ---
 # introduction
@@ -114,7 +114,7 @@ encryption is computationally secure if:
 
 >[!info] feistel network
 in 1973, Feistel proposed the concept of a *product cipher*: the execution of two or more simple ciphers in a sequence, in such a way that the final result is cryptographically stronger than any of the component ciphers
-## block cipher
+## block ciphers
 in a *block cipher*, the plaintext of length $n$ is partitioned into a sequence of $m$ blocks, and is encrypted/decrypted in terms of these blocks
 - if the last block is shorter, extra bits are used as padding
 >[!info] S-boxes
@@ -143,8 +143,23 @@ it can be used with either two or three independent keys
 | *3TDES (triple-key)* | $K1, K2, K3$ are all independent.                                    | $56 \times 3 = 168$ bits | strongest: resists MITM attacks.                                                            |
 | *2TDES (two-key)*    | $K1$ and $K3$ are the same, $K2$ is independent ($K1 = K3 \neq K2$). | $56 \times 2 = 112$ bits | still strong enough to resist brute force and MITM attacks. the most common implementation. |
 | *1TDES (single-key)* | $K1 = K2 = K3$                                                       | 56 bits                  | equivalent to single DES (used for backward compatibility).                                 |
-despite its strength to basic brute-force attacs
+despite its strength to basic brute-force attacks, it is considered *legacy* technology beacause of its slow speed and small block size, which makes it susceptible to modern attacks such as *sweet32*
 ### AES
+the *advanced encryption standard* (*AES*) is a block cipher that operates on *128-bit blocks*, and can use keys that are *128, 192 or 256 bits long*
+- this renders an exhaustive search attack currently impossible
+#### round structure
+128bit AES uses 10 rounds, and each round is an invertible transformation
+- the starting value is $X_{0}$, which is the XOR of the plaintext and the key ($X_{0} = P \,\oplus K$)
+- the ciphertext $C$ is $X_{10}$
+each round is built from *four basic steps*:
+- *SubBytes*: S-box substitution
+- *ShiftRows*: permutation
+- *MixColumns*: matrix multiplication
+- *AddRoundKey*: XOR with a round key, derived from the 128-bit encryption ke
 
 >[!info] brute forcing modern block ciphers
 ![[Pasted image 20251208201524.png]]
+
+## stream ciphers
+a *stream cipher* treats the message to be encrypted as one continous stream of characters
+ - they can be thought of block ciphers with block size of one (one-time pad cipher can be considered a stream cipher where the key length equals the message length !
