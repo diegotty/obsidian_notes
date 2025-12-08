@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T16:44
+updated: 2025-12-08T16:48
 completed: false
 ---
 ## basic information
@@ -111,4 +111,7 @@ the victim, after authenticating on the bank’s website, could visiti a malicio
 <img src="http://www.bank/transfer.php?to=1337&amount=10000"
 ```
 that makes the browser execute a GET request with to the URL above
-because the request contains the right cookie (as the request is made by the vict), the bank will satisfy the request
+because the request contains the right cookie (as the request is made by the victim, not the attacker), the bank will satisfy the request
+### countermeasures
+a countermeasure to CSRF attacks is using CSRF tokens, that impose the person’s token to make an action on behalf of someone. since it is not easy to discover the CSRF token, attackers generally aren’t able to impersonate the intended victim
+- however, *BREACH* attacks use multiple requests to guess the token (and possibly other info), even with encrypted sessions
