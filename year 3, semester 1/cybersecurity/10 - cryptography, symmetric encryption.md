@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-10T22:20
+updated: 2025-12-10T22:35
 completed: false
 ---
 # introduction
@@ -33,6 +33,17 @@ an example of a substitution cipher, the characters are replaced with a the char
 >
 >it is possible to improve the cipher by using a permutation of the original alphabet
 ![[Pasted image 20251208185200.png]]
+## characteristics
+symmetric cryptography is used because:
+- it is understandable and easy to use
+- it is efficient (which is a key consideration when messages are transmitted frequently or/and are lengthy)
+- the keys used are relatively short
+- can be used for many applications and can be easily combined
+however, it has many limitations:
+- the users must share the same key
+- during transmission of the key, someone may intercept it (big challenge: a *KDC* (*key distribution center*: a trusted third party) may be used for managing and distributing keys)
+- the number of keys needd increases at rapid rate as the number of users in the network increases
+- secret key cryptography cannot provide an assurance of authentication
 ## encrypting natural languages
 english is typically represented with 8-bit ASCII encoding, making, thus a message with $t$ characters corresponds to a $n$-bit array, with $n=8t$
 however, due to redundancy (repeated words, patterns like “th”, “ing”, etc) english plaintexts are a *very small subset* of all n-bit arrays, thus making it easier to break the ciphers
@@ -160,6 +171,18 @@ each round is built from *four basic steps*:
 >[!info] brute forcing modern block ciphers
 ![[Pasted image 20251208201524.png]]
 
+## block cipher modes
+a block cipher mode describes the way a block cipher encrypts and decrypts a sequence of messsage blocks between the five *modes of operation* defined by NIST
+
+a block cipher algorithm is not sufficient to encrypt a large file: as block ciphers are deterministic, encrypting the same 128-bit block of plaintext twice, with the same key, will result in the same 128-bit block of ciphertext.
+- if a message contains repeated blocks of data ()
+### electronic code book
+### cipher block chaining
+### cipher feedback
+### output feedback
+### counter
+>[!info] summary
+>![[Pasted image 20251210223118.png]]
 ## stream ciphers
 a *stream cipher* treats the message to be encrypted as one continous stream of characters
 it achieves this by generating a long stream of *pseudorandom bits*, the *keystream*, which is then combined with the plaintext 
@@ -215,3 +238,4 @@ while(true)
 
 >[!info] block vs stream ciphers: speed comparison
 ![[Pasted image 20251210222010.png]]
+
