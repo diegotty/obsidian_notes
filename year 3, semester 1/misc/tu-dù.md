@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03T07:36
-updated: 2025-12-08T16:30
+updated: 2025-12-10T14:26
 completed: false
 ---
 ## to do
@@ -10,6 +10,7 @@ completed: false
 - [ ] esercizi multicore ! (lez 11, slide 34, openMP)
 
 ## could do 
+- [ ] soluzioni esercizi multicore
 - [ ] xss game
 - [ ] slide 27 lez 14 multicore
 - [ ] extra lecture on profiling
