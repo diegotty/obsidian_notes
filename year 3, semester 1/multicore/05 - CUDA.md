@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-10T15:23
+updated: 2025-12-10T15:51
 completed: false
 ---
 # CUDA
@@ -455,3 +455,5 @@ carico tutti i dati in shared memory
 
 i primi elementi con `lindex` iniziali si compiano gli halo dx e sx
 sarebbbe possibile mandare in esecuzione un warp 
+### image to grayscale example
+we can see an j
