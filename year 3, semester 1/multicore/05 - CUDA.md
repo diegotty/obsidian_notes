@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-08T17:03
+updated: 2025-12-10T14:51
 completed: false
 ---
 # CUDA
@@ -435,3 +435,6 @@ an occupancy close to 1 is desirable, as the closer it is the higher the opportu
 >(duh)
 
 ### constant memory
+### shared memory
+it is a *on-chip memory* that is shared among threads. it can be seen as a user-managed L1 memory (also called scratchpad)
+### 1D stencil example
