@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-10T14:51
+updated: 2025-12-10T15:09
 completed: false
 ---
 # CUDA
@@ -438,3 +438,12 @@ an occupancy close to 1 is desirable, as the closer it is the higher the opportu
 ### shared memory
 it is a *on-chip memory* that is shared among threads. it can be seen as a user-managed L1 memory (also called scratchpad)
 ### 1D stencil example
+risultato viene scritto su un altro array
+original array è ready only
+viene usato un “padding” per elementi a sx e dx
+
+halo sx e dx (2 * radius)
+usiamo 2 array x fare in parallelo
+
+`gindex`: gobal index for the thread inside the array (halos included)
+`lindex`: local index for the array relative to the block (we sum `RADIUS` which is the halo, which we imported on `temp`
