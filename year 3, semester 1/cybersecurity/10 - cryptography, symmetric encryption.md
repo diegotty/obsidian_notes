@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-08T21:31
+updated: 2025-12-10T22:20
 completed: false
 ---
 # introduction
@@ -184,4 +184,34 @@ it achieves this by generating a long stream of *pseudorandom bits*, the *keystr
 >	- lack of integrity !!
 
 #### RC4
-*RC4* is a proprietary stream cipher, owned by RSA
+*RC4* is a proprietary stream cipher, owned by RSA and developed by Ron Rivest in 1987. it can have a *variable key size* (from 1 to 256 bytes), and performs byte oriented operations
+- it was sidely used but is now considered insecure and should not be used !!!
+
+>[!info] the core mechanism
+the KSA (key scheduling algorithm) inizialises a secret internal state `S`, based on the user-supplied secret key `K`
+
+```python
+## KSA
+for i = 0 to 255 do
+	S[i] = i; ## identity permutation
+	T[i] = K[i mod keylen]; ## repeated key
+
+j = 0;
+for i = 0 to 255 do
+	j = (j + S[i] + T[i]) mod 256;
+	Swap(S[i], S[j]);
+	
+## PRGA
+i, j = 0
+while(true)
+	i = (i + 1) mod 256;
+	j = (j + S[i]) mod 256;
+	Swap(S[i], S[j]);
+	t = S(S[i] + S[j]) mod 256;
+	k = S[t];
+	Output k;
+```
+
+
+>[!info] block vs stream ciphers: speed comparison
+![[Pasted image 20251210222010.png]]
