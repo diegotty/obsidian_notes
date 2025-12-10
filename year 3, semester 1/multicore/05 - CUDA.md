@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-10T16:06
+updated: 2025-12-10T16:18
 completed: false
 ---
 # CUDA
@@ -460,3 +460,5 @@ we can see an j
 `greyOffset`: index for the element i need to work on, on the linearized array
 `CHANNLES` = 3 in quanto ogni pixel ha 3 colori
 ### image blur example
+## performance estimation
+andrebbe specificare con quali elementi faccio operazioni flop
