@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-10T22:35
+updated: 2025-12-10T22:47
 completed: false
 ---
 # introduction
@@ -172,12 +172,41 @@ each round is built from *four basic steps*:
 ![[Pasted image 20251208201524.png]]
 
 ## block cipher modes
-a block cipher mode describes the way a block cipher encrypts and decrypts a sequence of messsage blocks between the five *modes of operation* defined by NIST
-
 a block cipher algorithm is not sufficient to encrypt a large file: as block ciphers are deterministic, encrypting the same 128-bit block of plaintext twice, with the same key, will result in the same 128-bit block of ciphertext.
-- if a message contains repeated blocks of data ()
+- if a message contains repeated blocks of data (as we saw, very common in natural languages !), these blocks would create a pattern that a cyptanalyst could exploit.
+we solve this isssue by introducing *randomness* and *dependency between blocks*
+
+a block cipher mode describes the way a block cipher encrypts and decrypts a *sequence of messsage blocks* (longer than the cipher’s fixed block size),  between the five *modes of operation* defined by NIST
 ### electronic code book
+*ECB* is the most simple mode, but also the most insecure: each plaintext block is encrypted entirely independently of all other blocks:
+$$
+C[i] = E_{k}(P[i])
+$$
+the same happens for decryption:
+$$
+P[i] = D_{k}(C[i])
+$$
+>[!info] graphic
+>![[Pasted image 20251210224033.png]]
+the block cipher algorithm is used on every block independently
+
+this mode allows for parallel encryption of the blocks of plaintext, and it can tollerate the loss/damage of a block (as there are no dependencies)
+however, encryption patterns in the plaintext are repeated in the ciphertext !
+
 ### cipher block chaining
+in *CBC*, each plaintext block is XORed with the previous ciphertext block *before* it is encrypted
+$$
+C[i] = E_{k}(P[i] \oplus C[i-1])
+$$
+the very first block uses a random, non-secret block of data, called *initialization vector*, that was separately transmitted
+$$
+C[-1] =  V
+$$
+
+
+$$
+C[i] = E_{k}(P[i] \oplus C[i-1])
+$$
 ### cipher feedback
 ### output feedback
 ### counter
