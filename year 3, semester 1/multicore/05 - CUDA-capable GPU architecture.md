@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T12:52
+updated: 2025-12-14T13:07
 completed: false
 ---
 # CUDA
@@ -133,11 +133,7 @@ it can be used to hold frequently used data, that would otherwise require a glob
 >```c
 >__shared type variable_name;
 >```
-### 1D stencil example
->[!warning] 1D stencil computation is used for image convolution or finite differencing !
-
->[!example] 1D stencil
-
+### 1D stencil computation
 when a stencil is used, each output element is *the sum of the input elements inside a certain radius*:
 - if `radius=3`, then each output element is the sum of 7 input elements (3 to the left, 3 to the right, and the current input element)
 when using a stencil, input element are read several times
@@ -145,49 +141,51 @@ when using a stencil, input element are read several times
 the input array is read-only, and the output elements are written in another array, `y`
 each thread processes one output element, therefore `blockDim.x` output elements per block are processed
 
+>[!warning] 1D stencil computation is used for image convolution or finite differencing !
+
 the idea is to move from the slow global memory to the faster shared memory.
 we also need to address the need, for boundary elements, of “*ghost cells*” to successfully calculate their output value
 - we therefore add `radius` cells to the start and the end of the array. the size of the shared memory array is then `blockDim.x + 2 * radius`
 we then write the result of the stencil calculation back to the global memory
+>[!example] code example
+>```c
+>// kernel, executed by each thread
+>__global__ void stencil_1d(int *in, int *out) {
+>	// shared array
+>    __shared__ int temp[BLOCK_SIZE + 2 * RADIUS];
+>    int gindex = threadIdx.x + blockIdx.x * blockDim.x;
+>    int lindex = threadIdx.x + RADIUS;
+>
+>    // read input elements into shared memory
+>    temp[lindex] = in[gindex];
+>    if (threadIdx.x < RADIUS) {
+>        temp[lindex - RADIUS] = in[gindex - RADIUS];
+>        temp[lindex + BLOCK_SIZE] = in[gindex + BLOCK_SIZE];
+>    }
+>    }
+>	
+>	// apply the stencil (calculate one output element)
+>	int result = 0;
+>	for (int offset = -RADIUS ; offset <= RADIUS ; offset++)
+>		result += temp[lindex + offset];
+>	
+>	    // store the result
+>	    out[gindex] = result;
+>}
+>```
+>- `gindex`: index, relative to the entire `in` array, of the element to be calculated by the current thread
+>- `lindex`: index, relative to the `temp`array, of the element to be calculated by the current thread (`RADIUS` is added because the element $i$ of the block $j$ (global array) corresponds to the element $i+\text{RADIUS}$ of the shared memory array)
+>
+>`in` and `out` should be of the same size, as they both dont have the *halo*
+
+#### thread synchronization
+what if the first warp of the block gets executed, and thread 31 starts computing the result before thread 32 copies in `temp` the element in position 32 ? (as each thread copies one element in `temp`)
+- we need to synchronize the threads, to guarantee that the stencil is applied only after the data has been loaded in the shared memory
+>[!syntax] synchronization
+the following function synchronizes all threads within a block: all threads must reach the barrier to proceed
 ```c
-// kernel
-__global__ void stencil_1d(int *in, int *out) {
-	// shared array
-    __shared__ int temp[BLOCK_SIZE + 2 * RADIUS];
-    int gindex = threadIdx.x + blockIdx.x * blockDim.x;
-    int lindex = threadIdx.x + RADIUS;
-
-    // read input elements into shared memory
-    temp[lindex] = in[gindex];
-    if (threadIdx.x < RADIUS) {
-        temp[lindex - RADIUS] = in[gindex - RADIUS];
-        temp[lindex + BLOCK_SIZE] = in[gindex + BLOCK_SIZE];
-    }
-    }
-	
-	// Apply the stencil
-	int result = 0;
-	for (int offset = -RADIUS ; offset <= RADIUS ; offset++)
-		result += temp[lindex + offset];
-	
-	    // store the result
-	    out[gindex] = result;
-}
+void __syncthreads()
 ```
-- `gindex`: global index for the thread inside the array (halos included)
-- `lindex`: local index for the array relative to the block (we sum `RADIUS` which is the halo, which we imported on `temp`
-
-- ``
-
-viene usato un “padding” per elementi a sx e dx
-
-halo sx e dx (2 * radius)
-usiamo 2 array x fare in parallelo
-
-carico tutti i dati in shared memory
-
-i primi elementi con `lindex` iniziali si compiano gli halo dx e sx
-sarebbbe possibile mandare in esecuzione un warp 
 ### image to grayscale example
 we can see an j
 `greyOffset`: index for the element i need to work on, on the linearized array
