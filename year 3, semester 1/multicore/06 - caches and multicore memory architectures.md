@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T11:36
+updated: 2025-12-14T11:39
 completed: false
 ---
 ## caches
@@ -109,7 +109,7 @@ as we can see, the efficiency of the multithread version is much worse for *8 x 
 
 false sharing softens as the number of rows gets larger
 - in the *8.000 x 8.000*, there should be no false sharing issues as each thread would store exactly 2.000 values of the `y` array, which divides perfectly into 250 lines of cache
-## memory organization
+## multicore memory architectures
 >[!info] img
 ![[Pasted image 20251214112617.png]]
 
