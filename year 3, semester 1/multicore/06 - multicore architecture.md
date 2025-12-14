@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T10:14
+updated: 2025-12-14T10:23
 completed: false
 ---
 ## caches
@@ -77,4 +77,19 @@ a cache line holds two variables (among others): `t1_data` and `t2_data`, and bo
 
 - core A (running thread 1) modifies `t1_data`, marking the entire line that contains it as *dirty*
 -  the coherence protocol invalides the entire line for core B
-- core B (running thread 2) tries to modify `t2_data`: since the cache line was invalidated, it must incur in a cost
+- core B (running thread 2) tries to modify `t2_data`: since the cache line was invalidated, it must incur in a costly *cache miss*, and fetch a fresh copy of the entire line
+- the same happens to core A after coreB modifies `t2_data`, starting a cycle that repeats endlessly: every time core A writes, core B’s cache is invalidated, and viceversa
+to fix false sharing, we can:
+- try to force variables which are accessed by different threads to be on different cache lines
+- *pad the data* (wasting cache space ????)
+- *use private variables*: do all updates on a variable local to the thread, then update the shared variables only at the end
+>[!syntax] cache line info
+from the code:
+>```c
+>sysconf(_SC_LEVEL1_DCACHE_LINESIZE);
+>```
+>
+>from the shell:
+>```sh
+>getconf LEVEL1_DCACHE_LINESIZE
+>```
