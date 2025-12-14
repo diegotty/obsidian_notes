@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T11:07
+updated: 2025-12-14T11:22
 completed: false
 ---
 ## caches
@@ -96,3 +96,17 @@ from the code:
 >```
 
 ### matrix-vector multiplication example
+>[!example] time analysis
+the all three cases, we perform the same number of operations (64.000.000), however, the performance changes noticeably between the tree matrix size distributions:
+![[Pasted image 20251214110741.png]]
+
+- *8 x 8.000.000*: the input vector `x` has 8.000.000 elements, which means there will be many cache misses when calculating a single `y[i]`
+- *8.000.000 x 8*: the output vector `y` has 8.000.000 elements, rather than 8.000. this implies more cache misses, as when you load a `y[i]`, you only use it for 8 operations before needing to load the next `y[i]`
+- *8.000 x 8.000*: this distribution balances the amount of time for which we can keep `y[i]` in the cache (8.000) operations, 
+
+
+
+![[Pasted image 20251214111213.png]]
+as we can see, the efficiency of the multithread version is much worse for *8 x 8.000.000*, because:
+- the entire output vector `y` , assuming it is a vector of floats (8 bytes) fits in a line. therefore, if each thread tried to access a different `y[i]`, there would be any false sharing issues, since they are all located in the same cache line
+false sharing softens as the number of rows gets larger, as in the *8.00 x 8.000*
