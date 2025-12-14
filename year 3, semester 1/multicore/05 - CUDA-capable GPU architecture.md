@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T13:36
+updated: 2025-12-14T13:52
 completed: false
 ---
 ## CPU vs GPU
@@ -264,4 +264,23 @@ in blur image computation, each ouput pixel the average of a patch of pixels in 
 >```
 pretty self explanatory !
 ## performance estimation
-to have an idea of whether we are saturating the computational capabilities of the hardware
+to have an idea of whether we are saturating the computational capabilities of the hardware, we use *FLOP/s*: *floating point operations per second*
+- the type of floating point depends (on the hardware implementation ? idk smn)
+- as of tday, we have systems capable of 1exaFLOP/s ($10^8$ FLOP/s)
+>[!example]
+in the previous example, all threads access global memory (`in`) for their input matrix elements
+>- lets suppose the global memory bandwith is 200 GB/s: we can load (200 GB/s) / (4 bytes) = 50 G/s of operands
+>we then do one FLOP (`+=`) on each operand. therefore, we can expect, in the best case, a of 50 GFLOP/s !
+>if the *theoretical peak execution throughput* of this GPU is 1.500 GFLOP/s, the *effective rate* is 3.3% of the device’s peak
+>```c
+>pixVal += in[curRow * w + curCol];
+>```
+
+therefore, we can see that the memory movements, rather than the compute capacity, are limiting the performance: the application is *memory bound*
+- to get close to the peak execution throughput, we need to drastically cut down memory accesses !
+we define the *compute-to-global-memory-access ratio* (/ *operational intensity* or *arithmetic intensity*)as the number of floating point calculation performend *for each access to the global memory* within a region of a program
+- it is measured in FLOP/byte
+for the example, given that we load at most 50G/s of operands, we would need a ratio of 30 or higher to achieve 1.5 TFLOP/s
+- we would nened to perform 30 FLOP on evey operand !
+>[!info] are we doomed ? 
+the computational throughput grows at a faster rate than the memory bandwith: 
