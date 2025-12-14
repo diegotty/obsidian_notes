@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-14, 11:49
-updated: 2025-12-14T12:07
+updated: 2025-12-14T12:08
 completed: false
 ---
 # CUDA
@@ -139,7 +139,7 @@ dim3 grid(4, 3, 2);
 >- dim3 is a vector of int
 >- every non-specified component is set to 1
 
->[!example]
+>[!example] example
 >```c
 >// hello.cu
 >#include <stdio.h>
@@ -179,69 +179,6 @@ each thread runs on CUDA core, and *sets of cores on the same SM share the same 
 - different sets of SMs can run different kernels
 each block runs on a single SM (i can’t have a block spanning over multiple SMs, but i can have more blocks running on the same SM), but *not all the threads in a block run concurrently*
 once a block is fully executed (all threads are done ?), the SM will run the next one 
-## vector addition example
->[!example] 
-![[Pasted image 20251201221457.png]]
->
->```c
->//h_ specifies it is memory on the host 
->void vecAdd(float* h_A, float* h_B, float* h_C, int n)
->{
->    int size = n * sizeof(float);
->	// d_ specifies it is memory on the device
->    float *d_A, *d_B, *d_C;
->
->    cudaMalloc((void**) &d_A, size);
->    cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
->
->    cudaMalloc((void**) &d_B, size);
->    cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
->
->    cudaMalloc((void**) &d_C, size);
->	
->	vecAddKernel<<ceil(n/256.0), 256>>(d_A, d_B, d_C, n);
->
->    cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost); 
->
->    cudaFree(d_A);
->    cudaFree(d_B);
->    cudaFree(d_C);
->}
->```
->- in this case, we might be running ceil(n/256) blocks. if n is not a multiple of 256, could run more threads than number of elements in the vector.
->	- each thread must then check if it needs to process some element or not
->
->```c
->__global__
->void vecAddKernel(float* A, float* B, float* C, int n){
->	int i = blockDim.x * blockIdx.x + threadIdx.x;
->	// check if thread is supposed to do something
->	if (i < n) C[i] = A[i] + B[i];
->}
->```
->![[Pasted image 20251201223014.png]]
-
->[!info] good practice (error checking)
-we should check the `cudaError_t` return variable to handle any errors
->```c
->int deviceCount = 0;
->cudaGetDeviceCount(&deviceCount);
->
->if(deviceCount == 0)
->    printf("No CUDA compatible GPU exists.\n");
->else
->{
->    cudaDeviceProp pr;
->    for(int i=0; i<deviceCount; i++)
->    {
->        cudaGetDeviceProperties(&pr, i);
->        printf("Dev #%i is %s\n", i, pr.name);
->    }
->}
->int deviceCount = 0;
->
->cudaGetDeviceCount(&deviceCount);
->```
 ## warps
 threads are executed in groups called *warps* that are the size of 32 threads (in current GPUs)
 - the size of a warp is stored in the `warpSize` variable
@@ -329,3 +266,66 @@ the following calls are made from the host:
 	- `cudaMemcpyDeviceToHost`(`2`)
 	- `cudaMemcpyDeviceToDevice`(`3`): this value, used in multi-GPU configurations, works only if the two devices are on the same server system
 	- `cudaMemoryDefault` (`4`): used when unified virtual address space is available
+## vector addition example
+>[!example] 
+![[Pasted image 20251201221457.png]]
+>
+>```c
+>//h_ specifies it is memory on the host 
+>void vecAdd(float* h_A, float* h_B, float* h_C, int n)
+>{
+>    int size = n * sizeof(float);
+>	// d_ specifies it is memory on the device
+>    float *d_A, *d_B, *d_C;
+>
+>    cudaMalloc((void**) &d_A, size);
+>    cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
+>
+>    cudaMalloc((void**) &d_B, size);
+>    cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
+>
+>    cudaMalloc((void**) &d_C, size);
+>	
+>	vecAddKernel<<ceil(n/256.0), 256>>(d_A, d_B, d_C, n);
+>
+>    cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost); 
+>
+>    cudaFree(d_A);
+>    cudaFree(d_B);
+>    cudaFree(d_C);
+>}
+>```
+>- in this case, we might be running ceil(n/256) blocks. if n is not a multiple of 256, could run more threads than number of elements in the vector.
+>	- each thread must then check if it needs to process some element or not
+>
+>```c
+>__global__
+>void vecAddKernel(float* A, float* B, float* C, int n){
+>	int i = blockDim.x * blockIdx.x + threadIdx.x;
+>	// check if thread is supposed to do something
+>	if (i < n) C[i] = A[i] + B[i];
+>}
+>```
+>![[Pasted image 20251201223014.png]]
+
+>[!info] good practice (error checking)
+we should check the `cudaError_t` return variable to handle any errors
+>```c
+>int deviceCount = 0;
+>cudaGetDeviceCount(&deviceCount);
+>
+>if(deviceCount == 0)
+>    printf("No CUDA compatible GPU exists.\n");
+>else
+>{
+>    cudaDeviceProp pr;
+>    for(int i=0; i<deviceCount; i++)
+>    {
+>        cudaGetDeviceProperties(&pr, i);
+>        printf("Dev #%i is %s\n", i, pr.name);
+>    }
+>}
+>int deviceCount = 0;
+>
+>cudaGetDeviceCount(&deviceCount);
+>```

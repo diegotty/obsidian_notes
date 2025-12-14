@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T12:06
+updated: 2025-12-14T12:20
 completed: false
 ---
 # CUDA
@@ -71,7 +71,7 @@ there are multiple types of memories:
 - *shared memory*: fast on-chip memory that holds frequenty used data. it can also be used *to exchange data between SPs of the same SM*.
 - *L1/L2 cache*: these caches are transparent to the programmer. (and act just as you would expect [[year 1, semester 2/ae/cache/intro| (already done ….)]])
 - *global memory*:  main part of the off-chip memory. high capacity but relatively slow, it is the *only part accessible* through CUDA functions
-- *texture and surface memory*: content managed by special hardware that permits fast implementation of some filtering/interpolation operator
+- *texture and surface memory*: content managed by special hardware that permits fast implementation of some filtering/interpolation operators
 - *constant memory*: part of the memory that can only store constants. it is cached, *allows for broadcasting of a single value to all threads in a warp*
 the following table show CUDA variables’s scope and lifetime
 
@@ -108,8 +108,24 @@ an occupancy close to 1 is desirable, as the closer it is the higher the opportu
 >(duh)
 
 ### constant memory
-a m
-!= ROM
+constant memory is different from the *ROM*: it is just a off-chip writeable memory that can hold values that remain constant through the execution of a kernel. it has two main advantages:
+- it is cached
+- it supports broadcasting of a single value to all threads in a warp
+>[!example] constant memory usage
+suppose we have 10 warps on a SM, and all request the same variable:
+if the data is on global memory:
+>- all warps will request the same segment from global memory
+>- the first time, the segment will be copied in L2 cache. however, if other data passes through L2, there are good chances that the segment will be lost !=
+>- therefore, there are good chances that data will be requested multiple times
+>if the data is in constant memory:
+>- during first warp request: data is copied in constant-cache
+>- since there is less traffic in constant memory, there are good chances that all other warps will find the data already in the memory
+
+>[!syntax] constant memory usage
+```c
+__constant type variable_name; // allocate variable_name in constant memory
+cudaMemcpyToSymbol(variable_name, &host_src, sizeof(type), cudaMemcpyHostToDevice); // function is a variant of cudaMemcpy
+```
 ### shared memory
 it is a *on-chip memory* that is shared among threads. it can be seen as a user-managed L1 memory (also called scratchpad)
 ### 1D stencil example
