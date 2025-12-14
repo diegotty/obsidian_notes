@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T12:20
+updated: 2025-12-14T12:37
 completed: false
 ---
 # CUDA
@@ -121,23 +121,34 @@ if the data is on global memory:
 >- during first warp request: data is copied in constant-cache
 >- since there is less traffic in constant memory, there are good chances that all other warps will find the data already in the memory
 
->[!syntax] constant memory usage
-```c
-__constant type variable_name; // allocate variable_name in constant memory
-cudaMemcpyToSymbol(variable_name, &host_src, sizeof(type), cudaMemcpyHostToDevice); // function is a variant of cudaMemcpy
-```
+>[!syntax] constant memory allocation and usage
+>```c
+>__constant type variable_name; // allocate variable_name in constant memory
+>cudaMemcpyToSymbol(variable_name, &host_src, sizeof(type), cudaMemcpyHostToDevice); // function is a variant of cudaMemcpy
+>```
 ### shared memory
-it is a *on-chip memory* that is shared among threads. it can be seen as a user-managed L1 memory (also called scratchpad)
+it is a *on-chip memory* that is shared among threads. it can be seen as a user-managed L1 memory (also called scratchpad). however, unlike L1, you can have a guarantee that the data you need will be in the *shared memory* !
+it can be used to hold frequently used data, that would otherwise require a global memory access, or as a way for cores on the same SM to share data
+>[!syntax] shared memory allocation
+>```c
+>__shared type variable_name;
+>```
 ### 1D stencil example
-risultato viene scritto su un altro array
-original array è ready only
+
+>[!example] 1D stencil
+
+when a stencil is used, each output element is *the sum of the input elements inside a certain radius*:
+- if `r=3`, then each output element is the sum of 7 input elements (3 to the left, 3 to the right, and the current input element)
+when using a stencil, input element are read several times
+- e.g. with `r=3`, each input element is read 7 times
+
+the input array is read-only, and the output elements are written in another array, `y`
+
 viene usato un “padding” per elementi a sx e dx
 
 halo sx e dx (2 * radius)
 usiamo 2 array x fare in parallelo
 
-`gindex`: gobal index for the thread inside the array (halos included)
-`lindex`: local index for the array relative to the block (we sum `RADIUS` which is the halo, which we imported on `temp`
 
 
 carico tutti i dati in shared memory
@@ -151,3 +162,31 @@ we can see an j
 ### image blur example
 ## performance estimation
 andrebbe specificare con quali elementi faccio operazioni flop
+o
+```c
+// kernel
+__global__ void stencil_1d(int *in, int *out) {
+	// shared array
+    __shared__ int temp[BLOCK_SIZE + 2 * RADIUS];
+    int gindex = threadIdx.x + blockIdx.x * blockDim.x;
+    int lindex = threadIdx.x + RADIUS;
+
+    // read input elements into shared memory
+    temp[lindex] = in[gindex];
+    if (threadIdx.x < RADIUS) {
+        temp[lindex - RADIUS] = in[gindex - RADIUS];
+        temp[lindex + BLOCK_SIZE] = in[gindex + BLOCK_SIZE];
+    }
+    }
+	
+	// Apply the stencil
+	int result = 0;
+	for (int offset = -RADIUS ; offset <= RADIUS ; offset++)
+		result += temp[lindex + offset];
+	
+	    // store the result
+	    out[gindex] = result;
+}
+```
+- `gindex`: gobal index for the thread inside the array (halos included)
+- `lindex`: local index for the array relative to the block (we sum `RADIUS` which is the halo, which we imported on `temp`
