@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T09:41
+updated: 2025-12-14T09:59
 completed: false
 ---
 ## caches
@@ -60,5 +60,11 @@ as we studied, the cores share a bus: any signal transmitted on the bus can be �
 - if core 1 is *snooping* (listening to) the bus, it will see that `x` has been updated and it can mark its copy of `x` as invalid
 however, this technolgy is not used anymore, as broadcast is expensive and architectures have too many cores
 #### directory-based cache coherence
-this method to ensure cache coherence uses a data structure called *directory*, that stores the status of each cache line. when a variable is updated, the directory is consulted, and the cache controllers of the cores that have that variable’s cache line in the caches are *invalidated*
-- e.g.: a bitmap saying which cores have a copy of a given line
+this method to ensure cache coherence uses a data structure called *directory*, that stores the status of each cache line.
+>[!warning] this example co
+when a variable is updated:
+- the directory is consulted by the core that decides to update
+- the directory consults its list and finds the cores that have a copy of the block in *their caches*.
+- and the cache controllers of the cores that have that variable’s cache line in the caches are *invalidated*
+- the directory is usually located in the *memory controller* or the L3 cache
+- e.g.: a bitmap saying which cores have a copy of a given line, and whether the line is clean or dirty
