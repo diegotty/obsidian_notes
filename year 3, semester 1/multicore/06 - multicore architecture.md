@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T10:23
+updated: 2025-12-14T10:42
 completed: false
 ---
 ## caches
@@ -81,7 +81,8 @@ a cache line holds two variables (among others): `t1_data` and `t2_data`, and bo
 - the same happens to core A after coreB modifies `t2_data`, starting a cycle that repeats endlessly: every time core A writes, core B’s cache is invalidated, and viceversa
 to fix false sharing, we can:
 - try to force variables which are accessed by different threads to be on different cache lines
-- *pad the data* (wasting cache space ????)
+- *pad the data* (waste of cache space)
+- compiler directives or language features to ensure arrays/structures start on a cache line boundary
 - *use private variables*: do all updates on a variable local to the thread, then update the shared variables only at the end
 >[!syntax] cache line info
 from the code:
@@ -93,3 +94,5 @@ from the code:
 >```sh
 >getconf LEVEL1_DCACHE_LINESIZE
 >```
+
+### matrix vector multiplication example
