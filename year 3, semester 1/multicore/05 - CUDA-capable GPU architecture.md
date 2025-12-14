@@ -1,10 +1,9 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T13:07
+updated: 2025-12-14T13:22
 completed: false
 ---
-# CUDA
 ## CPU vs GPU
 *CPU*s are *latency oriented* (how much time it takes to complete a single task) they aim for high clock frequency, and feature:
 - large caches, to convert long latency memory to short latency cache accesses
@@ -133,7 +132,7 @@ it can be used to hold frequently used data, that would otherwise require a glob
 >```c
 >__shared type variable_name;
 >```
-### 1D stencil computation
+## 1D stencil computation
 when a stencil is used, each output element is *the sum of the input elements inside a certain radius*:
 - if `radius=3`, then each output element is the sum of 7 input elements (3 to the left, 3 to the right, and the current input element)
 when using a stencil, input element are read several times
@@ -162,7 +161,6 @@ we then write the result of the stencil calculation back to the global memory
 >        temp[lindex - RADIUS] = in[gindex - RADIUS];
 >        temp[lindex + BLOCK_SIZE] = in[gindex + BLOCK_SIZE];
 >    }
->    }
 >	
 >	// apply the stencil (calculate one output element)
 >	int result = 0;
@@ -178,19 +176,55 @@ we then write the result of the stencil calculation back to the global memory
 >
 >`in` and `out` should be of the same size, as they both dont have the *halo*
 
-#### thread synchronization
+### thread synchronization
 what if the first warp of the block gets executed, and thread 31 starts computing the result before thread 32 copies in `temp` the element in position 32 ? (as each thread copies one element in `temp`)
 - we need to synchronize the threads, to guarantee that the stencil is applied only after the data has been loaded in the shared memory
 >[!syntax] synchronization
 the following function synchronizes all threads within a block: all threads must reach the barrier to proceed
+>```c
+>void __syncthreads()
+>```
+
+in the previous example, it would be placed after reading the input elements into shared memory
+## grayscale image computation
+we can see an image as a 2D matrix of pixels: each pixel has 3 values for the 3 RGB channels, making the image a matrix with 
+$$
+\text{number of columns = 3 $\cdot$ number of pixels in a row}
+$$
+the formula to convert a RGB pixel to grayscale is:
+$$
+L = r \cdot 0.21 + g \cdot 0.72 + b \cdot 0.07
+$$
+>[!info] parallelization
+we can calculate the pixels independently of each other (assigning one pixel to one thread), however, we need to check if the thread actually has a pixel to calculate (as the image can be smaller than the blocks used)
+![[Pasted image 20251214131701.png]]
+
 ```c
-void __syncthreads()
+// we have 3 channels corresponding to RGB
+// the input image is encoded as unsigned characters [0, 255]
+__global__ void colorToGreyscaleConversion(unsigned char * Pout, unsigned char * Pin, int width, int height) {
+	// calculate the absolute pixel position, that will be calculated by the thread	
+    int Col = threadIdx.x + blockIdx.x * blockDim.x;
+    int Row = threadIdx.y + blockIdx.y * blockDim.y;
+
+    if (Col < width && Row < height) {
+        // get 1D coordinate for the grayscale image
+        int greyOffset = Row * width + Col;
+        // one can think of the RGB image having
+        // CHANNEL times columns than the grayscale image
+        int rgbOffset = greyOffset * CHANNELS;
+        unsigned char r = Pin[rgbOffset];     // red value for pixel
+        unsigned char g = Pin[rgbOffset + 1]; // green value for pixel
+        unsigned char b = Pin[rgbOffset + 2]; // blue value for pixel
+        // perform the rescaling and store it
+        // We multiply by floating point constants
+        Pout[greyOffset] = 0.21f * r + 0.71f * g + 0.07f * b;
+    }
+}
 ```
-### image to grayscale example
-we can see an j
+
 `greyOffset`: index for the element i need to work on, on the linearized array
 `CHANNLES` = 3 in quanto ogni pixel ha 3 colori
-### image blur example
+## blur image computation
 ## performance estimation
 andrebbe specificare con quali elementi faccio operazioni flop
-o
