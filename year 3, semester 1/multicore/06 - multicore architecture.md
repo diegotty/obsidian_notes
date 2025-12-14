@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T09:59
+updated: 2025-12-14T10:14
 completed: false
 ---
 ## caches
@@ -59,12 +59,22 @@ as we studied, the cores share a bus: any signal transmitted on the bus can be �
 - when core 0 updates the copy of `x` stored in its cache, it also *broadcasts* this information across the bus
 - if core 1 is *snooping* (listening to) the bus, it will see that `x` has been updated and it can mark its copy of `x` as invalid
 however, this technolgy is not used anymore, as broadcast is expensive and architectures have too many cores
+
+>[!warning] thus, the follow examples and solution cover the situation where cores have the same variable stored in their own private caches
 #### directory-based cache coherence
-this method to ensure cache coherence uses a data structure called *directory*, that stores the status of each cache line.
->[!warning] this example co
+this method to ensure cache coherence uses a data structure called *directory*, that stores the status of each cache line (e.g a bitmap saying which cores have a copy of a given line, and whether the line is clean or dirty)
 when a variable is updated:
-- the directory is consulted by the core that decides to update
+- the directory is consulted by the core that decides to update (core A)
 - the directory consults its list and finds the cores that have a copy of the block in *their caches*.
-- and the cache controllers of the cores that have that variable’s cache line in the caches are *invalidated*
-- the directory is usually located in the *memory controller* or the L3 cache
-- e.g.: a bitmap saying which cores have a copy of a given line, and whether the line is clean or dirty
+	 - the directory sends an *invalidation signal* to the cache controllers of those cores, who receive the signal and mark their copy as *invalid*
+- the next time a core with an invalid line try to read the that invalid line, they are forced to fetch the new, correct value from main memory or core A’s cache
+the directory is usually located in the *memory controller* or the L3 cache
+#### false sharing
+data is fetcheed from memory to cache in lines that can contain several variables, depending on the the lines’s length (typically 64 bytes).
+*false sharing* happens when two threads access *two different variables taht happend to reside in the same cache line*. this is a problem as it leads to many unneeded cache misses therefore many more loads from memory
+>[!example]
+a cache line holds two variables (among others): `t1_data` and `t2_data`, and both core A and core B store that line in their cache
+
+- core A (running thread 1) modifies `t1_data`, marking the entire line that contains it as *dirty*
+-  the coherence protocol invalides the entire line for core B
+- core B (running thread 2) tries to modify `t2_data`: since the cache line was invalidated, it must incur in a cost
