@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-14, 11:49
-updated: 2025-12-14T11:51
+updated: 2025-12-14T12:07
 completed: false
 ---
 # CUDA
@@ -48,7 +48,43 @@ we got to 9 n something
 
 >[!example] NVidia architectures
 >![[Pasted image 20251126170236.png]]
+### device properties
+>[!example] listing all the GPUs in a system
+>```c
+>int deviceCount = 0;
+>cudaGetDeviceCount(&deviceCount);
+>
+>if(deviceCount == 0)
+>    printf("No CUDA compatible GPU exists.\n");
+>else
+>{
+>    cudaDeviceProp pr;
+>    for(int i=0; i<deviceCount; i++)
+>    {
+>        cudaGetDeviceProperties(&pr, i);
+>        printf("Dev #%i is %s\n", i, pr.name);
+>    }
+>}
+>```
 
+>[!info] device properties struct definition
+>```c
+>struct cudaDeviceProp {
+>    char name[256];             // A string identifying the device
+>    int major;                  // Compute capability major number
+>    int minor;                  // Compute capability minor number
+>    int maxGridSize [3];
+>    int maxThreadsDim [3];
+>    int maxThreadsPerBlock;
+>    int maxThreadsPerMultiProcessor;
+>    int multiProcessorCount;
+>    int regsPerBlock;           // Number of registers per block
+>    size_t sharedMemPerBlock;
+>    size_t totalGlobalMem;
+>    int warpSize;
+>    // . . .
+>};
+>```
 ### thread position
 (this stuff gets asket during the oral exam …..)
 each thread is *aware of its position* in the overall structure, via a set of *intrinsic variables/structures*. with this position, a thread can map its position to the subset of data that it is assigned to.
@@ -83,7 +119,6 @@ each thread is *aware of its position* in the overall structure, via a set of *i
 the adjust the execution model to the data we are working on
 
 threads on the GPU can do minimal work, like just an instruction
-
 ## writing programs
 the parallel programming paradigm used by CUDA is usually [[02 - parallel design patterns#SPMD|SPMD]] (or rather *SIMT* (*single instruction, multiple threads*))
 we achieve parallel programming by writing *kernels* (functions) that are going to be executed by all the threads
@@ -207,6 +242,50 @@ we should check the `cudaError_t` return variable to handle any errors
 >
 >cudaGetDeviceCount(&deviceCount);
 >```
+## warps
+threads are executed in groups called *warps* that are the size of 32 threads (in current GPUs)
+- the size of a warp is stored in the `warpSize` variable
+- threads in a block are split into warps according to their intra-block ID: the first 32 threads of a block belong to the same warp, the next 32 threads to a different warp, etc …)
+all threads in a warp are executed according to the SIMD model, so consequently all the threads in a warp will always have the same execution timing.
+*several warp schedulers* can be present on each SM, as multiple warps can run at the same time, each following a different execution path
+- if for example, a warp takes only a fraction of the SPs of a SM
+>[!info] img
+![[Pasted image 20251126182254.png]]
+### warp divergence
+because all threads in a warp are executed according to the SIMD model, at any instant in time, for all the threads in the warp, one istruction is fetched and executed
+if a conditional operation leads those threads to different paths, all the divergent paths are evaluated *sequentially* until the paths mege again. this way, threads that do not follow the path currently being executed *are stalled*
+>[!info] warp divergence
+![[Pasted image 20251126182339.png]]
+
+## context switching
+usually, a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps.
+CUDA cores (and their registers) can maintain each thread’s private execution context: this way, CUDA cores’s context switch is basically free.
+when an instruction to be executed by a warp needs to wait for the result of a previously initiated, long-latency operation, the warp is *not selected* for execution: instead, another resident warp that is not waiting for results will be selected for execution.
+- this makes having more *resident warps* ideal, as the hardware is more likely to find a warp to execute at any point in time, thus making full use of the execution hardware in spite of long-latency operations
+this mechanism of filling the latency time of operations with work from other threads is called *latency tolerance* or *latency hiding*
+
+>[!info] biggest costs in GPGPUs
+instead of the context switch, the biggest cost in GPU parallel computing is the transferring of data between the GPU and the CPU !
+
+>[!example] block size esample 1
+> lets suppose a CUDA device allows up to 8 blocks and 1024 threads per SM, and 512 threads per block.
+should we use 8x8, 16x16, 32x32 blocks ?
+>- 8x8 blocks: 64 threads per block would make it necessary to have 16 blocks to fill a SM. however, we can have at most 8 blocks per SM, ending up with 512 threads per SM. not fully utilizing the resources !!!!
+>- 16x16 blocks: 256 threads per block would make it necessary to have 4 blocks to fill a SM. this would be good !!!
+>- 32x32 blocks: we would have 1024 threads per block, which is higher than the 512 threads per block we can have
+
+>[!example] block size example 2
+lets suppose a CUDA device allows up to 8 blocks and 1536 threads per SM, and 1024 threads per block.
+>- 8x8 blocks: 64 threads per block would make it necessary to have 24 blocks, which is more than we can have in a SM. thus we are not fully utilizing the resources
+>- 16x16 blocks: 256 threads per block would make it necessary to have 6 blocks per SM, achieving full capacity
+>- 32x32 blocks: 1024 threads per block would make it possible for only one block to fit in a SM, leaving almost 1/3 of the threads of each SM at rest
+
+>[!example] block size example 3
+suppose our structure looks like this:
+a grid of 4x5x3 blocks, each made of 100 threads.
+>- each block is divided into warps, and while the first three warps would have 32 threads, the last one would have 4. if we assume that we can only schedule a warp at a time (because we have 32 SPs per SM), then the last warp would only use 4 of the 32 available cores
+>- we would have 60 blocks, to be distributed over 16 SMs. 
+>// umm didnt get it
 
 ## memory 
 >[!syntax] syntax
