@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T11:22
+updated: 2025-12-14T11:36
 completed: false
 ---
 ## caches
@@ -99,14 +99,25 @@ from the code:
 >[!example] time analysis
 the all three cases, we perform the same number of operations (64.000.000), however, the performance changes noticeably between the tree matrix size distributions:
 ![[Pasted image 20251214110741.png]]
-
-- *8 x 8.000.000*: the input vector `x` has 8.000.000 elements, which means there will be many cache misses when calculating a single `y[i]`
-- *8.000.000 x 8*: the output vector `y` has 8.000.000 elements, rather than 8.000. this implies more cache misses, as when you load a `y[i]`, you only use it for 8 operations before needing to load the next `y[i]`
-- *8.000 x 8.000*: this distribution balances the amount of time for which we can keep `y[i]` in the cache (8.000) operations, 
-
-
-
+>- *8 x 8.000.000*: the input vector `x` has 8.000.000 elements, which means there will be many cache misses when calculating a single `y[i]`
+>- *8.000.000 x 8*: the output vector `y` has 8.000.000 elements, rather than 8.000. this implies more cache misses, as when you load a `y[i]`, you only use it for 8 operations before needing to load the next `y[i]`
+>- *8.000 x 8.000*: this distribution balances the amount of time for which we can keep `y[i]` in the cache (8.000) operations, and the dimensions of a input row
+>
 ![[Pasted image 20251214111213.png]]
 as we can see, the efficiency of the multithread version is much worse for *8 x 8.000.000*, because:
-- the entire output vector `y` , assuming it is a vector of floats (8 bytes) fits in a line. therefore, if each thread tried to access a different `y[i]`, there would be any false sharing issues, since they are all located in the same cache line
-false sharing softens as the number of rows gets larger, as in the *8.00 x 8.000*
+>- the entire output vector `y` , assuming it is a vector of floats (8 bytes) fits in a line. therefore, if each thread tried to access a different `y[i]`, there would be any false sharing issues, since they are all located in the same cache line
+
+false sharing softens as the number of rows gets larger
+- in the *8.000 x 8.000*, there should be no false sharing issues as each thread would store exactly 2.000 values of the `y` array, which divides perfectly into 250 lines of cache
+## memory organization
+>[!info] img
+![[Pasted image 20251214112617.png]]
+
+in *UMA* (*uniform memory access*) systems, all cores are connected to a central, shared memory controller the memory is perfectly unified, and any core can access a byte of RAM with the same speed and latency
+- however, as the number of cores increases, the single bus becomes a source of *bottleneck*, limiting scalability
+in *NUMA* (*non-uniform memory access*) systems, the memory is physically distributed accross different nodes (group of cores), as each node has its own, *dedicated bank of memory*
+all memory is still accessible to all cores (as its still a shared-memory system), but the physical distance matters (whether the requested data is located in a core’s bank or in another core’s bank, as the latter option causes a necessary communication between the nodes, resulting in higher latency)
+the cost of accessing the memory changes depending on where the data is allocated: accessing a local memory is cheaper than accessing a remote memory
+- it is possible to specify where the data must be allocated (4 more info, `numa.h` lib and `numacl1)
+
+furthermore, some cores might be closer to the *NIC*, therefore it would make sense that those cores are the ones doing I/O (send/receive) operations !
