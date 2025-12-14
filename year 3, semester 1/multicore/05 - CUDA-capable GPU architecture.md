@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T13:52
+updated: 2025-12-14T13:53
 completed: false
 ---
 ## CPU vs GPU
@@ -283,4 +283,4 @@ we define the *compute-to-global-memory-access ratio* (/ *operational intensity*
 for the example, given that we load at most 50G/s of operands, we would need a ratio of 30 or higher to achieve 1.5 TFLOP/s
 - we would nened to perform 30 FLOP on evey operand !
 >[!info] are we doomed ? 
-the computational throughput grows at a faster rate than the memory bandwith: 
+the computational throughput grows at a faster rate than the memory bandwith: are we making machines with useless power ?
