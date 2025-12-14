@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T12:37
+updated: 2025-12-14T12:52
 completed: false
 ---
 # CUDA
@@ -134,35 +134,21 @@ it can be used to hold frequently used data, that would otherwise require a glob
 >__shared type variable_name;
 >```
 ### 1D stencil example
+>[!warning] 1D stencil computation is used for image convolution or finite differencing !
 
 >[!example] 1D stencil
 
 when a stencil is used, each output element is *the sum of the input elements inside a certain radius*:
-- if `r=3`, then each output element is the sum of 7 input elements (3 to the left, 3 to the right, and the current input element)
+- if `radius=3`, then each output element is the sum of 7 input elements (3 to the left, 3 to the right, and the current input element)
 when using a stencil, input element are read several times
-- e.g. with `r=3`, each input element is read 7 times
-
+- e.g. with `radius=3`, each input element is read 7 times
 the input array is read-only, and the output elements are written in another array, `y`
+each thread processes one output element, therefore `blockDim.x` output elements per block are processed
 
-viene usato un “padding” per elementi a sx e dx
-
-halo sx e dx (2 * radius)
-usiamo 2 array x fare in parallelo
-
-
-
-carico tutti i dati in shared memory
-
-i primi elementi con `lindex` iniziali si compiano gli halo dx e sx
-sarebbbe possibile mandare in esecuzione un warp 
-### image to grayscale example
-we can see an j
-`greyOffset`: index for the element i need to work on, on the linearized array
-`CHANNLES` = 3 in quanto ogni pixel ha 3 colori
-### image blur example
-## performance estimation
-andrebbe specificare con quali elementi faccio operazioni flop
-o
+the idea is to move from the slow global memory to the faster shared memory.
+we also need to address the need, for boundary elements, of “*ghost cells*” to successfully calculate their output value
+- we therefore add `radius` cells to the start and the end of the array. the size of the shared memory array is then `blockDim.x + 2 * radius`
+we then write the result of the stencil calculation back to the global memory
 ```c
 // kernel
 __global__ void stencil_1d(int *in, int *out) {
@@ -188,5 +174,25 @@ __global__ void stencil_1d(int *in, int *out) {
 	    out[gindex] = result;
 }
 ```
-- `gindex`: gobal index for the thread inside the array (halos included)
+- `gindex`: global index for the thread inside the array (halos included)
 - `lindex`: local index for the array relative to the block (we sum `RADIUS` which is the halo, which we imported on `temp`
+
+- ``
+
+viene usato un “padding” per elementi a sx e dx
+
+halo sx e dx (2 * radius)
+usiamo 2 array x fare in parallelo
+
+carico tutti i dati in shared memory
+
+i primi elementi con `lindex` iniziali si compiano gli halo dx e sx
+sarebbbe possibile mandare in esecuzione un warp 
+### image to grayscale example
+we can see an j
+`greyOffset`: index for the element i need to work on, on the linearized array
+`CHANNLES` = 3 in quanto ogni pixel ha 3 colori
+### image blur example
+## performance estimation
+andrebbe specificare con quali elementi faccio operazioni flop
+o
