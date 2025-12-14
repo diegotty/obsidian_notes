@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T10:42
+updated: 2025-12-14T11:07
 completed: false
 ---
 ## caches
@@ -95,4 +95,4 @@ from the code:
 >getconf LEVEL1_DCACHE_LINESIZE
 >```
 
-### matrix vector multiplication example
+### matrix-vector multiplication example
