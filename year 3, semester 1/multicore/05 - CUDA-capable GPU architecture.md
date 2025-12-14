@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T13:22
+updated: 2025-12-14T13:36
 completed: false
 ---
 ## CPU vs GPU
@@ -199,32 +199,69 @@ $$
 we can calculate the pixels independently of each other (assigning one pixel to one thread), however, we need to check if the thread actually has a pixel to calculate (as the image can be smaller than the blocks used)
 ![[Pasted image 20251214131701.png]]
 
-```c
-// we have 3 channels corresponding to RGB
-// the input image is encoded as unsigned characters [0, 255]
-__global__ void colorToGreyscaleConversion(unsigned char * Pout, unsigned char * Pin, int width, int height) {
-	// calculate the absolute pixel position, that will be calculated by the thread	
-    int Col = threadIdx.x + blockIdx.x * blockDim.x;
-    int Row = threadIdx.y + blockIdx.y * blockDim.y;
+>[!info]
+in the following example, the matrix is linearized: as we saw, this is the optimal way to parallelized nested nested for-loops (like matrices)
+>![[Pasted image 20251214132636.png]]
+imagine that as an array (rows and their orded are kept intact)
 
-    if (Col < width && Row < height) {
-        // get 1D coordinate for the grayscale image
-        int greyOffset = Row * width + Col;
-        // one can think of the RGB image having
-        // CHANNEL times columns than the grayscale image
-        int rgbOffset = greyOffset * CHANNELS;
-        unsigned char r = Pin[rgbOffset];     // red value for pixel
-        unsigned char g = Pin[rgbOffset + 1]; // green value for pixel
-        unsigned char b = Pin[rgbOffset + 2]; // blue value for pixel
-        // perform the rescaling and store it
-        // We multiply by floating point constants
-        Pout[greyOffset] = 0.21f * r + 0.71f * g + 0.07f * b;
-    }
-}
-```
-
-`greyOffset`: index for the element i need to work on, on the linearized array
-`CHANNLES` = 3 in quanto ogni pixel ha 3 colori
+>[!example] code implementation
+>```c
+>// we have 3 channels corresponding to RGB
+>// the input image is encoded as unsigned characters [0, 255]
+>__global__ void colorToGreyscaleConversion(unsigned char * Pout, unsigned char * Pin, int width, int height) {
+>	// calculate the absolute pixel position, that will be calculated by the thread	
+>    int Col = threadIdx.x + blockIdx.x * blockDim.x;
+>    int Row = threadIdx.y + blockIdx.y * blockDim.y;
+>
+>    if (Col < width && Row < height) {
+>		// index for the current pixel on the linearized array
+>        int greyOffset = Row * width + Col;
+>		
+>		// account for the 3 channels of each pixel
+>        int rgbOffset = greyOffset * CHANNELS;
+>        unsigned char r = Pin[rgbOffset];     // red value for pixel
+>        unsigned char g = Pin[rgbOffset + 1]; // green value for pixel
+>        unsigned char b = Pin[rgbOffset + 2]; // blue value for pixel
+>		
+>        // perform the rescaling and store it
+>        Pout[greyOffset] = 0.21f * r + 0.71f * g + 0.07f * b;
+>    }
+>}
+>```
 ## blur image computation
+in blur image computation, each ouput pixel the average of a patch of pixels in the input image.
+>[!example] code implementation
+>```c
+>__global__ void blurKernel(unsigned char * in, unsigned char * out, int w, int h)
+>{
+>    int Col = blockIdx.x * blockDim.x + threadIdx.x;
+>    int Row = blockIdx.y * blockDim.y + threadIdx.y;
+>
+>    if (Col < w && Row < h) {
+>        int pixVal = 0;
+>        int pixels = 0;
+>
+>        // get the average of the surrounding BLUR_SIZE x BLUR_SIZE box
+>        for(int blurRow = -BLUR_SIZE; blurRow < BLUR_SIZE+1; ++blurRow) {
+>            for(int blurCol = -BLUR_SIZE; blurCol < BLUR_SIZE+1; ++blurCol)
+>            {
+>                int curRow = Row + blurRow;
+>                int curCol = Col + blurCol;
+>                
+>                // verify we have a valid image pixel
+>                if (curRow > -1 && curRow < h && curCol > -1 && curCol < w) {
+>                    pixVal += in[curRow * w + curCol];
+>					// keep track of number of pixels in the avg
+>                    pixels++; 
+>                }
+>            }
+>        }
+>        
+>        // write our new pixel value out
+>        out[Row * w + Col] = (unsigned char)(pixVal / pixels);
+>    }
+>}
+>```
+pretty self explanatory !
 ## performance estimation
-andrebbe specificare con quali elementi faccio operazioni flop
+to have an idea of whether we are saturating the computational capabilities of the hardware
