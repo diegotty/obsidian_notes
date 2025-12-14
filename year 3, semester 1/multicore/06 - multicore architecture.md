@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2025-12-14T09:29
+updated: 2025-12-14T09:41
 completed: false
 ---
 ## caches
@@ -34,17 +34,31 @@ data is transferred from memory to the cache in *blocks/lines*
 ![[Pasted image 20251214092155.png]]
 >- data stored in L1 might or might not be stored in L2/L3 aswell !
 
+>[!warning] programmers have no control over caches and when they get updated !
 the CPU checks the caches in order (L1 first, L2 second, …)
 - if it finds the data in a cache (*cache HIT*), it loads it from there
 - otherwise (*cache MISS*) it moves to the next memory (L1, L2, L3 and main memory). if it finds it in the main memory, we get a *main memory HIT*
->[!warning]
+>[!warning] effects on parallel programming
 to write efficient & performant parallel code:
 >- its sequential parts must be efficient/performant: the accesses to the data should be linear, not random
 >- the coordination between these sequential parts must be done efficiently
 ### consistency
 when a CPU writes data to cache, the value in the memory may be *inconsistent* with the value in the main memory. the two main ways to deal with this are:
 - *write-through*: caches update the data in the main memory at the time it is written to cache
-- *write-back*: caches mark data in t
+- *write-back*: caches mark data in the cache as *dirty*, and when the cache line is replaced by a new one from memory, the *dirty* line is written to memory
 
 >[!example] inconsitency example
 ![[Pasted image 20251214092749.png]]
+
+## caching on multicores
+### cache coherence
+>[!example] cache coherence example
+![[Pasted image 20251214093352.png]]
+
+as we studied, the cores share a bus: any signal transmitted on the bus can be “seen” by all cores connected to the bus:
+- when core 0 updates the copy of `x` stored in its cache, it also *broadcasts* this information across the bus
+- if core 1 is *snooping* (listening to) the bus, it will see that `x` has been updated and it can mark its copy of `x` as invalid
+however, this technolgy is not used anymore, as broadcast is expensive and architectures have too many cores
+#### directory-based cache coherence
+this method to ensure cache coherence uses a data structure called *directory*, that stores the status of each cache line. when a variable is updated, the directory is consulted, and the cache controllers of the cores that have that variable’s cache line in the caches are *invalidated*
+- e.g.: a bitmap saying which cores have a copy of a given line
