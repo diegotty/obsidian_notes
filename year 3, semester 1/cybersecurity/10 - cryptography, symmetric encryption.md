@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-15T13:00
+updated: 2025-12-15T13:09
 completed: false
 ---
 # introduction
@@ -240,9 +240,25 @@ $$
 $$
 C[i] = P[i] \oplus O[i]
 $$
+>[!info] encryption
+![[Pasted image 20251215130346.png]]
+
+>[!info] decryption
+![[Pasted image 20251215130411.png]]
+
 it can be used for stream encryption over noisy channels
+since the keystream generation is independent of the data, the entire keystream can be *pre-calculated*, and can be easily parallelized
+ci sono altre cose sono stanco
 ### counter
-like *cipher feedback*, i
+it is 
+>[!info] encryption
+>![[Pasted image 20251215130727.png]]
+
+>[!info] decryption
+![[Pasted image 20251215130807.png]]
+
+---
+
 >[!info] summary
 >![[Pasted image 20251210223118.png]]
 ## stream ciphers
