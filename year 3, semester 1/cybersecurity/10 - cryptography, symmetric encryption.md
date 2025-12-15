@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-10T22:47
+updated: 2025-12-15T12:46
 completed: false
 ---
 # introduction
@@ -192,7 +192,6 @@ the block cipher algorithm is used on every block independently
 
 this mode allows for parallel encryption of the blocks of plaintext, and it can tollerate the loss/damage of a block (as there are no dependencies)
 however, encryption patterns in the plaintext are repeated in the ciphertext !
-
 ### cipher block chaining
 in *CBC*, each plaintext block is XORed with the previous ciphertext block *before* it is encrypted
 $$
@@ -202,14 +201,32 @@ the very first block uses a random, non-secret block of data, called *initializa
 $$
 C[-1] =  V
 $$
-
-
 $$
 C[i] = E_{k}(P[i] \oplus C[i-1])
 $$
+the same happens for decryption:
+$$
+P[i] = C[i-1] \oplus D_{k} (C[i])
+$$
+this mode introduces dependency, hiding patterns in the plaintext. it is fast and relatively simple, which makes it the most common mode.
+its weaknesses are the requirement on reliable transmission of all the blocks *sequentially*, which makes it not suitable for applications that allow packet loss
 ### cipher feedback
+a mode that is designed to make a block cipher behave like a *stream cipher*.
+it uses the previous ciphertext block to determine the *encryption state* for the next block, creating a strong dependency chain
+it starts with a *initialization vector* (*IV*), which is encrypted with the secret key to make a *keystream block*
+$$
+$$
+the keystream block is XORed with the first block of plaintext to produce the first block of ciphertext, which is used as *the input* (or feedback) for the next encryption step
+$$
+C[0]
+$$
+$$
+C[i] = P[i] \oplus C[i-1]
+$$
+
 ### output feedback
 ### counter
+like *cipher feedback*, i
 >[!info] summary
 >![[Pasted image 20251210223118.png]]
 ## stream ciphers
@@ -235,9 +252,9 @@ it achieves this by generating a long stream of *pseudorandom bits*, the *keystr
 >subject to *malicious insertion and modification*: since the encryption process is linear, an attacker can easily manipulate the ciphertext to change the plaintext in a predictable way, without ever knowing the key
 >	- lack of integrity !!
 
-#### RC4
+### RC4
 *RC4* is a proprietary stream cipher, owned by RSA and developed by Ron Rivest in 1987. it can have a *variable key size* (from 1 to 256 bytes), and performs byte oriented operations
-- it was sidely used but is now considered insecure and should not be used !!!
+- it was widely used but is now considered insecure and should not be used !!!
 
 >[!info] the core mechanism
 the KSA (key scheduling algorithm) inizialises a secret internal state `S`, based on the user-supplied secret key `K`
