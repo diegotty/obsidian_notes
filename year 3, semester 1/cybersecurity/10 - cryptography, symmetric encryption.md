@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-15T12:46
+updated: 2025-12-15T13:00
 completed: false
 ---
 # introduction
@@ -214,17 +214,33 @@ its weaknesses are the requirement on reliable transmission of all the blocks *s
 a mode that is designed to make a block cipher behave like a *stream cipher*.
 it uses the previous ciphertext block to determine the *encryption state* for the next block, creating a strong dependency chain
 it starts with a *initialization vector* (*IV*), which is encrypted with the secret key to make a *keystream block*
-$$
-$$
 the keystream block is XORed with the first block of plaintext to produce the first block of ciphertext, which is used as *the input* (or feedback) for the next encryption step
+- the standard allows any number of bits to be the feedback
 $$
-C[0]
+C[0] = P[i] \oplus E_{k}(IV)
 $$
 $$
-C[i] = P[i] \oplus C[i-1]
+C[i] = P[i] \oplus E_{k}(C[i-1])
 $$
+>[!info] encryption
+![[Pasted image 20251215125031.png]]
 
+>[!info] decryption
+![[Pasted image 20251215125454.png]]
+
+it behaves like a *self-synchronizing* stream cipher, as if a single ciphertext block is lost, the decryption process re-synchronizes itself using the the correct ciphertext blocks that follow (by starting again by recalculating $C[0]$ ?) )
+
+this mode is appropriate when data arrives in bits/bytes (and is the most common stream mode, when doing data encryption or authentication), however the dependency causes the need for sequential execution.
+- in decryption, you can kinda parallelize it idk
 ### output feedback
+this mode uses *the output of the block cipher encryption* to determine the encryption state for the next block, creating a sequence of independent keystream blocks ($O[i]$)
+$$
+O[0] = IV, \,\,\,O[i] = E_{k}(O[i-1])
+$$
+$$
+C[i] = P[i] \oplus O[i]
+$$
+it can be used for stream encryption over noisy channels
 ### counter
 like *cipher feedback*, i
 >[!info] summary
