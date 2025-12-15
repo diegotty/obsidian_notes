@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-15T13:09
+updated: 2025-12-15T14:31
 completed: false
 ---
 # introduction
@@ -250,12 +250,22 @@ it can be used for stream encryption over noisy channels
 since the keystream generation is independent of the data, the entire keystream can be *pre-calculated*, and can be easily parallelized
 ci sono altre cose sono stanco
 ### counter
-it is 
+it is similar to the *output feedback* mode, but it encrypts the *counter value* (the index), rather than the feedback value
+there must be a different (*counter value*,  key) pair for every plaintext block (otherwise we are encrypting with the same key multiple times)
+$$
+C[i] = P[i] \oplus O[i]
+$$
+$$
+O[i] = E_{K}(i)
+$$
 >[!info] encryption
 >![[Pasted image 20251215130727.png]]
 
 >[!info] decryption
 ![[Pasted image 20251215130807.png]]
+
+this mode permits parallel encryption, and the feedbacks can be calculated before the actual need of them.
+its security is proven to be as good as other models, and it requires only the implementation of the encryption algorithm and not the decryption algorithm (idk why)
 
 ---
 
