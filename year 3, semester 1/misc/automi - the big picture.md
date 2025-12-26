@@ -1,16 +1,15 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-26T07:27
+updated: 2025-12-26T09:21
 completed: false
 ---
 *--- DFA*
 abbiamo iniziato studiando i *DFA* (*deterministic finite-state automata*), in quanto la loro quantità di memoria limitata e il processing di input bit-a-bit implica degli automi più semplici.
 li abbiamo definiti tramite le loro componenti (tra cui funzione di transizione estesa e relazione estesa)
 abbiamo studiato l’insieme di *linguaggi accettati/riconosciuti* da un dato DFA, e poi l’insieme di linguaggi riconosciuti da un qualunque $M \in DFA$: i *linguaggi regolari*. 
-- sui linguaggi regolari abbiamo definito un insieme di operazioni: unione, interesezione, complemento, concatenazione e potenza.
-- abbiamo dimostrato che i linguaggi regolari sono chiusi per tali operazioni
-per riuscire a dimostrare la chiusura per la concatenazione, abbiamo introdotto gli *NFA* (non-deterministic finite-state automata).
+- sui linguaggi regolari abbiamo definito un insieme di operazioni: unione, interesezione, complemento, concatenazione e potenza, e abbiamo dimostrato la chiusura di $REG$ per tali operazioni
+per riuscire a dimostrare la chiusura per la concatenazione, abbiamo introdotto gli *NFA* (non-deterministic finite-state automata), necessari per mettere DFA *in serie* senza sprecare dell’input, bensì usando gli $\varepsilon$-archi
 
 dopo aver definito gli *NFA*, abbiamo dimostrato che $\text{L(DFA)  = L(NFA) = REG}$, quindi che possono rappresentare gli stessi linguaggi, e abbiamo imparato come passare da *NFA* a *DFA*.
 - con gli *NFA* abbiamo poi completato i teoremi di chiusura per i linguaggi regolari.
