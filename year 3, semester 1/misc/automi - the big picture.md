@@ -1,11 +1,14 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2025-11-21T11:32
+updated: 2025-12-26T07:19
 completed: false
 ---
-abbiamo iniziato studiando i *DFA* (deterministic finite-state automata), in quanto la loro quantità di memoria limitata e il processing di input bit-a-bit implica degli automi più semplici.
-abbiamo studiato l’insieme di linguaggi accettati da un qualunque $M \in DFA$: i *linguaggi regolari*, definendo un insieme di operazioni su tali linguaggi: unione, interesezione, complemento, concatenazione e potenza.
+*--- DFA*
+abbiamo iniziato studiando i *DFA* (*deterministic finite-state automata*), in quanto la loro quantità di memoria limitata e il processing di input bit-a-bit implica degli automi più semplici.
+li abbiamo definiti tramite le loro componenti (tra cui funzione di transizione estesa e relazione estesa)
+abbiamo studiato l’insieme di *linguaggi accettati/riconosciuti* da un dato DFA, e poi l’insieme di linguaggi riconosciuti da un qualunque $M \in DFA$: i *linguaggi regolari*. 
+- sui linguaggi regolari abbiamo definito un insieme di operazioni: unione, interesezione, complemento, concatenazione e potenza.
 - abbiamo dimostrato che i linguaggi regolari sono chiusi per tali operazioni
 per riuscire a dimostrare la chiusura per la concatenazione, abbiamo introdotto gli *NFA* (non-deterministic finite-state automata).
 
