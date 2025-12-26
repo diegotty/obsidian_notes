@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-26T09:21
+updated: 2025-12-26T09:37
 completed: false
 ---
 *--- DFA*
@@ -15,8 +15,9 @@ dopo aver definito gli *NFA*, abbiamo dimostrato che $\text{L(DFA)  = L(NFA) = R
 - con gli *NFA* abbiamo poi completato i teoremi di chiusura per i linguaggi regolari.
 
 abbiamo introdotto le *espressioni regolari* (regex), e abbiamo dimostrato che $\text{REG} = \text{L(RE)}$ ( cioe $\text{un linguaggio è regolare } \iff \exists \text{ un'espressione regolare che lo descrive}$)
-per completare la dimostrazione, abbiamo usato i *GNFA* (NFA generalizzati, che sugli archi hanno espressioni regolari).
-- in particolare, abbiamo usato la loro forma canonica, creato una funzione `convert()` ricorsiva che elimina i nodi intermedi, uno alla volta, fino a rimanere con 2 stati e 1 arco: l’espressione regolare del linguaggio
+per completare la dimostrazione, abbiamo usato i *GNFA*: NFA generalizzati, che sugli archi hanno espressioni regolari.
+- in particolare, abbiamo usato la loro *forma canonica* (una forma particolare di *GNFA*)
+- , creato una funzione `convert()` ricorsiva che elimina i nodi intermedi, uno alla volta, fino a rimanere con 2 stati e 1 arco: l’espressione regolare del linguaggio
 	- abbiamo anche dimostrato che `convert()` crea un automa equivalente a quello di partenza
 
 abbiamo studiato il *pumping lemma*, che permette di dimostare se un linguaggio è regolare o meno.

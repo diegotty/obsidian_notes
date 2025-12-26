@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T09:25
+updated: 2025-12-26T09:35
 completed: false
 ---
 *--  DFA*
@@ -17,4 +17,7 @@ $REG$ è chiuso per potenza
 $L(NFA) = L(DFA) = REG$
 - una inclusione banale, per l’altra dividiamo in 2 casi e usiamo $E(\delta(q,a))$
 *--- espressioni regolari*
-un linguaggio è regolare $\iff$ 
+$REG = L(RE)$
+	- $L(RE)$ = insieme dei linguaggi associati a espressioni regolari
+- $L(RE) \subseteq REG$: uso def. induttiva di regex e chiusura di $REG$
+- $REG \subseteq L(RE)$ :
