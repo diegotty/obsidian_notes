@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-26T09:40
+updated: 2025-12-26T11:37
 completed: false
 ---
 *--- DFA*
@@ -20,14 +20,15 @@ per completare la dimostrazione, abbiamo usato i *GNFA*: NFA generalizzati, che 
 - , creato una funzione `convert()` ricorsiva che elimina i nodi intermedi, uno alla volta, fino a rimanere con 2 stati e 1 arco: l’espressione regolare del linguaggio
 	- abbiamo anche dimostrato che `convert()` crea un automa equivalente a quello di partenza
 
-abbiamo studiato il *pumping lemma*, che permette di dimostare se un linguaggio è regolare o meno.
+abbiamo studiato il *pumping lemma*, che permette di dimostare se un linguaggio è regolare o meno (nella maggior parte dei casi viene usato per dimostrare che un linguaggio NON è regolare)
 
-dopo aver introdotto due modi diversi per descrivere linguaggi regolari (automi finiti e espressioni regolari). definiamo ora metodi più potenti per definire linguaggi anche non regolari.
-la classe di linguaggi che include quelli regolari e ulteriori linguaggi, non regolari, si chiama *CFL*
+dopo aver introdotto due modi diversi per definire linguaggi regolari (automi finiti e espressioni regolari). definiamo ora metodi più potenti per definire anche *linguaggi non regolari*.
+la classe di linguaggi che include quelli regolari e ulteriori linguaggi, non regolari, si chiama *CFL* (*context-free languages*)
 
-abbiamo introdotto le *CFG* (grammatiche context-free), un modello di computazione più potente, che permette di rappresentare linguaggi non regolari: i *CFL* (linguaggi context-free)
-- notiamo che le grammatiche sono l’insieme di regole che definiscono il linguaggio (struttura matematica) , mentre il linguaggio è l’insieme di stringhe prodotte dalla grammatica
+abbiamo introdotto le *CFG* (*context-free grammars*), un modello di computazione più potente di DFA e NFA, che permette di generare linguaggi non regolari: i *CFL*.
+- *importante*: notiamo che le grammatiche sono l’insieme di regole che definiscono il linguaggio (struttura matematica) , mentre il linguaggio è l’insieme di stringhe prodotte dalla grammatica
 	- CFG diverse possono generare lo stesso CFL !
+	
 di conseguenza le grammatiche coincidono con un diverso tipo di automi: i *PDA* (pushdown automata)
 - abbiamo studiato dei modi per progettare CFG: unione, da un DFA, e usando la ricorsione
 - abbiamo studiato la *forma normale di Chomsky* per i CFG (come la forma canonica per i GNFA)
