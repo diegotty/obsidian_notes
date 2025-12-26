@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-26T11:37
+updated: 2025-12-26T12:50
 completed: false
 ---
 *--- DFA*
@@ -28,7 +28,7 @@ la classe di linguaggi che include quelli regolari e ulteriori linguaggi, non re
 abbiamo introdotto le *CFG* (*context-free grammars*), un modello di computazione più potente di DFA e NFA, che permette di generare linguaggi non regolari: i *CFL*.
 - *importante*: notiamo che le grammatiche sono l’insieme di regole che definiscono il linguaggio (struttura matematica) , mentre il linguaggio è l’insieme di stringhe prodotte dalla grammatica
 	- CFG diverse possono generare lo stesso CFL !
-	
+
 di conseguenza le grammatiche coincidono con un diverso tipo di automi: i *PDA* (pushdown automata)
 - abbiamo studiato dei modi per progettare CFG: unione, da un DFA, e usando la ricorsione
 - abbiamo studiato la *forma normale di Chomsky* per i CFG (come la forma canonica per i GNFA)

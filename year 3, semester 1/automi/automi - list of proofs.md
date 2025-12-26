@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T12:39
+updated: 2025-12-26T12:50
 completed: false
 ---
 *--  DFA*
@@ -34,6 +34,8 @@ correttezza del passaggio da DFA a CFG
 
 ogni CFG ammette una CFG equivalente in forma normale
 - aggiungo variabile iniziale
-- elimino gli $\varepsilon$-archi
+- elimino gli $\varepsilon$-archi (aggiungendone altri, se necessario)
 - elimino regole unitarie
 - trasformo le regole che conivolgono + di 3 letterali
+	- le rendo di max 2 letterali
+	- se sono 2 e + di 0 sono termini, rendo i termini accessibili solo da nuove variabili attraverso una regola
