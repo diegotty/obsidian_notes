@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T09:35
+updated: 2025-12-26T09:43
 completed: false
 ---
 *--  DFA*
@@ -20,4 +20,4 @@ $L(NFA) = L(DFA) = REG$
 $REG = L(RE)$
 	- $L(RE)$ = insieme dei linguaggi associati a espressioni regolari
 - $L(RE) \subseteq REG$: uso def. induttiva di regex e chiusura di $REG$
-- $REG \subseteq L(RE)$ :
+- $REG \subseteq L(RE)$ : tostina. usiamo `convert()`

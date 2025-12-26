@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-26T09:37
+updated: 2025-12-26T09:40
 completed: false
 ---
 *--- DFA*
@@ -16,7 +16,7 @@ dopo aver definito gli *NFA*, abbiamo dimostrato che $\text{L(DFA)  = L(NFA) = R
 
 abbiamo introdotto le *espressioni regolari* (regex), e abbiamo dimostrato che $\text{REG} = \text{L(RE)}$ ( cioe $\text{un linguaggio è regolare } \iff \exists \text{ un'espressione regolare che lo descrive}$)
 per completare la dimostrazione, abbiamo usato i *GNFA*: NFA generalizzati, che sugli archi hanno espressioni regolari.
-- in particolare, abbiamo usato la loro *forma canonica* (una forma particolare di *GNFA*)
+- in particolare, abbiamo usato - wlog, in quanto è sempre possibile arrivarci - la loro *forma canonica* (una forma particolare di *GNFA*)
 - , creato una funzione `convert()` ricorsiva che elimina i nodi intermedi, uno alla volta, fino a rimanere con 2 stati e 1 arco: l’espressione regolare del linguaggio
 	- abbiamo anche dimostrato che `convert()` crea un automa equivalente a quello di partenza
 
