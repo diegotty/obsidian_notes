@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T11:48
+updated: 2025-12-26T12:02
 completed: false
 ---
 *--  DFA*
@@ -28,3 +28,6 @@ $REG = L(RE)$
 correttezza dell’unione di grammatiche ($\bigcup_{i}L(Gi) = L(G)$)
 - $\bigcup_{i}L(Gi) \subseteq L(G)$: troviamo $G_{i}$ t.c. $w \in L(G_{i})$, notiamo che $L(G)$ lo genera
 - $L(G) \subseteq \bigcup_{i}L(Gi)$: usiamo disguinzione di $V$ (c’è solo un linguaggio che porta $S_J$ a $w$)
+correttezza del passaggio da DFA a CFG
+- $L(D) \subseteq L(G)$
+- $L(G) \subseteq L(D)$
