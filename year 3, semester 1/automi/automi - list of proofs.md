@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T11:07
+updated: 2025-12-26T11:48
 completed: false
 ---
 *--  DFA*
@@ -24,3 +24,7 @@ $REG = L(RE)$
 	- $L(RE)$ = insieme dei linguaggi associati a espressioni regolari
 - $L(RE) \subseteq REG$: uso def. induttiva di regex e chiusura di $REG$
 - $REG \subseteq L(RE)$ : definiamo `convert()` su $G$ GNFA in forma canonica, e dimostriamo per induzione che $G'$=`convert(G)` ($L(G) = L(G')$)
+*-- context-free grammars*
+correttezza dell’unione di grammatiche ($\bigcup_{i}L(Gi) = L(G)$)
+- $\bigcup_{i}L(Gi) \subseteq L(G)$: troviamo $G_{i}$ t.c. $w \in L(G_{i})$, notiamo che $L(G)$ lo genera
+- $L(G) \subseteq \bigcup_{i}L(Gi)$: usiamo disguinzione di $V$ (c’è solo un linguaggio che porta $S_J$ a $w$)
