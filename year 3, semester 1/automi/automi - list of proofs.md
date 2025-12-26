@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T12:50
+updated: 2025-12-26T17:59
 completed: false
 ---
 *--  DFA*
@@ -39,3 +39,6 @@ ogni CFG ammette una CFG equivalente in forma normale
 - trasformo le regole che conivolgono + di 3 letterali
 	- le rendo di max 2 letterali
 	- se sono 2 e + di 0 sono termini, rendo i termini accessibili solo da nuove variabili attraverso una regola
+
+$L$ è riconosciuto da un PDA $\iff$ L è CFG
+ - L è CFG $\implies$ M $\in$ PDA t.c. L=$L(M)$
