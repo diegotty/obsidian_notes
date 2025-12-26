@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T10:23
+updated: 2025-12-26T10:26
 completed: false
 ---
 *--  DFA*
@@ -15,7 +15,7 @@ $REG$ è chiuso per potenza
 - run the DFA back when at stato finale
 
 pumping lemma
-
+- pigeon hole principle
 *--- NFA*
 $L(NFA) = L(DFA) = REG$
 - una inclusione banale, per l’altra dividiamo in 2 casi e usiamo $E(\delta(q,a))$
