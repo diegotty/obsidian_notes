@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T17:59
+updated: 2025-12-26T18:18
 completed: false
 ---
 *--  DFA*
@@ -41,4 +41,5 @@ ogni CFG ammette una CFG equivalente in forma normale
 	- se sono 2 e + di 0 sono termini, rendo i termini accessibili solo da nuove variabili attraverso una regola
 
 $L$ è riconosciuto da un PDA $\iff$ L è CFG
- - L è CFG $\implies$ M $\in$ PDA t.c. L=$L(M)$
+ - L è CFG $\implies \exists$ M $\in$ PDA t.c. L=$L(M)$: creiamo PDA e definiamo $\delta$
+ - $\exists$ M $\in$ PDA t.c. L=$L(M) \implies$ L è CFG
