@@ -1,6 +1,6 @@
 ---
 created: 2025-02-06T09:35
-updated: 2025-11-21T11:32
+updated: 2025-12-26T07:25
 ---
 cose nuove imparate:
 - [x] Z dominio ! quindi lemma cancellazione

@@ -1,6 +1,6 @@
 ---
 created: 2025-03-19T13:44
-updated: 2025-05-09T10:56
+updated: 2025-12-26T07:25
 ---
 >[!index]
 >- [livello applicazione](#livello%20applicazione)
@@ -40,7 +40,7 @@ caratteristiche:
 - **hyperlinks**(collegamenti ipertestuali) e motori di ricerca permettono di navigare su una grande quantità di siti
 componenti:
 - web client: interfaccia con l’utente (es: browser)
-- web server: (es: apache)
+- web server (es: apache)
 - HTML: linguaggio standard per pagine web
 - HTTP: protocollo per la comunicazione tra clienti e server Web (indipendente dal linguaggio di programmazione usato)
 

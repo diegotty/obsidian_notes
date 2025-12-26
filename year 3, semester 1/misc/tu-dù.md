@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03T07:36
-updated: 2025-11-23T18:07
+updated: 2025-12-26T07:25
 completed: false
 ---
 ## to do
@@ -10,6 +10,15 @@ completed: false
 - [ ] esercizi multicore ! (lez 11, slide 34, openMP)
 
 ## could do 
+- [ ] esercizi multicore caches
+- [ ] soluzioni esercizi multicore
+- [ ] xss game
+- [ ] slide 27 lez 14 multicore
+- [ ] extra lecture on profiling
+- [ ] burp exercise (web security)
+- [ ] mirai confessions (DoS attacks)
+- [ ] stack overflow homework
+- [ ] activities suggested in database security slides 
 - [ ] capire come la b-riduzione e il combinatore di punto fisso creano la ricorsione nel lambda-calcolo
 - [ ] recuperare dimostrazione da fare per casa automi  (17/10)
 - [ ] c lsp doesnt work on mac ?

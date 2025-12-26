@@ -1,7 +1,7 @@
 ---
-related to:
+related to: "[[02 - parallel design patterns]]"
 created: 2025-11-03, 17:38
-updated: 2025-11-03T18:19
+updated: 2025-12-26T07:25
 completed: false
 ---
 with the introduction of openMP and pthreads, we study how to parallelize effectively between cores of a single CPU
@@ -40,7 +40,7 @@ in a shared memory program, a single process may have multiple threads of contro
 
 ### threading levels
 `MPI_THREAD_SINGLE` → rank that calls the function is not allowed to use threads (which is basically equivalent to calling `MPI_Init`)
-`MPI_THREAD_FUNNELED` → rank can be multi-threaded but only the main thread may call MPI functions. ideal for fork-join parallelism such as used in `#pragma` omp parallel, where all MPI calls are outside the openMP regions
+`MPI_THREAD_FUNNELED` → rank can be multi-threaded but only the main thread may call MPI functions. ideal for fork-join parallelism such as used in `#pragma omp parallel`, where all MPI calls are outside the openMP regions
 `MPI_THREAD_SERIALIZED` → rank can be multi-threaded but only one thread at a time may call MPI functions. the rank must ensure that MPI is used in a thread-safe way. one approach is to ensure that MPI usage is mutally excluded by all the threads
 `MPI_THREAD_MULTIPLE` → rank can be multi-threaded and any thread may call MPI functions. *the MPI library ensures that this access is safe across threads*. note that this makes all MPI operations less efficient, even if only one thread makes MPI calls, so should be used only when necessary
 >[!warning] not all the threading levels are supported by all the MPI implementations
@@ -57,6 +57,13 @@ single:
 >
 >multiple:
 ![[Pasted image 20251103180934.png]]
+
+## openMP + MPI
+the safest and easiest threading level to use when combining openMP and MPI is `MPI_THREAD_FUNNELED`, as it fits nicely with most openMP models, 
+>[!info] MPI thread binding
+MPI maps each process on a core. thus, all the threads created by that process will run on the same core. to inhibit this functionality, the `--bin-to-none` clause is necessary
+
+[[https://hpc-wiki.info/hpc/Gprof_Tutorial|gprof]]
 ## thread-safety
 a block of code is *thread-safe* if it can be simultaneously executed by multiple threads without causing problems
 - many C library functions are not thread-safe ! (e.g. `random()`, `localtime()`, … )
