@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T18:57
+updated: 2025-12-27T20:13
 completed: false
 ---
 *- automi* (11 dimostrazioni)
@@ -42,7 +42,8 @@ ogni CFG ammette una CFG equivalente in forma normale (chomsky)
 	- se sono 2 e + di 0 sono termini, rendo i termini accessibili solo da nuove variabili attraverso una regola
 
 $L$ è riconosciuto da un PDA $\iff$ L è CFG
- - L è CFG $\implies \exists$ M $\in$ PDA t.c. L=$L(M)$: creiamo PDA ($\$S$, $q_{\text{loop}}$) e definiamo $\delta$
+ - L è CFG $\implies \exists$ M $\in$ PDA t.c. L=$L(M)$:
+	 - creiamo PDA ($\$S$\text{loop}}$) e definiamo $\delta$
  - $\exists$ M $\in$ PDA t.c. L=$L(M) \implies$ L è CFG
 	 - $A_{pq}$ genera x $\iff$ x porta $M$ da $p$ a $q$ con pila vuota (inizio, fine)
 		 - 2 induzioni sul numero di passi, lavoro sui 2 casi
