@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T12:17
+updated: 2025-12-27T12:44
 completed: false
 ---
 *--  DFA*
@@ -48,3 +48,4 @@ $L$ è riconosciuto da un PDA $\iff$ L è CFG
 
 pumping lemma per CFG
 - affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))
+- sceglo stringa con reip$A_{i}, A_{j}$
