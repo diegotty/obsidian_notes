@@ -1,14 +1,15 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T12:45
+updated: 2025-12-27T15:16
 completed: false
 ---
 *- automi* (11 dimostrazioni)
 *--- linguaggi regolari*
 $REG$ è chiuso per unione
 - stati sono coppie dei due automi da unire, scrivi bene funzione di transizione
-$REG$ è chiuso per complemento (*da fare*)
+$REG$ è chiuso per complemento
+$REG$ è chiuso per intersezione
 $REG$ è chiuso per concatenazione 
 - DFA in serie
 $REG$ è chiuso per potenza 
