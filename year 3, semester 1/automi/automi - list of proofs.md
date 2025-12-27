@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T15:46
+updated: 2025-12-27T16:29
 completed: false
 ---
 *- automi* (11 dimostrazioni)
@@ -18,7 +18,7 @@ $REG$ è chiuso per potenza
 pumping lemma
 - lavoriamo sulla sequenza di stati attraversata dall’automa (intuizione pigeon hole principle). find $y$
 *--- NFA*
-$L(NFA) = L(DFA) = REG$
+$L(NFA) = L(DFA) (= REG)$
 - una inclusione banale, per l’altra dividiamo in 2 casi e usiamo $E(\delta(q,a))$
 *--- espressioni regolari*
 $REG = L(RE)$
