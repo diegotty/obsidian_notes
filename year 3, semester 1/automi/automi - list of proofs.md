@@ -1,10 +1,10 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T12:44
+updated: 2025-12-27T12:45
 completed: false
 ---
-*--  DFA*
+*- automi* (11 dimostrazioni)
 *--- linguaggi regolari*
 $REG$ è chiuso per unione
 - stati sono coppie dei due automi da unire, scrivi bene funzione di transizione
@@ -48,4 +48,4 @@ $L$ è riconosciuto da un PDA $\iff$ L è CFG
 
 pumping lemma per CFG
 - affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))
-- sceglo stringa con reip$A_{i}, A_{j}$
+- sceglo stringa con ripetizione. scelgo $A_{i}, A_{j}$ e verifico condizioni
