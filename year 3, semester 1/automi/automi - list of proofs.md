@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-26T19:02
+updated: 2025-12-27T12:17
 completed: false
 ---
 *--  DFA*
@@ -32,7 +32,7 @@ correttezza del passaggio da DFA a CFG
 - $L(D) \subseteq L(G)$: usiamo la struttura di $G$ (che abbiamo costruito noi)
 - $L(G) \subseteq L(D)$: usiamo induzione su lunghezza di $w$ e funzione di transizione estesa
 
-ogni CFG ammette una CFG equivalente in forma normale
+ogni CFG ammette una CFG equivalente in forma normale (chomsky)
 - aggiungo variabile iniziale
 - elimino gli $\varepsilon$-archi (aggiungendone altri, se necessario)
 - elimino regole unitarie
@@ -45,3 +45,6 @@ $L$ è riconosciuto da un PDA $\iff$ L è CFG
  - $\exists$ M $\in$ PDA t.c. L=$L(M) \implies$ L è CFG
 	 - $A_{pq}$ genera x $\iff$ x porta $M$ da $p$ a $q$ con pila vuota (inizio, fine)
 		 - 2 induzioni sul numero di passi, lavoro sui 2 casi
+
+pumping lemma per CFG
+- affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))

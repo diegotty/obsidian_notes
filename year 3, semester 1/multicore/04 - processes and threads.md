@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-03, 17:38
-updated: 2025-12-26T07:25
+updated: 2025-12-27T12:06
 completed: false
 ---
 with the introduction of openMP and pthreads, we study how to parallelize effectively between cores of a single CPU

@@ -1,10 +1,10 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-26T12:50
+updated: 2025-12-27T12:09
 completed: false
 ---
-*--- DFA*
+*- automi*
 abbiamo iniziato studiando i *DFA* (*deterministic finite-state automata*), in quanto la loro quantità di memoria limitata e il processing di input bit-a-bit implica degli automi più semplici.
 li abbiamo definiti tramite le loro componenti (tra cui funzione di transizione estesa e relazione estesa)
 abbiamo studiato l’insieme di *linguaggi accettati/riconosciuti* da un dato DFA, e poi l’insieme di linguaggi riconosciuti da un qualunque $M \in DFA$: i *linguaggi regolari*. 
