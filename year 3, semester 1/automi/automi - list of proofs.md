@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T20:13
+updated: 2025-12-27T20:16
 completed: false
 ---
 *- automi* (11 dimostrazioni)
@@ -33,21 +33,22 @@ completed: false
 	- $L(D) \subseteq L(G)$: usiamo la struttura di $G$ (che abbiamo costruito noi)
 	- $L(G) \subseteq L(D)$: usiamo induzione su lunghezza di $w$ e funzione di transizione estesa
 
-ogni CFG ammette una CFG equivalente in forma normale (chomsky)
-- aggiungo variabile iniziale
-- elimino gli $\varepsilon$-archi (aggiungendone altri, se necessario)
-- elimino regole unitarie
-- trasformo le regole che conivolgono + di 3 letterali
-	- le rendo di max 2 letterali
-	- se sono 2 e + di 0 sono termini, rendo i termini accessibili solo da nuove variabili attraverso una regola
+11. ogni CFG ammette una CFG equivalente in forma normale (chomsky)
+	- aggiungo variabile iniziale
+	- elimino gli $\varepsilon$-archi (aggiungendone altri, se necessario)
+	- elimino regole unitarie
+	- trasformo le regole che conivolgono + di 3 letterali
+		- le rendo di max 2 letterali
+		- se sono 2 e + di 0 sono termini, rendo i termini accessibili solo da nuove variabili attraverso una regola
 
-$L$ è riconosciuto da un PDA $\iff$ L è CFG
- - L è CFG $\implies \exists$ M $\in$ PDA t.c. L=$L(M)$:
-	 - creiamo PDA ($\$S$\text{loop}}$) e definiamo $\delta$
- - $\exists$ M $\in$ PDA t.c. L=$L(M) \implies$ L è CFG
-	 - $A_{pq}$ genera x $\iff$ x porta $M$ da $p$ a $q$ con pila vuota (inizio, fine)
-		 - 2 induzioni sul numero di passi, lavoro sui 2 casi
+12. $L$ è riconosciuto da un PDA $\iff$ L è CFG
+	 - L è CFG $\implies \exists$ M $\in$ PDA t.c. L=$L(M)$:
+		 - creiamo PDA ($\$S$ $q_{\text{loop}}$) e definiamo $\delta$. BASTA
+	 - $\exists$ M $\in$ PDA t.c. L=$L(M) \implies$ L è CFG
+		 - usiamo PDA ganzo
+		 - $A_{pq}$ genera x $\iff$ x porta $M$ da $p$ a $q$ con pila vuota (inizio, fine)
+			 - 2 induzioni sul numero di passi, lavoro sui 2 casi
 
-pumping lemma per CFG
-- affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))
-- sceglo stringa con ripetizione. scelgo $A_{i}, A_{j}$ e verifico condizioni
+13. pumping lemma per CFG
+	- affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))
+	- sceglo stringa con ripetizione. scelgo $A_{i}, A_{j}$ e verifico condizioni
