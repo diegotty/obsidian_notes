@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T20:16
+updated: 2025-12-27T21:09
 completed: false
 ---
 *- automi* (11 dimostrazioni)
@@ -45,7 +45,7 @@ completed: false
 	 - L è CFG $\implies \exists$ M $\in$ PDA t.c. L=$L(M)$:
 		 - creiamo PDA ($\$S$ $q_{\text{loop}}$) e definiamo $\delta$. BASTA
 	 - $\exists$ M $\in$ PDA t.c. L=$L(M) \implies$ L è CFG
-		 - usiamo PDA ganzo
+		 - usiamo PDA ganzo, genero CFG con proprietà e stato inziale ganzo
 		 - $A_{pq}$ genera x $\iff$ x porta $M$ da $p$ a $q$ con pila vuota (inizio, fine)
 			 - 2 induzioni sul numero di passi, lavoro sui 2 casi
 
