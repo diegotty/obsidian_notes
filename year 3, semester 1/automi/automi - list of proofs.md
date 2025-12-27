@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T16:29
+updated: 2025-12-27T16:59
 completed: false
 ---
 *- automi* (11 dimostrazioni)
@@ -23,7 +23,7 @@ $L(NFA) = L(DFA) (= REG)$
 *--- espressioni regolari*
 $REG = L(RE)$
 	- $L(RE)$ = insieme dei linguaggi associati a espressioni regolari
-- $L(RE) \subseteq REG$: uso def. induttiva di regex e chiusura di $REG$
+- $L(RE) \subseteq REG$: uso induzione (numero di operazioni per costruzione di $r$) e chiusura di $REG$
 - $REG \subseteq L(RE)$ : definiamo `convert()` su $G$ GNFA in forma canonica, e dimostriamo per induzione che $G'$=`convert(G)` ($L(G) = L(G')$)
 *-- context-free grammars*
 correttezza dell’unione di grammatiche ($\bigcup_{i}L(Gi) = L(G)$)
