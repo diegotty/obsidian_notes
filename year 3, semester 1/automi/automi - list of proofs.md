@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-28T18:42
+updated: 2025-12-28T18:49
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -56,4 +56,4 @@ completed: false
 14. per ogni TM multinastro esiste una TM a nastro singolo equivalente
 	- creo TM che simula i molteplici nastri in uno solo
 15. per ogni NTM esiste una TM equivalente
-	- assumo TM con 3 nastri
+	- assumo TM con 3 nastri e li uso per simulare NTM
