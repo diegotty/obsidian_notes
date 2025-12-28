@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-28T08:46
+updated: 2025-12-28T17:53
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -19,7 +19,7 @@ completed: false
 	- lavoriamo sulla sequenza di stati attraversata dall’automa (intuizione pigeon hole principle). find $y$
 *--- NFA*
 7. $L(NFA) = L(DFA) (= REG)$
-	- una inclusione banale, per l’altra dividiamo in 2 casi e usiamo $E(\delta(q,a))$
+	- una inclusione banale, per l’altra costruiamo DFA, dividiamo in 2 casi e usiamo $E(\delta(q,a))$
 *--- espressioni regolari*
 8. $REG = L(RE)$
 		- $L(RE)$ = insieme dei linguaggi associati a espressioni regolari
