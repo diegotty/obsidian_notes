@@ -1,10 +1,10 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-27T21:09
+updated: 2025-12-28T08:46
 completed: false
 ---
-*- automi* (11 dimostrazioni)
+*- automi* (13 dimostrazioni)
 *--- linguaggi regolari*
 1. $REG$ è chiuso per unione
 	- stati sono coppie dei due automi da unire, scrivi bene funzione di transizione
@@ -52,3 +52,4 @@ completed: false
 13. pumping lemma per CFG
 	- affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))
 	- sceglo stringa con ripetizione. scelgo $A_{i}, A_{j}$ e verifico condizioni
+*- calcolabilità* (14 dimostrazioni)
