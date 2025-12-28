@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-28T18:49
+updated: 2025-12-28T19:29
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -57,3 +57,4 @@ completed: false
 	- creo TM che simula i molteplici nastri in uno solo
 15. per ogni NTM esiste una TM equivalente
 	- assumo TM con 3 nastri e li uso per simulare NTM
+16. $A_{TM}$ è indecidibile
