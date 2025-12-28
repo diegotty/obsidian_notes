@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-28T17:53
+updated: 2025-12-28T18:08
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -53,3 +53,4 @@ completed: false
 	- affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))
 	- sceglo stringa con ripetizione. scelgo $A_{i}, A_{j}$ e verifico condizioni
 *- calcolabilità* (14 dimostrazioni)
+14. per ogni TM M’ multinastro ne esiste una a nastro singolo equivalente

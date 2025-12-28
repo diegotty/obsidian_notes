@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-27T12:09
+updated: 2025-12-28T18:18
 completed: false
 ---
 *- automi*
@@ -35,6 +35,7 @@ di conseguenza le grammatiche coincidono con un diverso tipo di automi: i *PDA* 
 (di conseguenza, i CFL sono tutti i linguaggi accettati dai PDA)
 - ricordiamo che $REG \in CFL$, e $DFA \in NFA \in PDA$
 abbiamo studiato i *PDA* (pushdown automata), un’estensione dei DFA che consentono di riconoscere linguaggi non regolari usando una pila, che viene aggiornata ad ogni transizione tra stati. 
-abbiamo dimostrato l’equivalenza tra PDA e CFG 
-
+abbiamo dimostrato che $L$ è riconosciuto da un PDA $\iff L\text{ è }CFL$, e abbiamo studiato il pumping lemma per i $CFG$.
+*- calcolabilità*
+abbiamo introdotto le **
 
