@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-28T19:29
+updated: 2025-12-28T19:51
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -58,3 +58,4 @@ completed: false
 15. per ogni NTM esiste una TM equivalente
 	- assumo TM con 3 nastri e li uso per simulare NTM
 16. $A_{TM}$ è indecidibile
+	- creiamo TM $H$
