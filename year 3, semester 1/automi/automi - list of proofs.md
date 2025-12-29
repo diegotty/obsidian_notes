@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-28T19:51
+updated: 2025-12-29T18:19
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -57,5 +57,12 @@ completed: false
 	- creo TM che simula i molteplici nastri in uno solo
 15. per ogni NTM esiste una TM equivalente
 	- assumo TM con 3 nastri e li uso per simulare NTM
-16. $A_{TM}$ è indecidibile
-	- creiamo TM $H$
+16. $A_{DFA}$ è decidibile
+	- codifica di M. simulo M su TM
+17. $A_{NFA}$ è decidibile
+18. $A_{rex}$ è decidibile
+19. $E_{DFA}$ è decidibile
+20. $EQ_{DFA}$ è decidibile
+21. $A_{CFG}$ è decidibile (da completare dim.)
+22. $A_{TM}$ è indecidibile
+	- creiamo TM $H$ e la TM $D$. la definizione di $D$ ci porterà ad una contraddizione
