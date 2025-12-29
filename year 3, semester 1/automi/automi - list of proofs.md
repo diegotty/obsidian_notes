@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-29T18:19
+updated: 2025-12-29T18:26
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -66,3 +66,4 @@ completed: false
 21. $A_{CFG}$ è decidibile (da completare dim.)
 22. $A_{TM}$ è indecidibile
 	- creiamo TM $H$ e la TM $D$. la definizione di $D$ ci porterà ad una contraddizione
+- $L$ è decidibile $\iff$ L è turing-ric e coturing-ric
