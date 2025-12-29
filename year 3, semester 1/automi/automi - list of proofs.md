@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-29T19:18
+updated: 2025-12-29T19:34
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -70,7 +70,9 @@ completed: false
 24. $A \leq_{m}B$ e B è decidibile $\implies$ A è decidibile
 25. $A \leq_{m}B$ e A è indecidibile $\implies$ B è indecidibile
 26. $HALT_{tm}$ è indecidibile
-	- riduzione ad $A_{TM}$, definisco funzione $f$ e verifico correttezza della riduzione
+	- $A_{TM} \leq_{m} HALT_{TM}$, definisco funzione $f$ e verifico correttezza della riduzione
 27. $E_{TM}$ è indecidibile
-	- riduzione a $A_{TM}$, credo $S$ decisore di $A_{TM}$ basandomi su $R$ decisore (per assurdo) di $E_{TM}$
-
+	- $A_{TM} \leq_{m} E_{TM}$, credo $S$ decisore di $A_{TM}$ basandomi su $R$ decisore (per assurdo) di $E_{TM}$
+28. $REGULAR_{TM}$ è indecidibile
+	- $A_{TM} \leq_{m} REGULAR_{TM}$
+29. $A \leq_{m} B \implies A$
