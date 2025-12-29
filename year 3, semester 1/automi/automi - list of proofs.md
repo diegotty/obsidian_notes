@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-29T19:34
+updated: 2025-12-29T19:44
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -75,4 +75,6 @@ completed: false
 	- $A_{TM} \leq_{m} E_{TM}$, credo $S$ decisore di $A_{TM}$ basandomi su $R$ decisore (per assurdo) di $E_{TM}$
 28. $REGULAR_{TM}$ è indecidibile
 	- $A_{TM} \leq_{m} REGULAR_{TM}$
-29. $A \leq_{m} B \implies A$
+29. $\overline{A}$ non turing-ric e $A \leq_{m} B \implies \overline{B}$ non turing-ric
+30. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
+	- usiamo $A \leq_{m} B \implies \overline{A} \leq_{m} \overline{B}$, dimostrando la riduzione $A_{TM} \leq_{m} \overline{EQ}_{TM}$

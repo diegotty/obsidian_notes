@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-28T18:21
+updated: 2025-12-29T19:44
 completed: false
 ---
 *- automi*
@@ -39,5 +39,5 @@ abbiamo dimostrato che $L$ è riconosciuto da un PDA $\iff L\text{ è }CFL$, e a
 *- calcolabilità*
 abbiamo introdotto le *turing machine* (*TM*), un modello astratto dei computer attuali, con una potenza di calcolo più alta degli automi studiati fino ad ora.
 abbiamo introdotto i concetti di *riconoscibilità* e *decidibilità*.
-per convincerci della potenza di calcolo della TM, abbiamo definito alcune varianti e dimostrato  robustezza della TM a singolo nastro.
+per convincerci della potenza di calcolo della TM, abbiamo definito alcune varianti e dimostrato  robustezza della TM a singolo nastro. 
 
