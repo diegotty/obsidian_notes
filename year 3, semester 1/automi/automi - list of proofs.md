@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-30T17:04
+updated: 2025-12-30T17:10
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -73,7 +73,7 @@ completed: false
 27. $HALT_{tm}$ è indecidibile
 	- $A_{TM} \leq_{m} HALT_{TM}$, definisco funzione $f$ e verifico correttezza della riduzione
 28. $E_{TM}$ è indecidibile
-	- $A_{TM} \leq_{m} E_{TM}$, creo $S$ decisore di $A_{TM}$ basandomi su $R$ decisore (per assurdo) di $E_{TM}$
+	- $A_{TM} \leq_{m} \overline{E}_{TM}$, creo $S$ decisore di $A_{TM}$ basandomi su $R$ decisore (per assurdo) di $\overline{E}_{TM}$
 29. $REGULAR_{TM}$ è indecidibile
 	- $A_{TM} \leq_{m} REGULAR_{TM}$
 30. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
