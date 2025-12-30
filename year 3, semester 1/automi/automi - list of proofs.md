@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-30T12:09
+updated: 2025-12-30T14:20
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -84,5 +84,5 @@ completed: false
 	- creo $R_{\pi}$ e la uso per decidere $HALT_{TM}$
 33. primo teorema di incompletezza di gödel
 - creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)
-13. secondo teorema di incompletezza di gödel
-- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
+34. secondo teorema di incompletezza di gödel
+	- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
