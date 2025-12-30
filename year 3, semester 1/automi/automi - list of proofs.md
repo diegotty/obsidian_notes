@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-29T19:44
+updated: 2025-12-30T09:38
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -78,3 +78,4 @@ completed: false
 29. $\overline{A}$ non turing-ric e $A \leq_{m} B \implies \overline{B}$ non turing-ric
 30. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
 	- usiamo $A \leq_{m} B \implies \overline{A} \leq_{m} \overline{B}$, dimostrando la riduzione $A_{TM} \leq_{m} \overline{EQ}_{TM}$
+*-- göd-el *
