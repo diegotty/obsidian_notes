@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-30T10:31
+updated: 2025-12-30T10:35
 completed: false
 ---
 *- automi*
@@ -40,8 +40,9 @@ abbiamo dimostrato che $L$ è riconosciuto da un PDA $\iff L\text{ è }CFL$, e a
 abbiamo introdotto le *turing machine* (*TM*), un modello astratto dei computer attuali, con una potenza di calcolo più alta degli automi studiati fino ad ora.
 abbiamo introdotto i concetti di *riconoscibilità* e *decidibilità*.
 per convincerci della potenza di calcolo della TM, abbiamo definito alcune varianti (*TM multinastro*, *NTM*) e dimostrato la robustezza della TM a singolo nastro. 
-dopo alcuni esempi di linguaggi decidibili ($A_{TM}$, )
-
+dopo alcuni esempi di linguaggi decidibili ($A_{DFA}$,$A_{NFA}$, $A_{REX}$, $E_{DFA}$, $EQ_{DFA}$ ), abbiamo dimostrato l’esistenza di linguaggi *indecidibili* con $A_{TM}$, attraverso l’introduzione delle *TM universali* e usando la diagonalizzazione
+abbiamo studiato la *riducibilità*, grazie a cui abbiamo dimostrato l’indecidibilità di altri linguaggi ($HALT_{TM}$, $E_{TM}$, $REGULAR_{TM}$)
+attraverso la *co-turing-riconoscibilità*, abbiamo dimostrato che $EQ_{TM}$ *non è riconoscibile*
 abbiamo studiato i due *teoremi d’incompletezza di gödel*, che ci hanno illustrato i limiti intrinsechi della matematica
 - primo teorema: esisteranno sempre verità matematiche che la logica formale non può raggiungere: la verità è un concetto più ampio della dimostrabilità
 	- in calcolabilità, ciò è stato tradotto nell’*indecidibilità* dei programmi, primo tra tutti l’*halting problem* (dichiarato indecidibile da *turing* dopo il primo teorema d’incompletezza, in “on computable numbers“)
