@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-30T16:34
+updated: 2025-12-30T17:04
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -88,3 +88,6 @@ completed: false
 
 
 teoremi da poter usare x fare riduzioni:
+
+!!NON POSSO FARE UNA RIDUZIONE DI QUESTO TIPO:
+UN LINGUAGGIO RICONOSCIBILE AD UN LINGUAGGIO NON RICONOSCIBILE
