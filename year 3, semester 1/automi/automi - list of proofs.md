@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-30T09:53
+updated: 2025-12-30T10:12
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -63,7 +63,7 @@ completed: false
 18. $A_{rex}$ è decidibile
 19. $E_{DFA}$ è decidibile
 20. $EQ_{DFA}$ è decidibile
-21. $A_{CFG}$ è decidibile (da completare dim.)
+21. $A_{CFG}$ è decidibile (pg. 67)
 22. $A_{TM}$ è indecidibile
 	- creiamo TM $H$ e la TM $D$. la definizione di $D$ ci porterà ad una contraddizione
 23. $L$ è decidibile $\iff$ L è turing-ric e coturing-ric
