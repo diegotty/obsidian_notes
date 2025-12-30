@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-30T10:44
+updated: 2025-12-30T12:09
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -64,24 +64,25 @@ completed: false
 19. $E_{DFA}$ è decidibile
 20. $EQ_{DFA}$ è decidibile
 21. $A_{CFG}$ è decidibile (pg. 67)
-22. $A_{TM}$ è indecidibile
+22. $E_{CFG}$ è decidibile
+23. $A_{TM}$ è indecidibile
 	- creiamo TM $H$ e la TM $D$. la definizione di $D$ ci porterà ad una contraddizione
-23. $L$ è decidibile $\iff$ L è turing-ric e coturing-ric
-24. $A \leq_{m}B$ e B è decidibile $\implies$ A è decidibile
-25. $A \leq_{m}B$ e A è indecidibile $\implies$ B è indecidibile
-26. $HALT_{tm}$ è indecidibile
+24. $L$ è decidibile $\iff$ L è turing-ric e coturing-ric
+25. $A \leq_{m}B$ e B è decidibile $\implies$ A è decidibile
+26. $A \leq_{m}B$ e A è indecidibile $\implies$ B è indecidibile
+27. $HALT_{tm}$ è indecidibile
 	- $A_{TM} \leq_{m} HALT_{TM}$, definisco funzione $f$ e verifico correttezza della riduzione
-27. $E_{TM}$ è indecidibile
+28. $E_{TM}$ è indecidibile
 	- $A_{TM} \leq_{m} E_{TM}$, creo $S$ decisore di $A_{TM}$ basandomi su $R$ decisore (per assurdo) di $E_{TM}$
-28. $REGULAR_{TM}$ è indecidibile
+29. $REGULAR_{TM}$ è indecidibile
 	- $A_{TM} \leq_{m} REGULAR_{TM}$
-29. $\overline{A}$ non turing-ric e $A \leq_{m} B \implies \overline{B}$ non turing-ric
-30. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
+30. $\overline{A}$ non turing-ric e $A \leq_{m} B \implies \overline{B}$ non turing-ric
+31. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
 	- usiamo $A \leq_{m} B \implies \overline{A} \leq_{m} \overline{B}$, dimostrando la riduzione $A_{TM} \leq_{m} \overline{EQ}_{TM}$
 *-- göd-el *
-31. $\pi$ non può essere sia valido che completo
+32. $\pi$ non può essere sia valido che completo
 	- creo $R_{\pi}$ e la uso per decidere $HALT_{TM}$
-32. primo teorema di incompletezza di gödel
+33. primo teorema di incompletezza di gödel
 - creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)
 13. secondo teorema di incompletezza di gödel
 - dimostriamo per assurdo una contraddizione (usando il claim di sopra)
