@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-30T14:20
+updated: 2025-12-30T16:34
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -76,13 +76,15 @@ completed: false
 	- $A_{TM} \leq_{m} E_{TM}$, creo $S$ decisore di $A_{TM}$ basandomi su $R$ decisore (per assurdo) di $E_{TM}$
 29. $REGULAR_{TM}$ è indecidibile
 	- $A_{TM} \leq_{m} REGULAR_{TM}$
-30. $\overline{A}$ non turing-ric e $A \leq_{m} B \implies \overline{B}$ non turing-ric
-31. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
+30. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
 	- usiamo $A \leq_{m} B \implies \overline{A} \leq_{m} \overline{B}$, dimostrando la riduzione $A_{TM} \leq_{m} \overline{EQ}_{TM}$
 *-- göd-el *
-32. $\pi$ non può essere sia valido che completo
+31. $\pi$ non può essere sia valido che completo
 	- creo $R_{\pi}$ e la uso per decidere $HALT_{TM}$
-33. primo teorema di incompletezza di gödel
-- creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)
-34. secondo teorema di incompletezza di gödel
+32. primo teorema di incompletezza di gödel
+	- creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)
+33. secondo teorema di incompletezza di gödel
 	- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
+
+
+teoremi da poter usare x fare riduzioni:
