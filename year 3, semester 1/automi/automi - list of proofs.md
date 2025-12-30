@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-30T09:38
+updated: 2025-12-30T09:53
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -79,3 +79,9 @@ completed: false
 30. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
 	- usiamo $A \leq_{m} B \implies \overline{A} \leq_{m} \overline{B}$, dimostrando la riduzione $A_{TM} \leq_{m} \overline{EQ}_{TM}$
 *-- göd-el *
+31. $\pi$ non può essere sia valido che completo
+	- creo $R_{\pi}$ e la uso per decidere $HALT_{TM}$
+32. primo teorema di incompletezza di gödel
+- creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)
+13. secondo teorema di incompletezza di gödel
+- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
