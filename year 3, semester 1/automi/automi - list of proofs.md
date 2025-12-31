@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-31T11:53
+updated: 2025-12-31T12:21
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -91,6 +91,7 @@ teoremi da poter usare x fare riduzioni:
 
 !!NON POSSO FARE UNA RIDUZIONE DI QUESTO TIPO:
 UN LINGUAGGIO RICONOSCIBILE AD UN LINGUAGGIO NON RICONOSCIBILE
+– upate: NON È VERO !!!! POSSO FARE BLIND RIDUZIONI. se non mi vengono devo maneggiare con i complementi.
 
 paletti logici x riduzioni:
 - non possi ridurre $A_{TM}$ ad un linguaggio che prende in input qualcosa che non è una TM
