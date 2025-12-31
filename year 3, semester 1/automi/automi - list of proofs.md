@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-31T12:21
+updated: 2025-12-31T12:38
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -93,6 +93,7 @@ teoremi da poter usare x fare riduzioni:
 UN LINGUAGGIO RICONOSCIBILE AD UN LINGUAGGIO NON RICONOSCIBILE
 – upate: NON È VERO !!!! POSSO FARE BLIND RIDUZIONI. se non mi vengono devo maneggiare con i complementi.
 
+non posso contare, in $M'$, il caso $M(x) = loop$ come favorevole (cioè che $M'$ segue quello che io voglio che faccia)
 paletti logici x riduzioni:
 - non possi ridurre $A_{TM}$ ad un linguaggio che prende in input qualcosa che non è una TM
 - $f$ non può ritornare il risultato di cose (es: TM $M'$)che f stessa crea. in quanto ciò implicherebbe che f deve aspettare la fine di $M'$, e con ogni probabilità $M'$ simula $M(w)$, e quindi anche $f$ lo farebbe. $f$ deve solo scrivere (dare una definizione), non deve simulare nulla
