@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-31T11:43
+updated: 2025-12-31T11:53
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -93,5 +93,21 @@ teoremi da poter usare x fare riduzioni:
 UN LINGUAGGIO RICONOSCIBILE AD UN LINGUAGGIO NON RICONOSCIBILE
 
 paletti logici x riduzioni:
-- non possi ridurre A_TM
-- f non può ritornare il risultato di cose (es: TM $M'$)che f stessa crea. in quanto ciò implicherebbe che f deve aspettare la fine di $M'$, e con o
+- non possi ridurre $A_{TM}$ ad un linguaggio che prende in input qualcosa che non è una TM
+- $f$ non può ritornare il risultato di cose (es: TM $M'$)che f stessa crea. in quanto ciò implicherebbe che f deve aspettare la fine di $M'$, e con ogni probabilità $M'$ simula $M(w)$, e quindi anche $f$ lo farebbe. $f$ deve solo scrivere (dare una definizione), non deve simulare nulla
+- *teorema di rice*: 
+Definizioni chiave:
+- Proprietà Semantica: Una proprietà che riguarda il comportamento del programma (cosa fa, l'input-output) e non la sua struttura sintattica (come è scritto, quante righe ha).
+- Proprietà Non Banale: Una proprietà che non sia vera per tutti i programmi o per nessun programma. Se alcuni programmi la soddisfano e altri no, è non banale.
+
+Se quel _"qualcosa"_ equivale a una proprietà non banale della funzione calcolata (ovvero se riguarda l'output finale o la capacità di terminare), allora è **indecidibile**.
+
+
+e quel _"qualcosa"_ è vincolato a un limite di tempo o spazio, allora la proprietà diventa **decidibile**.
+
+- **Esempio:** _"La macchina M scrive il simbolo '1' entro i primi 100 passi di computazione?"_
+    
+- **Decidibile:** Basta simulare M per 100 passi. Se lo scrive, la risposta è SI; se arriviamo al centesimo passo senza che sia successo, la risposta è NO.
+
+
+se quel qualcosa non è vincolato ad un limite di tempo o di spazio, allora la proprietà diventa indecidibile
