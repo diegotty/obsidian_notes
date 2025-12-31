@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-30T17:10
+updated: 2025-12-31T11:43
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -91,3 +91,7 @@ teoremi da poter usare x fare riduzioni:
 
 !!NON POSSO FARE UNA RIDUZIONE DI QUESTO TIPO:
 UN LINGUAGGIO RICONOSCIBILE AD UN LINGUAGGIO NON RICONOSCIBILE
+
+paletti logici x riduzioni:
+- non possi ridurre A_TM
+- f non può ritornare il risultato di cose (es: TM $M'$)che f stessa crea. in quanto ciò implicherebbe che f deve aspettare la fine di $M'$, e con o
