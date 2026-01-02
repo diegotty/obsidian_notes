@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T18:44
+updated: 2026-01-02T18:57
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -118,3 +118,5 @@ completed: false
 52. $\forall f(n) \geq \log(n), SPACE(f(n)) \subseteq DTIME(2^{f(n)})$
 53. $PATH \in SPACE(\log^2n)$
 54. $PSPACE = NPSPACE$
+	- $A \in NL \implies A \in P$
+		- uso una $TM$ per trasformare $A$ in un grafo e risolvere PATH su di esso, tutto in $poly(n)$
