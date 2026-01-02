@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T18:11
+updated: 2026-01-02T18:44
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -117,3 +117,4 @@ completed: false
 51. $NP \subseteq PSPACE$
 52. $\forall f(n) \geq \log(n), SPACE(f(n)) \subseteq DTIME(2^{f(n)})$
 53. $PATH \in SPACE(\log^2n)$
+54. $PSPACE = NPSPACE$
