@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T14:29
+updated: 2026-01-02T14:46
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -89,4 +89,7 @@ completed: false
 
 *- complessità*
 33. $2-SAT \in P$
-34. $3-COL \in NP$
+34. $3-COL \in \text{verifier}NP$
+35. $P \subseteq \text{verifier}NP \subseteq EXP$
+36. $3-SAT \in NP$
+37. $\text{verifier}NP = NP$
