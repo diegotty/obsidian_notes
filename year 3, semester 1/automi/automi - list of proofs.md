@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T14:46
+updated: 2026-01-02T15:02
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -93,3 +93,4 @@ completed: false
 35. $P \subseteq \text{verifier}NP \subseteq EXP$
 36. $3-SAT \in NP$
 37. $\text{verifier}NP = NP$
+38. $A \leq^p)m$
