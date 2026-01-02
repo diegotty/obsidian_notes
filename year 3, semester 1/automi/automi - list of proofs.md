@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T16:16
+updated: 2026-01-02T16:23
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -110,3 +110,5 @@ completed: false
 46. $L\in P \iff \overline{L} \in P$	
 47. $P \subseteq coNP$
 48. $P =NP \implies P = coNP(= NP)$
+	- dimostro $coNP \subseteq P$. $P \subseteq coNP$ dimostrato sopra
+49. $NP = coNP \iff UNSAT \in NP$
