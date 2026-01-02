@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T10:55
+updated: 2026-01-02T11:08
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -52,60 +52,38 @@ completed: false
 13. pumping lemma per CFG
 	- affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))
 	- sceglo stringa con ripetizione. scelgo $A_{i}, A_{j}$ e verifico condizioni
-*- calcolabilità* (14 dimostrazioni)
-14. per ogni TM multinastro esiste una TM a nastro singolo equivalente
+
+*- calcolabilità* (19 dimostrazioni)
+13. per ogni TM multinastro esiste una TM a nastro singolo equivalente
 	- creo TM che simula i molteplici nastri in uno solo
-15. per ogni NTM esiste una TM equivalente
+14. per ogni NTM esiste una TM equivalente
 	- assumo TM con 3 nastri e li uso per simulare NTM
-16. $A_{DFA}$ è decidibile
+15. $A_{DFA}$ è decidibile
 	- codifica di M. simulo M su TM
-17. $A_{NFA}$ è decidibile
-18. $A_{rex}$ è decidibile
-19. $E_{DFA}$ è decidibile
-20. $EQ_{DFA}$ è decidibile
-21. $A_{CFG}$ è decidibile (pg. 67)
-22. $E_{CFG}$ è decidibile
-23. $A_{TM}$ è indecidibile
+16. $A_{NFA}$ è decidibile
+17. $A_{rex}$ è decidibile
+18. $E_{DFA}$ è decidibile
+19. $EQ_{DFA}$ è decidibile
+20. $A_{CFG}$ è decidibile (pg. 67)
+21. $E_{CFG}$ è decidibile
+22. $A_{TM}$ è indecidibile
 	- creiamo TM $H$ e la TM $D$. la definizione di $D$ ci porterà ad una contraddizione
-24. $L$ è decidibile $\iff$ L è turing-ric e coturing-ric
-25. $A \leq_{m}B$ e B è decidibile $\implies$ A è decidibile
-26. $A \leq_{m}B$ e A è indecidibile $\implies$ B è indecidibile
-27. $HALT_{tm}$ è indecidibile
+23. $L$ è decidibile $\iff$ L è turing-ric e coturing-ric
+24. $A \leq_{m}B$ e B è decidibile $\implies$ A è decidibile
+25. $A \leq_{m}B$ e A è indecidibile $\implies$ B è indecidibile
+26. $HALT_{tm}$ è indecidibile
 	- $A_{TM} \leq_{m} HALT_{TM}$, definisco funzione $f$ e verifico correttezza della riduzione
-28. $E_{TM}$ è indecidibile
+27. $E_{TM}$ è indecidibile
 	- $A_{TM} \leq_{m} \overline{E}_{TM}$, creo $S$ decisore di $A_{TM}$ basandomi su $R$ decisore (per assurdo) di $\overline{E}_{TM}$
-29. $REGULAR_{TM}$ è indecidibile
+28. $REGULAR_{TM}$ è indecidibile
 	- $A_{TM} \leq_{m} REGULAR_{TM}$
-30. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
+29. $EQ_{TM}$ non è turing-ric (+ $EQ_{TM}$ non è decidibile)
 	- usiamo $A \leq_{m} B \implies \overline{A} \leq_{m} \overline{B}$, dimostrando la riduzione $A_{TM} \leq_{m} \overline{EQ}_{TM}$
 *-- göd-el *
-31. $\pi$ non può essere sia valido che completo
+30. $\pi$ non può essere sia valido che completo
 	- creo $R_{\pi}$ e la uso per decidere $HALT_{TM}$
-32. primo teorema di incompletezza di gödel
+31. primo teorema di incompletezza di gödel
 	- creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)
-33. secondo teorema di incompletezza di gödel
+32. secondo teorema di incompletezza di gödel
 	- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
 *- complessità*
-
-
-*- paletti logici per riduzioni*
-$f$ non può ritornare il risultato di cose (es: TM $M'$)che f stessa crea.
-- può ritornare $M’$, che $f$ crea, ma non il risultato di $M’$ *se* $M’$ simula $M$. ciò implicherebbe che $f$ deve aspettare la fine di $M'$, che simula $M(w)$, e quindi anche $f$ lo farebbe.
-ma $f$ deve solo scrivere (dare una definizione), non deve simulare nulla
-
-ricordiamo che una $TM$ accetta/rifiuta come output, non può ritornare cose. $f$ invece si in quanto è una funzione
-
-*- teorema di rice*: 
-qualsiasi proprietà non banale del linguaggio riconosciuto da una TM è indecidibile
-- proprietà non banale: proprietà che non sia vera per tutti i programmi o per nessun programma. se alcuni programmi la soddisfano e altri no, è non banale.
-- proprietà semantica: proprietà che riguarda il comportamento del programma (cosa fa, input-output) e non la sua struttura sintattica (come è scritto, quante righe ha).
-
-Se quel _"qualcosa"_ equivale a una proprietà non banale della funzione calcolata (ovvero se riguarda l'output finale o la capacità di terminare), allora è **indecidibile**.
-
-
-e quel _"qualcosa"_ è vincolato a un limite di tempo o spazio, allora la proprietà diventa **decidibile**.
-
-- **Esempio:** _"La macchina M scrive il simbolo '1' entro i primi 100 passi di computazione?"_
-    
-- **Decidibile:** Basta simulare M per 100 passi. Se lo scrive, la risposta è SI; se arriviamo al centesimo passo senza che sia successo, la risposta è NO.
-se quel qualcosa non è vincolato ad un limite di tempo o di spazio, allora la proprietà diventa indecidibile
