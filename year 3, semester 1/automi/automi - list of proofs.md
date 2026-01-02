@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T12:04
+updated: 2026-01-02T14:29
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -89,3 +89,4 @@ completed: false
 
 *- complessità*
 33. $2-SAT \in P$
+34. $3-COL \in NP$
