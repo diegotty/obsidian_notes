@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T18:57
+updated: 2026-01-02T19:18
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -120,3 +120,6 @@ completed: false
 54. $PSPACE = NPSPACE$
 	- $A \in NL \implies A \in P$
 		- uso una $TM$ per trasformare $A$ in un grafo e risolvere PATH su di esso, tutto in $poly(n)$
+	- $A \in NL \implies SPACE(\log^2(n))$
+		- non mi serve avere tutto $G_{N,X}$ per usare $PATH?$
+	- generalizzo le due cose sopra per ottenere il *teorema di savitch* e lo applico per ottenere $PSPACE = NPSPACE$
