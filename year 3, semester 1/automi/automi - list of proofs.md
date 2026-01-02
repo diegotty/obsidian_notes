@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T15:17
+updated: 2026-01-02T15:19
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -100,4 +100,5 @@ completed: false
 41. $3-COL \leq_m^p 4-COL$
 	- aggiungimento nodo
 42. se $S$ è $NP-\text{completo}$, allora $S \in P \implies P = NP$
-43. $SAT$ è $NP$cook-levin
+43. $SAT$ è $NP-\text{completo}$ (*cook-levin*)
+	- definiamo tableau
