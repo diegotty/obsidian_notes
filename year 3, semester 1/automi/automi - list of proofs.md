@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T16:39
+updated: 2026-01-02T16:54
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -113,3 +113,5 @@ completed: false
 48. $P =NP \implies P = coNP(= NP)$
 	- dimostro $coNP \subseteq P$. $P \subseteq coNP$ dimostrato sopra
 49. $NP = coNP \iff UNSAT \in NP$
+50. $\text{time}(f(n)) \subseteq \text{SPACE(f(n))}$
+51. $NP \subseteq PSPACE$
