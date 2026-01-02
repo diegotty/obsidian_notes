@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T15:42
+updated: 2026-01-02T15:59
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -104,3 +104,6 @@ completed: false
 	- definiamo tableau
 	- definiamo le 4 formule
 44. $\text{K-CLIQUE}$ è $NP-\text{completo}$
+	- $3-SAT \leq_m^p K-CLIQUE$
+	- creo grafo a triple, metto archi secondo regole. dimostro doppia implicazione
+	
