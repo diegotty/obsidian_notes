@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T10:27
+updated: 2026-01-02T10:33
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -88,16 +88,14 @@ completed: false
 *- complessità*
 
 
-non posso contare, in $M'$ (TM creata dalla funzione $f$), il caso $M(x) = loop$ come favorevole (cioè che $M'$ segue quello che io voglio che faccia). per esempio, se abbiamo (nella definizione di $M'$)
-- $M(w) = ACC$, $M'$ accetta
-- altrimenti, $M'$ rifiuta
-in caso $M(w)$ vada in loop, non possiamo aspettarci che $M'$ rifiuti ($M'$ a sua volta andrà in loop).
-- bisogna stare attenti a ciò quando sicr
+*- paletti logici per riduzioni*
+$f$ non può ritornare il risultato di cose (es: TM $M'$)che f stessa crea.
+- può ritornare $M’$, che $f$ crea, ma non il risultato di $M’$ *se* $M’$ simula $M$. ciò implicherebbe che $f$ deve aspettare la fine di $M'$, che simula $M(w)$, e quindi anche $f$ lo farebbe.
+ma $f$ deve solo scrivere (dare una definizione), non deve simulare nulla
 
-paletti logici x riduzioni:
-- non possi ridurre $A_{TM}$ ad un linguaggio che prende in input qualcosa che non è una TM
-- $f$ non può ritornare il risultato di cose (es: TM $M'$)che f stessa crea. in quanto ciò implicherebbe che f deve aspettare la fine di $M'$, e con ogni probabilità $M'$ simula $M(w)$, e quindi anche $f$ lo farebbe. $f$ deve solo scrivere (dare una definizione), non deve simulare nulla
-- *teorema di rice*: 
+ricordiamo che una $TM$ accetta/rifiuta come output, non può ritornare cose. $f$ invece si in quanto è una funzione
+
+*- teorema di rice*: 
 Definizioni chiave:
 - Proprietà Semantica: Una proprietà che riguarda il comportamento del programma (cosa fa, l'input-output) e non la sua struttura sintattica (come è scritto, quante righe ha).
 - Proprietà Non Banale: Una proprietà che non sia vera per tutti i programmi o per nessun programma. Se alcuni programmi la soddisfano e altri no, è non banale.
