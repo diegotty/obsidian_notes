@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2025-12-30T10:35
+updated: 2026-01-02T11:17
 completed: false
 ---
 *- automi*
@@ -36,6 +36,7 @@ di conseguenza le grammatiche coincidono con un diverso tipo di automi: i *PDA* 
 - ricordiamo che $REG \in CFL$, e $DFA \in NFA \in PDA$
 abbiamo studiato i *PDA* (pushdown automata), un’estensione dei DFA che consentono di riconoscere linguaggi non regolari usando una pila, che viene aggiornata ad ogni transizione tra stati. 
 abbiamo dimostrato che $L$ è riconosciuto da un PDA $\iff L\text{ è }CFL$, e abbiamo studiato il *pumping lemma* per i $CFG$.
+
 *- calcolabilità*
 abbiamo introdotto le *turing machine* (*TM*), un modello astratto dei computer attuali, con una potenza di calcolo più alta degli automi studiati fino ad ora.
 abbiamo introdotto i concetti di *riconoscibilità* e *decidibilità*.
@@ -48,4 +49,6 @@ abbiamo studiato i due *teoremi d’incompletezza di gödel*, che ci hanno illus
 	- in calcolabilità, ciò è stato tradotto nell’*indecidibilità* dei programmi, primo tra tutti l’*halting problem* (dichiarato indecidibile da *turing* dopo il primo teorema d’incompletezza, in “on computable numbers“)
 - secondo teorema: non possiamo usare la matematica per garantire con certezza assoluta che la matematica stessa non contenga contraddizioni, in quanto se ciò fosse possibile, essa stessa sarebbe una contraddizione
 	- in calcolabiltà: 
+
+*- complessità*
 

@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T11:08
+updated: 2026-01-02T11:27
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -86,4 +86,6 @@ completed: false
 	- creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)
 32. secondo teorema di incompletezza di gödel
 	- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
+
 *- complessità*
+33. $SAT \in P$
