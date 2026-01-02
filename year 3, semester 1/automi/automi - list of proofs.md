@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T15:02
+updated: 2026-01-02T15:17
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -93,4 +93,11 @@ completed: false
 35. $P \subseteq \text{verifier}NP \subseteq EXP$
 36. $3-SAT \in NP$
 37. $\text{verifier}NP = NP$
-38. $A \leq^p)m$
+38. $A \leq^p_{m}B$, $B \in P \implies A \in P$
+39. $A \leq^p_{m}B$, $B \in NP \implies A \in NP$
+40. $4-COL \leq_m^p SAT$
+	- codifico colori e faccio formula per forzare colori diversi
+41. $3-COL \leq_m^p 4-COL$
+	- aggiungimento nodo
+42. se $S$ è $NP-\text{completo}$, allora $S \in P \implies P = NP$
+43. $SAT$ è $NP$cook-levin
