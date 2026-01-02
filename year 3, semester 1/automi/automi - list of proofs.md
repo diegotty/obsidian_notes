@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T20:49
+updated: 2026-01-02T21:00
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -125,3 +125,6 @@ completed: false
 	- generalizzo le due cose sopra per ottenere il *teorema di savitch* e lo applico per ottenere $PSPACE = NPSPACE$
 55. se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(X) = Q(P(X))$ anche è calcolabile in log-space
 56. $PATH$ è $NL-\text{completo}$
+	- è facile trovare una riduzione per dimostare che $PATH$ è $NL-\text{hard}$
+	- dimostriamo poi che $PATH \in NL$
+57. time hierarchy theorem
