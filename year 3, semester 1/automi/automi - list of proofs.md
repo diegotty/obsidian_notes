@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2025-12-31T12:38
+updated: 2026-01-02T10:27
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -85,15 +85,15 @@ completed: false
 	- creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)
 33. secondo teorema di incompletezza di gödel
 	- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
+*- complessità*
 
 
-teoremi da poter usare x fare riduzioni:
+non posso contare, in $M'$ (TM creata dalla funzione $f$), il caso $M(x) = loop$ come favorevole (cioè che $M'$ segue quello che io voglio che faccia). per esempio, se abbiamo (nella definizione di $M'$)
+- $M(w) = ACC$, $M'$ accetta
+- altrimenti, $M'$ rifiuta
+in caso $M(w)$ vada in loop, non possiamo aspettarci che $M'$ rifiuti ($M'$ a sua volta andrà in loop).
+- bisogna stare attenti a ciò quando sicr
 
-!!NON POSSO FARE UNA RIDUZIONE DI QUESTO TIPO:
-UN LINGUAGGIO RICONOSCIBILE AD UN LINGUAGGIO NON RICONOSCIBILE
-– upate: NON È VERO !!!! POSSO FARE BLIND RIDUZIONI. se non mi vengono devo maneggiare con i complementi.
-
-non posso contare, in $M'$, il caso $M(x) = loop$ come favorevole (cioè che $M'$ segue quello che io voglio che faccia)
 paletti logici x riduzioni:
 - non possi ridurre $A_{TM}$ ad un linguaggio che prende in input qualcosa che non è una TM
 - $f$ non può ritornare il risultato di cose (es: TM $M'$)che f stessa crea. in quanto ciò implicherebbe che f deve aspettare la fine di $M'$, e con ogni probabilità $M'$ simula $M(w)$, e quindi anche $f$ lo farebbe. $f$ deve solo scrivere (dare una definizione), non deve simulare nulla
@@ -110,6 +110,4 @@ e quel _"qualcosa"_ è vincolato a un limite di tempo o spazio, allora la propri
 - **Esempio:** _"La macchina M scrive il simbolo '1' entro i primi 100 passi di computazione?"_
     
 - **Decidibile:** Basta simulare M per 100 passi. Se lo scrive, la risposta è SI; se arriviamo al centesimo passo senza che sia successo, la risposta è NO.
-
-
 se quel qualcosa non è vincolato ad un limite di tempo o di spazio, allora la proprietà diventa indecidibile
