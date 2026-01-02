@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T15:19
+updated: 2026-01-02T15:42
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -102,3 +102,5 @@ completed: false
 42. se $S$ è $NP-\text{completo}$, allora $S \in P \implies P = NP$
 43. $SAT$ è $NP-\text{completo}$ (*cook-levin*)
 	- definiamo tableau
+	- definiamo le 4 formule
+44. $\text{K-CLIQUE}$ è $NP-\text{completo}$
