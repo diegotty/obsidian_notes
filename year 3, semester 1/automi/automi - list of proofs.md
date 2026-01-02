@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T10:33
+updated: 2026-01-02T10:55
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -96,9 +96,9 @@ ma $f$ deve solo scrivere (dare una definizione), non deve simulare nulla
 ricordiamo che una $TM$ accetta/rifiuta come output, non può ritornare cose. $f$ invece si in quanto è una funzione
 
 *- teorema di rice*: 
-Definizioni chiave:
-- Proprietà Semantica: Una proprietà che riguarda il comportamento del programma (cosa fa, l'input-output) e non la sua struttura sintattica (come è scritto, quante righe ha).
-- Proprietà Non Banale: Una proprietà che non sia vera per tutti i programmi o per nessun programma. Se alcuni programmi la soddisfano e altri no, è non banale.
+qualsiasi proprietà non banale del linguaggio riconosciuto da una TM è indecidibile
+- proprietà non banale: proprietà che non sia vera per tutti i programmi o per nessun programma. se alcuni programmi la soddisfano e altri no, è non banale.
+- proprietà semantica: proprietà che riguarda il comportamento del programma (cosa fa, input-output) e non la sua struttura sintattica (come è scritto, quante righe ha).
 
 Se quel _"qualcosa"_ equivale a una proprietà non banale della funzione calcolata (ovvero se riguarda l'output finale o la capacità di terminare), allora è **indecidibile**.
 
