@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T11:27
+updated: 2026-01-02T12:04
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -88,4 +88,4 @@ completed: false
 	- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
 
 *- complessità*
-33. $SAT \in P$
+33. $2-SAT \in P$
