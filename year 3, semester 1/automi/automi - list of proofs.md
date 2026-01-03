@@ -1,27 +1,27 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-03T16:43
+updated: 2026-01-03T17:44
 completed: false
 ---
 *- automi* (13 dimostrazioni)
 *--- linguaggi regolari*
-1. $REG$ è chiuso per unione
+1. $REG$ è chiuso per unione (1)
 	- stati sono coppie dei due automi da unire, scrivi bene funzione di transizione
-2. $REG$ è chiuso per complemento
-3. $REG$ è chiuso per intersezione
-4. $REG$ è chiuso per concatenazione 
+2. $REG$ è chiuso per complemento (1)
+3. $REG$ è chiuso per intersezione (1)
+4. $REG$ è chiuso per concatenazione (1)
 	- DFA in serie
-5. $REG$ è chiuso per potenza 
+5. $REG$ è chiuso per potenza (1)
 	- run the DFA back when at stato finale
 
-6. pumping lemma
+6. pumping lemma (1)
 	- lavoriamo sulla sequenza di stati attraversata dall’automa (intuizione pigeon hole principle). find $y$
 *--- NFA*
-7. $L(NFA) = L(DFA) (= REG)$
+7. $L(NFA) = L(DFA) (= REG)$ (1)
 	- una inclusione banale, per l’altra costruiamo DFA, dividiamo in 2 casi e usiamo $E(\delta(q,a))$
 *--- espressioni regolari*
-8. $REG = L(RE)$
+8. $REG = L(RE)$ (1)
 		- $L(RE)$ = insieme dei linguaggi associati a espressioni regolari
 	- $L(RE) \subseteq REG$: uso induzione (numero di operazioni per costruzione di $r$) e chiusura di $REG$
 	- $REG \subseteq L(RE)$ : definiamo `convert()` su $G$ GNFA in forma canonica, e dimostriamo per induzione che $G'$=`convert(G)` ($L(G) = L(G')$)
