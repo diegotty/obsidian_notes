@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-02T21:00
+updated: 2026-01-03T09:34
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -87,7 +87,7 @@ completed: false
 32. secondo teorema di incompletezza di gödel
 	- dimostriamo per assurdo una contraddizione (usando il claim di sopra)
 
-*- complessità* ()
+*- complessità* (24 dimostrazioni)
 33. $2-SAT \in P$
 	- traduco OR in AND di 2 formule. creo grafo. dimostro doppia implicazione
 34. $3-COL \in \text{verifier}NP$
