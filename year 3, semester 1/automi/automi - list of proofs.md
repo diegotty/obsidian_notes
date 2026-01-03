@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-03T15:47
+updated: 2026-01-03T16:43
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -112,7 +112,7 @@ completed: false
 	- dimostro $coNP \subseteq P$. $P \subseteq coNP$ dimostrato sopra
 47. $NP = coNP \iff UNSAT \in NP$
 48. $\text{time}(f(n)) \subseteq \text{SPACE(f(n))}$
-49. $NP \subseteq PSPACE$
+49. $NP \subseteq PSPACE$ (savitch)
 50. $\forall f(n) \geq \log(n), SPACE(f(n)) \subseteq DTIME(2^{f(n)})$
 51. $PATH \in SPACE(\log^2n)$
 52. $PSPACE = NPSPACE$
