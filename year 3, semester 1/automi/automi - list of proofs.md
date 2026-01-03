@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-03T09:34
+updated: 2026-01-03T12:01
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -95,36 +95,35 @@ completed: false
 36. $3-SAT \in NP$
 37. $\text{verifier}NP = NP$
 38. $A \leq^p_{m}B$, $B \in P \implies A \in P$
-39. $A \leq^p_{m}B$, $B \in NP \implies A \in NP$
-40. $4-COL \leq_m^p SAT$
+39. $4-COL \leq_m^p SAT$
 	- codifico colori e faccio formula per forzare colori diversi
-41. $3-COL \leq_m^p 4-COL$
+40. $3-COL \leq_m^p 4-COL$
 	- aggiungimento nodo
-42. se $S$ è $NP-\text{completo}$, allora $S \in P \implies P = NP$
-43. $SAT$ è $NP-\text{completo}$ (*cook-levin*)
+41. se $S$ è $NP-\text{completo}$, allora $S \in P \implies P = NP$
+42. $SAT$ è $NP-\text{completo}$ (*cook-levin*)
 	- definiamo tableau
 	- definiamo le 4 formule
-44. $\text{K-CLIQUE}$ è $NP-\text{completo}$
+43. $\text{K-CLIQUE}$ è $NP-\text{completo}$
 	- $3-SAT \leq_m^p K-CLIQUE$
 	- creo grafo a triple, metto archi secondo regole. dimostro doppia implicazione
-45. $SAT \in P \iff UNSAT \in P$	
-46. $L\in P \iff \overline{L} \in P$	
-47. $P \subseteq coNP$
-48. $P =NP \implies P = coNP(= NP)$
+44. $SAT \in P \iff UNSAT \in P$	
+45. $L\in P \iff \overline{L} \in P$	
+46. $P \subseteq coNP$
+47. $P =NP \implies P = coNP(= NP)$
 	- dimostro $coNP \subseteq P$. $P \subseteq coNP$ dimostrato sopra
-49. $NP = coNP \iff UNSAT \in NP$
-50. $\text{time}(f(n)) \subseteq \text{SPACE(f(n))}$
-51. $NP \subseteq PSPACE$
-52. $\forall f(n) \geq \log(n), SPACE(f(n)) \subseteq DTIME(2^{f(n)})$
-53. $PATH \in SPACE(\log^2n)$
-54. $PSPACE = NPSPACE$
+48. $NP = coNP \iff UNSAT \in NP$
+49. $\text{time}(f(n)) \subseteq \text{SPACE(f(n))}$
+50. $NP \subseteq PSPACE$
+51. $\forall f(n) \geq \log(n), SPACE(f(n)) \subseteq DTIME(2^{f(n)})$
+52. $PATH \in SPACE(\log^2n)$
+53. $PSPACE = NPSPACE$
 	- $A \in NL \implies A \in P$
 		- uso una $TM$ per trasformare $A$ in un grafo e risolvere PATH su di esso, tutto in $poly(n)$
 	- $A \in NL \implies SPACE(\log^2(n))$
 		- non mi serve avere tutto $G_{N,X}$ per usare $PATH?$
 	- generalizzo le due cose sopra per ottenere il *teorema di savitch* e lo applico per ottenere $PSPACE = NPSPACE$
-55. se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(X) = Q(P(X))$ anche è calcolabile in log-space
-56. $PATH$ è $NL-\text{completo}$
+54. se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(X) = Q(P(X))$ anche è calcolabile in log-space
+55. $PATH$ è $NL-\text{completo}$
 	- è facile trovare una riduzione per dimostare che $PATH$ è $NL-\text{hard}$
 	- dimostriamo poi che $PATH \in NL$
-57. time hierarchy theorem
+56. time hierarchy theorem
