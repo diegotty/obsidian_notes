@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-04T09:23
+updated: 2026-01-04T09:32
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -122,5 +122,5 @@ completed: false
 54. se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(X) = Q(P(X))$ anche è calcolabile in log-space
 55. $PATH$ è $NL-\text{completo}$
 	- è facile trovare una riduzione per dimostare che $PATH$ è $NL-\text{hard}$
-	- dimostriamo poi che $PATH \in NL$ (definisco NTM)
+	- dimostriamo poi che $PATH \in NL$ (definisco NTM (curr_node))
 56. time hierarchy theorem
