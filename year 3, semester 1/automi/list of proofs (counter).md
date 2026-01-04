@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-04T11:05
+updated: 2026-01-04T16:09
 ---
 ## automi
 
@@ -75,3 +75,4 @@ updated: 2026-01-04T11:05
 | 54  | se $p$,$q$ sono funzioni calcolabili in log-space, allora $r(x) = q(p(x))$ anche è calcolabile in log-space |        1         |                                                                                              |
 | 55  | $path$ è $nl-\text{completo}$                                                                               |        1         | è facile trovare una riduzione per dimostare che $path$ è $nl-\text{hard}$                   |
 | 56  | time hierarchy theorem                                                                                      |        1         |                                                                                              |
+| 57  | space hierarchy theorem                                                                                     |                  |                                                                                              |
