@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 15:29
-updated: 2026-01-02T11:17
+updated: 2026-01-04T11:07
 completed: false
 ---
 *- automi*
@@ -51,4 +51,3 @@ abbiamo studiato i due *teoremi d’incompletezza di gödel*, che ci hanno illus
 	- in calcolabiltà: 
 
 *- complessità*
-

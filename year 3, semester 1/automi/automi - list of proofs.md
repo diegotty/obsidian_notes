@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-04T10:49
+updated: 2026-01-04T11:06
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -124,7 +124,3 @@ completed: false
 	- è facile trovare una riduzione per dimostare che $PATH$ è $NL-\text{hard}$
 	- dimostriamo poi che $PATH \in NL$ (definisco NTM (curr_node))
 56. time hierarchy theorem
-
-| dimostrazione | ripetizioni | hints |
-| ------------- | ----------- | ----- |
-|               |             |       |

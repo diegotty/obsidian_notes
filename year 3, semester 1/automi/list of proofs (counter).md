@@ -1,8 +1,8 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-04T11:03
+updated: 2026-01-04T11:05
 ---
-*- automi*
+## automi
 
 | #   | dimostrazione                                                   | ripetizioni (n°) | hint                                                                                                    |
 | :-- | :-------------------------------------------------------------- | :--------------: | :------------------------------------------------------------------------------------------------------ |
@@ -21,16 +21,57 @@ updated: 2026-01-04T11:03
 | 13  | pumping lemma per cfg                                           |        1         | affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))               |
 
 ---
+## calcolabilità
 
-## ⚙️ calcolabilità
-| # | dimostrazione | ripetizioni (n°) | hint |
-| :--- | :--- | :---: | :--- |
-| 13b | per ogni tm multinastro esiste una tm a nastro singolo equivalente | 1 | creo tm che simula i molteplici nastri in uno solo |
-| 14 | per ogni ntm esiste una tm equivalente | 1 | assumo tm con 3 nastri e li uso per simulare ntm |
-| 15 | $a_{dfa}$ è decidibile | 1 | codifica di m. simulo m su tm |
-| 16 | $a_{nfa}$ è decidibile | 1 | |
-| 17 | $a_{rex}$ è decidibile | 1 | |
-| 18 | $e_{dfa}$ è decidibile | 1 | |
-| 19 | $eq_{dfa}$ è decidibile | 1 | |
-| 20 | $a_{cfg}$ è decidibile | 1 | |
-| 21 | $e_{cfg}$ è decidibile | 1 |
+| #   | dimostrazione                                                      | ripetizioni (n°) | hint                                                                                                                              |
+| :-- | :----------------------------------------------------------------- | :--------------: | :-------------------------------------------------------------------------------------------------------------------------------- |
+| 13b | per ogni tm multinastro esiste una tm a nastro singolo equivalente |        1         | creo tm che simula i molteplici nastri in uno solo                                                                                |
+| 14  | per ogni ntm esiste una tm equivalente                             |        1         | assumo tm con 3 nastri e li uso per simulare ntm                                                                                  |
+| 15  | $a_{dfa}$ è decidibile                                             |        1         | codifica di m. simulo m su tm                                                                                                     |
+| 16  | $a_{nfa}$ è decidibile                                             |        1         |                                                                                                                                   |
+| 17  | $a_{rex}$ è decidibile                                             |        1         |                                                                                                                                   |
+| 18  | $e_{dfa}$ è decidibile                                             |        1         |                                                                                                                                   |
+| 19  | $eq_{dfa}$ è decidibile                                            |        1         |                                                                                                                                   |
+| 20  | $a_{cfg}$ è decidibile                                             |        1         |                                                                                                                                   |
+| 21  | $e_{cfg}$ è decidibile                                             |        1         |                                                                                                                                   |
+| 22  | $a_{tm}$ è indecidibile                                            |        1         | creiamo tm $h$ e la tm $d$. la definizione di $d$ ci porterà ad una contraddizione                                                |
+| 23  | $l$ è decidibile $\iff$ l è turing-ric e coturing-ric              |        1         |                                                                                                                                   |
+| 24  | $a \leq_{m}b$ e b è decidibile $\implies$ a è decidibile           |        1         |                                                                                                                                   |
+| 25  | $a \leq_{m}b$ e a è indecidibile $\implies$ b è indecidibile       |        1         |                                                                                                                                   |
+| 26  | $halt_{tm}$ è indecidibile                                         |        1         | $a_{tm} \leq_{m} halt_{tm}$, definisco funzione $f$ e verifico correttezza della riduzione                                        |
+| 27  | $e_{tm}$ è indecidibile                                            |        1         | $a_{tm} \leq_{m} \overline{e}_{tm}$, creo $s$ decisore di $a_{tm}$ basandomi su $r$ decisore (per assurdo) di $\overline{e}_{tm}$ |
+| 28  | $regular_{tm}$ è indecidibile                                      |        1         | $a_{tm} \leq_{m} regular_{tm}$                                                                                                    |
+| 29  | $eq_{tm}$ non è turing-ric (+ $eq_{tm}$ non è decidibile)          |        1         | usiamo $a \leq_{m} b \implies \overline{a} \leq_{m} \overline{b}$, dimostrando la riduzione $a_{tm} \leq_{m} \overline{eq}_{tm}$  |
+| 30  | $\pi$ non può essere sia valido che completo                       |        1         | creo $r_{\pi}$ e la uso per decidere $halt_{tm}$                                                                                  |
+| 31  | primo teorema di incompletezza di gödel                            |        1         | creiamo $d$ e gli diamo come input $d$. lavoriamo su $\phi_{d}$ e $\neg\phi_{d}$ (claim)                                          |
+| 32  | secondo teorema di incompletezza di gödel                          |        1         | dimostriamo per assurdo una contraddizione (usando il claim di sopra)                                                             |
+
+---
+
+## complessità
+| #   | dimostrazione                                                                                               | ripetizioni (n°) | hint                                                                                         |
+| :-- | :---------------------------------------------------------------------------------------------------------- | :--------------: | :------------------------------------------------------------------------------------------- |
+| 33  | $2-sat \in p$                                                                                               |        1         | traduco or in and di 2 formule. creo grafo. dimostro doppia implicazione                     |
+| 34  | $3-col \in \text{verifier}np$                                                                               |        1         |                                                                                              |
+| 35  | $p \subseteq \text{verifier}np \subseteq exp$                                                               |        1         |                                                                                              |
+| 36  | $3-sat \in np$                                                                                              |        1         |                                                                                              |
+| 37  | $\text{verifier}np = np$                                                                                    |        1         |                                                                                              |
+| 38  | $a \leq^p_{m}b$, $b \in p \implies a \in p$                                                                 |        1         |                                                                                              |
+| 39  | $4-col \leq_m^p sat$                                                                                        |        1         | codifico colori e faccio formula per forzare colori diversi                                  |
+| 40  | $3-col \leq_m^p 4-col$                                                                                      |        1         | aggiungimento nodo                                                                           |
+| 41  | se $s$ è $np-\text{completo}$, allora $s \in p \implies p = np$                                             |        1         |                                                                                              |
+| 42  | $sat$ è $np-\text{completo}$ (*cook-levin*)                                                                 |        1         | definiamo tableau                                                                            |
+| 43  | $\text{k-clique}$ è $np-\text{completo}$                                                                    |        1         | $3-sat \leq_m^p k-clique$                                                                    |
+| 44  | $sat \in p \iff unsat \in p$                                                                                |        1         |                                                                                              |
+| 45  | $p \subseteq conp$                                                                                          |        1         |                                                                                              |
+| 46  | $p =np \implies p = conp(= np)$                                                                             |        1         | dimostro $conp \subseteq p$. $p \subseteq conp$ dimostrato sopra                             |
+| 47  | $np = conp \iff unsat \in np$                                                                               |        1         |                                                                                              |
+| 48  | $\text{time}(f(n)) \subseteq \text{space(f(n))}$                                                            |        1         |                                                                                              |
+| 49  | $np \subseteq pspace$ (savitch)                                                                             |        1         |                                                                                              |
+| 50  | $\forall f(n) \geq \log(n), space(f(n)) \subseteq dtime(2^{f(n)})$                                          |        1         |                                                                                              |
+| 51  | $path \in space(\log^2n)$                                                                                   |        1         |                                                                                              |
+| 52  | $a \in nl \implies a \in p$                                                                                 |        1         | uso una $tm$ per trasformare $a$ in un grafo e risolvere path su di esso, tutto in $poly(n)$ |
+| 53  | $a \in nl \implies space(\log^2(n))$                                                                        |        1         | non mi serve avere tutto $g_{n,x}$ per usare $path?$                                         |
+| 54  | se $p$,$q$ sono funzioni calcolabili in log-space, allora $r(x) = q(p(x))$ anche è calcolabile in log-space |        1         |                                                                                              |
+| 55  | $path$ è $nl-\text{completo}$                                                                               |        1         | è facile trovare una riduzione per dimostare che $path$ è $nl-\text{hard}$                   |
+| 56  | time hierarchy theorem                                                                                      |        1         |                                                                                              |
