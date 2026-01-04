@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 07:11
-updated: 2026-01-03T21:43
+updated: 2026-01-04T08:49
 completed: false
 ---
 *- automi* (13 dimostrazioni)
@@ -115,14 +115,12 @@ completed: false
 49. $NP \subseteq PSPACE$ (savitch)
 50. $\forall f(n) \geq \log(n), SPACE(f(n)) \subseteq DTIME(2^{f(n)})$
 51. $PATH \in SPACE(\log^2n)$
-52. $PSPACE = NPSPACE$
-	- $A \in NL \implies A \in P$
-		- uso una $TM$ per trasformare $A$ in un grafo e risolvere PATH su di esso, tutto in$poly(n)$
-	- $A \in NL \implies SPACE(\log^2(n))$
-		- non mi serve avere tutto $G_{N,X}$ per usare $PATH?$
-	- generalizzo le due cose sopra per ottenere il *teorema di savitch* e lo applico per ottenere $PSPACE = NPSPACE$
-53. se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(X) = Q(P(X))$ anche è calcolabile in log-space
-54. $PATH$ è $NL-\text{completo}$
+52.  $A \in NL \implies A \in P$
+	- uso una $TM$ per trasformare $A$ in un grafo e risolvere PATH su di esso, tutto in $poly(n)$
+53. $A \in NL \implies SPACE(\log^2(n))$
+	- non mi serve avere tutto $G_{N,X}$ per usare $PATH?$
+54. se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(X) = Q(P(X))$ anche è calcolabile in log-space
+55. $PATH$ è $NL-\text{completo}$
 	- è facile trovare una riduzione per dimostare che $PATH$ è $NL-\text{hard}$
 	- dimostriamo poi che $PATH \in NL$
-55. time hierarchy theorem
+56. time hierarchy theorem
