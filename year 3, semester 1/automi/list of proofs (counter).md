@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-04T16:09
+updated: 2026-01-05T10:16
 ---
 ## automi
 
@@ -65,14 +65,14 @@ updated: 2026-01-04T16:09
 | 44  | $sat \in p \iff unsat \in p$                                                                                |        1         |                                                                                              |
 | 45  | $p \subseteq conp$                                                                                          |        1         |                                                                                              |
 | 46  | $p =np \implies p = conp(= np)$                                                                             |        1         | dimostro $conp \subseteq p$. $p \subseteq conp$ dimostrato sopra                             |
-| 47  | $np = conp \iff unsat \in np$                                                                               |        1         |                                                                                              |
-| 48  | $\text{time}(f(n)) \subseteq \text{space(f(n))}$                                                            |        1         |                                                                                              |
-| 49  | $np \subseteq pspace$ (savitch)                                                                             |        1         |                                                                                              |
-| 50  | $\forall f(n) \geq \log(n), space(f(n)) \subseteq dtime(2^{f(n)})$                                          |        1         |                                                                                              |
-| 51  | $path \in space(\log^2n)$                                                                                   |        1         |                                                                                              |
-| 52  | $a \in nl \implies a \in p$                                                                                 |        1         | uso una $tm$ per trasformare $a$ in un grafo e risolvere path su di esso, tutto in $poly(n)$ |
-| 53  | $a \in nl \implies space(\log^2(n))$                                                                        |        1         | non mi serve avere tutto $g_{n,x}$ per usare $path?$                                         |
-| 54  | se $p$,$q$ sono funzioni calcolabili in log-space, allora $r(x) = q(p(x))$ anche è calcolabile in log-space |        1         |                                                                                              |
-| 55  | $path$ è $nl-\text{completo}$                                                                               |        1         | è facile trovare una riduzione per dimostare che $path$ è $nl-\text{hard}$                   |
+| 47  | $NP = coNP \iff unsat \in np$                                                                               |        1         |                                                                                              |
+| 48  | $\text{TIME}(f(n)) \subseteq \text{SPACE(f(n))}$                                                            |        1         |                                                                                              |
+| 49  | $NP \subseteq PSPACE$ (savitch)                                                                             |        1         |                                                                                              |
+| 50  | $\forall f(n) \geq \log(n),SPACE(f(n)) \subseteq DTIME(2^{f(n)})$                                           |        1         |                                                                                              |
+| 51  | $PATH \in SPACE(\log^2n)$                                                                                   |        1         |                                                                                              |
+| 52  | $a \in NL \implies a \in P$                                                                                 |        1         | uso una $tm$ per trasformare $a$ in un grafo e risolvere path su di esso, tutto in $poly(n)$ |
+| 53  | $a \in NL \implies SPACE(\log^2(n))$                                                                        |        1         | non mi serve avere tutto $g_{n,x}$ per usare $path?$                                         |
+| 54  | se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(x) = Q(P(x))$ anche è calcolabile in log-space |        1         |                                                                                              |
+| 55  | $PATH$ è $NL-\text{completo}$                                                                               |        1         | è facile trovare una riduzione per dimostare che $path$ è $nl-\text{hard}$                   |
 | 56  | time hierarchy theorem                                                                                      |        1         |                                                                                              |
 | 57  | space hierarchy theorem                                                                                     |                  |                                                                                              |
