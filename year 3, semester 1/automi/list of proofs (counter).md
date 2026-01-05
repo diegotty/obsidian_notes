@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-05T10:16
+updated: 2026-01-05T15:11
 ---
 ## automi
 
@@ -18,9 +18,7 @@ updated: 2026-01-05T10:16
 | 10  | correttezza del passaggio da dfa a cfg                          |        1         | $l(d) \subseteq l(g)$: usiamo la struttura di $g$ (che abbiamo costruito noi)                           |
 | 11  | ogni cfg ammette una cfg equivalente in forma normale (chomsky) |        1         | aggiungo variabile iniziale                                                                             |
 | 12  | $l$ è riconosciuto da un pda $\iff$ l è cfg                     |        1         | creiamo pda ($\$s$ $q_{\text{loop}}$) e definiamo $\delta$. basta                                       |
-| 13  | pumping lemma per cfg                                           |        1         | affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))               |
-
----
+| 13  | pumping lemma per cfg                                           |        2         | affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))               |
 ## calcolabilità
 
 | #   | dimostrazione                                                      | ripetizioni (n°) | hint                                                                                                                              |
@@ -47,7 +45,6 @@ updated: 2026-01-05T10:16
 | 32  | secondo teorema di incompletezza di gödel                          |        1         | dimostriamo per assurdo una contraddizione (usando il claim di sopra)                                                             |
 
 ---
-
 ## complessità
 | #   | dimostrazione                                                                                               | ripetizioni (n°) | hint                                                                                         |
 | :-- | :---------------------------------------------------------------------------------------------------------- | :--------------: | :------------------------------------------------------------------------------------------- |
