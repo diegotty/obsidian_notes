@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-02T11:09
+updated: 2026-01-05T18:41
 completed: false
 ---
 *- way to think about reductions*
@@ -37,3 +37,6 @@ se una proprietà semantica è vincolata a un limite di tempo o spazio, allora l
 dato un linguaggio, devo scegliere una stringa $w$ (che usa $p$) che, data qualunque decomposizione di $w$, falsifica le condizioni del pumping lemma.
 - non possiamo definire $p$
 - per dimostrare che falsifica le condizioni, possiamo usare l’artimetica sulle cardinalità delle cifre. è ottimale quindi definire per esteso $x$, $y$, $z$.
+
+
+ricorda che puoi fare pumping up and pumping down !!!
