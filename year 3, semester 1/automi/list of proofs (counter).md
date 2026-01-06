@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-06T10:41
+updated: 2026-01-06T10:48
 ---
 ## automi
 
@@ -39,7 +39,7 @@ updated: 2026-01-06T10:41
 | 26  | $halt_{tm}$ è indecidibile                                         |        1         | $a_{tm} \leq_{m} halt_{tm}$, definisco funzione $f$ e verifico correttezza della riduzione                                        |
 | 27  | $e_{tm}$ è indecidibile                                            |        1         | $a_{tm} \leq_{m} \overline{e}_{tm}$, creo $s$ decisore di $a_{tm}$ basandomi su $r$ decisore (per assurdo) di $\overline{e}_{tm}$ |
 | 28  | $regular_{tm}$ è indecidibile                                      |        1         | $a_{tm} \leq_{m} regular_{tm}$                                                                                                    |
-| 29  | $eq_{tm}$ non è turing-ric (+ $eq_{tm}$ non è decidibile)          |        1         | usiamo $a \leq_{m} b \implies \overline{a} \leq_{m} \overline{b}$, dimostrando la riduzione $a_{tm} \leq_{m} \overline{eq}_{tm}$  |
+| 29  | $eq_{tm}$ non è turing-ric (+ $eq_{tm}$ non è decidibile)          |        2         | usiamo $a \leq_{m} b \implies \overline{a} \leq_{m} \overline{b}$, dimostrando la riduzione $a_{tm} \leq_{m} \overline{eq}_{tm}$  |
 | 30  | $\pi$ non può essere sia valido che completo                       |        1         | creo $r_{\pi}$ e la uso per decidere $halt_{tm}$                                                                                  |
 | 31  | primo teorema di incompletezza di gödel                            |        1         | creiamo $d$ e gli diamo come input $d$. lavoriamo su $\phi_{d}$ e $\neg\phi_{d}$ (claim)                                          |
 | 32  | secondo teorema di incompletezza di gödel                          |        1         | dimostriamo per assurdo una contraddizione (usando il claim di sopra)                                                             |
@@ -64,7 +64,7 @@ updated: 2026-01-06T10:41
 | 46  | $p =np \implies p = conp(= np)$                                                                             |        1         | dimostro $conp \subseteq p$. $p \subseteq conp$ dimostrato sopra                             |
 | 47  | $NP = coNP \iff unsat \in np$                                                                               |        1         |                                                                                              |
 | 48  | $\text{TIME}(f(n)) \subseteq \text{SPACE(f(n))}$                                                            |        1         |                                                                                              |
-| 49  | $NP \subseteq PSPACE$ (savitch)                                                                             |        1         |                                                                                              |
+| 49  | $NP \subseteq PSPACE$ (savitch ma si può anche dimostrare diversamente …)                                   |        1         | usiamo verifierNP                                                                            |
 | 50  | $\forall f(n) \geq \log(n),SPACE(f(n)) \subseteq DTIME(2^{f(n)})$                                           |        1         |                                                                                              |
 | 51  | $PATH \in SPACE(\log^2n)$                                                                                   |        1         |                                                                                              |
 | 52  | $a \in NL \implies a \in P$                                                                                 |        1         | uso una $tm$ per trasformare $a$ in un grafo e risolvere path su di esso, tutto in $poly(n)$ |
