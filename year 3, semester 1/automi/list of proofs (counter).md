@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-06T10:48
+updated: 2026-01-06T17:46
 ---
 ## automi
 
@@ -17,8 +17,8 @@ updated: 2026-01-06T10:48
 | 9   | correttezza dell’unione di grammatiche                          |        1         | $\bigcup_{i}l(gi) \subseteq l(g)$: troviamo $g_{i}$ t.c. $w \in l(g_{i})$, notiamo che $l(g)$ lo genera |
 | 10  | correttezza del passaggio da dfa a cfg                          |        1         | $l(d) \subseteq l(g)$: usiamo la struttura di $g$ (che abbiamo costruito noi)                           |
 | 11  | ogni cfg ammette una cfg equivalente in forma normale (chomsky) |        1         | aggiungo variabile iniziale                                                                             |
-| 12  | $l$ è riconosciuto da un pda $\iff$ l è cfg                     |        1         | creiamo pda ($\$s$ $q_{\text{loop}}$) e definiamo $\delta$. basta                                       |
-| 13  | pumping lemma per cfg                                           |        2         | affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))               |
+| 12  | $l$ è riconosciuto da un pda $\iff$ l è cfg                     |        2         | creiamo pda ($\$s$ $q_{\text{loop}}$) e definiamo $\delta$. basta                                       |
+| 13  | pumping lemma per cfg                                           |        1         | affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))               |
 ## calcolabilità
 
 | #   | dimostrazione                                                      | ripetizioni (n°) | hint                                                                                                                              |
