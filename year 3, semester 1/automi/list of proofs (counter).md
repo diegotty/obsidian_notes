@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-05T15:11
+updated: 2026-01-06T10:41
 ---
 ## automi
 
@@ -54,8 +54,8 @@ updated: 2026-01-05T15:11
 | 36  | $3-sat \in np$                                                                                              |        1         |                                                                                              |
 | 37  | $\text{verifier}np = np$                                                                                    |        1         |                                                                                              |
 | 38  | $a \leq^p_{m}b$, $b \in p \implies a \in p$                                                                 |        1         |                                                                                              |
-| 39  | $4-col \leq_m^p sat$                                                                                        |        1         | codifico colori e faccio formula per forzare colori diversi                                  |
-| 40  | $3-col \leq_m^p 4-col$                                                                                      |        1         | aggiungimento nodo                                                                           |
+| 39  | $4-col \leq_m^p sat$                                                                                        |        2         | codifico colori e faccio formula per forzare colori diversi                                  |
+| 40  | $3-col \leq_m^p 4-col$                                                                                      |        2         | aggiungimento nodo                                                                           |
 | 41  | se $s$ è $np-\text{completo}$, allora $s \in p \implies p = np$                                             |        1         |                                                                                              |
 | 42  | $sat$ è $np-\text{completo}$ (*cook-levin*)                                                                 |        1         | definiamo tableau                                                                            |
 | 43  | $\text{k-clique}$ è $np-\text{completo}$                                                                    |        1         | $3-sat \leq_m^p k-clique$                                                                    |
