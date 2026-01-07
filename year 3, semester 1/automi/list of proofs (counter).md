@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-07T21:12
+updated: 2026-01-07T22:03
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -45,7 +45,7 @@ updated: 2026-01-07T21:12
 | 29  | $eq_{tm}$ non è turing-ric (+ $eq_{tm}$ non è decidibile)          |        3         | usiamo $a \leq_{m} b \implies \overline{a} \leq_{m} \overline{b}$, dimostrando la riduzione $a_{tm} \leq_{m} \overline{eq}_{tm}$  |
 | 30  | $\pi$ non può essere sia valido che completo                       |        1         | creo $r_{\pi}$ e la uso per decidere $halt_{tm}$                                                                                  |
 | 31  | primo teorema di incompletezza di gödel                            |        2         | creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)                                          |
-| 32  | secondo teorema di incompletezza di gödel                          |        1         | dimostriamo per assurdo una contraddizione (usando il claim di sopra)                                                             |
+| 32  | secondo teorema di incompletezza di gödel                          |       1.5        | dimostriamo per assurdo una contraddizione (usando il claim di sopra)                                                             |
 
 ---
 ## complessità
@@ -76,3 +76,9 @@ updated: 2026-01-07T21:12
 | 55  | $PATH$ è $NL-\text{completo}$                                                                               |        1         | è facile trovare una riduzione per dimostare che $path$ è $nl-\text{hard}$                   |
 | 56  | time hierarchy theorem                                                                                      |        1         |                                                                                              |
 | 57  | space hierarchy theorem                                                                                     |        2         |                                                                                              |
+
+## list
+- [ ] 2-sat in P
+- pumping lemma x CFG
+- primo e secondo teorema di incompletezza di godel
+- teorema di savitch
