@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-07T16:46
+updated: 2026-01-07T18:43
 completed: false
 ---
 
@@ -39,17 +39,18 @@ se una proprietà semantica è vincolata a un limite di tempo o spazio, allora l
 dato un linguaggio, devo scegliere una stringa $w$ (che usa $p$) che, data qualunque decomposizione di $w$, falsifica le condizioni del pumping lemma.
 - non possiamo definire $p$
 - per dimostrare che falsifica le condizioni, possiamo usare l’artimetica sulle cardinalità delle cifre. è ottimale quindi definire per esteso $x$, $y$, $z$.
-
-
-ricorda che puoi fare pumping up and pumping down !!!
+*ricorda che puoi fare pumping up and pumping down !!!*
 
 contare in una TM multinastro non ha costo temporale costante:
 - se rappresento i numeri in decimale, fare +1 costa $O(n)$
 - se rappresento i numeri in binario, fare +1 costa $O(\log n)$
 il modo migliore per contare è scrivere la rappresentazione unaria (scrivere una sequenza di simboli uno dopo l’altro)
 
-*certificati*
+*- certificati*
 i certificati sono una possibile soluzione per il problema.
-es: 1
 
+*- grafi*
 $<G>$ occupa di solito $|V|^2$ (matrice di adiacenza)
+
+
+ricordiamo che possiamo hard-codare TM e delta dentro altre TM
