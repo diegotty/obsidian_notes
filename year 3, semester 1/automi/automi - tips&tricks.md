@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-07T10:08
+updated: 2026-01-07T16:10
 completed: false
 ---
 *- way to think about reductions*
@@ -49,3 +49,5 @@ il modo migliore per contare è scrivere la rappresentazione unaria (scrivere un
 *certificati*
 i certificati sono una possibile soluzione per il problema.
 es: 1
+
+$<G>$ occupa di solito $|V|^2$ (matrice di adiacenza)
