@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-06T20:17
+updated: 2026-01-07T10:08
 completed: false
 ---
 *- way to think about reductions*
@@ -45,3 +45,7 @@ contare in una TM multinastro non ha costo temporale costante:
 - se rappresento i numeri in decimale, fare +1 costa $O(n)$
 - se rappresento i numeri in binario, fare +1 costa $O(\log n)$
 il modo migliore per contare è scrivere la rappresentazione unaria (scrivere una sequenza di simboli uno dopo l’altro)
+
+*certificati*
+i certificati sono una possibile soluzione per il problema.
+es: 1
