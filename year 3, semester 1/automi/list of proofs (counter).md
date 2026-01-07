@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-06T17:46
+updated: 2026-01-07T09:29
 ---
 ## automi
 
@@ -39,7 +39,7 @@ updated: 2026-01-06T17:46
 | 26  | $halt_{tm}$ è indecidibile                                         |        1         | $a_{tm} \leq_{m} halt_{tm}$, definisco funzione $f$ e verifico correttezza della riduzione                                        |
 | 27  | $e_{tm}$ è indecidibile                                            |        1         | $a_{tm} \leq_{m} \overline{e}_{tm}$, creo $s$ decisore di $a_{tm}$ basandomi su $r$ decisore (per assurdo) di $\overline{e}_{tm}$ |
 | 28  | $regular_{tm}$ è indecidibile                                      |        1         | $a_{tm} \leq_{m} regular_{tm}$                                                                                                    |
-| 29  | $eq_{tm}$ non è turing-ric (+ $eq_{tm}$ non è decidibile)          |        2         | usiamo $a \leq_{m} b \implies \overline{a} \leq_{m} \overline{b}$, dimostrando la riduzione $a_{tm} \leq_{m} \overline{eq}_{tm}$  |
+| 29  | $eq_{tm}$ non è turing-ric (+ $eq_{tm}$ non è decidibile)          |        3         | usiamo $a \leq_{m} b \implies \overline{a} \leq_{m} \overline{b}$, dimostrando la riduzione $a_{tm} \leq_{m} \overline{eq}_{tm}$  |
 | 30  | $\pi$ non può essere sia valido che completo                       |        1         | creo $r_{\pi}$ e la uso per decidere $halt_{tm}$                                                                                  |
 | 31  | primo teorema di incompletezza di gödel                            |        1         | creiamo $d$ e gli diamo come input $d$. lavoriamo su $\phi_{d}$ e $\neg\phi_{d}$ (claim)                                          |
 | 32  | secondo teorema di incompletezza di gödel                          |        1         | dimostriamo per assurdo una contraddizione (usando il claim di sopra)                                                             |
