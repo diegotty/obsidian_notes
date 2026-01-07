@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-07T12:55
+updated: 2026-01-07T14:52
 ---
 ## automi
 
@@ -11,7 +11,7 @@ updated: 2026-01-07T12:55
 | 3   | $reg$ è chiuso per intersezione                                 |        1         |                                                                                                         |
 | 4   | $reg$ è chiuso per concatenazione                               |        1         | dfa in serie                                                                                            |
 | 5   | $reg$ è chiuso per potenza                                      |        1         | run the dfa back when at stato finale                                                                   |
-| 6   | pumping lemma                                                   |        1         | lavoriamo sulla sequenza di stati attraversata dall’automa (intuizione pigeon hole principle). find $y$ |
+| 6   | pumping lemma                                                   |        3         | lavoriamo sulla sequenza di stati attraversata dall’automa (intuizione pigeon hole principle). find $y$ |
 | 7   | $l(nfa) = l(dfa) (= reg)$                                       |        1         | una inclusione banale, per l’altra costruiamo dfa, dividiamo in 2 casi e usiamo $e(\delta(q,a))$        |
 | 8   | $reg = l(re)$                                                   |        1         | $l(re) \subseteq reg$: uso induzione (numero di operazioni per costruzione di $r$) e chiusura di $reg$  |
 | 9   | correttezza dell’unione di grammatiche                          |        1         | $\bigcup_{i}l(gi) \subseteq l(g)$: troviamo $g_{i}$ t.c. $w \in l(g_{i})$, notiamo che $l(g)$ lo genera |
