@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-07T11:05
+updated: 2026-01-07T12:55
 ---
 ## automi
 
@@ -29,7 +29,7 @@ updated: 2026-01-07T11:05
 | 16  | $a_{nfa}$ è decidibile                                             |        1         |                                                                                                                                   |
 | 17  | $a_{rex}$ è decidibile                                             |        1         |                                                                                                                                   |
 | 18  | $e_{dfa}$ è decidibile                                             |        1         |                                                                                                                                   |
-| 19  | $eq_{dfa}$ è decidibile                                            |        1         |                                                                                                                                   |
+| 19  | $EQ_{DFA}$ è decidibile                                            |        1         |                                                                                                                                   |
 | 20  | $a_{cfg}$ è decidibile                                             |        1         |                                                                                                                                   |
 | 21  | $e_{cfg}$ è decidibile                                             |        1         |                                                                                                                                   |
 | 22  | $a_{tm}$ è indecidibile                                            |        1         | creiamo tm $h$ e la tm $d$. la definizione di $d$ ci porterà ad una contraddizione                                                |
