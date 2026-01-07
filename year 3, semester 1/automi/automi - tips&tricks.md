@@ -1,9 +1,11 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-07T16:10
+updated: 2026-01-07T16:46
 completed: false
 ---
+
+
 *- way to think about reductions*
 se avessi un decisore per $B$, e $A \leq_{m}B$ allora $A$ sarebbe decidibile
 controllare se anche i casi in cui $M(w) \neq ACC$ sono mappati bene !

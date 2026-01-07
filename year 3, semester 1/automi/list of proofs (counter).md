@@ -1,7 +1,10 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-07T14:52
+updated: 2026-01-07T16:50
 ---
+## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
+- [ ] lista di teoremi complessità
+- [ ] lista linguaggi in P, NP, decidibili, indecidibili, t-ric, non ti-ric
 ## automi
 
 | #   | dimostrazione                                                   | ripetizioni (n°) | hint                                                                                                    |
@@ -72,4 +75,4 @@ updated: 2026-01-07T14:52
 | 54  | se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(x) = Q(P(x))$ anche è calcolabile in log-space |        1         |                                                                                              |
 | 55  | $PATH$ è $NL-\text{completo}$                                                                               |        1         | è facile trovare una riduzione per dimostare che $path$ è $nl-\text{hard}$                   |
 | 56  | time hierarchy theorem                                                                                      |        1         |                                                                                              |
-| 57  | space hierarchy theorem                                                                                     |                  |                                                                                              |
+| 57  | space hierarchy theorem                                                                                     |        2         |                                                                                              |
