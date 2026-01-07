@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-05T18:41
+updated: 2026-01-06T20:17
 completed: false
 ---
 *- way to think about reductions*
@@ -40,3 +40,8 @@ dato un linguaggio, devo scegliere una stringa $w$ (che usa $p$) che, data qualu
 
 
 ricorda che puoi fare pumping up and pumping down !!!
+
+contare in una TM multinastro non ha costo temporale costante:
+- se rappresento i numeri in decimale, fare +1 costa $O(n)$
+- se rappresento i numeri in binario, fare +1 costa $O(\log n)$
+il modo migliore per contare è scrivere la rappresentazione unaria (scrivere una sequenza di simboli uno dopo l’altro)
