@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-07T20:37
+updated: 2026-01-07T21:12
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -44,7 +44,7 @@ updated: 2026-01-07T20:37
 | 28  | $regular_{tm}$ è indecidibile                                      |        1         | $a_{tm} \leq_{m} regular_{tm}$                                                                                                    |
 | 29  | $eq_{tm}$ non è turing-ric (+ $eq_{tm}$ non è decidibile)          |        3         | usiamo $a \leq_{m} b \implies \overline{a} \leq_{m} \overline{b}$, dimostrando la riduzione $a_{tm} \leq_{m} \overline{eq}_{tm}$  |
 | 30  | $\pi$ non può essere sia valido che completo                       |        1         | creo $r_{\pi}$ e la uso per decidere $halt_{tm}$                                                                                  |
-| 31  | primo teorema di incompletezza di gödel                            |        1         | creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)                                          |
+| 31  | primo teorema di incompletezza di gödel                            |        2         | creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)                                          |
 | 32  | secondo teorema di incompletezza di gödel                          |        1         | dimostriamo per assurdo una contraddizione (usando il claim di sopra)                                                             |
 
 ---
