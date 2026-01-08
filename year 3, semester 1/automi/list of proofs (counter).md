@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-08T16:56
+updated: 2026-01-08T19:11
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -81,7 +81,7 @@ updated: 2026-01-08T16:56
 - [ ] cook-levin
 - [ ] re \in REG
 - [ ] DFA $\iff$ CFA
-- [ ] CFG to CNF
+- [x] CFG to CNF
 - [x] $NP = coNP \iff unsat \in np$
 - [x] godel
 - [x]  pumping lemma x CFG
