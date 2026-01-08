@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-07T22:58
+updated: 2026-01-07T23:00
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -78,7 +78,8 @@ updated: 2026-01-07T22:58
 | 57  | space hierarchy theorem                                                                                     |        2         |                                                                                              |
 
 ## list
-- [ ] TM multinastr
+- [ ] L decidibile $\iff$ L t-ric cot-ric
+- [ ] TM multinastro to TM
 - [ ] DFA $\iff$ CFA
 - [ ] DFA a CFG
 - [ ] 2-sat in P
