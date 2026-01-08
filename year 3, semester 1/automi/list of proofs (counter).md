@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-08T15:47
+updated: 2026-01-08T16:07
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -78,7 +78,8 @@ updated: 2026-01-08T15:47
 | 57  | space hierarchy theorem                                                                                     |        2         |                                                                                              |
 
 ## list
-- [ ] $NP = coNP \iff unsat \in np$
+- [ ] cook-levin
+- [x] $NP = coNP \iff unsat \in np$
 - [ ] godel
 - [ ]  pumping lemma x CFG
 - [ ] L decidibile $\iff$ L t-ric cot-ric
