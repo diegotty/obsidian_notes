@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-08T14:30
+updated: 2026-01-08T15:06
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -83,6 +83,6 @@ updated: 2026-01-08T14:30
 - [ ] TM multinastro to TM
 - [ ] DFA $\iff$ CFA
 - [ ] DFA a CFG
-- [ ] 2-sat in P
+- [x] 2-sat in P
 - primo e secondo teorema di incompletezza di godel
 - teorema di savitch
