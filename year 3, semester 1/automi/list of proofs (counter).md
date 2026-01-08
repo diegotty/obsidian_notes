@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-07T23:00
+updated: 2026-01-08T14:30
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -78,11 +78,11 @@ updated: 2026-01-07T23:00
 | 57  | space hierarchy theorem                                                                                     |        2         |                                                                                              |
 
 ## list
+- [ ]  pumping lemma x CFG
 - [ ] L decidibile $\iff$ L t-ric cot-ric
 - [ ] TM multinastro to TM
 - [ ] DFA $\iff$ CFA
 - [ ] DFA a CFG
 - [ ] 2-sat in P
-- pumping lemma x CFG
 - primo e secondo teorema di incompletezza di godel
 - teorema di savitch
