@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-07T18:43
+updated: 2026-01-09T22:50
 completed: false
 ---
 
@@ -54,3 +54,6 @@ $<G>$ occupa di solito $|V|^2$ (matrice di adiacenza)
 
 
 ricordiamo che possiamo hard-codare TM e delta dentro altre TM
+
+
+in una TM il nastro di input è read-only, ma non read-once !
