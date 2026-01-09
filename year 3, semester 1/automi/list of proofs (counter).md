@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-09T12:33
+updated: 2026-01-09T14:51
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -82,7 +82,7 @@ updated: 2026-01-09T12:33
 - [ ] PATH $\in$ NL-completo
 - [ ] cook-levin
 - [x] re \in REG
-- [ ] PDA $\iff$ CFG
+- [x] PDA $\iff$ CFG
 - [x] CFG to CNF
 - [x] $NP = coNP \iff unsat \in np$
 - [x] godel
