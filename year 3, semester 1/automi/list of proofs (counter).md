@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-08T23:31
+updated: 2026-01-09T11:28
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -19,7 +19,7 @@ updated: 2026-01-08T23:31
 | 8   | $reg = l(re)$                                                   |        3         | $l(re) \subseteq reg$: uso induzione (numero di operazioni per costruzione di $r$) e chiusura di $reg$  |
 | 9   | correttezza dell’unione di grammatiche                          |        1         | $\bigcup_{i}l(gi) \subseteq l(g)$: troviamo $g_{i}$ t.c. $w \in l(g_{i})$, notiamo che $l(g)$ lo genera |
 | 10  | correttezza del passaggio da dfa a cfg                          |        1         | $l(d) \subseteq l(g)$: usiamo la struttura di $g$ (che abbiamo costruito noi)                           |
-| 11  | ogni cfg ammette una cfg equivalente in forma normale (chomsky) |        1         | aggiungo variabile iniziale                                                                             |
+| 11  | ogni cfg ammette una cfg equivalente in forma normale (chomsky) |        2         | aggiungo variabile iniziale                                                                             |
 | 12  | $l$ è riconosciuto da un pda $\iff$ l è cfg                     |        2         | creiamo pda ($\$s$ $q_{\text{loop}}$) e definiamo $\delta$. basta                                       |
 | 13  | pumping lemma per cfg                                           |        1         | affermazione sulla dimensione delle stringhe da lunghezza del cammino (+ dim (induzione))               |
 ## calcolabilità
@@ -35,7 +35,7 @@ updated: 2026-01-08T23:31
 | 19  | $EQ_{DFA}$ è decidibile                                            |        1         |                                                                                                                                   |
 | 20  | $a_{cfg}$ è decidibile                                             |        1         |                                                                                                                                   |
 | 21  | $e_{cfg}$ è decidibile                                             |        1         |                                                                                                                                   |
-| 22  | $a_{tm}$ è indecidibile                                            |        1         | creiamo tm $h$ e la tm $d$. la definizione di $d$ ci porterà ad una contraddizione                                                |
+| 22  | $a_{tm}$ è indecidibile                                            |        3         | creiamo tm $h$ e la tm $d$. la definizione di $d$ ci porterà ad una contraddizione                                                |
 | 23  | $l$ è decidibile $\iff$ l è turing-ric e coturing-ric              |        3         |                                                                                                                                   |
 | 24  | $a \leq_{m}b$ e b è decidibile $\implies$ a è decidibile           |        1         |                                                                                                                                   |
 | 25  | $a \leq_{m}b$ e a è indecidibile $\implies$ b è indecidibile       |        1         |                                                                                                                                   |
@@ -76,7 +76,7 @@ updated: 2026-01-08T23:31
 | 55  | se $P$,$Q$ sono funzioni calcolabili in log-space, allora $R(x) = Q(P(x))$ anche è calcolabile in log-space |        1         |                                                                                              |
 | 56  | $PATH$ è $NL-\text{completo}$                                                                               |        1         | è facile trovare una riduzione per dimostare che $path$ è $nl-\text{hard}$                   |
 | 57  | time hierarchy theorem                                                                                      |        1         |                                                                                              |
-| 58  | space hierarchy theorem                                                                                     |        2         |                                                                                              |
+| 58  | space hierarchy theorem                                                                                     |        3         |                                                                                              |
 
 ## list
 - [ ] PATH \in NL-completo
