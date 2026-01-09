@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-09T11:28
+updated: 2026-01-09T12:33
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -58,7 +58,7 @@ updated: 2026-01-09T11:28
 | 37  | $\text{verifier}np = np$                                                                                    |        1         |                                                                                              |
 | 38  | $a \leq^p_{m}b$, $b \in p \implies a \in p$                                                                 |        1         |                                                                                              |
 | 39  | $4-col \leq_m^p sat$                                                                                        |        3         | codifico colori e faccio formula per forzare colori diversi                                  |
-| 40  | $3-col \leq_m^p 4-col$                                                                                      |        3         | aggiungimento nodo                                                                           |
+| 40  | $3-col \leq_m^p 4-col$                                                                                      |        4         | aggiungimento nodo                                                                           |
 | 41  | se $s$ è $np-\text{completo}$, allora $s \in p \implies p = np$                                             |        1         |                                                                                              |
 | 42  | $sat$ è $np-\text{completo}$ (*cook-levin*)                                                                 |        1         | definiamo tableau                                                                            |
 | 43  | $\text{k-clique}$ è $np-\text{completo}$                                                                    |        1         | $3-sat \leq_m^p k-clique$                                                                    |
@@ -79,9 +79,9 @@ updated: 2026-01-09T11:28
 | 58  | space hierarchy theorem                                                                                     |        3         |                                                                                              |
 
 ## list
-- [ ] PATH \in NL-completo
+- [ ] PATH $\in$ NL-completo
 - [ ] cook-levin
-- [ ] re \in REG
+- [x] re \in REG
 - [ ] PDA $\iff$ CFG
 - [x] CFG to CNF
 - [x] $NP = coNP \iff unsat \in np$
