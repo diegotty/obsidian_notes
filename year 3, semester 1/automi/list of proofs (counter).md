@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-10T18:29
+updated: 2026-01-10T18:32
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -77,6 +77,7 @@ updated: 2026-01-10T18:29
 | 58  | space hierarchy theorem                                                                                     |        3         |                                                                                              |
 
 ## list
+- [ ] k-clique $\in$ NP-completo
 - [ ] $\pi$ non valido e completo
 - [ ] PATH $\in$ NL-completo
 - [x] cook-levin
