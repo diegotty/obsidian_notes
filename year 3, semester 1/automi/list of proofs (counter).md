@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-10T17:03
+updated: 2026-01-10T18:29
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -79,7 +79,7 @@ updated: 2026-01-10T17:03
 ## list
 - [ ] $\pi$ non valido e completo
 - [ ] PATH $\in$ NL-completo
-- [ ] cook-levin
+- [x] cook-levin
 - [x] re \in REG
 - [x] PDA $\iff$ CFG
 - [x] CFG to CNF
