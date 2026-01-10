@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-10T10:41
+updated: 2026-01-10T14:45
 completed: false
 ---
 
@@ -66,3 +66,12 @@ in una TM il nastro di input è read-only, ma non read-once !
 | TM          | NTM      | (savitch)<br>$O(f^2(n))$ |
 | NTM         | TM       | <br>$O(f(n))$            |
 | NTM         | NTM      | $O(f(n))$                |
+
+una TM simula
+
+| **Simulatrice**   | **Simulata**        | **Tempo Utilizzato** |
+| ----------------- | ------------------- | -------------------- |
+| **TM (1 nastro)** | **TM ($k$ nastri)** | $O(f(n)^2)$          |
+| **TM (2 nastri)** | **TM ($k$ nastri)** | $O(f(n) \log f(n))$  |
+| **NTM**           | **NTM**             | $O(f(n))$            |
+| **TM**            | **NTM**             | $2^{O(f(n))}$        |
