@@ -1,6 +1,6 @@
 ---
 created: 2026-01-04T10:52
-updated: 2026-01-09T14:51
+updated: 2026-01-10T17:03
 ---
 ## coste che dovrei fare per migliorare le mie probabilità di passare l’esame
 - [ ] lista di teoremi complessità
@@ -40,14 +40,12 @@ updated: 2026-01-09T14:51
 | 24  | $a \leq_{m}b$ e b è decidibile $\implies$ a è decidibile           |        1         |                                                                                                                                   |
 | 25  | $a \leq_{m}b$ e a è indecidibile $\implies$ b è indecidibile       |        1         |                                                                                                                                   |
 | 26  | $halt_{tm}$ è indecidibile                                         |        1         | $a_{tm} \leq_{m} halt_{tm}$, definisco funzione $f$ e verifico correttezza della riduzione                                        |
-| 27  | $e_{tm}$ è indecidibile                                            |        1         | $a_{tm} \leq_{m} \overline{e}_{tm}$, creo $s$ decisore di $a_{tm}$ basandomi su $r$ decisore (per assurdo) di $\overline{e}_{tm}$ |
+| 27  | $E_{TM}$ è indecidibile                                            |        1         | $a_{tm} \leq_{m} \overline{e}_{tm}$, creo $s$ decisore di $a_{tm}$ basandomi su $r$ decisore (per assurdo) di $\overline{e}_{tm}$ |
 | 28  | $regular_{tm}$ è indecidibile                                      |        1         | $a_{tm} \leq_{m} regular_{tm}$                                                                                                    |
 | 29  | $eq_{tm}$ non è turing-ric (+ $eq_{tm}$ non è decidibile)          |        3         | usiamo $a \leq_{m} b \implies \overline{a} \leq_{m} \overline{b}$, dimostrando la riduzione $a_{tm} \leq_{m} \overline{eq}_{tm}$  |
 | 30  | $\pi$ non può essere sia valido che completo                       |        1         | creo $r_{\pi}$ e la uso per decidere $halt_{tm}$                                                                                  |
 | 31  | primo teorema di incompletezza di gödel                            |        2         | creiamo $D$ e gli diamo come input $D$. lavoriamo su $\phi_{D}$ e $\neg\phi_{D}$ (claim)                                          |
 | 32  | secondo teorema di incompletezza di gödel                          |       1.5        | dimostriamo per assurdo una contraddizione (usando il claim di sopra)                                                             |
-
----
 ## complessità
 | #   | dimostrazione                                                                                               | ripetizioni (n°) | hint                                                                                         |
 | :-- | :---------------------------------------------------------------------------------------------------------- | :--------------: | :------------------------------------------------------------------------------------------- |
@@ -79,6 +77,7 @@ updated: 2026-01-09T14:51
 | 58  | space hierarchy theorem                                                                                     |        3         |                                                                                              |
 
 ## list
+- [ ] $\pi$ non valido e completo
 - [ ] PATH $\in$ NL-completo
 - [ ] cook-levin
 - [x] re \in REG
