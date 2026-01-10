@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-09T22:50
+updated: 2026-01-10T10:41
 completed: false
 ---
 
@@ -57,3 +57,12 @@ ricordiamo che possiamo hard-codare TM e delta dentro altre TM
 
 
 in una TM il nastro di input è read-only, ma non read-once !
+
+
+
+| simulatroie | simulato | complessità di spazio    |
+| ----------- | -------- | ------------------------ |
+| TM          | TM       | <br>$O(f(n))$            |
+| TM          | NTM      | (savitch)<br>$O(f^2(n))$ |
+| NTM         | TM       | <br>$O(f(n))$            |
+| NTM         | NTM      | $O(f(n))$                |
