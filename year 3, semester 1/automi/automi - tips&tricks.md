@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-11T09:40
+updated: 2026-01-11T10:03
 completed: false
 ---
 
@@ -79,3 +79,7 @@ in una TM il nastro di input è read-only, ma non read-once !
 | Multi-Nastro ($k$)         | Nastro Singolo (1)     | $O(f(n)^2)$                           |
 | Multi-Nastro ($k$)         | Due Nastri (2)         | $O(f(n) \log f(n))$                   |
 | Non-Deterministica         | Deterministica         | $2^{O(f(n))}$                         |
+di solito in complessità spaziale si usa TM multinastro con nastro read-only per input (altrimenti non possiamo definire classi come LOGSPACE)
+
+
+POLYL = (log^k n)
