@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-10T15:14
+updated: 2026-01-11T09:40
 completed: false
 ---
 
@@ -73,3 +73,9 @@ in una TM il nastro di input è read-only, ma non read-once !
 | **TM (2 nastri)** | **TM ($k$ nastri)** | $O(f(n) \log f(n))$  |
 | **NTM**           | **NTM**             | $O(f(n))$            |
 | **TM**            | **NTM**             | $2^{O(f(n))}$        |
+
+| **Modello Originale**      | **Modello Simulatore** | **Tempo di Simulazione**              |
+| -------------------------- | ---------------------- | ------------------------------------- |
+| Multi-Nastro ($k$)         | Nastro Singolo (1)     | $O(f(n)^2)$                           |
+| Multi-Nastro ($k$)         | Due Nastri (2)         | $O(f(n) \log f(n))$                   |
+| Non-Deterministica         | Deterministica         | $2^{O(f(n))}$                         |
