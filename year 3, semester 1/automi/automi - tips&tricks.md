@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-11T10:03
+updated: 2026-01-11T10:42
 completed: false
 ---
 
@@ -83,3 +83,5 @@ di solito in complessità spaziale si usa TM multinastro con nastro read-only pe
 
 
 POLYL = (log^k n)
+
+dimensione di spazio precisa di PATH è log(sqrt(n))
