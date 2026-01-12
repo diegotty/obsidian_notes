@@ -1,12 +1,13 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-12T06:11
+updated: 2026-01-12T06:14
 completed: false
 ---
 *- way to think about reductions*
 se avessi un decisore per $B$, e $A \leq_{m}B$ allora $A$ sarebbe decidibile
-controllare se anche i casi in cui $M(w) \neq ACC$ sono mappati bene !
+
+controllare se anche i casi in cui $M(w) \neq ACC$ sono mappati bene ! se $M(w) = loop$, allora anche $M'$ va in loop (possiamo considerare che essa non raggiungerà mai lo stato accettante, ma non che rifiuterà)
 
 *- blind riduzioni*
 posso fare blind riduzioni: ridurre un linguaggio riducibile $A$ ad un linguaggio non-riducibile $B$, se ci interessa dimostrare la *non-decidibilità* di $B$, in quanto useremo teoremi relativi alla decidibilità ($A$ non-decidibile $\implies$ $B$ non decidibile).
@@ -54,7 +55,7 @@ $<G>$ occupa di solito $|V|^2$ (matrice di adiacenza)
 *ricordiamo che possiamo hard-codare TM e delta dentro altre TM*, ed è quello che facciamo per savitch, qualunque riduzione in cui creiamo una TM in cui simuliamo $M(w)$
 
 *in una TM il nastro di input è read-only, ma non read-once !* l’esistenza di un nastro di input implica che stiamo usando una TM multinastro con 2 nastri (lo standard per il calcolo della complessità di spazio)
-- il nastro di input ci permette inoltre di definire classi di complessità di spazio come $LOGSPACE$, in quanto la sola lettura dell’i
+- il nastro di input ci permette inoltre di definire classi di complessità di spazio come $LOGSPACE$, in quanto la sola lettura dell’input ha complessità $n$.
 - inoltre, possiamo avere anche un nastro *write-once*, che ci permette di non dover rispettare il limite di spazio imposto per il nastro (se $L \in SPACE(f(n))$, l’output può essere tranquillamente $O(f(n)^2)$)
 
 | simulatore | simulato | complessità di spazio    | complessità di tempo |
@@ -71,9 +72,6 @@ $<G>$ occupa di solito $|V|^2$ (matrice di adiacenza)
 | **NTM**           | **NTM**             | $O(f(n))$            |
 | **TM**            | **NTM**             | $2^{O(f(n))}$        |
 
-di solito in complessità spaziale si usa TM multinastro con nastro read-only per input (altrimenti non possiamo definire classi come LOGSPACE)
-
-
-POLYL = (log^k n)
+esiste la classe di complessità di spazio $POLYL = \bigcup_{k \in N} \,\,log^k(n)$
 
 dimensione di spazio precisa di PATH è log(sqrt(n))
