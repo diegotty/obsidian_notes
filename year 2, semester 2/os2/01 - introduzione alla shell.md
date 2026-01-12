@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2025-12-27T12:06
+updated: 2026-01-12T20:23
 completed: true
 ---
 # shell

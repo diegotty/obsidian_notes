@@ -1,10 +1,8 @@
 ---
-related to:
-created: 2025-03-02T17:41
-updated: 2026-01-12T20:20
-completed: false
+created: 2026-01-12T20:23
+updated: 2026-01-12T20:38
 ---
-[!def] cybersecurity
+>[!def] cybersecurity
 >prevention of damage to, protection of, and restoration of computers, electronic communicaiton systems, electronic communications services, wire communication, and electronic communication, including information contained therein, to ensure its **availability**, **integrity**, **authentication**, **confidentiality**, and **nonrepudiation**
 
 >[!def] computer security
