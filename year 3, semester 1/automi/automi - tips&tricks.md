@@ -1,11 +1,9 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-11T10:42
+updated: 2026-01-12T06:11
 completed: false
 ---
-
-
 *- way to think about reductions*
 se avessi un decisore per $B$, e $A \leq_{m}B$ allora $A$ sarebbe decidibile
 controllare se anche i casi in cui $M(w) \neq ACC$ sono mappati bene !
@@ -53,19 +51,18 @@ i certificati sono una possibile soluzione per il problema.
 $<G>$ occupa di solito $|V|^2$ (matrice di adiacenza)
 
 
-ricordiamo che possiamo hard-codare TM e delta dentro altre TM
+*ricordiamo che possiamo hard-codare TM e delta dentro altre TM*, ed è quello che facciamo per savitch, qualunque riduzione in cui creiamo una TM in cui simuliamo $M(w)$
 
+*in una TM il nastro di input è read-only, ma non read-once !* l’esistenza di un nastro di input implica che stiamo usando una TM multinastro con 2 nastri (lo standard per il calcolo della complessità di spazio)
+- il nastro di input ci permette inoltre di definire classi di complessità di spazio come $LOGSPACE$, in quanto la sola lettura dell’i
+- inoltre, possiamo avere anche un nastro *write-once*, che ci permette di non dover rispettare il limite di spazio imposto per il nastro (se $L \in SPACE(f(n))$, l’output può essere tranquillamente $O(f(n)^2)$)
 
-in una TM il nastro di input è read-only, ma non read-once !
-
-
-
-| simulatroie | simulato | complessità di spazio    |
-| ----------- | -------- | ------------------------ |
-| TM          | TM       | <br>$O(f(n))$            |
-| TM          | NTM      | (savitch)<br>$O(f^2(n))$ |
-| NTM         | TM       | <br>$O(f(n))$            |
-| NTM         | NTM      | $O(f(n))$                |
+| simulatore | simulato | complessità di spazio    | complessità di tempo |
+| ---------- | -------- | ------------------------ | -------------------- |
+| TM         | TM       | <br>$O(f(n))$            |                      |
+| TM         | NTM      | (savitch)<br>$O(f^2(n))$ | $O(2^{O(f(n))})$     |
+| NTM        | TM       | <br>$O(f(n))$            | $O(f(n))$            |
+| NTM        | NTM      | $O(f(n))$                | $O(f(n))$            |
 
 | **Simulatrice**   | **Simulata**        | **Tempo Utilizzato** |
 | ----------------- | ------------------- | -------------------- |
@@ -74,11 +71,6 @@ in una TM il nastro di input è read-only, ma non read-once !
 | **NTM**           | **NTM**             | $O(f(n))$            |
 | **TM**            | **NTM**             | $2^{O(f(n))}$        |
 
-| **Modello Originale**      | **Modello Simulatore** | **Tempo di Simulazione**              |
-| -------------------------- | ---------------------- | ------------------------------------- |
-| Multi-Nastro ($k$)         | Nastro Singolo (1)     | $O(f(n)^2)$                           |
-| Multi-Nastro ($k$)         | Due Nastri (2)         | $O(f(n) \log f(n))$                   |
-| Non-Deterministica         | Deterministica         | $2^{O(f(n))}$                         |
 di solito in complessità spaziale si usa TM multinastro con nastro read-only per input (altrimenti non possiamo definire classi come LOGSPACE)
 
 
