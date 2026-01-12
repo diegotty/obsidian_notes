@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-12T06:14
+updated: 2026-01-12T06:17
 completed: false
 ---
 *- way to think about reductions*
@@ -38,7 +38,8 @@ se una proprietà semantica è vincolata a un limite di tempo o spazio, allora l
 dato un linguaggio, devo scegliere una stringa $w$ (che usa $p$) che, data qualunque decomposizione di $w$, falsifica le condizioni del pumping lemma.
 - non possiamo definire $p$
 - per dimostrare che falsifica le condizioni, possiamo usare l’artimetica sulle cardinalità delle cifre. è ottimale quindi definire per esteso $x$, $y$, $z$.
-*ricorda che puoi fare pumping up and pumping down !!!*
+- *ricorda che puoi fare pumping up and pumping down !!!*
+- *ricorda che $|xy| \leq p$ !! ciò ti leva molti casi*
 
 contare in una TM multinastro non ha costo temporale costante:
 - se rappresento i numeri in decimale, fare +1 costa $O(n)$
@@ -46,13 +47,12 @@ contare in una TM multinastro non ha costo temporale costante:
 il modo migliore per contare è scrivere la rappresentazione unaria (scrivere una sequenza di simboli uno dopo l’altro)
 
 *- certificati*
-i certificati sono una possibile soluzione per il problema.
+i certificati sono una possibile soluzione per il problema e corrispondono ad una sequenza di scelte che portano la $NTM$ relativa al verificatore $V$ ad un output ($acc/rej$)
 
 *- grafi*
 $<G>$ occupa di solito $|V|^2$ (matrice di adiacenza)
 
-
-*ricordiamo che possiamo hard-codare TM e delta dentro altre TM*, ed è quello che facciamo per savitch, qualunque riduzione in cui creiamo una TM in cui simuliamo $M(w)$
+*ricordiamo che possiamo hard-codare TM e delta dentro altre TM*, ed è quello che facciamo per savitch, qualunque riduzione in cui creiamo una TM in cui simuliamo $M(w)$, $NP \subseteq verifierNP$
 
 *in una TM il nastro di input è read-only, ma non read-once !* l’esistenza di un nastro di input implica che stiamo usando una TM multinastro con 2 nastri (lo standard per il calcolo della complessità di spazio)
 - il nastro di input ci permette inoltre di definire classi di complessità di spazio come $LOGSPACE$, in quanto la sola lettura dell’input ha complessità $n$.
