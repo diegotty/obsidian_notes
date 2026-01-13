@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2026-01-13T10:50
+updated: 2026-01-13T11:09
 completed: false
 ---
 # database security
@@ -98,16 +98,16 @@ $pass = "' OR 'vulnerability' > 'server' ";
 #### second order inject
 to perform the attack, a user with a malicious name is registered. later on, the attacker ascks to change the password of its malicious user, so the web app fetches info about the user from the DB and uses them to perform another query
 >[!example] example
-```SQL
--- malicious user 
-$user = "admin' #";
-
--- update password query
-$q = "UPDATE users SET pass='"$._POST['newPass']."' WHERE user='".$row['user']."'";
-
--- query if the data coming from the database is not properly sanitized
-$q = UPDATE users SET pass='password' WHERE user='admin'#";
-```
+>```SQL
+>-- malicious user 
+>$user = "admin' #";
+>
+>-- update password query
+>$q = "UPDATE users SET pass='"$._POST['newPass']."' WHERE user='".$row['user']."'";
+>
+>-- query if the data coming from the database is not properly sanitized
+>$q = UPDATE users SET pass='password' WHERE user='admin'#";
+>```
 ##### ending the query
 to make sure that the final, concatenated statement runs without generating a syntax error, attacker use *comment symbols* to ensure syntactically correct query termination.
 - the goal is to lcose the string literal and eliminate all the remaining, unwanted code from the developer’s original query
