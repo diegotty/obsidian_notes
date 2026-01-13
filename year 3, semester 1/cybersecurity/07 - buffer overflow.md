@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T18:27
+updated: 2026-01-13T10:12
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -166,7 +166,7 @@ compile-time defenses include:
  - *guard pages*: guard pages can be placed between critical memory segments, such as between the end of the stack and the start of the heap. these pages are marked as *non-accessible*, triggering a hardware exeption if a buffer overflow tries to spill into one.
 ## buffer overflow variants
 - *stack frame smashing*: instead of just overwriting the return address, the attacker overwrites the entire top portion of the current function’s stack fram and constructs a new, *fake stack frame* on the stack
-- *return-to-libc*: instead of injecting custom shellcode, the attacker overwrites the return address with the address of an *existing, legitimate function* that already exists in the program’s memory. the attacker sets up the stuck such that when the system function is called, the required arguments for that function are waiting immediately behind the overwritten address 
+- *return-to-libc*: instead of injecting custom shellcode, the attacker overwrites the return address with the address of an *existing, legitimate function* that already exists in the program’s memory. the attacker sets up the stack such that when the system function is called, the required arguments for that function are waiting immediately behind the overwritten address 
 	- the most common target is a system function like `system()`
 	- this attack bypasses the *executable address space protection* technique
 - *heap overflow*:
