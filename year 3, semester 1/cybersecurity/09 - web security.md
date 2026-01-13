@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2026-01-13T14:24
+updated: 2026-01-13T14:58
 completed: false
 ---
 ## basic information
@@ -54,7 +54,7 @@ SOP’s simplicity is also its limit, as:
 - we cannot isolate homepages of different users hosted on the same origin
 - different domains cannot easily interact among each others if legitimately needed
 	- solution: `document.domain` can be used to relax the SOP by reducing domain definitions to its parent domains, thereby matching other sibling subdomains that do the same
-	- betersolution: `postMessage()` allows scripts to send messages between windows located on completely different origins in a controlled and safe manner (it allows both the sender and the receiver to agree on the communication boundaries)
+	- better solution: `postMessage()` allows scripts to send messages between windows located on completely different origins in a controlled and safe manner (it allows both the sender and the receiver to agree on the communication boundaries)
 ## client-side attacks
 client-side attacks *exploit the trust of the browser* (as opposite to exploiting the trust of servers). 
 in particular, they exploit the trust:
