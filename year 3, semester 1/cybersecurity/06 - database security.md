@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2026-01-13T13:32
+updated: 2026-01-13T13:36
 completed: false
 ---
 # database security
@@ -14,7 +14,7 @@ database security has not kept pace with the increased reliance on databases for
 ## SQL injection attacks
 *SQLi* (*SQL injection*) attacks are one of the most prevalent and dangerous network-based security threats, and they are designed to exploit the nature of web application pages by sending malicious SQL commands to the database server.
 - the most common attack goal is the bulk extraction of data, but it can also be to modify or delete data, execute arbitrary OS commands, or to laungh DoS attacks
-they work by prematurely terminating a text string and appending a new command, and terminating the injected string with a comment mark `- -` (as the inserted command may have additional strings appended to it before it is executed)
+they work by prematurely terminating a text string and appending a new command, and terminating the injected string with a comment mark `--` (as the inserted command may have additional strings appended to it before it is executed)
 ### attack types
 #### inband attacks
 inband attacks use the same communication channel for injecting SQL code and retrieving results
