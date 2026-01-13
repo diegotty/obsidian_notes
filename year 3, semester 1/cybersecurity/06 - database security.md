@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2026-01-13T13:36
+updated: 2026-01-13T14:06
 completed: false
 ---
 # database security
@@ -178,7 +178,7 @@ $q = "SELECT * FROM users WHERE user_id = '' OR 1-=1 -- ' AND password='user-pas
 - *whitelisting*: only allowing input that matches a strict set of approved characters or values
 - *principle of least principle*: acts on the configuration of a db to limit the impact of a successful SQLi attack: the application’s db should only have *the minimum privileges necessary for its operation*
 ### SQL DOM
-*SQL DOM* (*data-oriented modeling*) is a more formal, academic approach to preventing SQL. it enforces a fundamental rule: *query structure must be defined separately from query data*.  this design pattern is typically implemented as a framework. instead of letting developers build queries using string concatenation, the language environment requires the use of *constructor methods* to build the query piece by piece.
+*SQL DOM* (*data-oriented modeling*) is a more formal, academic approach to preventing SQLi’s. it enforces a fundamental rule: *query structure must be defined separately from query data*.  this design pattern is typically implemented as a framework. instead of letting developers build queries using string concatenation, the language environment requires the use of *constructor methods* to build the query piece by piece.
 - this way, the environment always knows which input is meant t
 the SQL DOM system can automatically enfore parameterization on all data variables.
 this approach makes it virtually impossible for developers to accidentally create an unsafe sink !
