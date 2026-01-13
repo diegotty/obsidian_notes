@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2026-01-13T11:09
+updated: 2026-01-13T13:32
 completed: false
 ---
 # database security
@@ -158,7 +158,7 @@ achieving remote command execution, the attacker can read/write files using OS c
 >$id = "-1 UNION SELECT 'hi' INTO OUTFILE  '/tmp/hi'";
 >```
 
-### countermeasures
+## countermeasures
 there are three type of countermeasures to SQLis.
 ### parameterized queries
 *parameterized queries* are the gold standard for defense against SQLis, as they address the fundamental flaw of SQLis: the ambiguity between code and data.
