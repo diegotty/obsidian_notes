@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2026-01-13T10:12
+updated: 2026-01-13T10:33
 completed: false
 ---
 >[!def] buffer overflow (NIST)
@@ -156,7 +156,7 @@ compile-time defenses include:
 	- this implies additional code to impose checks, which cost resources. also the distance from the underlying machine language and architecture means no access to some instructions and hardware resources
 - *safe coding techniques*: prorammers need to inspect the code and rewrite any unsafe coding
 	 - an example is the *OpenBSD* project. programmers audited the existing code base, including the OS, std libraries, and common utilities, making it one of the safest OS in widespread use
-- *language extensions / safe libraries*: withouth knowing the size at compile time, the C compiler cannot insert automatic checks to prevent a buffer overflow in dynamically allocated memory, which makes heap overflows harder to mitigate. “fixing” this requires an extension and the use of some libraries’s functions
+- *language extensions / safe libraries*: without knowing the size at compile time, the C compiler cannot insert automatic checks to prevent a buffer overflow in dynamically allocated memory, which makes heap overflows harder to mitigate. “fixing” this requires an extension and the use of some libraries’s functions
 	- also, because C has many unsafe stdlib functions, safe libraries that implement such functions in a safe way have been created (e.g. `libsafe`)
  - *stack protection*: compilers can use *stack canaries* which are small, unique (unpredictable) and secret values placed on the stack, to detect if an overflow has occurred. the *canary* (the value) is placed immediately beofre the crucial control data (such as the return address), an just before the function returns control, the code checks the canary’s value. if the value has been altered, the system knows the stack has been corrupted.
 	 - another technique is storing a backup copy of the return address (the most critical target of an overflow) in a safer location, to prevent an overflow attack. *stackshield* and *RAD* (*return address defender*) are compiler extensions that use this method. the return address in the active stack frame is then checked against the saved copy, and if the two values do not match the program is aborted
