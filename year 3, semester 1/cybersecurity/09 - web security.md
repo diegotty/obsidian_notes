@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2026-01-13T14:58
+updated: 2026-01-13T15:04
 completed: false
 ---
 ## basic information
@@ -97,7 +97,7 @@ pretty self explanatory
 
 - *DOM-based XSS*: the injection happens in a parameter used by a script running within the page itself
 ## request forgery
-request forgery, also known as *one-click attack*, session riding or hostile linking, is aimed at having a victim executed a number of actions by using the victim’s credentials (e.g. session cookie)
+request forgery, also known as *one-click attack*, session riding or hostile linking, is aimed at having a victim execute a number of actions by using the victim’s credentials (e.g. session cookie)
 - however, this has to be done without direct access to the cookies (as we can’t access cookies of another domain because of SOP), thus no stealing of data happens
 it can be *cross site* (*CSRF*) or *on site* (*OSRF*, like [[https://sa.my/myspace/tech.html|samy worm]]), and it can be both reflexted and stored
 

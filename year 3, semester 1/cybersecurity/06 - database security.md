@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2026-01-13T14:06
+updated: 2026-01-13T15:01
 completed: false
 ---
 # database security
@@ -19,7 +19,7 @@ they work by prematurely terminating a text string and appending a new command, 
 #### inband attacks
 inband attacks use the same communication channel for injecting SQL code and retrieving results
 some examples are:
-- *tautology*: injects ode in more or more conditional statements so that they always evaluate to true
+- *tautology*: injects one or more conditional statements so that they always evaluate to true
 - *end-of-line comment*: after injecting code into a particular field, legitimate code that follows are nullified through usage of end of line comments (`- -`)
 - *piggyback queries*: the attacker adds additional queries beyond the intended query
 #### inferential attack
