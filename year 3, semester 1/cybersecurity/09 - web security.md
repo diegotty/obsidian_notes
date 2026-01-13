@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T16:48
+updated: 2026-01-13T14:24
 completed: false
 ---
 ## basic information
@@ -43,7 +43,7 @@ the security of [[04 - livello applicazione; HTTP#cookie|cookies]] is critical, 
 session cookies can be used in *IDOR* attacks, that happen when an application provides *direct access* to objects based on user-supplied input, without proper identification
 this way, the user can directly access to information not intended to be accessible, bypassing the authorization check that would be needed
 ## same origin policy
-most of the browser’s security mechanisms rely on the possibility of isolating documents *depending on the resource’s origin*. generally, the pages from different sources should not be allowed to interfere with each other.
+most of the browser’s security mechanisms rely on the possibility of isolating documents *depending on the resource’s origin*. generally, pages from different sources should not be allowed to interfere with each other.
 - this means that a malicious website cannot run scripts that access data and functionalities of other websites visited by the user (impeding *cross-site scripting* (*XSS*))
 this mechanism is part of the *same origin policy* (*SOP*), the single most important security concept in web browsers, that is designed to isolate docments from different websites to provent unauthorized data access.
 - it was introduced by netscape in 1995
