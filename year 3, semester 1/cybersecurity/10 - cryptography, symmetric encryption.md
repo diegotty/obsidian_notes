@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-15T14:31
+updated: 2026-01-14T20:18
 completed: false
 ---
 # introduction
@@ -117,7 +117,7 @@ because of the high redundancy of natural language, historic codes are often bre
 thus, *more complex codes are needed !*
 the basic ideas to modern codes are:
 - *diffusion*: spread redundancy around the ciphertext
-- *confusion*: make encryption function as complex as possible, making it difficult to derive teh key analyzing the ciphertext
+- *confusion*: make encryption function as complex as possible, making it difficult to derive the key analyzing the ciphertext
 >[!info] computational security
 encryption is computationally secure if:
 >- the cost of breaking cipher exceeds the value of information
