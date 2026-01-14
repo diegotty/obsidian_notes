@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2026-01-14T20:18
+updated: 2026-01-14T20:58
 completed: false
 ---
 # introduction
@@ -85,10 +85,6 @@ a vigenere cipher that uses a key as long as the ciphertext, resulting in a *mat
 - the pad has the same length as the plaintext
 - the pad is destroyed immediately after use, and never reused for any other mesage
 for any given ciphertext, *every possible plaintext message of the same length is equally likely*, breaking frequency analysis
-the main drawbacks of the one-time pad are:
-- the key distribution problem
-- the key size
-- the reusage problem
 however, they also have weaknesses:
 - the key has to be as long as the plaintext
 - keys can never be reused
