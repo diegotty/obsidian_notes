@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 18:33
-updated: 2025-11-06T16:58
+updated: 2026-01-15T16:59
 completed: false
 ---
 # access control
@@ -42,7 +42,7 @@ many modern UNIX systems support ACLs, like freeBSD, openBSD, linux and solaris
 ### MAC
 *mandatory access control* (*MAC*) controls access based on comparing *security labels* with *security clearances*
 each subject and each object is assigned a security class, and in the simplest formulation, security classes form a *strict hierarchy* and are referred to as *security levels*
-- es: top secret < secrete < confidential < restricted < unclassified
+- es: top secret < secret < confidential < restricted < unclassified
 a subject is said to have a *security clearance* of a given level, and an object is said to have a *security classification* of a given level.
 - unlike *DAC*, users cannot decide to share or change the access permissions of data they own
 - access is enforced by the system, not by the owner of the resource
