@@ -1,10 +1,10 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2026-01-13T10:33
+updated: 2026-01-15T18:45
 completed: false
 ---
->[!def] buffer overflow (NIST)
+vv
 >”a condition at an interface under which *more input* can be placed into a buffer or data holding area than the capacity allocated, *overwriting other information*
 >- attackers exploit such a condition to crash a system or to insert specially crafted code that allows them to gain control of the system
 
@@ -150,7 +150,7 @@ the shellcode executes the `/bin/sh` shell
 
 ### defenses
 there are two approaches to buffer overflow defense:
-### compile-time defense
+x### compile-time defense
 compile-time defenses include:
 - *using a modern high-level language*, that is not vulnerable to overflow attacks, whose compiler enforces range checks and permissible operations on variables
 	- this implies additional code to impose checks, which cost resources. also the distance from the underlying machine language and architecture means no access to some instructions and hardware resources
