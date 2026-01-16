@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-03, 18:33
-updated: 2026-01-12T06:06
+updated: 2026-01-16T05:35
 completed: false
 ---
 [[01 - introduction to computer security]]
@@ -13,3 +13,4 @@ completed: false
 [[07 - buffer overflow]]
 [[08 - denial of service attacks]]
 [[09 - web security]]
+[[10 - cryptography, symmetric encryption]]

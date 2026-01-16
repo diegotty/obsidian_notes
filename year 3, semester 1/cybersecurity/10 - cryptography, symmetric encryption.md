@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-08, 16:52
-updated: 2025-12-15T14:31
+updated: 2026-01-16T05:43
 completed: false
 ---
 # introduction
@@ -41,8 +41,8 @@ symmetric cryptography is used because:
 - can be used for many applications and can be easily combined
 however, it has many limitations:
 - the users must share the same key
-- during transmission of the key, someone may intercept it (big challenge: a *KDC* (*key distribution center*: a trusted third party) may be used for managing and distributing keys)
-- the number of keys needd increases at rapid rate as the number of users in the network increases
+- during transmission of the key, someone may intercept it (big challenge: a *KDC* (*key distribution center*: a trusted third party may be used for managing and distributing keys)
+- the number of keys needs increases at rapid rate as the number of users in the network increases
 - secret key cryptography cannot provide an assurance of authentication
 ## encrypting natural languages
 english is typically represented with 8-bit ASCII encoding, making, thus a message with $t$ characters corresponds to a $n$-bit array, with $n=8t$
