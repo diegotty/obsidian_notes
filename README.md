@@ -2,5 +2,5 @@
 
 here you can find the notes from my bachelor's degree in computer science @Sapienza University\
 
-[!warning] vim motions
+[!WARNING] vim motions
 when you open the vault you will be dropped in the editor with vim motions! if you don't use vim motions, go to Settings->Editor->Vim Key bindings and turn them off 
