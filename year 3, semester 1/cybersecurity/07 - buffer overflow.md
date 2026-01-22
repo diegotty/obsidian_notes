@@ -1,10 +1,9 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2026-01-16T05:49
+updated: 2026-01-22T22:06
 completed: false
 ---
-vv
 >”a condition at an interface under which *more input* can be placed into a buffer or data holding area than the capacity allocated, *overwriting other information*
 >- attackers exploit such a condition to crash a system or to insert specially crafted code that allows them to gain control of the system
 

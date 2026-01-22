@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-16T05:49
+updated: 2026-01-22T21:57
 completed: false
 ---
 *- way to think about reductions*
