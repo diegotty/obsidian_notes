@@ -1,10 +1,10 @@
 ---
 related to:
 created: 2025-11-30, 13:45
-updated: 2025-11-30T18:27
+updated: 2026-01-16T05:49
 completed: false
 ---
->[!def] buffer overflow (NIST)
+vv
 >”a condition at an interface under which *more input* can be placed into a buffer or data holding area than the capacity allocated, *overwriting other information*
 >- attackers exploit such a condition to crash a system or to insert specially crafted code that allows them to gain control of the system
 
@@ -150,13 +150,13 @@ the shellcode executes the `/bin/sh` shell
 
 ### defenses
 there are two approaches to buffer overflow defense:
-### compile-time defense
+x### compile-time defense
 compile-time defenses include:
 - *using a modern high-level language*, that is not vulnerable to overflow attacks, whose compiler enforces range checks and permissible operations on variables
 	- this implies additional code to impose checks, which cost resources. also the distance from the underlying machine language and architecture means no access to some instructions and hardware resources
 - *safe coding techniques*: prorammers need to inspect the code and rewrite any unsafe coding
 	 - an example is the *OpenBSD* project. programmers audited the existing code base, including the OS, std libraries, and common utilities, making it one of the safest OS in widespread use
-- *language extensions / safe libraries*: withouth knowing the size at compile time, the C compiler cannot insert automatic checks to prevent a buffer overflow in dynamically allocated memory, which makes heap overflows harder to mitigate. “fixing” this requires an extension and the use of some libraries’s functions
+- *language extensions / safe libraries*: without knowing the size at compile time, the C compiler cannot insert automatic checks to prevent a buffer overflow in dynamically allocated memory, which makes heap overflows harder to mitigate. “fixing” this requires an extension and the use of some libraries’s functions
 	- also, because C has many unsafe stdlib functions, safe libraries that implement such functions in a safe way have been created (e.g. `libsafe`)
  - *stack protection*: compilers can use *stack canaries* which are small, unique (unpredictable) and secret values placed on the stack, to detect if an overflow has occurred. the *canary* (the value) is placed immediately beofre the crucial control data (such as the return address), an just before the function returns control, the code checks the canary’s value. if the value has been altered, the system knows the stack has been corrupted.
 	 - another technique is storing a backup copy of the return address (the most critical target of an overflow) in a safer location, to prevent an overflow attack. *stackshield* and *RAD* (*return address defender*) are compiler extensions that use this method. the return address in the active stack frame is then checked against the saved copy, and if the two values do not match the program is aborted
@@ -166,7 +166,7 @@ compile-time defenses include:
  - *guard pages*: guard pages can be placed between critical memory segments, such as between the end of the stack and the start of the heap. these pages are marked as *non-accessible*, triggering a hardware exeption if a buffer overflow tries to spill into one.
 ## buffer overflow variants
 - *stack frame smashing*: instead of just overwriting the return address, the attacker overwrites the entire top portion of the current function’s stack fram and constructs a new, *fake stack frame* on the stack
-- *return-to-libc*: instead of injecting custom shellcode, the attacker overwrites the return address with the address of an *existing, legitimate function* that already exists in the program’s memory. the attacker sets up the stuck such that when the system function is called, the required arguments for that function are waiting immediately behind the overwritten address 
+- *return-to-libc*: instead of injecting custom shellcode, the attacker overwrites the return address with the address of an *existing, legitimate function* that already exists in the program’s memory. the attacker sets up the stack such that when the system function is called, the required arguments for that function are waiting immediately behind the overwritten address 
 	- the most common target is a system function like `system()`
 	- this attack bypasses the *executable address space protection* technique
 - *heap overflow*:

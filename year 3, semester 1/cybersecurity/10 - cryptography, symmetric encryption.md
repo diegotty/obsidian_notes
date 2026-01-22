@@ -1,7 +1,11 @@
 ---
 related to:
 created: 2025-12-08, 16:52
+<<<<<<< HEAD
 updated: 2026-01-16T05:43
+=======
+updated: 2026-01-14T20:58
+>>>>>>> origin/main
 completed: false
 ---
 # introduction
@@ -85,10 +89,6 @@ a vigenere cipher that uses a key as long as the ciphertext, resulting in a *mat
 - the pad has the same length as the plaintext
 - the pad is destroyed immediately after use, and never reused for any other mesage
 for any given ciphertext, *every possible plaintext message of the same length is equally likely*, breaking frequency analysis
-the main drawbacks of the one-time pad are:
-- the key distribution problem
-- the key size
-- the reusage problem
 however, they also have weaknesses:
 - the key has to be as long as the plaintext
 - keys can never be reused
@@ -117,7 +117,7 @@ because of the high redundancy of natural language, historic codes are often bre
 thus, *more complex codes are needed !*
 the basic ideas to modern codes are:
 - *diffusion*: spread redundancy around the ciphertext
-- *confusion*: make encryption function as complex as possible, making it difficult to derive teh key analyzing the ciphertext
+- *confusion*: make encryption function as complex as possible, making it difficult to derive the key analyzing the ciphertext
 >[!info] computational security
 encryption is computationally secure if:
 >- the cost of breaking cipher exceeds the value of information

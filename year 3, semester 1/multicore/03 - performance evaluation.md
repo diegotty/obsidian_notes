@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-03T08:26
-updated: 2026-01-12T06:06
+updated: 2026-01-16T05:49
 completed: false
 ---
 # performance evaluation

@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-29, 16:22
-updated: 2025-11-30T12:49
+updated: 2026-01-16T05:49
 completed: false
 ---
 # database security
@@ -12,14 +12,14 @@ database security has not kept pace with the increased reliance on databases for
 >[!info] DBMS architecture
 ![[Pasted image 20251129163905.png]]
 ## SQL injection attacks
-*SQLi* (*SQL intejction*) attacks are one of the most prevalent and dangerous network-based security threats, and they are designed to exploit the nature of web application pages by sending malicious SQL commands to the database server.
+*SQLi* (*SQL injection*) attacks are one of the most prevalent and dangerous network-based security threats, and they are designed to exploit the nature of web application pages by sending malicious SQL commands to the database server.
 - the most common attack goal is the bulk extraction of data, but it can also be to modify or delete data, execute arbitrary OS commands, or to laungh DoS attacks
-they work by prematurely terminating a text string and appending a new command, and terminating the injected string with a comment mark `- -` (as the inserted command may have additional strings appended to it before it is executed)
+they work by prematurely terminating a text string and appending a new command, and terminating the injected string with a comment mark `--` (as the inserted command may have additional strings appended to it before it is executed)
 ### attack types
 #### inband attacks
 inband attacks use the same communication channel for injecting SQL code and retrieving results
 some examples are:
-- *tautology*: injects ode in more or more conditional statements so that they always evaluate to true
+- *tautology*: injects one or more conditional statements so that they always evaluate to true
 - *end-of-line comment*: after injecting code into a particular field, legitimate code that follows are nullified through usage of end of line comments (`- -`)
 - *piggyback queries*: the attacker adds additional queries beyond the intended query
 #### inferential attack
@@ -98,16 +98,16 @@ $pass = "' OR 'vulnerability' > 'server' ";
 #### second order inject
 to perform the attack, a user with a malicious name is registered. later on, the attacker ascks to change the password of its malicious user, so the web app fetches info about the user from the DB and uses them to perform another query
 >[!example] example
-```SQL
--- malicious user 
-$user = "admin' #";
-
--- update password query
-$q = "UPDATE users SET pass='"$._POST['newPass']."' WHERE user='".$row['user']."'";
-
--- query if the data coming from the database is not properly sanitized
-$q = UPDATE users SET pass='password' WHERE user='admin'#";
-```
+>```SQL
+>-- malicious user 
+>$user = "admin' #";
+>
+>-- update password query
+>$q = "UPDATE users SET pass='"$._POST['newPass']."' WHERE user='".$row['user']."'";
+>
+>-- query if the data coming from the database is not properly sanitized
+>$q = UPDATE users SET pass='password' WHERE user='admin'#";
+>```
 ##### ending the query
 to make sure that the final, concatenated statement runs without generating a syntax error, attacker use *comment symbols* to ensure syntactically correct query termination.
 - the goal is to lcose the string literal and eliminate all the remaining, unwanted code from the developer’s original query
@@ -158,7 +158,7 @@ achieving remote command execution, the attacker can read/write files using OS c
 >$id = "-1 UNION SELECT 'hi' INTO OUTFILE  '/tmp/hi'";
 >```
 
-### countermeasures
+## countermeasures
 there are three type of countermeasures to SQLis.
 ### parameterized queries
 *parameterized queries* are the gold standard for defense against SQLis, as they address the fundamental flaw of SQLis: the ambiguity between code and data.
@@ -178,7 +178,7 @@ $q = "SELECT * FROM users WHERE user_id = '' OR 1-=1 -- ' AND password='user-pas
 - *whitelisting*: only allowing input that matches a strict set of approved characters or values
 - *principle of least principle*: acts on the configuration of a db to limit the impact of a successful SQLi attack: the application’s db should only have *the minimum privileges necessary for its operation*
 ### SQL DOM
-*SQL DOM* (*data-oriented modeling*) is a more formal, academic approach to preventing SQL. it enforces a fundamental rule: *query structure must be defined separately from query data*.  this design pattern is typically implemented as a framework. instead of letting developers build queries using string concatenation, the language environment requires the use of *constructor methods* to build the query piece by piece.
+*SQL DOM* (*data-oriented modeling*) is a more formal, academic approach to preventing SQLi’s. it enforces a fundamental rule: *query structure must be defined separately from query data*.  this design pattern is typically implemented as a framework. instead of letting developers build queries using string concatenation, the language environment requires the use of *constructor methods* to build the query piece by piece.
 - this way, the environment always knows which input is meant t
 the SQL DOM system can automatically enfore parameterization on all data variables.
 this approach makes it virtually impossible for developers to accidentally create an unsafe sink !

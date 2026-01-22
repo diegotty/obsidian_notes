@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-11-30, 21:05
-updated: 2025-12-08T16:48
+updated: 2026-01-16T05:49
 completed: false
 ---
 ## basic information
@@ -43,7 +43,7 @@ the security of [[04 - livello applicazione; HTTP#cookie|cookies]] is critical, 
 session cookies can be used in *IDOR* attacks, that happen when an application provides *direct access* to objects based on user-supplied input, without proper identification
 this way, the user can directly access to information not intended to be accessible, bypassing the authorization check that would be needed
 ## same origin policy
-most of the browser’s security mechanisms rely on the possibility of isolating documents *depending on the resource’s origin*. generally, the pages from different sources should not be allowed to interfere with each other.
+most of the browser’s security mechanisms rely on the possibility of isolating documents *depending on the resource’s origin*. generally, pages from different sources should not be allowed to interfere with each other.
 - this means that a malicious website cannot run scripts that access data and functionalities of other websites visited by the user (impeding *cross-site scripting* (*XSS*))
 this mechanism is part of the *same origin policy* (*SOP*), the single most important security concept in web browsers, that is designed to isolate docments from different websites to provent unauthorized data access.
 - it was introduced by netscape in 1995
@@ -54,7 +54,7 @@ SOP’s simplicity is also its limit, as:
 - we cannot isolate homepages of different users hosted on the same origin
 - different domains cannot easily interact among each others if legitimately needed
 	- solution: `document.domain` can be used to relax the SOP by reducing domain definitions to its parent domains, thereby matching other sibling subdomains that do the same
-	- betersolution: `postMessage()` allows scripts to send messages between windows located on completely different origins in a controlled and safe manner (it allows both the sender and the receiver to agree on the communication boundaries)
+	- better solution: `postMessage()` allows scripts to send messages between windows located on completely different origins in a controlled and safe manner (it allows both the sender and the receiver to agree on the communication boundaries)
 ## client-side attacks
 client-side attacks *exploit the trust of the browser* (as opposite to exploiting the trust of servers). 
 in particular, they exploit the trust:
@@ -97,7 +97,7 @@ pretty self explanatory
 
 - *DOM-based XSS*: the injection happens in a parameter used by a script running within the page itself
 ## request forgery
-request forgery, also known as *one-click attack*, session riding or hostile linking, is aimed at having a victim executed a number of actions by using the victim’s credentials (e.g. session cookie)
+request forgery, also known as *one-click attack*, session riding or hostile linking, is aimed at having a victim execute a number of actions by using the victim’s credentials (e.g. session cookie)
 - however, this has to be done without direct access to the cookies (as we can’t access cookies of another domain because of SOP), thus no stealing of data happens
 it can be *cross site* (*CSRF*) or *on site* (*OSRF*, like [[https://sa.my/myspace/tech.html|samy worm]]), and it can be both reflexted and stored
 
