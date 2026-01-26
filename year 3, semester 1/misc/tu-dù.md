@@ -1,15 +1,15 @@
 ---
 related to:
 created: 2025-11-03T07:36
-updated: 2026-01-22T21:57
+updated: 2026-01-26T14:47
 completed: false
 ---
 ## to do
 - [ ] write overviews for multicore, cybersex
 - [ ] update overviews
-- [ ] esercizi multicore ! (lez 11, slide 34, openMP)
 
 ## could do 
+- [ ] esercizi multicore ! (lez 11, slide 34, openMP)
 - [ ] esercizi multicore caches
 - [ ] soluzioni esercizi multicore
 - [ ] xss game
