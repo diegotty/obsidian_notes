@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-27T15:09
+updated: 2026-01-27T16:56
 completed: false
 ---
 *-- intro*
@@ -42,15 +42,17 @@ nel linguaggio $EXP$, data la sua semplicità, abbiamo notato come:
 [inoltre, l’approccio lazy con scoping dinamico non viene usato, in quanto [boh tipo non funziona]]
 
 *-- linguaggio FUN*
-abbiamo introdotto un linguaggio più articolato, per dare un peso più rilevante agli approcci scelti nella valutazione dei termini: il linguaggio $FUN$, che aggiunge le funzioni ($fn \,x \implies M$ e $(M)N$) e abbiamo definito le regole d’inferenza per entrambe le soluzioni di scoping dell’approccio eager.
+abbiamo introdotto un linguaggio più articolato, per dare un peso più rilevante agli approcci scelti nella valutazione dei termini: il linguaggio $FUN$, che aggiunge le funzioni ($fn \,x \implies M$ e $(M)N$).
+abbiamo definito le regole d’inferenza per entrambe le soluzioni di scoping dell’approccio eager, e per l’approccio lazy con scoping statico.
 - grazie alle funzioni, abbiamo introdotto $\Omega = (fn\,x \implies xx)(fn \,x \implies xx)$, il primo esempio di *espressione che non termina*
 
-abbiamo terminato introducendo 2 linguaggi funzionali: *SML* (eager statico), e *LISP/Haskell* (eager statico)
-## lambda calcolo
+abbiamo terminato introducendo 2 linguaggi funzionali: *SML* (eager statico), e *LISP/Haskell* (lazy statico)
+
+*-- lambda calcolo*
 abbiamo dimostrato che è possibile eliminare alcuni costrutti presenti nel linguaggio $EXP$ se ci troviamo nel linguaggio $FUN$, in quanto tali costrutti possono essere espressi come funzioni. 
 - per dimostare ciò per la somma ($M+N$), abbiamo introdotto il *currying*.
 - per dimostrare ciò per le costanti (0,1,…) abbiamo introdotto i *numeri di church* (e di conseguenza il lambda-calcolo)
-abbiamo studiato *church()*, *dechurch()*, e le operazioni *succ*, *plus* e *times* nel lambda-calcol  tramite lnel lambda-calcolo.
+abbiamo studiato *church()*, *dechurch()*, e le operazioni *succ*, *plus* e *times* nel lambda-calcolo.
 
 ## paradigma imperativo
 per studiare il paradigma imperativo, iniziamo introducendo il linguaggio $IMP$,  che a sua volta introduce i concetti di *locazione* e *store*, assieme a diversi costrutti come `if`, `while`, `p;q`, …
