@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-27T12:55
+updated: 2026-01-27T13:03
 completed: false
 ---
 *-- intro*
@@ -21,8 +21,8 @@ studiamo il paradigma funzionale (usato dai linguaggi funzionali), un paradigma 
 
 *-- linguaggio EXP*
 abbiamo introdotto le *espressioni* (in *backus-naur form*), le abbiamo definite come algebre e ci siamo soffermati sul linguaggio $EXP$.
-- del linguaggio $EXP$, abbiamo abbiamo definito le *variabili libere* e le *variabili legate* di un’espressione, e il loro *scope*. abbiamo costruito la funzione `free()`
-abbiamo introdotto la valutazione dei termini del linguaggio $EXP$, e per farlo sono stati definiti gli *ambienti*. grazie agli ambienti, abbimo definito la *semantica operazionale* (il significato dei termini di $EXP$), attraverso delle *regole di inferenza*
+- del linguaggio $EXP$, abbiamo abbiamo definito le *variabili libere* e le *variabili legate* di un’espressione, e il loro *scope*. abbiamo quindi definito ricorsivamente la funzione `free()`
+abbiamo introdotto la valutazione dei termini del linguaggio $EXP$, e per farlo sono stati definiti gli *ambienti*. grazie agli ambienti, abbiamo definito la *semantica operazionale* (il significato dei termini di $EXP$), attraverso delle *regole di inferenza*
 
 durante l’applicazione delle regole di inferenza, abbiamo notato come per determinati termini, sarebbe più veloce applicare un metodo diverso per valutare i tali.
 sono stati quindi introdotti gli *approcci* alla valutazione:
