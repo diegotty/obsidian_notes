@@ -1,13 +1,13 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-22T21:57
+updated: 2026-01-27T10:58
 completed: false
 ---
 ## algebre induttive
 il corso studia la semantica dei linguaggi di programmazione
 - cenciarelli mi ha promesso che seguendo questo corso, avrei potuto facilmente capire il funzionamento di un linguaggio di programmazione semplicemente guardando le sue caratteristiche (tipato o non tipato, come gestisce le funzioni, etc …)
-siamo partiti dalla definizione di Peano dei *numeri naturali*, e abbiamo notato come essa sia un caso speciale della definizione di *algebra*
+siamo partiti dalla definizione di Peano dei *numeri naturali*, e abbiamo notato come essa sia un caso speciale della definizione di *algebra* (un monoide)
 per le algebre, abbiamo studiato la *chiusura* di un insieme rispetto ad un’operazione (anche per *algebre eterogenee*)
 abbiamo definito le *algebre induttive*, e abbiamo studiato le algebre induttive con la stessa segnatura, per definire gli *omomorfismi*, gli *isomorfismi*, e il *teorema di Lambek*
 
