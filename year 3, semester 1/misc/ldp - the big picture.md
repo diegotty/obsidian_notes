@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-27T15:05
+updated: 2026-01-27T15:09
 completed: false
 ---
 *-- intro*
@@ -37,10 +37,11 @@ e le varianti di *scoping* di entrambi:
 la differenza è sostanziale in situazioni in cui una variabile viene dichiarata molteplici volte in termini e sottotermini (e il suo valore quindi cambia durante l’esecuzione del programma)
 infatti
 nel linguaggio $EXP$, data la sua semplicità, abbiamo notato come:
-- *eager e lazy statico sono equivalenti*, è differente solo l’implementazione
+- *eager statico e lazy statico sono equivalenti*, è differente solo l’implementazione
 - *eager statico e eager dinamico sono equivalenti*
 [inoltre, l’approccio lazy con scoping dinamico non viene usato, in quanto [boh tipo non funziona]]
 
+*-- linguaggio FUN*
 abbiamo introdotto un linguaggio più articolato, per dare un peso più rilevante agli approcci scelti nella valutazione dei termini: il linguaggio $FUN$, che aggiunge le funzioni ($fn \,x \implies M$ e $(M)N$) e abbiamo definito le regole d’inferenza per entrambe le soluzioni di scoping dell’approccio eager.
 - grazie alle funzioni, abbiamo introdotto $\Omega = (fn\,x \implies xx)(fn \,x \implies xx)$, il primo esempio di *espressione che non termina*
 
