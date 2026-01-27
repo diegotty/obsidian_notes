@@ -1,20 +1,25 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-27T11:15
+updated: 2026-01-27T12:13
 completed: false
 ---
-## algebre induttive
+*-- intro*
 il corso studia la semantica dei linguaggi di programmazione
 - cenciarelli mi ha promesso che seguendo questo corso, avrei potuto facilmente capire il funzionamento di un linguaggio di programmazione semplicemente guardando le sue caratteristiche (tipato o non tipato, come gestisce le funzioni, etc …)
 
+*- algebre induttive*
 siamo partiti dalla definizione di Peano dei *numeri naturali*, e abbiamo notato come essa sia un caso speciale della definizione di *algebra* (in particolare, un monoide). abbiamo studiato come l’ultimo assioma che definisce i numeri naturali è equivalente al *principio di induzione*.
 per le algebre, abbiamo studiato la *chiusura* di un insieme rispetto ad un’operazione (anche per *algebre eterogenee*)
-abbiamo definito le *algebre induttive*, e abbiamo studiato le algebre induttive con la stessa segnatura, per definire gli *omomorfismi*, gli *isomorfismi*, e il *teorema di Lambek*
+, gli *isomorfismi*, e ilabbiamo definito le *algebre induttive*, e abbiamo studiato le algebre induttive con la stessa segnatura.
+in particolare, abbiamo visto che tra due algebre con la stessa segnatura, $A$ e $B$, in cui $A$ è un’algebra induttiva,  esiste un unico *omomorfismo*
+inoltre, per il *teorema di Lambek*, se $A$ e $B$ sono entrambe induttive e con la stessa segnatura, allora sono necessariamente isomorfe.
 
-## paradigma funzionale
+*- paradigma funzionale*
 studiamo il paradigma funzionale (usato dai linguaggi funzionali), un paradigma che si basa sulla valutazione di espressioni e l’uso di funzioni matematiche.
 - in poche parole, semplice, puro, senza effetti collaterali
+
+*-- linguaggio EXP*
 abbiamo introdotto le *espressioni* (in *backus-naur form*), le abbiamo definite come algebre e ci siamo soffermati sul linguaggio $EXP$.
 - del linguaggio $EXP$, abbiamo abbiamo definito le *variabili libere* e le *variabili legate* di un’espressione, e il loro *scope*
 abbiamo introdotto la valutazione dei termini del linguaggio $EXP$, e per farlo sono stati definiti gli *ambienti*. grazie agli ambienti, abbimo definito la *semantica operazionale* (il significato dei termini di $EXP$), attraverso delle *regole di inferenza*
