@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-27T13:03
+updated: 2026-01-27T15:05
 completed: false
 ---
 *-- intro*
@@ -22,9 +22,12 @@ studiamo il paradigma funzionale (usato dai linguaggi funzionali), un paradigma 
 *-- linguaggio EXP*
 abbiamo introdotto le *espressioni* (in *backus-naur form*), le abbiamo definite come algebre e ci siamo soffermati sul linguaggio $EXP$.
 - del linguaggio $EXP$, abbiamo abbiamo definito le *variabili libere* e le *variabili legate* di un’espressione, e il loro *scope*. abbiamo quindi definito ricorsivamente la funzione `free()`
-abbiamo introdotto la valutazione dei termini del linguaggio $EXP$, e per farlo sono stati definiti gli *ambienti*. grazie agli ambienti, abbiamo definito la *semantica operazionale* (il significato dei termini di $EXP$), attraverso delle *regole di inferenza*
+abbiamo introdotto la valutazione dei termini del linguaggio $EXP$, e per farlo sono stati definiti gli *ambienti*, funzioni parziali che associano un insieme finito di variabili ai propri valori. 
+grazie agli ambienti, abbiamo definito la *semantica operazionale* (il significato dei termini di $EXP$), attraverso delle *regole di inferenza*
 
-durante l’applicazione delle regole di inferenza, abbiamo notato come per determinati termini, sarebbe più veloce applicare un metodo diverso per valutare i tali.
+[durante l’applicazione delle regole di inferenza, abbiamo notato come per determinati termini, sarebbe più veloce applicare un metodo diverso per valutare i tali.]
+
+*---  approcci di valutazione*
 sono stati quindi introdotti gli *approcci* alla valutazione:
 - *approccio eager*: i termini vengono calcolati indistintamente, anche in modo scomodo, appena vengono incontrati
 - *approccio lazy*: i termini vengono calcolato solo quando è veramente necessario (quindi non alla loro “definizione”)
@@ -36,6 +39,7 @@ infatti
 nel linguaggio $EXP$, data la sua semplicità, abbiamo notato come:
 - *eager e lazy statico sono equivalenti*, è differente solo l’implementazione
 - *eager statico e eager dinamico sono equivalenti*
+[inoltre, l’approccio lazy con scoping dinamico non viene usato, in quanto [boh tipo non funziona]]
 
 abbiamo introdotto un linguaggio più articolato, per dare un peso più rilevante agli approcci scelti nella valutazione dei termini: il linguaggio $FUN$, che aggiunge le funzioni ($fn \,x \implies M$ e $(M)N$) e abbiamo definito le regole d’inferenza per entrambe le soluzioni di scoping dell’approccio eager.
 - grazie alle funzioni, abbiamo introdotto $\Omega = (fn\,x \implies xx)(fn \,x \implies xx)$, il primo esempio di *espressione che non termina*
