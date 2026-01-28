@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-27T16:56
+updated: 2026-01-28T18:20
 completed: false
 ---
 *-- intro*
@@ -54,8 +54,9 @@ abbiamo dimostrato che è possibile eliminare alcuni costrutti presenti nel ling
 - per dimostrare ciò per le costanti (0,1,…) abbiamo introdotto i *numeri di church* (e di conseguenza il lambda-calcolo)
 abbiamo studiato *church()*, *dechurch()*, e le operazioni *succ*, *plus* e *times* nel lambda-calcolo.
 
-## paradigma imperativo
-per studiare il paradigma imperativo, iniziamo introducendo il linguaggio $IMP$,  che a sua volta introduce i concetti di *locazione* e *store*, assieme a diversi costrutti come `if`, `while`, `p;q`, …
+*-- paradigma imperativo*
+per studiare il paradigma imperativo, iniziamo introducendo il linguaggio $IMP$,  che a sua volta introduce i concetti di *locazione* (astrazioni degli indirizzi di memoria) e *store* (astrazione delle celle di memoria), assieme a diversi costrutti: `if`, `while`, `p;q`, `var`, e l’assegnamento “puro”
+- abbiamo quindi introdotto 2 diverse funzioni di valutazione semantica
 per studiare gli interessanti meccanismi del passaggio di parametri a procedure, meccanismi presenti in molti linguaggi della famiglia `Algol`, è però necessario ampliare il linguaggio $IMP$ per ottere il linguaggio $ALL$, che introduce i concetti di *procedura* e *array*, modifica la gestione delle variabili con la separazione di *L-EXP* da *R-EXP* e introduce i costrutti che permettono tali cambiamenti.
 studiamo quindi, nel linguaggio $ALL$, i meccanismi di *call-by-value*, *call-by-reference* e *call-by-name*
 ## correttezza di programmi
