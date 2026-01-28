@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-26, 11:29
-updated: 2026-01-28T12:04
+updated: 2026-01-28T13:29
 completed: false
 ---
 *- way to think about reductions*
@@ -59,7 +59,9 @@ $<G>$ occupa di solito $|V|^2$ (matrice di adiacenza)
 - inoltre, possiamo avere anche un nastro *write-once*, che ci permette di non dover rispettare il limite di spazio imposto per il nastro (se $L \in SPACE(f(n))$, l’output può essere tranquillamente $O(f(n)^2)$)
 
 *- CFG to DFA*
-
+- *forma lineare destra*: solo $A\to aB$
+- *forma lineare sinistra*: solo $A \to Ba$
+se la CFG è in una forma lineare, allora è possibile trasformarla in DFA, seguendo, inversamente, i passaggi usati per costruire una CFG da un DFA
 
 | simulatore | simulato | complessità di spazio    | complessità di tempo |
 | ---------- | -------- | ------------------------ | -------------------- |
