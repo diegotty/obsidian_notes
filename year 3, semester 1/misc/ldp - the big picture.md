@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-29T17:21
+updated: 2026-01-29T17:36
 completed: false
 ---
 *-- intro*
@@ -60,8 +60,11 @@ per studiare il paradigma imperativo, iniziamo introducendo il linguaggio $IMP$,
 - abbiamo quindi introdotto 2 diverse funzioni di valutazione semantica e regole di inferenza per l’approccio eager statico
 *-- ALL*
 per studiare gli interessanti *meccanismi del passaggio di parametri a procedure*, (meccanismi presenti in molti linguaggi della famiglia `Algol`) è però necessario ampliare il linguaggio $IMP$ per ottere il linguaggio $ALL$, che introduce i concetti di *procedura* e *array*, modifica la gestione delle variabili con la separazione di *L-EXP* da *R-EXP* e introduce i costrutti che permettono tali cambiamenti.
-- nelle regole di inferenza, oltre alle regole per i nuovi costrutti, si nota come viene introdotto un meccanismo di `[ref]` + `[loc]` per accedere al valore di j
+- nelle regole di inferenza, oltre alle regole per i nuovi costrutti, si nota come viene introdotto un meccanismo di `[ref]` + `[loc]` per accedere al valore di una variabile
 
 *--- passaggio di parametri*
-studiamo quindi, nel linguaggio $ALL$, i meccanismi di *call-by-value*, *call-by-reference* e *call-by-name*
+studiamo quindi, nel linguaggio $ALL$, i meccanismi di
+- *call-by-value*: viene dato *il valore* in input, e nella funzione viene creata una copia della variabile data
+- *call-by-reference*: viene dato *l’indirizzo di memoria della variabile* in input. la reference (*location*) viene “valutata” al momento di chiamata della funzione, e qualunque modifica cambia la variabile originale data in input
+- *call-by-name*: l’equivalente del meccanismo call-by-reference ma in versione *lazy*: viene data in input la reference della varabile, ma tale reference non viene valuta fino a quando non viene “usata” all’interno della funzione.
 ## correttezza di programmi
