@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-29T17:52
+updated: 2026-01-29T18:04
 completed: false
 ---
 *-- intro*
@@ -68,4 +68,6 @@ studiamo quindi, nel linguaggio $ALL$, i meccanismi di
 - *call-by-reference*: viene dato *l’indirizzo di memoria della variabile* in input. la reference (*location*) viene “valutata” al momento di chiamata della funzione, e qualunque modifica cambia la variabile originale data in input
 - *call-by-name*: l’equivalente del meccanismo call-by-reference ma in versione *lazy*: viene data in input la reference della varabile, ma tale reference non viene valuta fino a quando non viene “usata” all’interno della funzione.
 *-- correttezza di programmi imperativi*
-studiamo ora la *correttezza parziale* dei programmi imperativi, attraverso 
+studiamo ora la *correttezza parziale* dei programmi imperativi, attraverso la *logica di Hoare*, un sistema formale (che rientra nelle semantiche assiomatiche).
+usiamo le *triple di Hoare* per imporre pre-condizioni e post-condizioni che il programma deve rispettare
+- abbiamo definito le regole d’inferenza del sistema, divise in *regole generali* (tra cui `strengthening` e `weakening`) e *regole speciali*
