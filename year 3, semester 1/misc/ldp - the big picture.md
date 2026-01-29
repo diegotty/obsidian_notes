@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-29T17:38
+updated: 2026-01-29T17:52
 completed: false
 ---
 *-- intro*
@@ -67,4 +67,5 @@ studiamo quindi, nel linguaggio $ALL$, i meccanismi di
 - *call-by-value*: viene dato *il valore* in input, e nella funzione viene creata una copia della variabile data
 - *call-by-reference*: viene dato *l’indirizzo di memoria della variabile* in input. la reference (*location*) viene “valutata” al momento di chiamata della funzione, e qualunque modifica cambia la variabile originale data in input
 - *call-by-name*: l’equivalente del meccanismo call-by-reference ma in versione *lazy*: viene data in input la reference della varabile, ma tale reference non viene valuta fino a quando non viene “usata” all’interno della funzione.
-## correttezza di programmi
+*-- correttezza di programmi imperativi*
+studiamo ora la *correttezza parziale* dei programmi imperativi, attraverso 
