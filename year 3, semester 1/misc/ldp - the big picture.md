@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-30T11:22
+updated: 2026-01-30T11:41
 completed: false
 ---
 *-- intro*
@@ -41,7 +41,7 @@ nel linguaggio $EXP$, data la sua semplicità, abbiamo notato come:
 - *eager statico e eager dinamico sono equivalenti*
 [inoltre, l’approccio lazy con scoping dinamico non viene usato, in quanto [boh tipo non funziona]]
 
-*-- linguaggio FUN*
+*-- linguaggio FUN* (cuore di SML !)
 abbiamo introdotto un linguaggio più articolato, per dare un peso più rilevante agli approcci scelti nella valutazione dei termini: il linguaggio $FUN$, che aggiunge le funzioni ($fn \,x \implies M$ e $(M)N$).
 abbiamo definito le regole d’inferenza per entrambe le soluzioni di scoping dell’approccio eager, e per l’approccio lazy con scoping statico.
 - grazie alle funzioni, abbiamo introdotto $\Omega = (fn\,x \implies xx)(fn \,x \implies xx)$, il primo esempio di *espressione che non termina*
