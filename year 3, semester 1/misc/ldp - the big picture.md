@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-30T10:57
+updated: 2026-01-30T11:22
 completed: false
 ---
 *-- intro*
@@ -77,3 +77,7 @@ usiamo le *triple di Hoare* per imporre pre-condizioni e post-condizioni che il 
 abbiamo definito il *punto fisso* e il combinatore di punto fisso, che funziona grazie alla $\beta \text{ -regola}$, il meccanismo di valutazione di applicazione di una funzione ad un argomento
 
 *-- corretezza di programmi funzionali*
+[scrivendo una funzione con $\rho$ e $rec$, è assicurato che tale funzione termini sempre, in quanto è *totale* (restituisce un valore per ogni input)]
+
+la programmazione funzionale permette di *eliminare* intere categorie di bug
+- es: se il programma è un’omomorfismo, non può “saltare” pezzi della lista/numero che sta processando
