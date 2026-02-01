@@ -1,6 +1,6 @@
 ---
 created: 2025-11-03, 18:33
-updated: 2026-01-22T21:57
+updated: 2026-02-01T19:30
 ---
 [[01 - introduction to computer security]]
 [[02 - cryptography]]
@@ -12,3 +12,5 @@ updated: 2026-01-22T21:57
 [[08 - denial of service attacks]]
 [[09 - web security]]
 [[10 - cryptography, symmetric encryption]]
+[not finished …..]
+[ngl i didnt like the course]
