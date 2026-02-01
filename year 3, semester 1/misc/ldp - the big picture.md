@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-01T18:15
+updated: 2026-02-01T18:31
 completed: false
 ---
 *-- intro*
@@ -81,6 +81,13 @@ abbiamo definito il *punto fisso* e il combinatore di punto fisso, che funziona 
 abbiamo esteso $FUN$ con n costrutto che permette di definire funzioni *induttivamente* su $N$, ottenendo un approccio formale alla verifica della correttezza dei programmi, basato sulla *logica equazionale*.
 - abbiamo studiato la *proposizione. 11.1* e abbiamo introdotto $\rho$ e il linguaggio $FUN_\rho$
 - abbiamo introdotto i valori booleani e la funzione `not` nel $\lambda-calcolo$
-- abbiamo studiato il *teorema 11.1* e ottenuto il costrutto $rec$
+- abbiamo studiato il *teorema 11.1* e ottenuto il costrutto $rec$ e il linguaggio $FUN_{rec}$
+infine abbiamo definito le regole di inferenza del sistema logico per la verifica formale dei programmin di $FUN_{rec}$, il sistema equazionale con unico predicato $M=N$
 la programmazione funzionale permette di *eliminare* intere categorie di bug
 - es: se il programma è un’omomorfismo, non può “saltare” pezzi della lista/numero che sta processando
+
+*- teoria dei tipi*
+studiamo i *sistemi dei tipi*, insiemi di regole che permettono di dare un tipo ad espressioni, comandi ed altri costrutti del relativo linguaggio
+
+*- $F1$*
+abbiamo introdotto il *lambda calcolo tipato semplice* (sistema dei tipi di primo ordine, senza parametrizza), il concetto di *contesto dei tipi* e le relative regole di inferenza. il linguaggio è 
