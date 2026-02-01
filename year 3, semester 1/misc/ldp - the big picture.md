@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-01-30T11:41
+updated: 2026-02-01T18:15
 completed: false
 ---
 *-- intro*
@@ -78,6 +78,9 @@ abbiamo definito il *punto fisso* e il combinatore di punto fisso, che funziona 
 
 *-- corretezza di programmi funzionali*
 [scrivendo una funzione con $\rho$ e $rec$, è assicurato che tale funzione termini sempre, in quanto è *totale* (restituisce un valore per ogni input)]
-
+abbiamo esteso $FUN$ con n costrutto che permette di definire funzioni *induttivamente* su $N$, ottenendo un approccio formale alla verifica della correttezza dei programmi, basato sulla *logica equazionale*.
+- abbiamo studiato la *proposizione. 11.1* e abbiamo introdotto $\rho$ e il linguaggio $FUN_\rho$
+- abbiamo introdotto i valori booleani e la funzione `not` nel $\lambda-calcolo$
+- abbiamo studiato il *teorema 11.1* e ottenuto il costrutto $rec$
 la programmazione funzionale permette di *eliminare* intere categorie di bug
 - es: se il programma è un’omomorfismo, non può “saltare” pezzi della lista/numero che sta processando
