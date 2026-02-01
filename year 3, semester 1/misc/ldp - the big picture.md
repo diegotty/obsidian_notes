@@ -90,4 +90,4 @@ la programmazione funzionale permette di *eliminare* intere categorie di bug
 studiamo i *sistemi dei tipi*, insiemi di regole che permettono di dare un tipo ad espressioni, comandi ed altri costrutti del relativo linguaggio
 
 *- $F1$*
-abbiamo introdotto il *lambda calcolo tipato semplice* (sistema dei tipi di primo ordine, senza parametrizza), il concetto di *contesto dei tipi* e le relative regole di inferenza. il linguaggio è 
+abbiamo introdotto il *lambda calcolo tipato semplice* (sistema dei tipi di primo ordine, senza parametrizzazione ed astrazione sui tipi), il concetto di *contesto dei tipi* e le relative regole di inferenza. il linguaggio è 
