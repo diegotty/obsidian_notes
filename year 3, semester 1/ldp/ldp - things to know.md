@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T12:00
+updated: 2026-02-02T12:53
 completed: false
 ---
 *- algebre*
@@ -23,3 +23,5 @@ completed: false
 - church/dechurch
 - `succ`, `plus`, `times`
 
+*- punto fisso*
+- def Y
