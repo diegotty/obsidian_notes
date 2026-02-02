@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-02T10:29
+updated: 2026-02-02T10:44
 completed: false
 ---
 *-- intro*
@@ -97,4 +97,5 @@ abbiamo introdotto il *lambda calcolo tipato semplice* (sistema dei tipi di prim
 introducendo il *polimorfismo*, cioè variabili che agiscono da segnaposto per i tipi, definiamo $F2$, che introduce i costrutti di *generalizzazione* e *specializzazione* dei tipi. abbiamo introdotto le relative regole di inferenza e abbiamo verificato la necessità della condizione laterale della regola $[\Lambda]$
 
 *-- sistema dei tipi di ML*
-infine, siamo approdati al sistema dei tipi di ML, che comporta una separazione dei tipi 
+infine, siamo approdati al sistema dei tipi di ML, che comporta una separazione dei tipi in *prime types* e *type schemes*. 
+- abbiamo notato che al contrario che in $FUN$, `let` e `fn` non sono la stessa cosa, in quanto `let` ammette un input polimorfo, mentre `fn` no
