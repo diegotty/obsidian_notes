@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T13:03
+updated: 2026-02-02T15:15
 completed: false
 ---
 *- algebre*
@@ -28,3 +28,11 @@ completed: false
 - xke ricorsione (e xke beta-regola)
 *- - $FUN_{\rho}$*
 *- - $FUN_{rec}$*
+*-- correttezza di programmi funzionali*
+- sistema logico equazionale
+- `twice n` = `plus n n`
+
+*- teoria dei tipi*
+*- $F1$*
+- limiti del linguaggio
+*- $F2$*
