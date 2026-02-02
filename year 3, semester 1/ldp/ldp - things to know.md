@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T11:42
+updated: 2026-02-02T12:00
 completed: false
 ---
 *- algebre*
@@ -15,4 +15,11 @@ completed: false
 
 *- linguaggi*
 *-- $EXP$*
-- regole eager/lazy
+- regole eager/lazy (+ def degli approcci/scoping)
+*-- $FUN$*
+- (applicazione di funzioni associa a sx, non è nè commutativa nè associativa)
+*--- $\lambda-calcolo$*
+- currying
+- church/dechurch
+- `succ`, `plus`, `times`
+
