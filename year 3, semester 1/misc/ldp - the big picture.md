@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-01T18:31
+updated: 2026-02-02T10:29
 completed: false
 ---
 *-- intro*
@@ -89,5 +89,12 @@ la programmazione funzionale permette di *eliminare* intere categorie di bug
 *- teoria dei tipi*
 studiamo i *sistemi dei tipi*, insiemi di regole che permettono di dare un tipo ad espressioni, comandi ed altri costrutti del relativo linguaggio
 
-*- $F1$*
-abbiamo introdotto il *lambda calcolo tipato semplice* (sistema dei tipi di primo ordine, senza parametrizzazione ed astrazione sui tipi), il concetto di *contesto dei tipi* e le relative regole di inferenza. il linguaggio è 
+*-- $F1$*
+abbiamo introdotto il *lambda calcolo tipato semplice* (sistema dei tipi di primo ordine, senza parametrizzazione ed astrazione sui tipi), il concetto di *contesto dei tipi* e le relative regole di inferenza. il linguaggio è “*depotenziato*”, in quanto la sua rigorosità limita la capacità espressiva: la proprietà di *normalizzazione forte*, di cui gode $F1$, non lo rende turing-completo
+- infatti, non è possibile anche solo tipare $(fn\, x:A\implies xx)$, cioè la ricorsione
+
+*-- $F2$*
+introducendo il *polimorfismo*, cioè variabili che agiscono da segnaposto per i tipi, definiamo $F2$, che introduce i costrutti di *generalizzazione* e *specializzazione* dei tipi. abbiamo introdotto le relative regole di inferenza e abbiamo verificato la necessità della condizione laterale della regola $[\Lambda]$
+
+*-- sistema dei tipi di ML*
+infine, siamo approdati al sistema dei tipi di ML, che comporta una separazione dei tipi 
