@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T12:53
+updated: 2026-02-02T13:03
 completed: false
 ---
 *- algebre*
@@ -25,3 +25,6 @@ completed: false
 
 *- punto fisso*
 - def Y
+- xke ricorsione (e xke beta-regola)
+*- - $FUN_{\rho}$*
+*- - $FUN_{rec}$*
