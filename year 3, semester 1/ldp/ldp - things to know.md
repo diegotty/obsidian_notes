@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T15:15
+updated: 2026-02-02T15:50
 completed: false
 ---
 *- algebre*
@@ -36,3 +36,6 @@ completed: false
 *- $F1$*
 - limiti del linguaggio
 *- $F2$*
+- logica dell’astrazione a 2 livelli
+- esempio polimorfismo fico
+*-- sistema dei tipi di SML*
