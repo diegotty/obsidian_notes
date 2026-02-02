@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T16:07
+updated: 2026-02-02T16:32
 completed: false
 ---
 *- algebre*
@@ -46,3 +46,8 @@ completed: false
 - [ ] si può creare una funzione, in ML, ,che accetta solo bool o int
 - [ ] definizione di istanza generica
 - [ ] $\forall X.Y$ è istanza generica di $Y$
+
+
+*- todo*
+hilbert
+curry-howard
