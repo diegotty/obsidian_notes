@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T15:50
+updated: 2026-02-02T16:07
 completed: false
 ---
 *- algebre*
@@ -39,3 +39,10 @@ completed: false
 - logica dell’astrazione a 2 livelli
 - esempio polimorfismo fico
 *-- sistema dei tipi di SML*
+
+*- questions*
+- [ ] i booleani sono un’algebra induttiva
+- [ ] call-by-reference e call-by-name
+- [ ] si può creare una funzione, in ML, ,che accetta solo bool o int
+- [ ] definizione di istanza generica
+- [ ] $\forall X.Y$ è istanza generica di $Y$
