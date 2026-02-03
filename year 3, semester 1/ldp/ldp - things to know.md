@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-03T12:05
+updated: 2026-02-03T15:26
 completed: false
 ---
 *- algebre*
@@ -56,3 +56,4 @@ curry-howard
 - [ ] call-bys
 - [ ] esempio diff tra eager statico e dinamico in FUN ?
 - [ ] eager/lazy in FUN (e pk non in EXP) 
+- [ ] plus commutativo
