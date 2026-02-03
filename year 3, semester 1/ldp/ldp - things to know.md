@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T16:32
+updated: 2026-02-03T11:15
 completed: false
 ---
 *- algebre*
@@ -51,3 +51,6 @@ completed: false
 *- todo*
 hilbert
 curry-howard
+
+- [ ] istanza generica
+- [ ] call-bys
