@@ -1,6 +1,6 @@
 ---
 created: 2026-02-03T11:14
-updated: 2026-02-04T15:10
+updated: 2026-02-04T15:46
 ---
 
 *-questions&answers*
@@ -9,6 +9,7 @@ updated: 2026-02-04T15:10
 
 
 *- to-do*
+- [ ] whore logicz 
 - [ ] regole inferenza
 - [x] call-by’s
 - [ ] esempi !!
