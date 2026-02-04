@@ -1,6 +1,6 @@
 ---
 created: 2026-02-03T11:14
-updated: 2026-02-04T12:44
+updated: 2026-02-04T15:10
 ---
 
 *-questions&answers*
@@ -10,7 +10,7 @@ updated: 2026-02-04T12:44
 
 *- to-do*
 - [ ] regole inferenza
-- [ ] call-by’s
+- [x] call-by’s
 - [ ] esempi !!
 - [ ] `succ` `plus` `times` in $\lambda-calcolo$
 - [ ] esempi tipi
