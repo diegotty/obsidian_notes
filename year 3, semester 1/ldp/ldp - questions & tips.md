@@ -1,6 +1,6 @@
 ---
 created: 2026-02-03T11:14
-updated: 2026-02-04T15:46
+updated: 2026-02-05T20:09
 ---
 
 *-questions&answers*
@@ -9,6 +9,7 @@ updated: 2026-02-04T15:46
 
 
 *- to-do*
+- [ ] predecessore di church
 - [ ] whore logicz 
 - [ ] regole inferenza
 - [x] call-by’s
