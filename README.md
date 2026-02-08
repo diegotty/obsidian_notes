@@ -1,7 +1,4 @@
----
-created: 2026-01-22T22:06
-updated: 2026-01-22T22:06
----
+
 # diego’s computer science notes
 
 here you can find the notes from my bachelor's degree in computer science @Sapienza University\
