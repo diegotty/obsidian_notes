@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-02, 11:33
-updated: 2026-02-02T16:32
+updated: 2026-02-02T16:57
 completed: false
 ---
 *- algebre*
@@ -50,4 +50,4 @@ completed: false
 
 *- todo*
 hilbert
-curry-howard
+	curry-howard
