@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-02T10:44
+updated: 2026-02-09T06:53
 completed: false
 ---
 *-- intro*
@@ -35,8 +35,7 @@ e le varianti di *scoping* di entrambi:
 - *scoping dinamico*: quando viene calcolato un termine, esso viene calcolato nell’ambiente in cui ci si trova al momento del calcolo
 - *scoping statico*: quando viene calcolato un termine, esso viene calcolato nell’ambiente in cui è stato incontrato
 la differenza è sostanziale in situazioni in cui una variabile viene dichiarata molteplici volte in termini e sottotermini (e il suo valore quindi cambia durante l’esecuzione del programma)
-infatti
-nel linguaggio $EXP$, data la sua semplicità, abbiamo notato come:
+infatti nel linguaggio $EXP$, data la sua semplicità, abbiamo notato come:
 - *eager statico e lazy statico sono equivalenti*, è differente solo l’implementazione
 - *eager statico e eager dinamico sono equivalenti*
 [inoltre, l’approccio lazy con scoping dinamico non viene usato, in quanto [boh tipo non funziona]]

@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2025-11-03T17:21
+updated: 2026-02-14T14:41
 completed: false
 ---
 # introduction
@@ -26,7 +26,6 @@ int main(void){
 >[!info] misc info
 identifiers start with `MPI_`, and the first letter following underscore is uppercase
 
-	
 the return value of MPI functions is `int`, and it always returns a code that indicates an error
 
 >[!info] compiling and execution
