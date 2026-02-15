@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-03, 17:38
-updated: 2026-01-22T21:57
+updated: 2026-02-15T16:43
 completed: false
 ---
 with the introduction of openMP and pthreads, we study how to parallelize effectively between cores of a single CPU
@@ -61,7 +61,7 @@ single:
 ## openMP + MPI
 the safest and easiest threading level to use when combining openMP and MPI is `MPI_THREAD_FUNNELED`, as it fits nicely with most openMP models, 
 >[!info] MPI thread binding
-MPI maps each process on a core. thus, all the threads created by that process will run on the same core. to inhibit this functionality, the `--bin-to-none` clause is necessary
+MPI maps each process on a core. thus, all the threads created by that process will run on the same core. to inhibit this functionality, the `--bind-to none` clause is necessary
 
 [[https://hpc-wiki.info/hpc/Gprof_Tutorial|gprof]]
 ## thread-safety
