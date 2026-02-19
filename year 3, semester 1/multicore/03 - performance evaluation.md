@@ -167,7 +167,6 @@ void parallel_vector_sum(
 }
 
 ```
-
 ## collectives on matrices
 >[!info] storage of static matrices
 matrices get stored as rows in memory
