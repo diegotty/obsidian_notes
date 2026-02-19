@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-03T08:26
-updated: 2026-01-22T21:57
+updated: 2026-02-19T07:45
 completed: false
 ---
 # performance evaluation
@@ -168,7 +168,6 @@ void parallel_vector_sum(
 
 ```
 
->[!example] using a gather to print a distributed vector
 ## collectives on matrices
 >[!info] storage of static matrices
 matrices get stored as rows in memory

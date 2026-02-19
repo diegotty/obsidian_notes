@@ -1,7 +1,7 @@
 ---
 related to: "[[00 - introduction]]"
 created: 2025-03-02T17:41
-updated: 2026-01-22T21:57
+updated: 2026-02-19T07:43
 completed: false
 ---
 # parallel program structure patterns
@@ -46,16 +46,15 @@ there is a single parent thread of execution, and dynamic creation of *children 
 >[!info] implemented by OpenMP and Pthread
 
 >[!example] ex
-
-```c
-mergesort(A, lo, hi):
-	if lo < hi: // length of A >=1
-		mid = [lo + (hi - lo)/2]
-		fork mergesort(A, lo, mid) // child task
-		mergesort(A, mid, hi) // done by the main task
-		join
-		merge(A, lo, mid, hi)
-```
+>```c
+>mergesort(A, lo, hi):
+>	if lo < hi: // length of A >=1
+>		mid = [lo + (hi - lo)/2]
+>		fork mergesort(A, lo, mid) // child task
+>		mergesort(A, mid, hi) // done by the main task
+>		join
+>		merge(A, lo, mid, hi)
+>```
 
 ### loop parallelism
 this technique is employed for *migration of sequential/legacy software to multicore*. it focuses on breaking up loops by manipulating the loop control variable
