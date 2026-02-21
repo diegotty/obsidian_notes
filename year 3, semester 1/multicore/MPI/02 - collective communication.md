@@ -1,10 +1,10 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2025-11-03T15:29
+updated: 2026-02-21T16:12
 completed: false
 ---
-# collective communication
+6# collective communication
 collective functions are functions that involve all processes within a specified communicator. every process needs to call the function
 - they are highly optimized by the MPI implementation for parallel computing, so it makes sense to use them over manual implementations
 unlike point-to-point communcations (send-receive), collective calls are matched solely on the basis of the communicator and the order in which they are called (no tags !)
