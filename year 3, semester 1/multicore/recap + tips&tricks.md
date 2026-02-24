@@ -1,14 +1,13 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-24T14:54
+updated: 2026-02-24T15:12
 completed: false
 ---
 *--socket-core-thread structure:*
 each machine has $x$ sockets, and each socket has $k$ cores, and each core can handle $j$ threads. thus the number of threads usable in a machine is $x \cdot k \cdot j$
 
 we run our program on the cluster with 4 nodes (4 physical servers)
-each node has 4 *NUMA nodes*, and each NUMA node has 8 cores.
 
 each node has *2 sockets*, and each CPU (1 per socket) is split in *4 NUMA nodes*, and also each socket has *16 cores* (so 32 cores for each node)
 - also *2 threads x core*
@@ -25,3 +24,9 @@ NUMA:
   NUMA node7 CPU(s):      7,15,23,31,39,47,55,63
 ```
 in this report, CPU(s) means thread ! not core
+
+```
+--nodes = 4 //4 physical servers
+--ntasks-per-node=8 //1 MPI rank for each of the NUMA nodes
+--cpus-per-task=8 //8 logical CPUS per rank (4 cores + MST) i'll run 4
+```
