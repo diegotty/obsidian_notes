@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2026-02-26T08:01
+updated: 2026-02-26T08:02
 completed: false
 ---
 ## caches
@@ -118,5 +118,5 @@ in *UMA* (*uniform memory access*) systems, all cores are connected to a central
 in *NUMA* (*non-uniform memory access*) systems, the memory is physically distributed accross different nodes (group of cores), as each node has its own, *dedicated bank of memory*
 all memory is still accessible to all cores (as its still a shared-memory system), but the physical distance matters (whether the requested data is located in a core’s bank or in another core’s bank, as the latter option causes a necessary communication between the nodes, resulting in higher latency)
 the cost of accessing the memory changes depending on where the data is allocated: accessing a local memory is cheaper than accessing a remote memory
-- it is possible to specify where the data must be allocated (4 more info, `numa.h` lib and `numacl1)
+- it is possible to specify where the data must be allocated (4 more info, `numa.h` lib and `numacl`)
 furthermore, some cores might be closer to the *NIC*, therefore it would make sense that those cores are the ones doing I/O (send/receive) operations !
