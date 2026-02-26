@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-26T17:32
+updated: 2026-02-26T17:41
 completed: false
 ---
 *--socket-core-thread structure:*
@@ -41,4 +41,4 @@ in this report, CPU(s) means thread ! not cores
 - *OMP_PROC_BIND* (affinity policy):  how threads are distributed across the places ()
 
 *CUDA*
-*quadro rtx 6000*
+*Quadro RTX 6000, 7.5, 570.124.06* (gpu, compute-cap, driver-version)
