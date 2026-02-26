@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-26T17:41
+updated: 2026-02-26T18:07
 completed: false
 ---
 *--socket-core-thread structure:*
@@ -42,3 +42,10 @@ in this report, CPU(s) means thread ! not cores
 
 *CUDA*
 *Quadro RTX 6000, 7.5, 570.124.06* (gpu, compute-cap, driver-version)
+each node has 2 gpus, we run with 4 nodes
+
+*optimal block sizes are typically multiples of 32 to ensure efficient warp scheduling !*
+*total threads must exceed the number of multiprocessors to hide latency*
+
+max threads per block: 1024
+max warps per SM: 32

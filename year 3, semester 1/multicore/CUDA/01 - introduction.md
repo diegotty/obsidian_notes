@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-14, 11:49
-updated: 2026-02-26T07:35
+updated: 2026-02-26T18:05
 completed: false
 ---
 # CUDA
@@ -44,7 +44,7 @@ the maximum sizes of blocks and grids are determined by the *compute capability*
 - it is represented by a version number, and sometimes it is called *SM version*
 >[!info] CC (compute capability) properties
 ![[Pasted image 20251126170458.png]]
-we got to 9 n something
+we got to 13.x
 
 >[!example] NVidia architectures
 >![[Pasted image 20251126170236.png]]
