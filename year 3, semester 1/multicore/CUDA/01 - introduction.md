@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-14, 11:49
-updated: 2026-02-26T07:31
+updated: 2026-02-26T07:35
 completed: false
 ---
 # CUDA
@@ -166,9 +166,8 @@ dim3 grid(4, 3, 2);
 
 CUDA files are of `.cu` extension, which is the same as `.c`, however at serves as a convention as `.cu` files are expected to be run on GPUs
 ## function dectorators
-- `__global__` : (kernel can call kernel)
 - `__global__` : a function that can be called by host or GPU, but will be executed by the GPU 
-	- the compiler generates assembly code for the GPU instead of for the GPU, as they have different instruction sets, and a different compiler (`nvcc`))
+	- the compiler generates assembly code for the GPU instead of for the CPU, as they have different instruction sets, and a different compiler (`nvcc`))
 - `__device__`: a function that runs on the GPU and can be only called from within a kernel (so basically, by a GPU)
 - `__host__`: a function that can only run on the host.
 	- this decorator is typically omitted, unless in combination with `__device__` to indicate that the function can run on both the host and the device. such a scenario implies the generation of two compiled codes for the function !

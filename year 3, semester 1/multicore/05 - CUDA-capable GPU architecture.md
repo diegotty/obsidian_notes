@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2026-02-26T07:25
+updated: 2026-02-26T07:39
 completed: false
 ---
 ## CPU vs GPU
@@ -58,6 +58,8 @@ the main GPU software delopment platforms are:
 - *OpenCL*  (*open computing language*): open standard for writing programs that can execute across a variety of heterogeneous platforms that include GPUs, CPUs, DSPs or other processors. its supported by both NVIDIA and AMD, and is the primary development platform of the latter
 - *OpenACC*: open standard for an API that allows the use of compiler directives (like openMP !) to automatically map computations to GPUs or multicore chips, according to the programmer
 there are many more …
+
+[[year 3, semester 1/multicore/CUDA/01 - introduction|01 - introduction|CUDA]]
 ## memory types
 memory is divided into *on-chip memory* (integrated on the GPU die) and *off-chip memory* (located outside the main GPU die, still mounted on the circuit board : the VRAM)
 >[!info] img
