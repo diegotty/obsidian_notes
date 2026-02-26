@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-24T15:12
+updated: 2026-02-26T15:51
 completed: false
 ---
 *--socket-core-thread structure:*
@@ -23,10 +23,19 @@ NUMA:
   NUMA node6 CPU(s):      5,13,21,29,37,45,53,61
   NUMA node7 CPU(s):      7,15,23,31,39,47,55,63
 ```
-in this report, CPU(s) means thread ! not core
+in this report, CPU(s) means thread ! not cores
 
 ```
 --nodes = 4 //4 physical servers
 --ntasks-per-node=8 //1 MPI rank for each of the NUMA nodes
 --cpus-per-task=8 //8 logical CPUS per rank (4 cores + MST) i'll run 4
 ```
+
+
+*MPI: bind-to & map-by*
+- *map-by:* distributes processes between hardware
+- *bind-to*: locks MPI processes to a specific physical part of the hardware
+
+*omp: OMP_PLACES & OMP_PROC_BIND*
+- *OMP_PLACES*: where the threads can run (at which level: `threads, cores, sockets`)
+- *OMP_PROC_BIND* (affinity policy):  how threads are distributed across the places ()
