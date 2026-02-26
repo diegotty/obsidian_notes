@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-14, 11:49
-updated: 2025-12-14T12:08
+updated: 2026-02-26T07:31
 completed: false
 ---
 # CUDA
@@ -27,7 +27,7 @@ can explicit
 >3. run CUDA kernel (computations executed by the GPU)
 >4. copy results from GPU memory to host memory
 
-running kernels is expensive, so its better to run them  less times for more substantial computations (*kernel fusion*)
+running kernels is expensive, so its better to run them less times for more substantial computations (*kernel fusion*)
 ### execution model
 >[!info] execution flow
 ![[Pasted image 20251126121419.png]]
@@ -97,10 +97,9 @@ each thread is *aware of its position* in the overall structure, via a set of *i
 - `blockIdx`contains the $(b_{x}, b_{y}, b_{z})$ position of a thread’s block within the grid, with:
 	- $b_{x} \in [0,G_{x}-1]$
 	- $b_{y} \in [0, G_{y}-1]$
-	- $b_{z} \in [0, B_{z}-1]$
+	- $b_{z} \in [0, G_{z}-1]$
 
 - scelta molto importante
-
 >[!example] absolute position of a thread
 ![[Pasted image 20251126182910.png]]
 

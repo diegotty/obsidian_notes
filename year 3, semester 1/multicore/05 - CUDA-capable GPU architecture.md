@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2025-12-14T13:53
+updated: 2026-02-26T07:25
 completed: false
 ---
 ## CPU vs GPU
@@ -18,7 +18,7 @@ completed: false
 - small caches
 - energy efficient ALUs, that are long-latency but heavily pipelined for high throughput
 - simple control (no branch prediction, just in-order execution)
-- high bandwith (the rate at which data can be transferred between CUDA cores and the GPUs dedicated local memory (VRAM) is very high)
+- high bandwith (the rate at which data can be transferred between CUDA cores and the GPUs’ dedicated local memory (VRAM) is very high)
 >[!figure] img
 ![[Pasted image 20251126110026.png]]
 the are many more ALUs, however they are simpler and grouped: each group is controlled by a single CU (so each ALU is not independent)
@@ -34,8 +34,7 @@ the are many more ALUs, however they are simpler and grouped: each group is cont
 >[!info] CPU vs GPU
 CPUs are optimal for sequential parts, where latency matters
 >- they can be 10+X times faster than GPUs for sequential code
->GPUs are optimal for parallel parts, where throughput matters
->- they can be 10+X times faster than GPUs for parallel code
+>- GPUs are optimal for parallel parts, where throughput matters: they can be 10+X times faster than CPUs for parallel code
 
 ## CPU-GPU architectures
 >[!info] CPU-GPU architecture
@@ -45,7 +44,7 @@ CPUs are optimal for sequential parts, where latency matters
 	- the GPU is connected to the northbridge via a high-speed link like PCIe (express)
 	- the data transfer between CPU and GPU (or RAM and VRAM) must pass through the northbridge, ading latency and extra steps
  - architecture (*b*): a common architectured used today, the *memory controller* (that handles RAM communication) is removed from the northbridge and placed on the CPU itself 
- - architecture (*c*): architecture of the modern integrated systems, CPU an GPU cores are combined onto a single chip package, often called an *APU*/Soc (system on a chip)
+ - architecture (*c*): architecture of the modern integrated systems, CPU and GPU cores are combined onto a single chip package, often called an *APU*/Soc (system on a chip)
 	- the CPU and GPU are physically integrated, and share the same system RAM. this eliminates the need to copy data between separate VRAM and RAM
 	- the communication between CPU and GPU is extremely fast
 
