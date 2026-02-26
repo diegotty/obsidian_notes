@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-12-10, 14:32
-updated: 2026-02-25T20:36
+updated: 2026-02-26T08:01
 completed: false
 ---
 ## caches
@@ -70,8 +70,8 @@ when a variable is updated:
 - the next time a core with an invalid line try to read the that invalid line, they are forced to fetch the new, correct value from main memory or core A’s cache
 the directory is usually located in the *memory controller* or the L3 cache
 #### false sharing
-data is fetcheed from memory to cache in lines that can contain several variables, depending on the the lines’s length (typically 64 bytes).
-*false sharing* happens when two threads access *two different variables taht happend to reside in the same cache line*. this is a problem as it leads to many unneeded cache misses therefore many more loads from memory
+data is fetched from memory to cache in lines that can contain several variables, depending on the the lines’s length (typically 64 bytes).
+*false sharing* happens when two threads access *two different variables that happen to reside in the same cache line*. this is a problem as it leads to many unneeded cache misses therefore many more loads from memory
 >[!example]
 a cache line holds two variables (among others): `t1_data` and `t2_data`, and both core A and core B store that line in their cache
 
@@ -97,7 +97,7 @@ from the code:
 
 ### matrix-vector multiplication example
 >[!example] time analysis
-the all three cases, we perform the same number of operations (64.000.000), however, the performance changes noticeably between the tree matrix size distributions:
+in all three cases, we perform the same number of operations (64.000.000), however, the performance changes noticeably between the tree matrix size distributions:
 ![[Pasted image 20251214110741.png]]
 >- *8 x 8.000.000*: the input vector `x` has 8.000.000 elements, which means there will be many cache misses when calculating a single `y[i]`
 >- *8.000.000 x 8*: the output vector `y` has 8.000.000 elements, rather than 8.000. this implies more cache misses, as when you load a `y[i]`, you only use it for 8 operations before needing to load the next `y[i]`
@@ -105,7 +105,7 @@ the all three cases, we perform the same number of operations (64.000.000), howe
 >
 ![[Pasted image 20251214111213.png]]
 as we can see, the efficiency of the multithread version is much worse for *8 x 8.000.000*, because:
->- the entire output vector `y` , assuming it is a vector of floats (8 bytes) fits in a line. therefore, if each thread tried to access a different `y[i]`, there would be any false sharing issues, since they are all located in the same cache line
+>- the entire output vector `y` , assuming it is a vector of floats (8 bytes) fits in a line. therefore, if each thread tried to access a different `y[i]`, there would be many false sharing issues, since they are all located in the same cache line
 
 false sharing softens as the number of rows gets larger
 - in the *8.000 x 8.000*, there should be no false sharing issues as each thread would store exactly 2.000 values of the `y` array, which divides perfectly into 250 lines of cache

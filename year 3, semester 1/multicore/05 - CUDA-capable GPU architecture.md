@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2026-02-26T07:39
+updated: 2026-02-26T07:51
 completed: false
 ---
 ## CPU vs GPU
@@ -148,6 +148,7 @@ we also need to address the need, for boundary elements, of “*ghost cells*” 
 - we therefore add `radius` cells to the start and the end of the array. the size of the shared memory array is then `blockDim.x + 2 * radius`
 we then write the result of the stencil calculation back to the global memory
 >[!example] code example
+![[Pasted image 20260226074743.png]]
 >```c
 >// kernel, executed by each thread
 >__global__ void stencil_1d(int *in, int *out) {
