@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-26T15:51
+updated: 2026-02-26T17:32
 completed: false
 ---
 *--socket-core-thread structure:*
@@ -39,3 +39,6 @@ in this report, CPU(s) means thread ! not cores
 *omp: OMP_PLACES & OMP_PROC_BIND*
 - *OMP_PLACES*: where the threads can run (at which level: `threads, cores, sockets`)
 - *OMP_PROC_BIND* (affinity policy):  how threads are distributed across the places ()
+
+*CUDA*
+*quadro rtx 6000*
