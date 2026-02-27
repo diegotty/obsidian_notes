@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-27T13:54
+updated: 2026-02-27T14:14
 completed: false
 ---
 *--socket-core-thread structure:*
@@ -55,3 +55,5 @@ each SM
 blocks inside of SMs
 wraps are basically a context, not a 
 block size should be multiple of 32 because SMs allocates warps ""blindly”" (as in takes up the full 32 SPs just to run 8 threads, thus wasting threads)
+
+`source /home/guest/init-hpc.sh`
