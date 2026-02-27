@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-27, 16:15
-updated: 2026-02-27T17:55
+updated: 2026-02-27T18:09
 completed: false
 ---
 bleep bloop
@@ -22,5 +22,16 @@ computer vision applicatons:
 - sports analysis
 
 computer vision problems:
-- *different viewpoints* of the same objects can trick the model into thinking recognizing different objects, as ML algorithms are not as flexible as our brains
+- *different viewpoints*: of the same objects can trick the model into thinking recognizing different objects, as ML algorithms are not as flexible as our brains
 - *different illumination*:
+- *intra-class variation*: 
+- *background clutter*
+- *occlusions*
+
+computer vision challenges:
+- *ambiguity*:
+- *scalability*: 
+
+types of images:
+- thermal images
+- multispectral images
