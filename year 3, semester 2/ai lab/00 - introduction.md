@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-27, 16:15
-updated: 2026-02-27T18:14
+updated: 2026-03-06T16:24
 completed: false
 ---
 bleep bloop
@@ -33,7 +33,11 @@ computer vision challenges:
 - *scalability*: 
 
 types of images:
-- thermal images
-- multispectral images (for material infering)
-- depth images
-- medical images
+- thermal images, acquired by thermal cameras
+- multispectral images (for material infering), acquired by multispectral cameras, which have several filters that are applied to the sensor
+- depth images, acquired by:
+	- stereo cameras (2 lenses. we only need the focal lengths and the distance between the two cameras to calculate the depth !)
+	- side scan sonars
+	- ecography machines
+we can use sounds, light or infrared lights to determine the depth
+- medical images, acquired by medical imaging machines (like MRI machines)
