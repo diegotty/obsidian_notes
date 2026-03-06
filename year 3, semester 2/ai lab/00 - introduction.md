@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2026-02-27, 16:15
-updated: 2026-02-27T18:09
+updated: 2026-02-27T18:14
 completed: false
 ---
 bleep bloop
@@ -34,4 +34,6 @@ computer vision challenges:
 
 types of images:
 - thermal images
-- multispectral images
+- multispectral images (for material infering)
+- depth images
+- medical images
