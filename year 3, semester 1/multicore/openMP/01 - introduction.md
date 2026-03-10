@@ -1,7 +1,7 @@
 ---
 related to: "[[04 - processes and threads]]"
 created: 2025-11-22, 18:09
-updated: 2026-02-17T12:25
+updated: 2026-02-27T12:31
 completed: false
 ---
 # openMP

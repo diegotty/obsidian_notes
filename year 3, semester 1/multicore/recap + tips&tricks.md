@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-26T18:07
+updated: 2026-02-27T14:23
 completed: false
 ---
 *--socket-core-thread structure:*
@@ -49,3 +49,14 @@ each node has 2 gpus, we run with 4 nodes
 
 max threads per block: 1024
 max warps per SM: 32
+
+
+each SM
+blocks inside of SMs
+wraps are basically a context, not a 
+block size should be multiple of 32 because SMs allocates warps ""blindly”" (as in takes up the full 32 SPs just to run 8 threads, thus wasting threads)
+
+`source /home/guest/init-hpc.sh`
+
+maximum threads per SM 1024
+72 SMs

@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2026-02-26T07:51
+updated: 2026-02-27T14:30
 completed: false
 ---
 ## CPU vs GPU
@@ -67,7 +67,7 @@ memory is divided into *on-chip memory* (integrated on the GPU die) and *off-chi
 the GPU die contains the SMs, the shared memory and the L2 cache
 
 there are multiple types of memories:
-- *registers*: they hold local variables, and are unique to each SP.
+- *registers*: they hold local variables, and are unique to each SP (not actually)
 - *shared memory*: fast on-chip memory that holds frequenty used data. it can also be used *to exchange data between SPs of the same SM*.
 - *L1/L2 cache*: these caches are transparent to the programmer. (and act just as you would expect [[year 1, semester 2/ae/cache/intro| (already done ….)]])
 - *global memory*:  main part of the off-chip memory. high capacity but relatively slow, it is the *only part accessible* through CUDA functions
