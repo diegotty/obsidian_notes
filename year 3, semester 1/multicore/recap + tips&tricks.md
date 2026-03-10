@@ -1,7 +1,7 @@
 ---
 related to:
 created: 2025-03-02T17:41
-updated: 2026-02-27T14:23
+updated: 2026-03-10T19:49
 completed: false
 ---
 *--socket-core-thread structure:*

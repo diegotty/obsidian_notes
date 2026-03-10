@@ -1,7 +1,7 @@
 ---
 related to: "[[06 - caches and multicore memory architectures]]"
 created: 2026-02-26, 08:05
-updated: 2026-03-10T19:48
+updated: 2026-03-10T20:04
 completed: false
 ---
 `cudaMemcpy()` uses *DMA* (direct memory access) hardware [[dispositivi IO, buffering#DMA|(os1)]] for better efficiency (as it frees the CPU for other tasks)
@@ -10,5 +10,16 @@ completed: false
 ![[Pasted image 20260226080907.png]]
 
 ## virtual memory management
+modern systems use *virtual memory management*, mapping many virtual memory spaces into a single RAM, and translating virtual addresses (pointer values) into physical addresses
 as RAM is limited, computers cannot keep all variables and data structures in it. memory is divided into *pages*, fixed-size chunks of memory that get moved in and out of RAM as needed.
-when a program requests a piece of data, the system translates the virtual addresses. 
+when a program requests a piece of data, the system translates the virtual addresses, and during this step it checks whether the requested page is currently sitting in RAM or it was *paged out* on the hard drive
+
+the DMA uses physical addresses, and page presence is checked for the entire source and destination regions at the beginning of each DMA transfer (at the time of address translation)
+- however no address translation is needed for the rest of the DMA transfer, achieving high efficiency
+>[!warning] the OS could accidentally page-out the data that is being read or written by a DMA and page-in another virtual page into the same physical location !
+
+### pinned memory
+to solve this, *pinned memory* (*page locked memory* / *locked pages*) is implemented. they are virtual memory pages that are specially marked so that they cannot be paged out
+- they are allocated with a special API function call
+>[!info] CPU memory that serves as the source/destination of a DMA transfer must be allocated as pinned memory !
+- if it is not allocated as pinned memory, it needs to be copied first to a pinned memory, adding extra overhead

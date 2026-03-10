@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-25, 17:14
-updated: 2026-02-27T14:30
+updated: 2026-03-10T19:49
 completed: false
 ---
 ## CPU vs GPU
