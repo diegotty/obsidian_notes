@@ -1,7 +1,7 @@
 ---
 related to: "[[06 - caches and multicore memory architectures]]"
 created: 2026-02-26, 08:05
-updated: 2026-03-10T21:03
+updated: 2026-03-10T21:16
 completed: false
 ---
 `cudaMemcpy()` uses *DMA* (direct memory access) hardware [[dispositivi IO, buffering#DMA|(os1)]] for better efficiency (as it frees the CPU for other tasks)
@@ -76,33 +76,43 @@ with struct-of-array, we only bring in bursts of data we need (containing `x`val
 ## reduce on GPU
 >[!info] dumb reduce
 ![[Pasted image 20260310205312.png]]
-```c
-// assume we have already loaded array into __shared__ float partialSum[]
-
-unsigned int = threadIdx.x;
-for (unsigned int stride = 1; stride < blockDim.x; stride *= 2){
-	__syncthreads();
-	if (t % (2*stride) == 0) partialSum[t] += partialSum[t + stride];
-}
-```
+>```c
+>// assume we have already loaded array into __shared__ float partialSum[]
+>
+>unsigned int = threadIdx.x;
+>for (unsigned int stride = 1; stride < blockDim.x; stride *= 2){
+>	__syncthreads();
+>	if (t % (2*stride) == 0) partialSum[t] += partialSum[t + stride];
+>}
+>```
 
 however, some threads perform addition while others do not: threads that do not perform addition will do nothing
 - no more than half of the threads will be executing at any time, and all odd index threads are disabled right from the beginning !
 - after the 5th iteration, `stride > 32`, and entire warps in each block will be disabled, leading to poor resource utilization but no divergence
 >[!info] smart reduce
 ![[Pasted image 20260310205528.png]]
-
-```c
-__shared__ float partialSum[SIZE];
-partialSum[threadIdx.x] = X[blockIdx.x * blockDim.x + threadIdx.x];
-
-unsigned int t = threadIdx.x;
-for (unsigned int stride = blockDim.x / 2; stride >= 1; stride = stride >> 1)
-{
-    __syncthreads();
-    if (t < stride)
-        partialSum[t] += partialSum[t + stride];
-}
-```
+>```c
+>__shared__ float partialSum[SIZE];
+>partialSum[threadIdx.x] = X[blockIdx.x * blockDim.x + threadIdx.x];
+>
+>unsigned int t = threadIdx.x;
+>for (unsigned int stride = blockDim.x / 2; stride >= 1; stride = stride >> 1)
+>{
+>    __syncthreads();
+>    if (t < stride)
+>        partialSum[t] += partialSum[t + stride];
+>}
+>```
+//TODO spiegare meglio
 
 if $N$ > `block_size` , how do we reduce a vector larger than the number of threads per block ?
+- shared memory is only accessible to threads within the same block
+>[!example]
+we can use a kernel `reduce<<<n_block, n_threads>>>(v, partial)`, launching many blocks (each takes a segment of the original array `v` and reduce it to a single value) and ending up with an intermediate array called `partial` in global memory (containing `n_block` elements, one sum for each block)
+we then use `reduce<<<1, n_block>>>(partial, result)` launching a single block that reduces `partial`, calculating the single sum value
+
+## moving data between GPUs
+there are 2 different solutions, based on whether MPI is GPU-aware or not:
+- *MPI is not GPU-aware*: data must be transferred from device to host memory before making the desired MPI call (and viceversa for the receiving side)
+- *MPI is GPU-aware*: MPI can access device buffers directly, hence pointers to device memory can be used in MPI calls
+(on the cluster MPI is not GPU-aware)
