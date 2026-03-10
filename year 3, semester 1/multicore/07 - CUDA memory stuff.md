@@ -1,7 +1,7 @@
 ---
 related to: "[[06 - caches and multicore memory architectures]]"
 created: 2026-02-26, 08:05
-updated: 2026-03-10T20:34
+updated: 2026-03-10T20:49
 completed: false
 ---
 `cudaMemcpy()` uses *DMA* (direct memory access) hardware [[dispositivi IO, buffering#DMA|(os1)]] for better efficiency (as it frees the CPU for other tasks)
@@ -44,3 +44,29 @@ thus threads in a warp/half-warp should avoid accessing at the same time locatio
 ## global memory coalescing
 in practice, when a thread accesses a memory location, a *burst* of consecutive locations is actually read (similar to when loading a block of consecutive memory locations into a cache line)
 when *all threads* in a warp execute a load instruction, the hardware detects if they access consecutive global memory locations: if that is the case, the hardware *coalesces* all these into a single access
+>[!example] coalesced access example
+> for a given load instruction of a warp, `t0` accesses global memory location $N$, `t1` location $N+1$, `t2` location $N+2$, and so on.
+in this case, all these accesses will be coalesced (combined into a single request for consecutive locations when accessing the DRAMs)
+![[Pasted image 20260310203812.png]]
+
+CUDA devices might impose requiremed on the alignment of N !
+## global memory accesses
+there are two types of loads:
+- *cached loads*, used by default for devices that have L1 caches
+	- check L1, if not present check L2, if not present check global memory
+	- load granularity: 128-byte line
+- *non-cached loads*, if the device does not have the L1 cache (or if it does and you compile with `-Xptxas -dlcm=cg`)
+	- check L2, if not present then check global memory
+	- load granularity: 32-byte line
+## disabling L1 cache
+>[!example] examples
+![[Pasted image 20260310204259.png]]
+![[Pasted image 20260310204320.png]]
+![[Pasted image 20260310204400.png]]
+![[Pasted image 20260310204424.png]]
+![[Pasted image 20260310204517.png]]
+
+>[!warning] if you have non-coalesced or non-aligned memory accesses, it might be worth considering disabling the L1 cache !!!
+## importance of data structure organization for coalesced accesses
+>[!info] array-of-struct vs struct-of-array
+![[Pasted image 20260310204911.png]]
