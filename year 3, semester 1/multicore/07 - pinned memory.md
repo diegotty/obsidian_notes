@@ -1,7 +1,7 @@
 ---
 related to: "[[06 - caches and multicore memory architectures]]"
 created: 2026-02-26, 08:05
-updated: 2026-03-10T20:04
+updated: 2026-03-10T20:16
 completed: false
 ---
 `cudaMemcpy()` uses *DMA* (direct memory access) hardware [[dispositivi IO, buffering#DMA|(os1)]] for better efficiency (as it frees the CPU for other tasks)
@@ -23,3 +23,13 @@ to solve this, *pinned memory* (*page locked memory* / *locked pages*) is implem
 - they are allocated with a special API function call
 >[!info] CPU memory that serves as the source/destination of a DMA transfer must be allocated as pinned memory !
 - if it is not allocated as pinned memory, it needs to be copied first to a pinned memory, adding extra overhead
+pinned memory can be allocated with `malloc()` followed by `mlock()`, and deallocated with `mulock()` followed by `free()` or `cudaMallocHost()` (deallocatd with `cudaFreeHost()`)
+>[!info] performance gain
+the performance gained obtained via pinned memory depends on the size of the data to be transferred, and it can range from 10% to a *massive* 2.5x
+
+## bank conflicts in shared memory
+shared memory is split into banks:
+>[!info] shared memory banks
+![[Pasted image 20260310201644.png]]
+
+
