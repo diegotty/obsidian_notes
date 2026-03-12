@@ -1,7 +1,9 @@
-# diego’s computer science notes
+# diego’s bachelor degree notes
 
-here you can find the notes from my bachelor's degree in computer science @sapienzauniversity\
-
+here you can browse my notes i took while completing the bachelor's degree in computer science @sapienzauniversity\
+soon after the first semester of university, i figured that re-writing my own notes was the best way to digest the material i was learning ! my note taking (and my dedication) got much better as time went on, so the first years are more of a mess than the later ones.\ they have been helpful to a small number of friends but its enough to make me happy to publish them !\
+*the notes can (and surely do) contain errors, and i’ll gladly fix them if you let me know :)* \
+try to make studying as sweet as possible !!! never stop learning !!!!!!
 *- year 1*
 
 | course                             | language | format   | status   |
@@ -12,26 +14,26 @@ here you can find the notes from my bachelor's degree in computer science @sapie
 
 *- year 2*
 
-| course                     | language | format      | status   |
-| -------------------------- | -------- | ----------- | -------- |
-| *first semester*           |          |             |          |
-| algebra                    | italian  | handwritten | complete |
-| basi di dati 1             | italian  | md files    | complete |
-| calcolo delle probabilità  | italian  | handwritten | complete |
-| sistemi operativi 1        | italian  | md files    | complete |
-| *second semester*          |          |             |          |
-| progettazione di algoritmi | italian  | md files    | complete |
-| sistemi operativi 2        | italian  | md files    | complete |
-| reti degli elaboratori     | italian  | md files    | complete |
+| course                         | language | format      | status   |
+| ------------------------------ | -------- | ----------- | -------- |
+| *first semester*               |          |             |          |
+| algebra                        | italian  | handwritten | complete |
+| [[basi di dati 1]]             | italian  | md files    | complete |
+| calcolo delle probabilità      | italian  | handwritten | complete |
+| [[sistemi operativi 1]]        | italian  | md files    | complete |
+| *second semester*              |          |             |          |
+| [[progettazione di algoritmi]] | italian  | md files    | complete |
+| [[sistemi operativi 2]]        | italian  | md files    | complete |
+| [[reti di elaboratori]]        | italian  | md files    | complete |
 *- year 3*
 
 | couse                                    | language | format      | status                     |
 | ---------------------------------------- | -------- | ----------- | -------------------------- |
 | *first semester*                         |          |             |                            |
 | automi, calcolabilità e complessità      | italian  | handwritten | complete                   |
-| cybersecurity                            | english  | md files    | up to symmetric encryption |
+| [[cybersecurity]]                        | english  | md files    | up to symmetric encryption |
 | linguaggi di programmazione              | italian  | handwritten | complete                   |
-| multicore programming                    | english  | md files    | complete                   |
+| [[multicore programming]]                | english  | md files    | complete                   |
 | *second semester*                        |          |             |                            |
-| ai lab                                   | english  | md files    | in progress                |
+| [[ai lab]]                               | english  | md files    | in progress                |
 | [[optimization notes.pdf\|optimization]] | english  | handwritte  | in progress                |
