@@ -50,5 +50,3 @@ git add . && git commit -m "sync $(date +'%d-%m'): $pdf_list [$hname]" && git pu
 else
     echo "no changes in handwritten notes !"
 fi
-
-
