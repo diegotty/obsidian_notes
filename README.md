@@ -14,17 +14,17 @@ try to make studying as sweet as possible !!! never stop learning !!!!!!
 
 ### year 2
 
-| course                                                                                                                    | language | format      | status   |
-| :------------------------------------------------------------------------------------------------------------------------ | :------- | :---------- | :------- |
-| *first semester*                                                                                                          |          |             |          |
-| [algebra](./year%202%2c%20semester%201/algebra/algebra.pdf)                                                               | italian  | handwritten | complete |
-| basi di dati 1                                                                                                            | italian  | md files    | complete |
-| [calcolo delle probabilità](./year%202%2c%20semester%201/calcolo%20delle%20probabilità/calcolo%20delle%20probabilita.pdf) | italian  | handwritten | complete |
-| sistemi operativi 1                                                                                                       | italian  | md files    | complete |
-| *second semester*                                                                                                         |          |             |          |
-| progettazione di algoritmi                                                                                                | italian  | md files    | complete |
-| sistemi operativi 2                                                                                                       | italian  | md files    | complete |
-| reti di elaboratori                                                                                                       | italian  | md files    | complete |
+| course                                                                                      | language | format      | status   |
+| :------------------------------------------------------------------------------------------ | :------- | :---------- | :------- |
+| *first semester*                                                                            |          |             |          |
+| [algebra](./year%202%2c%20semester%201/algebra/algebra.pdf)                                 | italian  | handwritten | complete |
+| basi di dati 1                                                                              | italian  | md files    | complete |
+| [calcolo delle probabilità](./year%202%2c%20semester%201/calcolo%20delle%20probabilita.pdf) | italian  | handwritten | complete |
+| sistemi operativi 1                                                                         | italian  | md files    | complete |
+| *second semester*                                                                           |          |             |          |
+| progettazione di algoritmi                                                                  | italian  | md files    | complete |
+| sistemi operativi 2                                                                         | italian  | md files    | complete |
+| reti di elaboratori                                                                         | italian  | md files    | complete |
 
 ### year 3
 
