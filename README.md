@@ -14,27 +14,27 @@ try to make studying as sweet as possible !!! never stop learning !!!!!!
 
 ### year 2
 
-| course | language | format | status |
-| :--- | :--- | :--- | :--- |
-| *first semester* | | | |
-| [algebra](./year%202%2c%20semester%201/algebra/algebra.pdf) | italian | handwritten | complete |
-| basi di dati 1 | italian | md files | complete |
-| [calcolo delle probabilità](./year%202%2c%20semester%201/calcolo%20delle%20probabilita/calcolo%20delle%20probabilita.pdf) | italian | handwritten | complete |
-| sistemi operativi 1 | italian | md files | complete |
-| *second semester* | | | |
-| progettazione di algoritmi | italian | md files | complete |
-| sistemi operativi 2 | italian | md files | complete |
-| reti di elaboratori | italian | md files | complete |
+| course                                                                                                                    | language | format      | status   |
+| :------------------------------------------------------------------------------------------------------------------------ | :------- | :---------- | :------- |
+| *first semester*                                                                                                          |          |             |          |
+| [algebra](./year%202%2c%20semester%201/algebra/algebra.pdf)                                                               | italian  | handwritten | complete |
+| basi di dati 1                                                                                                            | italian  | md files    | complete |
+| [calcolo delle probabilità](./year%202%2c%20semester%201/calcolo%20delle%20probabilità/calcolo%20delle%20probabilita.pdf) | italian  | handwritten | complete |
+| sistemi operativi 1                                                                                                       | italian  | md files    | complete |
+| *second semester*                                                                                                         |          |             |          |
+| progettazione di algoritmi                                                                                                | italian  | md files    | complete |
+| sistemi operativi 2                                                                                                       | italian  | md files    | complete |
+| reti di elaboratori                                                                                                       | italian  | md files    | complete |
 
 ### year 3
 
 | course                                                                                                                                                    | language | format      | status                     |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :---------- | :------------------------- |
 | *first semester*                                                                                                                                          |          |             |                            |
-| [automi, calcolabilità e complessità](./year%203%2c%20semester%201/automi%20calcolabilita%20e%20complessita/automi%20calcolabilita%20e%20complessita.pdf) | italian  | handwritten | complete                   |
+| [automi, calcolabilità e complessità](./year%203%2c%20semester%201/automi%20calcolabilità%20e%20complessità/automi%20calcolabilita%20e%20complessita.pdf) | italian  | handwritten | complete                   |
 | cybersecurity                                                                                                                                             | english  | md files    | up to symmetric encryption |
 | [linguaggi di programmazione](./year%203%2c%20semester%201/linguaggi%20di%20programmazione/linguaggi%20di%20programmazione.pdf)                           | italian  | handwritten | complete                   |
 | multicore programming                                                                                                                                     | english  | md files    | complete                   |
 | *second semester*                                                                                                                                         |          |             |                            |
 | ai lab                                                                                                                                                    | english  | md files    | in progress                |
-| [optimization](./year%203%2c%20semester%202/optimization/optimization%20notes.pdf)                                                                        | english  | handwritten | in progress                |
+| [optimization](./year%203%2c%20semester%202/optimization%20notes.pdf)                                                                                     | english  | handwritten | in progress                |
