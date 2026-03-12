@@ -28,13 +28,13 @@ try to make studying as sweet as possible !!! never stop learning !!!!!!
 
 ### year 3
 
-| course                                                                                                                                                    | language | format      | status                     |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :---------- | :------------------------- |
-| *first semester*                                                                                                                                          |          |             |                            |
-| [automi, calcolabilità e complessità](./year%203%2c%20semester%201/automi%20calcolabilità%20e%20complessità/automi%20calcolabilita%20e%20complessita.pdf) | italian  | handwritten | complete                   |
-| cybersecurity                                                                                                                                             | english  | md files    | up to symmetric encryption |
-| [linguaggi di programmazione](./year%203%2c%20semester%201/linguaggi%20di%20programmazione/linguaggi%20di%20programmazione.pdf)                           | italian  | handwritten | complete                   |
-| multicore programming                                                                                                                                     | english  | md files    | complete                   |
-| *second semester*                                                                                                                                         |          |             |                            |
-| ai lab                                                                                                                                                    | english  | md files    | in progress                |
-| [optimization](./year%203%2c%20semester%202/optimization%20notes.pdf)                                                                                     | english  | handwritten | in progress                |
+| course                                                                                                                                                       | language | format      | status                     |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :---------- | :------------------------- |
+| *first semester*                                                                                                                                             |          |             |                            |
+| [automi, calcolabilità e complessità](./year%203%2c%20semester%201/automi%2c%20calcolabilità%20e%20complessità/automi%20calcolabilita%20e%20complessita.pdf) | italian  | handwritten | complete                   |
+| cybersecurity                                                                                                                                                | english  | md files    | up to symmetric encryption |
+| [linguaggi di programmazione](./year%203%2c%20semester%201/linguaggi%20di%20programmazione/linguaggi%20di%20programmazione.pdf)                              | italian  | handwritten | complete                   |
+| multicore programming                                                                                                                                        | english  | md files    | complete                   |
+| *second semester*                                                                                                                                            |          |             |                            |
+| ai lab                                                                                                                                                       | english  | md files    | in progress                |
+| [optimization](./year%203%2c%20semester%202/optimization%20notes.pdf)                                                                                        | english  | handwritten | in progress                |
