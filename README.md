@@ -17,7 +17,7 @@ try to make studying as sweet as possible !!! never stop learning !!!!!!\
 | course                                                       | language | format      | status   |
 | ------------------------------------------------------------ | -------- | ----------- | -------- |
 | *first semester*                                             |          |             |          |
-| [algebra] (year 2, semester 1/algebra/algebra.pdf)           | italian  | handwritten | complete |
+| [algebra] (.year 2, semester 1/algebra/algebra.pdf)          | italian  | handwritten | complete |
 | [[basi di dati 1]]                                           | italian  | md files    | complete |
 | [[calcolo delle probabilita.pdf\|calcolo delle probabilità]] | italian  | handwritten | complete |
 | [[sistemi operativi 1]]                                      | italian  | md files    | complete |
