@@ -14,26 +14,26 @@ try to make studying as sweet as possible !!! never stop learning !!!!!!
 
 *- year 2*
 
-| course                         | language | format      | status   |
-| ------------------------------ | -------- | ----------- | -------- |
-| *first semester*               |          |             |          |
-| algebra                        | italian  | handwritten | complete |
-| [[basi di dati 1]]             | italian  | md files    | complete |
-| calcolo delle probabilità      | italian  | handwritten | complete |
-| [[sistemi operativi 1]]        | italian  | md files    | complete |
-| *second semester*              |          |             |          |
-| [[progettazione di algoritmi]] | italian  | md files    | complete |
-| [[sistemi operativi 2]]        | italian  | md files    | complete |
-| [[reti di elaboratori]]        | italian  | md files    | complete |
+| course                                                       | language | format      | status   |
+| ------------------------------------------------------------ | -------- | ----------- | -------- |
+| *first semester*                                             |          |             |          |
+| [[algebra.pdf\|algebra]]                                     | italian  | handwritten | complete |
+| [[basi di dati 1]]                                           | italian  | md files    | complete |
+| [[calcolo delle probabilita.pdf\|calcolo delle probabilità]] | italian  | handwritten | complete |
+| [[sistemi operativi 1]]                                      | italian  | md files    | complete |
+| *second semester*                                            |          |             |          |
+| [[progettazione di algoritmi]]                               | italian  | md files    | complete |
+| [[sistemi operativi 2]]                                      | italian  | md files    | complete |
+| [[reti di elaboratori]]                                      | italian  | md files    | complete |
 *- year 3*
 
-| couse                                    | language | format      | status                     |
-| ---------------------------------------- | -------- | ----------- | -------------------------- |
-| *first semester*                         |          |             |                            |
-| automi, calcolabilità e complessità      | italian  | handwritten | complete                   |
-| [[cybersecurity]]                        | english  | md files    | up to symmetric encryption |
-| linguaggi di programmazione              | italian  | handwritten | complete                   |
-| [[multicore programming]]                | english  | md files    | complete                   |
-| *second semester*                        |          |             |                            |
-| [[ai lab]]                               | english  | md files    | in progress                |
-| [[optimization notes.pdf\|optimization]] | english  | handwritte  | in progress                |
+| couse                                                                            | language | format      | status                     |
+| -------------------------------------------------------------------------------- | -------- | ----------- | -------------------------- |
+| *first semester*                                                                 |          |             |                            |
+| [[automi, calcolabilita e complessita.pdf\|automi, calcolabilità e complessità]] | italian  | handwritten | complete                   |
+| [[cybersecurity]]                                                                | english  | md files    | up to symmetric encryption |
+| [[linguaggi di programmazione.pdf\|linguaggi di programmazione]]                 | italian  | handwritten | complete                   |
+| [[multicore programming]]                                                        | english  | md files    | complete                   |
+| *second semester*                                                                |          |             |                            |
+| [[ai lab]]                                                                       | english  | md files    | in progress                |
+| [[optimization notes.pdf\|optimization]]                                         | english  | handwritte  | in progress                |
