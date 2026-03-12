@@ -28,13 +28,13 @@ try to make studying as sweet as possible !!! never stop learning !!!!!!
 
 ### year 3
 
-| course | language | format | status |
-| :--- | :--- | :--- | :--- |
-| *first semester* | | | |
-| [automi, calcolabilità e complessità](./year%203%2c%20semester%201/automi%20calcolabilita%20e%20complessita/automi%20calcolabilita%20e%20complessita.pdf) | italian | handwritten | complete |
-| [cybersecurity](./year%203%2c%20semester%201/cybersecurity/cybersecurity.md) | english | md files | up to symmetric encryption |
-| [linguaggi di programmazione](./year%203%2c%20semester%201/linguaggi%20di%20programmazione/linguaggi%20di%20programmazione.pdf) | italian | handwritten | complete |
-| [multicore programming](./year%203%2c%20semester%201/multicore%20programming/multicore%20programming.md) | english | md files | complete |
-| *second semester* | | | |
-| [ai lab](./year%203%2c%20semester%202/ai%20lab/ai%20lab.md) | english | md files | in progress |
-| [optimization](./year%203%2c%20semester%202/optimization/optimization%20notes.pdf) | english | handwritten | in progress |
+| course                                                                                                                                                    | language | format      | status                     |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :---------- | :------------------------- |
+| *first semester*                                                                                                                                          |          |             |                            |
+| [automi, calcolabilità e complessità](./year%203%2c%20semester%201/automi%20calcolabilita%20e%20complessita/automi%20calcolabilita%20e%20complessita.pdf) | italian  | handwritten | complete                   |
+| [cybersecurity](./year%203%2c%20semester%201/cybersecurity/cybersecurity.md)                                                                              | english  | md files    | up to symmetric encryption |
+| [linguaggi di programmazione](./year%203%2c%20semester%201/linguaggi%20di%20programmazione/linguaggi%20di%20programmazione.pdf)                           | italian  | handwritten | complete                   |
+| [multicore programming](./year%203%2c%20semester%201/multicore%20programming/multicore%20programming.md)                                                  | english  | md files    | complete                   |
+| *second semester*                                                                                                                                         |          |             |                            |
+| [ai lab](./year%203%2c%20semester%202/ai%20lab/ai%20lab.md)                                                                                               | english  | md files    | in progress                |
+| [optimization](./year%203%2c%20semester%202/optimization/optimization%20notes.pdf)                                                                        | english  | handwritten | in progress                |
