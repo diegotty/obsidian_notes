@@ -8,7 +8,7 @@ dest="$HOME/diego/uni/obsidian_notes"
 
 declare -A notes
 
-hname="PC"
+hname="pc"
 
 if [ "$(uname -n )" = "laptop" ]; then
     hname="laptop"
