@@ -1,7 +1,7 @@
 ---
 related to: "[[02 - parallel design patterns]]"
 created: 2025-11-03T08:26
-updated: 2026-03-10T19:49
+updated: 2026-03-19T15:02
 completed: false
 ---
 # performance evaluation
@@ -37,7 +37,7 @@ however, we can se that we measure the same runtime when doubling the processes 
 
 ### speedup
 ideally, when running with $p$ processes, the program should be $p$ times faster than when running with 1 process. we define:
-- $T_{serial}(n)$ as teh time of our *sequential application* on a problem of size $n$ (e.g. the dimension of the matrix)
+- $T_{serial}(n)$ as the time of our *sequential application* on a problem of size $n$ (e.g. the dimension of the matrix)
 - $T_{parallel}(n, p)$ the time of our *parallel application* on a problem of size $n$, when running with $p$ processes
 - $S(n,p)$ the *speedup* (quantitative measure measuring “absolute” performance improvement) of our parallel application:
 $$

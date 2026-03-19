@@ -1,6 +1,6 @@
 ---
 created: 2025-11-03, 18:33
-updated: 2026-03-10T19:49
+updated: 2026-03-19T14:58
 ---
 [[01 - introduction to computer security]]
 [[02 - cryptography]]
