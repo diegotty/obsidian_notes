@@ -112,7 +112,7 @@ $$
 if $\alpha=0.6$, it means we can expect a speedup of, at most, 2.5
 if $\alpha=0.8$, it means we can expect a speedup of, at most, 5
 >
->to be able to scale up to 10000, processes, we need to have a $\alpha \geq 0.9999$
+>to be able to scale up to 10000 processes, we need to have a $\alpha \geq 0.9999$
 
 
 >[!info] chart
