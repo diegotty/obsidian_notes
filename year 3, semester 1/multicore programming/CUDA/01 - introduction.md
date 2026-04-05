@@ -36,7 +36,7 @@ running kernels is expensive, so its better to run them less times for more subs
 >[!info] thread structure
 ![[Pasted image 20251126121341.png]]
 CUDA organizes the threads in a 6-D structure (max, as lower dimentions are also possible). in particular:
->- threads can be organized in *blocks* o 1, 2, or 3 dimentions
+>- threads are organized in *blocks* of 1, 2, or 3 dimentions
 >- those blocks are organized in *grids* of 1, 2, or 3 dimensions
 ## compute capability
 the maximum sizes of blocks and grids are determined by the *compute capability*, which determines what each generation of GPUs is capable of
