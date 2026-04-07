@@ -4,7 +4,7 @@ created: 2025-11-03T08:26
 updated: 2026-03-19T15:02
 completed: false
 ---
-# performance evaluation
+1# performance evaluation
 we are interested in calculating the time elapsed since the start of the program until the end of it, which concides with the end of the last process. we then must report the *maximum runtime across the rank* as the result of a run !
 >[!info] finishing at a different time
 ![[Pasted image 20251103084926.png]]
