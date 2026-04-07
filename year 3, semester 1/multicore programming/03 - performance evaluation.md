@@ -86,7 +86,7 @@ different scalings are needed for different problems and are used to make decisi
 - *strong scaling*: evaluating time-critical problems where the size is fixed. if strong scaling drops, adding processes would not be worth it
 - *weak scaling*: evaluating ability to handle increasing datasets. if weak scaling holds up, it means the parallel algorithm is well-designed !
 ## amdahl’s law
-we focus on *weak scaling*, where the problem size does not increase:
+we focus on *strong scaling*, where the problem size does not increase:
 each program has some part of it which *cannot* be parallelized (e.g. I/O operations, sending/receiving data over the network, …). we calculate this fraction as the *serial fraction*: $1-\alpha$
 - with $0 \leq \alpha\leq1$ as the fraction of the program that can be parallelized
 
