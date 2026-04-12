@@ -7,7 +7,7 @@ completed: false
 with the introduction of openMP and pthreads, we study how to parallelize effectively between cores of a single CPU
 # threads
 *threads* are analogous to a “light-weight” process. it is the smallest unit of processing that can be scheduled and executed by an OS.
-it is fundamental for *parallelism*, as each thread can be assignied to a different CPU core.
+it is fundamental for *parallelism*, as each thread can be assigned to a different CPU core.
 >[!info] rember
 a CPU core is the fundamental execution unit, comprised by ALU, registers (with PC, IR, SP, ….), CU, and L1 cache
 cores can indipendently run a separate thread or process at the same time, making for true (and almost linear) speedup
@@ -67,7 +67,7 @@ MPI maps each process on a core. thus, all the threads created by that process w
 ## thread-safety
 a block of code is *thread-safe* if it can be simultaneously executed by multiple threads without causing problems
 - many C library functions are not thread-safe ! (e.g. `random()`, `localtime()`, … )
->[!example] tokenizing a file
+>[!example] tokenizing a file example
 we can divide the text in lines, and assign each line to a different thread. each thread can then tokenize the line using `strtok()`
 however, because of how `strtok()` works (it takes a pointer as input the first time. after the first time it takes `NULL` as input, because it returns succesive tokens taken from the cached pointer), and because the cached string is shared, the `strtok()` function is not thread safe
 >
