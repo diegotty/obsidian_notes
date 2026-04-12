@@ -20,18 +20,18 @@ let’s write an algorithm that computes $n$ values and adds them together
 >	sum += x;
 >}
 >```
-
-```c
-// parallel_1
-// private variables for each core
-int my_sum = 0;
-int my_first_i = ...;
-int my_last_i = ...;
-for(my_i = my_first_i; my_i < my_last_i; my_i++){
-	my_x = compute_next_value(...);
-	my_sum += my_x;
-}
-```
+>
+>```c
+>// parallel_1
+>// private variables for each core
+>int my_sum = 0;
+>int my_first_i = ...;
+>int my_last_i = ...;
+>for(my_i = my_first_i; my_i < my_last_i; my_i++){
+>	my_x = compute_next_value(...);
+>	my_sum += my_x;
+>}
+>```
 each core will have a partial sum in `my_sum`, and each core will send its `my_sum` value to a **master** core which adds the final result
 however, in this way, the master is doing all the work that comes with summing, while the other cores just send their data
 
