@@ -48,11 +48,11 @@ task parallelism: assistant 1 grades all the exams, but only questions 1-5. assi
 
 to write parallel programs, we need to coordinate the cores, for different reasons:
 - **communication**: one core sends its partial sum to another core
-- **load balancing**: share the work even3
-- **synchronization**: each core works at its own pace, but must make sure some core does not get too far ahead
+- **load balancing**: share the work evenly
+- **synchronization**: each core works at its own pace, but must make sure some other core does not get too far ahead
 
 to write parallel programs, we will use four different extensions of the C API:
-- **message-passing interface**
+- **message-passing interface** (*MPI*)
 - **posix threads (pthreads)** 
 - **openMP**
 - **CUDA**
@@ -76,7 +76,7 @@ we will study *MPI* to parallelize over nodes, *pthread/OpenMP* to parallelize o
 #### instructions
 - **multiple-instruction multiple-data (MIMD)**: each core has its own control units (can execute different instructions, and have different fetch cycles) and can work independently from the others
 - **single-instruction multiple-data (SIMD)**: the same instruction is executed across all cores, but each code does so on different data (if a core wants to execute another instruction, it has to stay idle while the other core does its instruction)
-	- aka vector vector processing, this is the GPU’s architecture. in detail, the GPU is divided in groups of 32 cores. each group is SIMD, but between each other, they are MIMD, as each group has its own control unit
+	- aka vector processing. this is the GPU’s architecture. in detail, the GPU is divided in groups of 32 cores. each group is SIMD, but between each other, they are MIMD, as each group has its own control unit
 
 what programming languages will we use for different types of systems ? 
 
