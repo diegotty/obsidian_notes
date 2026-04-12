@@ -98,7 +98,7 @@ to write efficient code, its better to know on which hardware we are running the
 >[!info] von neumann 
 ![[Pasted image 20251012171318.png|400]]
 >- the main memory is a collection of locations, and each location has an address used to access the content (data or instruction) in that location
->- as we already know, the CPU is comprised of the many units, like the CU, the registers (which store the state of the executing program), and the PC (also a register)
+>- as we already know, the CPU is comprised of many units, like the CU, the registers (which store the state of the executing program), and the PC (also a register)
 >- the interconnect is used to transfer data between the CPU and the memory. its traditionally a **bus**, but it can be much more complex
 >	- tranferring data from memory to the registers is a bottleneck, known as **von neumann bottleneck**
 
