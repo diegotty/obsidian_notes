@@ -108,7 +108,7 @@ also, a  receiver can get a message withouth knowing:
 ### blocking communication
 
 >[!warning] assumptions
-the exact behaviour of send and receive functions is determined by the MPI implementation, but !! even if you nkow your MPI implementation, stick to what the defined standard says ! don’t make implementation-specific assumptions, otherwise code will not be portable
+the exact behaviour of send and receive functions is determined by the MPI implementation, but !! even if you know your MPI implementation, stick to what the defined standard says ! don’t make implementation-specific assumptions, otherwise code will not be portable
 
 the problem: when the send function returns, the sender does not know  if the message got delivered successfully, or if the message was sent at all. it doesn’t even know if its still in its memory, waiting to be sent. **however**, after the send function returns, the sender can alter the content of the buffer sent, as MPI guarantees the message will not be lost (that’s the only assumption we can make)
 
