@@ -243,8 +243,8 @@ the `sections` directive is a *work-sharing directive*, that must be enclosed wi
 - this can be done using the `omp parallel sections`directive, that combines both
 - when encountered, the runtime system divides the entire block into indepented `section` units, and distributes those units among the available threads in the team. each `section` is guaranteed to be executed by *one and only one thread* !
 	- if there are more threads than sections, the extra threads remain idle, and if there are more sections than threads, threads execute multiple section sequentially
-- there is an implicit barrier at the end of a `sections` construt (unless a `nowait`) clause is specified
-the `section`directive is used only within a `sections` block, and it deliates the start of an *independent* unit of work
+	- there is an implicit barrier at the end of a `sections` construct (unless a `nowait`) clause is specified
+the `section`directive is used only within a `sections` block, and it defines the start of an *independent* unit of work
 
 | feature    | `parallel for`                                                      | `sections`                                                                    |
 | ---------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------- |

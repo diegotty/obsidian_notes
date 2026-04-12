@@ -275,15 +275,3 @@ there is also `RAR(S1)` but that is not an actual dependence
 >>	d = fabs(y[i]); //S2
 >>}
 >>```
-
-ip submitter :  `sh desensi@192.168.0.102`
-
-slurm
-
-`salloc -N 4 -ntasks-per-node=32`
-`N`: numero di nodi
-`ntasks-per-node=32` (core per nodo)
-`--time=00:00:00` ore minuti secondi
-
-
-`scontrol show job jobid`
