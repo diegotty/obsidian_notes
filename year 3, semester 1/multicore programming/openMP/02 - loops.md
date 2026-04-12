@@ -34,23 +34,23 @@ as a rule of thumb, the iterations must be independent and the number of iterati
 the goal of the loop is to *complete* the iterations, not to immediately crash the program based on a condition in an arbitrary iteration !
 
 >[!example]- examples of parallelizeable for loops
-.```c
-.for (i = 0; i < n; i++){
-.	if(...) break; //cannot be parallelized
-.}
-.
-.for (i = 0; i < n; i++){
-.	if(...) return 1; //cannot be parallelized
-.}
-.
-.for (i = 0; i < n; i++){
-.	if(...) exti(); //can be parallelized (shouldn't, however)
-.}
-.
-.for (i = 0; i < n; i++){
-.	if(...) i++; //cannot be parallelized
-.}
-.```
+>```c
+>for (i = 0; i < n; i++){
+>	if(...) break; //cannot be parallelized
+>}
+>
+>for (i = 0; i < n; i++){
+>	if(...) return 1; //cannot be parallelized
+>}
+>
+>for (i = 0; i < n; i++){
+>	if(...) exit(); //can be parallelized (shouldn't, however)
+>}
+>
+>for (i = 0; i < n; i++){
+>	if(...) i++; //cannot be parallelized
+>}
+>```
 
 ### odd-even sort example
 >[!example]- example
