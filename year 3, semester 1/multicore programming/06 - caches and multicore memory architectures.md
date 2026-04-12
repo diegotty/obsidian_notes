@@ -74,11 +74,10 @@ data is fetched from memory to cache in lines that can contain several variables
 *false sharing* happens when two threads access *two different variables that happen to reside in the same cache line*. this is a problem as it leads to many unneeded cache misses therefore many more loads from memory
 >[!example]
 a cache line holds two variables (among others): `t1_data` and `t2_data`, and both core A and core B store that line in their cache
-
-- core A (running thread 1) modifies `t1_data`, marking the entire line that contains it as *dirty*
--  the coherence protocol invalides the entire line for core B
-- core B (running thread 2) tries to modify `t2_data`: since the cache line was invalidated, it must incur in a costly *cache miss*, and fetch a fresh copy of the entire line
-- the same happens to core A after coreB modifies `t2_data`, starting a cycle that repeats endlessly: every time core A writes, core B’s cache is invalidated, and viceversa
+>- core A (running thread 1) modifies `t1_data`, marking the entire line that contains it as *dirty*
+>-  the coherence protocol invalides the entire line for core B
+>- core B (running thread 2) tries to modify `t2_data`: since the cache line was invalidated, it must incur in a costly *cache miss*, and fetch a fresh copy of the entire line
+>- the same happens to core A after coreB modifies `t2_data`, starting a cycle that repeats endlessly: every time core A writes, core B’s cache is invalidated, and viceversa
 to fix false sharing, we can:
 - try to force variables which are accessed by different threads to be on different cache lines
 - *pad the data* (waste of cache space)
