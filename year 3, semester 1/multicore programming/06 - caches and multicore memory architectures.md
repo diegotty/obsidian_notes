@@ -29,7 +29,8 @@ data is transferred from memory to the cache in *blocks/lines*
 >[!example] example of cache line
 >when `z[0]` is transferred from memory to cache, also `z[1]`, `z[2]`, `z[3]`, … `z[15]` might be transferred to the cache aswell
 *doing one transfer of 16 memory locations is much better than doing 16 transfers of one memory location each* !
-- paying a little delay (the bigger transfer) when accessing `z[0]` is worth the wait, as you will find the other 15 elements in the cache already
+>- paying a little delay (the bigger transfer) when accessing `z[0]` is worth the wait, as you will find the other 15 elements in the cache already
+
 >[!info] cache levels
 ![[Pasted image 20251214092155.png]]
 >- data stored in L1 might or might not be stored in L2/L3 aswell !
