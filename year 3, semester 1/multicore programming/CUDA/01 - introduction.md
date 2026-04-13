@@ -197,7 +197,7 @@ if a conditional operation leads those threads to different paths, all the diver
 ![[Pasted image 20251126182339.png]]
 
 ## context switching
-usually, a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps.
+usually (always), a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps.
 CUDA cores (and their registers) can maintain each thread’s private execution context: this way, CUDA cores’s context switch is basically free.
 when an instruction to be executed by a warp needs to wait for the result of a previously initiated, long-latency operation, the warp is *not selected* for execution: instead, another resident warp that is not waiting for results will be selected for execution.
 - this makes having more *resident warps* ideal, as the hardware is more likely to find a warp to execute at any point in time, thus making full use of the execution hardware in spite of long-latency operations
