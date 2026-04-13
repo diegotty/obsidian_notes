@@ -172,10 +172,15 @@ CUDA files are of `.cu` extension, which is the same as `.c`, however at serves 
 	- this decorator is typically omitted, unless in combination with `__device__` to indicate that the function can run on both the host and the device. such a scenario implies the generation of two compiled codes for the function !
 
 ## thread scheduling
+any (newer) NVIDIA GPU has many SMs.
+each SM is divided into 4 identical parts.
+each part is made up of 4 warp schedulers, 16/32/more CUDA cores
+
+blocks reside in the SM’s registers, and 
 each thread runs on CUDA core, and *sets of cores on the same SM share the same CU*, so they must *synchronously* execute the same instruction
 - different sets of SMs can run different kernels
-each block runs on a single SM (i can’t have a block spanning over multiple SMs, but i can have more blocks running on the same SM), but *not all the threads in a block run concurrently*
-once a block is fully executed (all threads are done ?), the SM will run the next one 
+each block runs on a single SM (i can’t have a block spanning over multiple SMs, but i can have more blocks running on the same SM), but *not all the threads in a block run concurrently*, as block size can vary up to the CC limit, and threads get executed in warps (32 threads). blocks get broken down into warps
+once a block is fully executed (all threads are done ?), the SM will run the next one
 ## warps
 threads are executed in groups called *warps* that are the size of 32 threads (in current GPUs)
 - the size of a warp is stored in the `warpSize` variable
