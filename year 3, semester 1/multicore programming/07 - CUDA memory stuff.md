@@ -112,7 +112,7 @@ we can use a kernel `reduce<<<n_block, n_threads>>>(v, partial)`, launching many
 we then use `reduce<<<1, n_block>>>(partial, result)` launching a single block that reduces `partial`, calculating the single sum value
 
 ## moving data between GPUs
-there are 2 different solutions, based on whether MPI is GPU-aware or not:
+to move data between inter-node GPUs, there are 2 different solutions, based on whether MPI is GPU-aware or not:
 - *MPI is not GPU-aware*: data must be transferred from device to host memory before making the desired MPI call (and viceversa for the receiving side)
 - *MPI is GPU-aware*: MPI can access device buffers directly, hence pointers to device memory can be used in MPI calls
 (on the cluster MPI is not GPU-aware)
