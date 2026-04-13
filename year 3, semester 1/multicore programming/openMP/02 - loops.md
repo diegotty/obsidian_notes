@@ -200,7 +200,7 @@ twelve iterations, three threads
 ### `dynamic`
 the iterations are assigned to the threads while the loop is executing.
 with this type, the iterations are also broken up into chunks of `chunksize` consecutive iterations. each thread executes a chunk, and when a thread finishes a chunk, it requests another one from the run-time system. this continues until all the iterations are completed.
-this guarantess a *better load balancing*, but higher overhead to schedule che chunks (this however can be tuned through the chunksize)
+this guarantess a *better load balancing*, but higher overhead to schedule the chunks (this however can be tuned through the chunksize)
 - if omitted, the `chunksize` of 1 is used
 ### `guided`
 the iterations are assigned to the threads while the loop is executing.
