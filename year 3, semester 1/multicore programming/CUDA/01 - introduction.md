@@ -17,9 +17,8 @@ before CUDA, GPUs were programmed by transforming an algorithm in a sequence of 
 
 the GPU is viewed as a *compute device*, that:
 - is a co-processor to the CPU
-- has its own DRAM (called *global memory* in CUDA lingo)
+- has its own DRAM (VRAM, called *global memory* in CUDA lingo)
 - runs *many threads* in parallel, as thread creation/switching cost is only a few clock cycles !
-can explicit 
 
 >[!info] CUDA program structure
 > 1. allocate GPU memory (for anything like vectors, variables, ..)
