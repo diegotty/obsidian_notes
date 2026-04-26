@@ -1,7 +1,3 @@
----
-created: 2026-03-19T14:58
-updated: 2026-03-19T14:58
----
 ## diego’s bachelor degree notes
 here you can browse my notes i took while completing the bachelor's degree in computer science @*sapienzauniversity*\
 soon after the first semester of university, i figured that re-writing my own notes was the best way to digest the material i was learning ! my note taking (and my dedication) got much better as time went on, so the first years are more of a mess than the later ones.\
