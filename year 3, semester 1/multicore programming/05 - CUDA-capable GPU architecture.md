@@ -280,7 +280,7 @@ in the previous example, all threads access global memory (`in`) for their input
 
 therefore, we can see that the memory movements, rather than the compute capacity, are limiting the performance: the application is *memory bound*
 - to get close to the peak execution throughput, we need to drastically cut down memory accesses !
-we define the *compute-to-global-memory-access ratio* (/ *operational intensity* or *arithmetic intensity*)as the number of floating point calculation performend *for each access to the global memory* within a region of a program
+we define the *compute-to-global-memory-access ratio* (/ *operational intensity* or *arithmetic intensity*)as the number of floating point calculation performed *for each access to the global memory* within a region of a program
 - it is measured in FLOP/byte
 for the example, given that we load at most 50G/s of operands, we would need a ratio of 30 or higher to achieve 1.5 TFLOP/s
 - we would nened to perform 30 FLOP on evey operand !

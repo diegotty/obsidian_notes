@@ -17,9 +17,8 @@ before CUDA, GPUs were programmed by transforming an algorithm in a sequence of 
 
 the GPU is viewed as a *compute device*, that:
 - is a co-processor to the CPU
-- has its own DRAM (called *global memory* in CUDA lingo)
+- has its own DRAM (VRAM, called *global memory* in CUDA lingo)
 - runs *many threads* in parallel, as thread creation/switching cost is only a few clock cycles !
-can explicit 
 
 >[!info] CUDA program structure
 > 1. allocate GPU memory (for anything like vectors, variables, ..)
@@ -173,10 +172,15 @@ CUDA files are of `.cu` extension, which is the same as `.c`, however at serves 
 	- this decorator is typically omitted, unless in combination with `__device__` to indicate that the function can run on both the host and the device. such a scenario implies the generation of two compiled codes for the function !
 
 ## thread scheduling
+any (newer) NVIDIA GPU has many SMs.
+each SM is divided into 4 identical parts.
+each part is made up of 4 warp schedulers, 16/32/more CUDA cores
+
+blocks reside in the SM’s registers, and 
 each thread runs on CUDA core, and *sets of cores on the same SM share the same CU*, so they must *synchronously* execute the same instruction
 - different sets of SMs can run different kernels
-each block runs on a single SM (i can’t have a block spanning over multiple SMs, but i can have more blocks running on the same SM), but *not all the threads in a block run concurrently*
-once a block is fully executed (all threads are done ?), the SM will run the next one 
+each block runs on a single SM (i can’t have a block spanning over multiple SMs, but i can have more blocks running on the same SM), but *not all the threads in a block run concurrently*, as block size can vary up to the CC limit, and threads get executed in warps (32 threads). blocks get broken down into warps
+once a block is fully executed (all threads are done ?), the SM will run the next one
 ## warps
 threads are executed in groups called *warps* that are the size of 32 threads (in current GPUs)
 - the size of a warp is stored in the `warpSize` variable
@@ -193,7 +197,7 @@ if a conditional operation leads those threads to different paths, all the diver
 ![[Pasted image 20251126182339.png]]
 
 ## context switching
-usually, a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps.
+usually (always), a SM has more *resident blocks/warps* than what it is able to concurrently run, and each SM can switch seamlessly between warps.
 CUDA cores (and their registers) can maintain each thread’s private execution context: this way, CUDA cores’s context switch is basically free.
 when an instruction to be executed by a warp needs to wait for the result of a previously initiated, long-latency operation, the warp is *not selected* for execution: instead, another resident warp that is not waiting for results will be selected for execution.
 - this makes having more *resident warps* ideal, as the hardware is more likely to find a warp to execute at any point in time, thus making full use of the execution hardware in spite of long-latency operations

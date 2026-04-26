@@ -34,23 +34,23 @@ as a rule of thumb, the iterations must be independent and the number of iterati
 the goal of the loop is to *complete* the iterations, not to immediately crash the program based on a condition in an arbitrary iteration !
 
 >[!example]- examples of parallelizeable for loops
-.```c
-.for (i = 0; i < n; i++){
-.	if(...) break; //cannot be parallelized
-.}
-.
-.for (i = 0; i < n; i++){
-.	if(...) return 1; //cannot be parallelized
-.}
-.
-.for (i = 0; i < n; i++){
-.	if(...) exti(); //can be parallelized (shouldn't, however)
-.}
-.
-.for (i = 0; i < n; i++){
-.	if(...) i++; //cannot be parallelized
-.}
-.```
+>```c
+>for (i = 0; i < n; i++){
+>	if(...) break; //cannot be parallelized
+>}
+>
+>for (i = 0; i < n; i++){
+>	if(...) return 1; //cannot be parallelized
+>}
+>
+>for (i = 0; i < n; i++){
+>	if(...) exit(); //can be parallelized (shouldn't, however)
+>}
+>
+>for (i = 0; i < n; i++){
+>	if(...) i++; //cannot be parallelized
+>}
+>```
 
 ### odd-even sort example
 >[!example]- example
@@ -200,7 +200,7 @@ twelve iterations, three threads
 ### `dynamic`
 the iterations are assigned to the threads while the loop is executing.
 with this type, the iterations are also broken up into chunks of `chunksize` consecutive iterations. each thread executes a chunk, and when a thread finishes a chunk, it requests another one from the run-time system. this continues until all the iterations are completed.
-this guarantess a *better load balancing*, but higher overhead to schedule che chunks (this however can be tuned through the chunksize)
+this guarantess a *better load balancing*, but higher overhead to schedule the chunks (this however can be tuned through the chunksize)
 - if omitted, the `chunksize` of 1 is used
 ### `guided`
 the iterations are assigned to the threads while the loop is executing.
@@ -243,8 +243,8 @@ the `sections` directive is a *work-sharing directive*, that must be enclosed wi
 - this can be done using the `omp parallel sections`directive, that combines both
 - when encountered, the runtime system divides the entire block into indepented `section` units, and distributes those units among the available threads in the team. each `section` is guaranteed to be executed by *one and only one thread* !
 	- if there are more threads than sections, the extra threads remain idle, and if there are more sections than threads, threads execute multiple section sequentially
-- there is an implicit barrier at the end of a `sections` construt (unless a `nowait`) clause is specified
-the `section`directive is used only within a `sections` block, and it deliates the start of an *independent* unit of work
+	- there is an implicit barrier at the end of a `sections` construct (unless a `nowait`) clause is specified
+the `section`directive is used only within a `sections` block, and it defines the start of an *independent* unit of work
 
 | feature    | `parallel for`                                                      | `sections`                                                                    |
 | ---------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------- |

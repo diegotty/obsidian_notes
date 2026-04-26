@@ -71,7 +71,7 @@ the code runs the `Hello()` function with `thread_count` threads.
 >./omp_hello 4 #running with 4 threads
 >```
 ## thread team size control
-openMP gives us severl ways to control the number of threads that will be created and used to execute the code (such collection of threads that execute the parallel block is called *team*)
+openMP gives us several ways to control the number of threads that will be created and used to execute the code (such collection of threads that execute the parallel block is called *team*)
 - *universally*: via the `OMP_NUM_THREADS` environmental variable
 - *program level*: via the `omp_set_num_threads()` function, outside an openMP construct
 - *pragma level*: via the `num_threads` clause (thread magament clause)

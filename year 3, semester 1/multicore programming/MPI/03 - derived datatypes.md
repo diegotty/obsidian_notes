@@ -9,7 +9,7 @@ completed: false
 - this is achieved by storing both their type and their relative locations in memory
 if a function that sends data knows this information about a collection, it can collect the items from memory to send them !
 - same thing for a function that receives data: it can distribute the items into their correct destinations in memory
->[!example] esempio
+>[!example] example
 >a naive implementation like the folllowing doesnt work because of the possibility of different implementation of a structure’s layout on different platforms !
 >```c
 >const int N = ...;

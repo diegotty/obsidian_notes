@@ -29,7 +29,8 @@ data is transferred from memory to the cache in *blocks/lines*
 >[!example] example of cache line
 >when `z[0]` is transferred from memory to cache, also `z[1]`, `z[2]`, `z[3]`, … `z[15]` might be transferred to the cache aswell
 *doing one transfer of 16 memory locations is much better than doing 16 transfers of one memory location each* !
-- paying a little delay (the bigger transfer) when accessing `z[0]` is worth the wait, as you will find the other 15 elements in the cache already
+>- paying a little delay (the bigger transfer) when accessing `z[0]` is worth the wait, as you will find the other 15 elements in the cache already
+
 >[!info] cache levels
 ![[Pasted image 20251214092155.png]]
 >- data stored in L1 might or might not be stored in L2/L3 aswell !
@@ -74,11 +75,11 @@ data is fetched from memory to cache in lines that can contain several variables
 *false sharing* happens when two threads access *two different variables that happen to reside in the same cache line*. this is a problem as it leads to many unneeded cache misses therefore many more loads from memory
 >[!example]
 a cache line holds two variables (among others): `t1_data` and `t2_data`, and both core A and core B store that line in their cache
+>- core A (running thread 1) modifies `t1_data`, marking the entire line that contains it as *dirty*
+>-  the coherence protocol invalides the entire line for core B
+>- core B (running thread 2) tries to modify `t2_data`: since the cache line was invalidated, it must incur in a costly *cache miss*, and fetch a fresh copy of the entire line
+>- the same happens to core A after core B modifies `t2_data`, starting a cycle that repeats endlessly: every time core A writes, core B’s cache is invalidated, and viceversa
 
-- core A (running thread 1) modifies `t1_data`, marking the entire line that contains it as *dirty*
--  the coherence protocol invalides the entire line for core B
-- core B (running thread 2) tries to modify `t2_data`: since the cache line was invalidated, it must incur in a costly *cache miss*, and fetch a fresh copy of the entire line
-- the same happens to core A after coreB modifies `t2_data`, starting a cycle that repeats endlessly: every time core A writes, core B’s cache is invalidated, and viceversa
 to fix false sharing, we can:
 - try to force variables which are accessed by different threads to be on different cache lines
 - *pad the data* (waste of cache space)
@@ -106,9 +107,9 @@ in all three cases, we perform the same number of operations (64.000.000), howev
 ![[Pasted image 20251214111213.png]]
 as we can see, the efficiency of the multithread version is much worse for *8 x 8.000.000*, because:
 >- the entire output vector `y` , assuming it is a vector of floats (8 bytes) fits in a line. therefore, if each thread tried to access a different `y[i]`, there would be many false sharing issues, since they are all located in the same cache line
-
+>
 false sharing softens as the number of rows gets larger
-- in the *8.000 x 8.000*, there should be no false sharing issues as each thread would store exactly 2.000 values of the `y` array, which divides perfectly into 250 lines of cache
+>- in the *8.000 x 8.000*, there should be no false sharing issues as each thread would store exactly 2.000 values of the `y` array, which divides perfectly into 250 lines of cache
 ## multicore memory architectures
 >[!info] img
 ![[Pasted image 20251214112617.png]]

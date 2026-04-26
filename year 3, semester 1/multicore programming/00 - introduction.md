@@ -20,18 +20,18 @@ let’s write an algorithm that computes $n$ values and adds them together
 >	sum += x;
 >}
 >```
-
-```c
-// parallel_1
-// private variables for each core
-int my_sum = 0;
-int my_first_i = ...;
-int my_last_i = ...;
-for(my_i = my_first_i; my_i < my_last_i; my_i++){
-	my_x = compute_next_value(...);
-	my_sum += my_x;
-}
-```
+>
+>```c
+>// parallel_1
+>// private variables for each core
+>int my_sum = 0;
+>int my_first_i = ...;
+>int my_last_i = ...;
+>for(my_i = my_first_i; my_i < my_last_i; my_i++){
+>	my_x = compute_next_value(...);
+>	my_sum += my_x;
+>}
+>```
 each core will have a partial sum in `my_sum`, and each core will send its `my_sum` value to a **master** core which adds the final result
 however, in this way, the master is doing all the work that comes with summing, while the other cores just send their data
 
@@ -48,11 +48,11 @@ task parallelism: assistant 1 grades all the exams, but only questions 1-5. assi
 
 to write parallel programs, we need to coordinate the cores, for different reasons:
 - **communication**: one core sends its partial sum to another core
-- **load balancing**: share the work even3
-- **synchronization**: each core works at its own pace, but must make sure some core does not get too far ahead
+- **load balancing**: share the work evenly
+- **synchronization**: each core works at its own pace, but must make sure some other core does not get too far ahead
 
 to write parallel programs, we will use four different extensions of the C API:
-- **message-passing interface**
+- **message-passing interface** (*MPI*)
 - **posix threads (pthreads)** 
 - **openMP**
 - **CUDA**
@@ -76,7 +76,7 @@ we will study *MPI* to parallelize over nodes, *pthread/OpenMP* to parallelize o
 #### instructions
 - **multiple-instruction multiple-data (MIMD)**: each core has its own control units (can execute different instructions, and have different fetch cycles) and can work independently from the others
 - **single-instruction multiple-data (SIMD)**: the same instruction is executed across all cores, but each code does so on different data (if a core wants to execute another instruction, it has to stay idle while the other core does its instruction)
-	- aka vector vector processing, this is the GPU’s architecture. in detail, the GPU is divided in groups of 32 cores. each group is SIMD, but between each other, they are MIMD, as each group has its own control unit
+	- aka vector processing. this is the GPU’s architecture. in detail, the GPU is divided in groups of 32 cores. each group is SIMD, but between each other, they are MIMD, as each group has its own control unit
 
 what programming languages will we use for different types of systems ? 
 
@@ -98,7 +98,7 @@ to write efficient code, its better to know on which hardware we are running the
 >[!info] von neumann 
 ![[Pasted image 20251012171318.png|400]]
 >- the main memory is a collection of locations, and each location has an address used to access the content (data or instruction) in that location
->- as we already know, the CPU is comprised of the many units, like the CU, the registers (which store the state of the executing program), and the PC (also a register)
+>- as we already know, the CPU is comprised of many units, like the CU, the registers (which store the state of the executing program), and the PC (also a register)
 >- the interconnect is used to transfer data between the CPU and the memory. its traditionally a **bus**, but it can be much more complex
 >	- tranferring data from memory to the registers is a bottleneck, known as **von neumann bottleneck**
 
