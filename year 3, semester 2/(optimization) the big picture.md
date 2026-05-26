@@ -56,7 +56,19 @@ we defined the *weak duality theorem* and the *strong duality theorem*
 we studied *the farkas lemma*, which gives us a *certificate of infeasibility* by XOR on 2 statements
 - could be very useful ngl
 we introduced the *complementary slackness*, which allows us to make assumptions on the solution
+
 - do proof
+
+### ellipsoid method
+### inner point method
+we introduced the definitions of *closed set* and *open set* to prove that the inner point method yields an optimal solution
+>[!info] idea
+we define a custom function that has the following properties:
+>1) to be defined, points must not be on the boundary
+>2) as $\mu \rightarrow 0$, the function tends to the obj function
+>3) as $\mu \rightarrow \infty$, the maximizing the function pushes points towards the center
+
+we prove that the function has an optimum on the open set of $P$
 ### geometry
 we first noticed that the objective function can be re-written as a scalar product, and its gradient (the coefficients) point to the directions of steepest increase
 ## integer problems
