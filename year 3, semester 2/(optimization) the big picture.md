@@ -47,6 +47,9 @@ we introduced *bland’s rule* and proved that it doesn’t cycle (skipped proof
 ### dual problem
 to find an upper bound to a given LP, we introduce its *dual* problem (the original LP being called the *primal*). by solving the dual, we find the upper bound for the primal. 
 we defined the *weak duality theorem* and the *strong duality theorem*
+- we proved *theorem 2*, which implies the strong duality theorem
+
+[little digression of feasibility solving (cool logic)]
 ### geometry
 we first noticed that the objective function can be re-written as a scalar product, and its gradient (the coefficients) point to the directions of steepest increase
 ## integer problems
