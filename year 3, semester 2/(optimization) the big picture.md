@@ -76,8 +76,13 @@ we started by proving that to solve an IP, we can solve its LP relaxation BUT wi
 - to do this, we proved that the vertex of a convex hull of integer points are also integer points !
 however, finding the constraints that define the convex hull is usually impossible (not for jack *edmonds ….*)
 ### gomory cut method
+works for all IPs !!
 we started off by proving that given a real solution to an LP, we can always find a new constraint that cuts out that solution but is satisfied by all integral solutions. this is the base for the *gomory cut method !*
 the *gomory cut method* consists in finding an optimal solution to the LP relaxation, findin a constraint that cuts it off, and re-solving until the optimal solution is integral
 we also stated that the gomory cut method terminates in an optimal solution
-### edmond’s method
-we st
+### edmonds method
+the edmonds method applies to the *perfect matching problem*.
+we started by proving that the matching problem, for bipartite graphs, can be solved through the LP relaxation of its IP representation.
+however, if the graph is not bipartite, this is not possible. the LP relaxation will not have integral vertex.
+this is where *jack edmonds* steps in and find the constraint to add to the LP relaxation to make its vertex integral
+we started by proving that
