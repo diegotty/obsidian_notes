@@ -53,6 +53,8 @@ we defined the *weak duality theorem* and the *strong duality theorem*
 
 we studied *the farkas lemma*, which gives us a *certificate of infeasibility* by XOR on 2 statements
 - could be very useful ngl
+we introduced the *complementary slackness*, which allows us to make assumptions on the solution
+- do proof
 ### geometry
 we first noticed that the objective function can be re-written as a scalar product, and its gradient (the coefficients) point to the directions of steepest increase
 ## integer problems
