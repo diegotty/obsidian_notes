@@ -71,4 +71,4 @@ we define a custom function that has the following properties:
 we prove that the function has an optimum on the open set of $P$
 ### geometry
 we first noticed that the objective function can be re-written as a scalar product, and its gradient (the coefficients) point to the directions of steepest increase
-## integer problems
+## integer programs
