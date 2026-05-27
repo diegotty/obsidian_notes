@@ -24,5 +24,4 @@ one of the constants (P) is negative even before doing the first pivot.
 we are starting outside of the feasible region if we use the staring basis. badbadbad. we gotta use the two-phase method.
 
 ### two-phase method
-
 What it means: The standard Simplex method assumes that setting all non-basic variables to 0 gives you a valid, legal starting point (the origin). If doing so makes s1​=−4, you are violating the rule that all variables must be ≥0. You are starting outside the feasible region. To fix this, you cannot use the standard Simplex method; you have to use a special setup technique called the Two-Phase Method or the Big-M Method to mathematically "walk" into the valid region before you can start maximizing.
