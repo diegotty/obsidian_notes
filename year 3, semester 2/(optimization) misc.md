@@ -21,3 +21,13 @@ if our *optimal set* (abuse of notation) is $k ≥2$-dimensional, then drawing a
 
 every feasible solution can be mapped to a bfs without increasing its number of strictly postive components.
 - we can use contraddiction to find a solution with m-1 positive components.
+
+when in $k$ dimensions, we need to be touching exactly $
+when in $K$ k$ dimensions, we need to=to be touching exactly $k$ walls to be locked into a corner
+- to touch a wall, a variable must be 0
+- therefore, at every corner, exactly $k$ variables must be *non-basic*
+- the other variables represent the distance from the other walls 
+
+
+soooo each variable represents which constraint is tight:
+- $x_{i} = 0$ the $x_{i} \geq 0 $ is tight
