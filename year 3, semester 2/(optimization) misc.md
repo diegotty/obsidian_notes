@@ -39,3 +39,10 @@ if in the final tableau of the simplex method, there is a variable $x_{i}$ that 
 
 
 remember that the interesection of any set of convex sets is convex !! this is why the feasible set of a LP is always convex
+
+
+we use *complementary slackness* to:
+- verify optimality of a solution
+- find the opt solution of the dual, given the opt solution of the primal
+- prove that a variable must have a certain value in the opt sol
+we use *strong duality*:

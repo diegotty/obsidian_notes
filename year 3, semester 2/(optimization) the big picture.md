@@ -49,11 +49,11 @@ $$
 \text{
 given an LP} \\
 \text{1)if $\exists$ a feasible solution + the obj function is bounded, then $\exists$ an optimal solution} \\
-\text{}
+\text{2) if $\exists$ an optimal solution then $\exists$ a bfs which is optimal}
 \end{align}
 $$
 
-furthermore, we defined *convex combinations* and proved the equality of its two definitions
+furthermore, we defined *convex combinations* and *convex hulls* and proved the equality of its two definitions
 we defined *polyhedrons* and *polytopes*
 we proved that 
 $$
