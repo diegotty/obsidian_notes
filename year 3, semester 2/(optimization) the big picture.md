@@ -69,11 +69,21 @@ we introduced *bland’s rule* and proved that it doesn’t cycle (skipped proof
 ### runtime of simplex method
 we studied simplex method’s complexity by introducing *klee-minty’s polyhedron*
 ### dual problem
-to find an upper bound to a given LP, we introduce its *dual* problem (the original LP being called the *primal*). by solving the dual, we find the upper bound for the primal. 
+to find an upper bound to a given LP, we introduced its *dual* problem (the original LP being called the *primal*). 
+by solving the dual, we will find the upper bound for the primal. 
 we defined the *weak duality theorem* and the *strong duality theorem*
-- we proved *theorem 2*, which implies the strong duality theorem
+- we proved *theorem 2*, which states:
+ $$
+ \begin{align}
+ \text{
+ given a primal/dual pair P/D} \\
+\text{if P is feasible + bounded $\implies$ D is feasible + bounded \& they have the same opt sol}
 
-[little digression of feasibility solving (cool logic)]: finding any solution is computationally equivalent to finding the opt solution !
+\end{align}
+ $$
+
+>[!info] little digression of feasibility solving (cool logic)
+finding any solution is computationally equivalent to finding the opt solution !
 
 we studied *the farkas lemma*, which gives us a *certificate of infeasibility* by XOR on 2 statements
 - could be very useful ngl
