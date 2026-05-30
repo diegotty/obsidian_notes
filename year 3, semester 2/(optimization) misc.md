@@ -17,3 +17,7 @@ in equational form, the equations (duh) define *affine subspaces*. in particular
 optimal solutions are not guaranteed to be on edges !
 if our *optimal set* (abuse of notation) is $k ≥2$-dimensional, then drawing a line through any 2 optimal solutions does not guarantee us that the line will eventually hit a bfs. it will eventually hit a $(k-1)$ dimensional boundary.
 - (a bfs is  $0$-dimensional boundary, that is why with $1$-dimensinal optimal sets, the trick works)
+
+
+every feasible solution can be mapped to a bfs without increasing its number of strictly postive components.
+- if we find a solution with m-1 
