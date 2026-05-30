@@ -14,4 +14,6 @@ set of feasible sols to a LP in equational form is the intersection of an affine
 in equational form, the equations (duh) define *affine subspaces*. in particular, using $k$ constraints in and $n$ dimensional space defines a feasible set of $n - k$ dimensions. however, this feasible set is not bounded ! affine subspaces are not bounded. the bounds come from the non-negativity constraints. these constraints chop off the affine subspace to get a $n-k$ polyhedron (in fact, polyhedrons are defined by the intersection of linear inequalities)
 
 ### optimal solutions
-optimal solutions are not guaranteed to be on the edges or o
+optimal solutions are not guaranteed to be on edges !
+if our *optimal set* (abuse of notation) is $k ≥2$-dimensional, then drawing a line through any 2 optimal solutions does not guarantee us that the line will eventually hit a bfs. it will eventually hit a $(k-1)$ dimensional boundary.
+- (a bfs is  $0$-dimensional boundary, that is why with $1$-dimensinal optimal sets, the trick works)
