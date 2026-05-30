@@ -12,3 +12,6 @@ set of feasible sols to a LP in equational form is the intersection of an affine
 
 ## geometric intuition
 in equational form, the equations (duh) define *affine subspaces*. in particular, using $k$ constraints in and $n$ dimensional space defines a feasible set of $n - k$ dimensions. however, this feasible set is not bounded ! affine subspaces are not bounded. the bounds come from the non-negativity constraints. these constraints chop off the affine subspace to get a $n-k$ polyhedron (in fact, polyhedrons are defined by the intersection of linear inequalities)
+
+### optimal solutions
+optimal solutions are not guaranteed to be on the edges or o
