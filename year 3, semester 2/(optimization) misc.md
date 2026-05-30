@@ -35,3 +35,7 @@ soooo each variable represents which constraint is tight:
 ## infinite opt sols in tableau
 if in the final tableau of the simplex method, there is a variable $x_{i}$ that has coefficient 0 in the objective function row ($z=\dots$). it means that the $x_{i}$ has 0 *net impact* on the objective function (increasing $x_{i}$ will force to decrease some other variable $x_{j}$, but the gained/lost by doing so is 0) thus we can do whatever with it and still have an optimal solution. thus we found infinite optimal solutions by playing with $x_{i}$
 - we are at one corner, and find a path to *another* corner where the profit gained *perfectly equals* the profit lost (obj value stays the same !)
+
+
+
+remember that the interesection of any set of convex sets is convex !! this is why the feasible set of a LP is always convex
