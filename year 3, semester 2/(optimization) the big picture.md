@@ -29,11 +29,11 @@ we proved EK algorithms’s upper bound on steps ($n\cdot m$)
 we introduced the structure of *linear programs*, that are defined by an objective function to maximize(/minimize) and a set of constraints on the variables.
 we studied that a linear program has either:
 1) a unique optimal solution
-2) infinitely many optimal solutions
+2) infinitely many optimal solutions (bounded)
 3) no feasible solutions
 4) a feasible solution but no optimal solution (unbounded)
 
-we studied *convex* feasible sets
+we studied *convex* feasible sets:
 - we proved that all linear programs have a convex feasible set
 - we proved that if there exist two distinct optimal solutions, there exist infinite optimal solutions
 we observed that every LP can be written in standard form
