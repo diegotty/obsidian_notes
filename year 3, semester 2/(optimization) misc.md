@@ -20,4 +20,4 @@ if our *optimal set* (abuse of notation) is $k ≥2$-dimensional, then drawing a
 
 
 every feasible solution can be mapped to a bfs without increasing its number of strictly postive components.
-- if we find a solution with m-1 
+- we can use contraddiction to find a solution with m-1 positive components.
