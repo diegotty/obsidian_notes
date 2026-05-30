@@ -38,12 +38,21 @@ we studied *convex* feasible sets:
 - we proved that if there exist two distinct optimal solutions, there exist infinite optimal solutions
 we observed that every LP can be written in standard form
 ### simplex method
-we introduced the simplex method by defining its starting assumptions, and we understood the geometric definition of a feasible set (*affine subspace !*). we introduced *basic feasible solutions* (*bfs*).
+we introduced the simplex method by defining its starting assumptions, and we understood the geometric definition of a feasible set (*affine subspace (inequality constraints) + positivity constraints make the final polyhedron !*). we introduced *basic feasible solutions* (*bfs*).
 we proved that:
 $$ \text{given $x$ feasible solution, $x$ is a bfs} \iff B'=\{i|x_{i}>0\} \text{ has } A_{B'} \text{ w/ l.i. columns}
 
 $$
-we also proved the *fundamental theorem of linear programming*
+we also proved the *fundamental theorem of linear programming*:
+$$
+\begin{align}
+\text{
+given an LP} \\
+\text{1)if $\exists$ a feasible solution + the obj function is bounded, then $\exists$ an optimal solution} \\
+\text{}
+\end{align}
+$$
+
 furthermore, we defined *convex combinations* and proved the equality of its two definitions
 we defined *polyhedrons* and *polytopes*
 we proved that 
