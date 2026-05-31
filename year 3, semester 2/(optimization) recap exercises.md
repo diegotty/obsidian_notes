@@ -1,0 +1,2 @@
+- [ ] *prove or disprove*: if all capacities are distinct, then the max flow is unique
+- [ ] assume every vertex has fixed prefernce order on the outgoing edges, and perform FF always using DFS to find the path in the residual graph to augment. prove that there exist examples which take exponentially many steps to termine
