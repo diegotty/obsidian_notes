@@ -1,2 +1,9 @@
 - [ ] *prove or disprove*: if all capacities are distinct, then the max flow is unique
-- [ ] assume every vertex has fixed prefernce order on the outgoing edges, and perform FF always using DFS to find the path in the residual graph to augment. prove that there exist examples which take exponentially many steps to termine
+- [ ] assume every vertex has fixed preference order on the outgoing edges, and perform FF always using DFS to find the path in the residual graph to augment. prove that there exist examples which take exponentially many steps to termine
+- [ ] given LP and its feasible set P, prove or disprove:
+	- P bounded $\implies$ LP bounded
+	- LP bounded $\implies$ P is bounded
+- [ ] given P non-empy + bounded,
+- [ ] show:
+- $\exists\, c \text{ s.t.} \max c^Tx, x\in P \text{ has a ! opt sol.}$
+- $\exists\, c_{1} \text{ s.t.} \max c_{1}^Tx, x\in P \text{ has } \infty \text{ many opt sol.}$

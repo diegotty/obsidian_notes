@@ -53,3 +53,7 @@ we use *weak duality*:
 dual LPs bound primal LPs like st-cuts bound flows ! the smallest obj function value for the dual LP is the upper bound for the primal LP
 
 ## self-duality
+
+
+
+definition of boundedness
