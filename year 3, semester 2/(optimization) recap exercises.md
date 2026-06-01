@@ -6,7 +6,6 @@
 - [x] given P non-empy + bounded, show:
 - $\exists\, c \text{ s.t.} \max c^Tx, x\in P \text{ has a ! opt sol.}$
 - $\exists\, c_{1} \text{ s.t.} \max c_{1}^Tx, x\in P \text{ has } \infty \text{ many opt sol.}$
-
 - [ ]  given $P_{1}, P_{2}$ convex sets, prove or disprove:
 	- $P_{1} \cap P_{2}$ is convex
 	- $P_{1} \cup P_{2}$ is convex
