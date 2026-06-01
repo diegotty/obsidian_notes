@@ -116,5 +116,5 @@ we also stated that the gomory cut method terminates in an optimal solution
 the edmonds method applies to the *perfect matching problem*.
 we started by proving that the matching problem, for bipartite graphs, can be solved through the LP relaxation of its IP representation.
 however, if the graph is not bipartite, this is not possible. the LP relaxation will not have integral vertex.
-this is where *jack edmonds* steps in and find the constraint to add to the LP relaxation to make its vertex integral
+this is where *jack edmonds* steps in and find the constraint to add to the LP relaxation to make its vertex integral.
 we started by proving that
