@@ -11,7 +11,7 @@
 	- $P_{1} \cap P_{2}$ is convex
 	- $P_{1} \cup P_{2}$ is convex
 
-- [ ] simplex:
+- [x] simplex:
 $$
 	\begin{equation}
 	\begin{split}
