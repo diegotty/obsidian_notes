@@ -33,4 +33,4 @@ x \geq 0
 \end{split}
 \end{equation}
 $$
-- [ ] given $P$ polytope and $I$ convex hull of integer points in $P$, is it *true or false* that if every vertex of $I$ is also a vertex of $P$ $\implies$ $I = P$
+- [x] given $P$ polytope and $I$ convex hull of integer points in $P$, is it *true or false* that if every vertex of $I$ is also a vertex of $P$ $\implies$ $I = P$
