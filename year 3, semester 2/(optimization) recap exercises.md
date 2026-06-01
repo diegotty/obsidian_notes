@@ -22,7 +22,7 @@ $$
 \end{split}
 \end{equation}
 $$
-- [ ] give an example of a *standard form* LP $s.t.$ it is infeasible, but if we delete the last constraint it becomes feasible + bounded. prove the original dual is feasible
+- [x] give an example of a *standard form* LP $s.t.$ it is infeasible, but if we delete the last constraint it becomes feasible + bounded. prove the original dual is feasible
 - [ ] for what values of $\alpha, \beta$ is $(2,1)$ an optimal solution ?
 $$
 \begin{equation}
