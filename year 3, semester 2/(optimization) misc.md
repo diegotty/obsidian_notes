@@ -3,7 +3,7 @@ constraints are either:
 - *inequalities*: half-spaces (a hyperplane and everything on one side of it), (n dimensions)
 
 our objective function is a set of hyperplanes !! $c^Tx = \beta$ is an hyperplane, and we move $\beta$ through the feasible solutions to get our family
-however the coefficients of the objective function form a vector parallel to all the hyperplanes
+however the coefficients of the objective function form a vector perpendicular (parallel ?) to all the hyperplanes
 
 
 remember that obj func value stays constant when going in a cycle (as it happens when $P_{\alpha} = 0$ for $l_{\alpha}$ leaving basic-variable, and the obj func increase is $\frac{P_{\alpha}}{q_{\alpha\beta}}$)
