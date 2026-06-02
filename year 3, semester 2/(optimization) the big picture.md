@@ -104,11 +104,11 @@ we prove that the function has an optimum on the open set of $P$
 ### geometry
 we first noticed that the objective function can be re-written as a scalar product, and its gradient (the coefficients) point to the directions of steepest increase
 ## integer programs
-we started by proving that to solve an IP, we can solve its LP relaxation BUT with the added constraint that feasible sols must also be in the convex hull of integer points of the feasible set (of the LP relaxation) (ik, a mouthful)
+we started by proving that to solve an ILP, we can solve its LP relaxation BUT with the added constraint that feasible sols must also be in the convex hull of integer points of the feasible set (of the LP relaxation) (ik, a mouthful)
 - to do this, we proved that the vertex of a convex hull of integer points are also integer points !
-however, finding the constraints that define the convex hull is usually impossible (not for jack *edmonds ….*)
+however, finding the constraints that define the convex hull, especially for a general ILP problem, is usually impossible (not for jack *edmonds ….*)
 ### gomory cut method
-works for all IPs !!
+works for all ILPs !!
 we started off by proving that given a real solution to an LP, we can always find a new constraint that cuts out that solution but is satisfied by all integral solutions. this is the base for the *gomory cut method !*
 the *gomory cut method* consists in finding an optimal solution to the LP relaxation, findin a constraint that cuts it off, and re-solving until the optimal solution is integral
 we also stated that the gomory cut method terminates in an optimal solution
