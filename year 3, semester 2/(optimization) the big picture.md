@@ -1,6 +1,6 @@
 ## flows in graphs
 we started by covering *flows in graphs*.
-we defined *networks*, the formal structure which we work on , and *flows*, functions on the edges of said networks, with the following properties:
+we defined *networks*, the formal structure which we work on, and *flows*, functions on the edges of said networks, with the following properties:
 1) skew-symmetry
 2) respecting the capacities
 3) conservation of flow
