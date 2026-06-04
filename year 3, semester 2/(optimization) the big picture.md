@@ -92,6 +92,7 @@ we introduced the *complementary slackness*, which allows us to make assumptions
 - do proof
 
 ### ellipsoid method
+if, by shriking (slicing) the ellipsoid, we get to a volume inferior to $\epsilon$, it is mathematically impossible to for the problem to have a feasible solution, and the algorithm declares the problem as *infeasible*. to account for the various technicalities, we run the ellpsoid method on a slightly different problem from the original LP. same shit though
 ### inner point method
 we introduced the definitions of *closed set* and *open set* to prove that the inner point method yields an optimal solution
 >[!info] idea
@@ -101,8 +102,6 @@ we define a custom function that has the following properties:
 >3) as $\mu \rightarrow \infty$, the maximizing the function pushes points towards the center
 
 we prove that the function has an optimum on the open set of $P$
-### geometry
-we first noticed that the objective function can be re-written as a scalar product, and its gradient (the coefficients) point to the directions of steepest increase
 ## integer programs
 we started by proving that to solve an ILP, we can solve its LP relaxation BUT with the added constraint that feasible sols must also be in the convex hull of integer points of the feasible set (of the LP relaxation) (ik, a mouthful)
 - to do this, we proved that the vertex of a convex hull of integer points are also integer points !
