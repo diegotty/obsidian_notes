@@ -1,4 +1,5 @@
-pg. 24 im (convex defs)
+pg. 21dim (fundamental theorem of linear programming) 
+pg. 24 dim (convex defs)
 pg. 26 dim (v vertex $\iff$ v bfs) + rifare
 pg. 35 dim (fickle vars)
 fickle vars theorem
