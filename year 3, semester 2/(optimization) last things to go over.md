@@ -1,3 +1,8 @@
+pg. 24 im (convex defs)
+pg. 26 dim (v vertex $\iff$ v bfs) + rifare
+pg. 35 dim (fickle vars)
+fickle vars theorem
+
 pg. 43 (theorem 2)
 pg. 50 (problem) cutting a vertex
 pg. 56 dim 
